@@ -1,0 +1,66 @@
+/* gragg.life shared look. Every creator page links this, then adds its own accent. */
+:root{
+  color-scheme:dark;
+  --bg:#0f151c; --bg2:#141c25; --panel:#19232e; --panel2:#202c39; --line:#2c3a49; --line2:#3b4c5e;
+  --fg:#e8eef5; --dim:#a3b3c4; --faint:#728396;
+  --accent:#ff9326; --accent2:#ffb866; --link:#5cc8f0; --good:#4fd98c; --bad:#ff6363;
+  --radius:10px;
+  --display:"Saira Condensed",Impact,sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,monospace;
+}
+@media (prefers-color-scheme:light){
+  :root:not([data-theme="dark"]){
+    color-scheme:light;
+    --bg:#f5f7fa; --bg2:#eef2f6; --panel:#ffffff; --panel2:#f3f6f9; --line:#dbe2ea; --line2:#c5d0db;
+    --fg:#15202b; --dim:#4a5a6b; --faint:#6f7f90; --accent:#d9700a; --accent2:#f08a1e; --link:#0b74b8;
+  }
+}
+*{box-sizing:border-box}
+html{scroll-padding-top:72px}
+body{margin:0;background:var(--bg);color:var(--fg);font:15px/1.6 var(--body);-webkit-font-smoothing:antialiased}
+a{color:var(--link);text-decoration:none} a:hover{text-decoration:underline}
+img{max-width:100%}
+.container{max-width:1160px;margin:0 auto;padding:0 16px}
+
+/* top bar shared by every page */
+.topbar{position:sticky;top:0;z-index:30;background:color-mix(in srgb,var(--bg) 88%,transparent);
+  backdrop-filter:blur(10px);border-bottom:1px solid var(--line)}
+.topbar .container{display:flex;align-items:center;gap:14px;min-height:58px;flex-wrap:wrap}
+.logo{font-family:var(--display);font-weight:700;font-size:22px;letter-spacing:1.5px;text-transform:uppercase;color:var(--fg)}
+.logo b{color:var(--accent)} .logo:hover{text-decoration:none}
+.crumbs{font-size:13px;color:var(--faint);display:flex;gap:6px;align-items:center;flex-wrap:wrap}
+.crumbs a{color:var(--dim)}
+.topbar .grow{flex:1}
+.toplinks{display:flex;gap:4px;flex-wrap:wrap}
+.toplinks a{font-size:13px;color:var(--dim);padding:6px 10px;border-radius:8px}
+.toplinks a:hover,.toplinks a.on{background:var(--panel2);color:var(--fg);text-decoration:none}
+
+h1,h2,h3{font-family:var(--display);letter-spacing:.8px;line-height:1.15;margin:0}
+h1{font-size:clamp(32px,6vw,52px);text-transform:uppercase}
+h2{font-size:26px;text-transform:uppercase;margin:34px 0 12px}
+h3{font-size:19px;margin:22px 0 8px}
+.lede{color:var(--dim);font-size:17px;max-width:62ch;margin:10px 0 0}
+.muted{color:var(--faint)}
+.tag{display:inline-block;font:500 11px/1 var(--mono);letter-spacing:.6px;text-transform:uppercase;
+  padding:5px 8px;border-radius:6px;background:var(--panel2);border:1px solid var(--line);color:var(--dim)}
+.tag.accent{color:var(--accent);border-color:color-mix(in srgb,var(--accent) 45%,transparent)}
+
+.card{background:var(--panel);border:1px solid var(--line);border-radius:var(--radius)}
+.grid{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(250px,1fr))}
+.btn{display:inline-flex;align-items:center;gap:8px;font:600 14px var(--body);padding:10px 16px;border-radius:9px;
+  background:var(--accent);color:#1a1006;border:0;cursor:pointer}
+.btn:hover{filter:brightness(1.08);text-decoration:none}
+.btn.ghost{background:var(--panel2);color:var(--fg);border:1px solid var(--line)}
+
+table{width:100%;border-collapse:collapse;font-size:14px}
+th{font:500 11px var(--mono);letter-spacing:.8px;text-transform:uppercase;color:var(--faint);text-align:left;
+  padding:9px 10px;border-bottom:1px solid var(--line2);white-space:nowrap}
+td{padding:8px 10px;border-bottom:1px solid var(--line);vertical-align:middle}
+td.n,th.n{text-align:right;font-family:var(--mono);font-variant-numeric:tabular-nums}
+tbody tr:hover td{background:var(--panel2)}
+.scroll{overflow-x:auto}
+
+.footer{border-top:1px solid var(--line);margin-top:56px;padding:22px 0 40px;font-size:13px;color:var(--faint)}
+:focus-visible{outline:2px solid var(--link);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}

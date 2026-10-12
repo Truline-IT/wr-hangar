@@ -1,0 +1,270 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Hangar Wiki</title>
+<meta name="description" content="Every robot, weapon, drone and floor in Moody.Adam's War Robots hangar.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/shared/site.css">
+<style>
+.layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;padding-top:22px}
+@media (max-width:860px){.layout{grid-template-columns:1fr}.side{position:static!important;max-height:none!important}}
+.side{position:sticky;top:74px;align-self:start;max-height:calc(100vh - 90px);overflow:auto}
+.search{position:relative;margin-bottom:14px}
+.search input{width:100%;font:15px var(--body);padding:10px 12px;border-radius:9px;border:1px solid var(--line2);
+  background:var(--panel);color:var(--fg)}
+.search input:focus{outline:none;border-color:var(--link)}
+.results{position:absolute;left:0;right:0;top:100%;margin-top:4px;z-index:20;max-height:340px;overflow:auto;padding:4px}
+.results a{display:flex;gap:10px;align-items:center;padding:7px 9px;border-radius:7px;color:var(--fg)}
+.results a:hover,.results a.sel{background:var(--panel2);text-decoration:none}
+.results small{margin-left:auto;color:var(--faint);font:11px var(--mono)}
+.nav h4{font:500 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--faint);margin:16px 0 6px}
+.nav a{display:flex;justify-content:space-between;padding:6px 10px;border-radius:7px;color:var(--dim);font-size:14px}
+.nav a:hover,.nav a.on{background:var(--panel2);color:var(--fg);text-decoration:none}
+.nav a span{font:12px var(--mono);color:var(--faint)}
+
+.thumb{width:40px;height:40px;border-radius:7px;object-fit:contain;background:var(--bg2);border:1px solid var(--line);flex:none}
+.thumb.ph{display:inline-flex;align-items:center;justify-content:center;font:600 15px var(--display);color:var(--line2)}
+.tiles{display:grid;gap:12px;grid-template-columns:repeat(auto-fill,minmax(190px,1fr))}
+.tile{display:flex;flex-direction:column;overflow:hidden;color:var(--fg)}
+.tile:hover{border-color:var(--accent);text-decoration:none}
+.tile .art{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 85%,color-mix(in srgb,var(--accent) 15%,transparent),transparent 65%),var(--bg2);border-bottom:1px solid var(--line)}
+.tile .art img{max-height:88%;max-width:88%;object-fit:contain}
+.tile .art span{font:700 40px var(--display);color:var(--line2)}
+.tile .t{padding:10px 12px}
+.tile b{display:block;font:600 17px var(--display);letter-spacing:.6px}
+.tile small{color:var(--faint);font:12px var(--mono)}
+
+.article{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start}
+@media (max-width:1000px){.article{grid-template-columns:1fr}.infobox{order:-1}}
+.infobox{overflow:hidden}
+.infobox .ttl{padding:12px 14px;font:700 21px var(--display);letter-spacing:.8px;text-transform:uppercase;border-bottom:1px solid var(--line);
+  background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 22%,var(--panel2)),var(--panel2))}
+.infobox .pic{display:flex;align-items:center;justify-content:center;aspect-ratio:1;background:radial-gradient(ellipse at 50% 80%,color-mix(in srgb,var(--accent) 16%,transparent),transparent 65%),var(--bg2)}
+.infobox .pic img{max-width:90%;max-height:90%;object-fit:contain}
+.infobox .pic span{font:700 70px var(--display);color:var(--line2)}
+.infobox dl{margin:0;display:grid;grid-template-columns:auto 1fr}
+.infobox dt,.infobox dd{margin:0;padding:8px 14px;border-top:1px solid var(--line);font-size:14px}
+.infobox dt{color:var(--faint);font:500 12px var(--mono);text-transform:uppercase;letter-spacing:.6px;display:flex;align-items:center}
+.infobox dd{text-align:right;font-weight:500}
+.mine{margin:0;padding:10px 14px;border-top:1px solid var(--line);background:color-mix(in srgb,var(--good) 10%,transparent);color:var(--good);font-size:13px}
+.slotpip{display:inline-flex;width:22px;height:22px;border-radius:6px;align-items:center;justify-content:center;font:700 11px var(--mono);color:#0b0f14;margin-left:3px}
+.slotpip.H{background:#ff6b4a}.slotpip.M{background:#ffc14a}.slotpip.L{background:#6ee7a0}.slotpip.A{background:#c792ea}.slotpip.B{background:#82aaff}
+.callout{padding:12px 14px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 8px 8px 0;margin:14px 0;color:var(--dim)}
+.toc{font-size:14px;padding:12px 16px;margin:16px 0;display:inline-block}
+.toc b{font:500 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:4px}
+.toc a{display:block}
+.src{font-size:12px;color:var(--faint);margin-top:28px;border-top:1px solid var(--line);padding-top:10px}
+.filters{display:flex;gap:8px;flex-wrap:wrap;margin:14px 0}
+.filters button{font:500 13px var(--body);padding:7px 12px;border-radius:20px;border:1px solid var(--line);background:var(--panel);color:var(--dim);cursor:pointer}
+.filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1006}
+.wname{display:flex;align-items:center;gap:10px}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container">
+  <a class="logo" href="/">gragg<b>.</b>life</a>
+  <nav class="crumbs" aria-label="Breadcrumb"><span>/</span><a href="../">Adam's Hangar</a><span>/</span><a href="#/">Wiki</a></nav>
+  <span class="grow"></span>
+  <div class="toplinks"><a href="../">Open the hangar tools</a></div>
+</div></div>
+
+<div class="container layout">
+  <aside class="side">
+    <div class="search">
+      <input id="q" type="search" placeholder="Search robots, weapons, drones" autocomplete="off" aria-label="Search the wiki">
+      <div class="card results" id="res" hidden></div>
+    </div>
+    <nav class="nav" id="nav" aria-label="Wiki sections"></nav>
+  </aside>
+  <main id="page" tabindex="-1"></main>
+</div>
+<footer class="footer"><div class="container">
+  Hangar data last captured 5 October 2026. Base damage and upgrade costs are from the
+  <a href="https://warrobots.fandom.com/" target="_blank" rel="noopener">War Robots Wiki on Fandom</a> (CC BY-SA). War Robots is a game by MY.GAMES; this is a fan project.
+</div></footer>
+
+<script src="../data.js"></script>
+<script>
+const $=s=>document.querySelector(s);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const num=n=>n==null||n===""?"—":Number(n).toLocaleString("en-US");
+const SLOT={H:"Heavy",M:"Medium",L:"Light",A:"Titan Alpha",B:"Titan Beta"};
+const up="../";
+
+/* ---- normalise the hangar data into wiki records ---- */
+const robots=R.map(r=>({kind:"robot",name:r[0],floor:r[1],level:r[2],slots:r[3],hp:r[4],speed:r[5],ability:r[6],pilot:r[7],plvl:r[8],drone:r[9],guns:r[10]}));
+const titans=TITANS.map(t=>({kind:"titan",name:t[0],floor:t[1],level:t[2],hp:t[3],speed:t[4],pilot:t[5],plvl:t[6],guns:t[7],slots:t[8]}));
+const weapons=W.map(w=>({kind:"weapon",name:w[0],slot:w[1],level:w[2],copies:w[3],dmg:w[4],range:w[5],reload:w[6],effect:w[7]}));
+const droneInfo=Object.fromEntries(DR.map(d=>[d[0],d]));
+const drones=DRONES.map(n=>{const d=droneInfo[n]||[n,"","","",""];return {kind:"drone",name:n,skill:d[1],does:d[2],pair:d[3],why:d[4]};});
+const floors=Object.entries(FLOORS).map(([n,f])=>({kind:"floor",name:"Floor "+f[0]+": "+f[1],n:+n,title:f[1],sub:f[3],plan:f[4]})).sort((a,b)=>b.n-a.n);
+
+const ALL=[...robots,...titans,...weapons,...drones,...floors];
+const byKey={}; ALL.forEach(x=>{x.id=x.kind==="floor"?String(x.n):slug(x.name); byKey[x.kind+"/"+x.id]=x;});
+const href=x=>"#/"+x.kind+"/"+x.id;
+const find=(kind,name)=>byKey[kind+"/"+slug(name)];
+const link=(kind,name)=>{const x=find(kind,name);return x?`<a href="${href(x)}">${esc(name)}</a>`:esc(name);};
+
+/* ---- art ---- */
+function botImg(n){ const s=bsrc(bslug(n)); return s?up+s:null; }
+function gunImg(n){ const k=wslug(n); return WIMG.has(k)?up+"w/"+k+".webp":null; }
+function droneImg(n){ return up+"d/"+n.toLowerCase()+".webp"; }
+function imgOf(x){ return x.kind==="robot"||x.kind==="titan"?botImg(x.name):x.kind==="weapon"?gunImg(x.name):x.kind==="drone"?droneImg(x.name):null; }
+function pic(x,cls){ const s=imgOf(x); return s?`<img class="${cls||""}" src="${esc(s)}" alt="" loading="lazy" onerror="this.replaceWith(Object.assign(document.createElement('span'),{className:'${cls||""} ph',textContent:'${esc(x.name[0])}'}))">`
+  :`<span class="${cls||""} ph">${esc(x.name[0])}</span>`; }
+const pips=s=>[...String(s||"")].map(c=>`<span class="slotpip ${c}" title="${SLOT[c]||c}">${c}</span>`).join("");
+
+/* ---- damage tables ---- */
+function wikiDmg(n){ return WIKI[n]||WIKI[WIKI_VIA[n]]||null; }
+function wikiCost(n){ return WIKI_COST[n]||WIKI_COST[WIKI_VIA[n]]||null; }
+
+/* ---- pages ---- */
+const P={};
+P.home=()=>`
+  <h1>Hangar Wiki</h1>
+  <p class="lede">Everything in Moody.Adam's War Robots hangar: ${robots.length} robots, ${titans.length} titan${titans.length===1?"":"s"}, ${weapons.length} weapons and ${drones.length} drones across five floors.</p>
+  <h2>Floors</h2><div class="tiles">${floors.map(f=>`<a class="card tile" href="${href(f)}"><div class="art"><span>${String(f.n).padStart(2,"0")}</span></div><div class="t"><b>${esc(f.title)}</b><small>${esc(f.sub)}</small></div></a>`).join("")}</div>
+  <h2>Robots</h2>${tiles([...robots,...titans].sort((a,b)=>b.floor-a.floor))}
+  <h2>Drones</h2>${tiles(drones)}
+  <p style="margin-top:26px"><a class="btn ghost" href="#/weapon">Browse all ${weapons.length} weapons</a></p>`;
+function tiles(list){ return `<div class="tiles">${list.map(x=>`<a class="card tile" href="${href(x)}"><div class="art">${pic(x)}</div><div class="t"><b>${esc(x.name)}</b><small>${
+  x.kind==="drone"?esc(x.skill||"Drone"):x.kind==="weapon"?SLOT[x.slot]+" · L"+x.level:(x.kind==="titan"?"Titan":"Robot")+" · Floor "+x.floor+" · L"+x.level}</small></div></a>`).join("")}</div>`; }
+
+P.robotList=()=>`<h1>Robots</h1><p class="lede">Every robot and titan in the hangar, strongest floor first.</p><h2>Robots</h2>${tiles([...robots].sort((a,b)=>b.floor-a.floor))}<h2>Titans</h2>${tiles(titans)}`;
+P.droneList=()=>`<h1>Drones</h1><p class="lede">Drones Adam owns and what each one is paired with.</p>${tiles(drones)}`;
+P.floorList=()=>`<h1>Floors</h1><div class="tiles" style="margin-top:18px">${floors.map(f=>`<a class="card tile" href="${href(f)}"><div class="art"><span>${String(f.n).padStart(2,"0")}</span></div><div class="t"><b>${esc(f.title)}</b><small>${esc(f.sub)}</small></div></a>`).join("")}</div>`;
+
+let WF="";
+P.weaponList=()=>{
+  const list=weapons.filter(w=>!WF||w.slot===WF).sort((a,b)=>b.dmg-a.dmg);
+  return `<h1>Weapons</h1><p class="lede">${weapons.length} weapons, sorted by damage at the level Adam owns them.</p>
+  <div class="filters">${["","H","M","L","A","B"].map(k=>`<button data-wf="${k}" aria-pressed="${WF===k}">${k?SLOT[k]:"All"}</button>`).join("")}</div>
+  <div class="card scroll"><table><thead><tr><th>Weapon</th><th>Slot</th><th class="n">Level</th><th class="n">Owned</th><th class="n">Damage</th><th class="n">Range</th><th class="n">Reload</th></tr></thead><tbody>
+  ${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td>${pips(w.slot)}</td><td class="n">${w.level}</td><td class="n">${w.copies}</td><td class="n">${num(w.dmg)}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${w.reload?w.reload+" s":"—"}</td></tr>`).join("")}
+  </tbody></table></div>`;
+};
+
+function fitted(gunName){
+  const on=[];
+  [...robots,...titans].forEach(r=>r.guns.forEach(g=>{ if(g===gunName) on.push(r); }));
+  return on;
+}
+function infobox(x,rows,mine){
+  return `<aside class="card infobox"><div class="ttl">${esc(x.name)}</div><div class="pic">${pic(x)}</div>
+    <dl>${rows.filter(r=>r[1]!==undefined&&r[1]!==null&&r[1]!=="").map(r=>`<dt>${r[0]}</dt><dd>${r[1]}</dd>`).join("")}</dl>
+    ${mine?`<p class="mine">${mine}</p>`:""}</aside>`;
+}
+P.robot=x=>{
+  const fl=FLOORS[x.floor];
+  const loadout=x.guns.map((g,i)=>{const w=find("weapon",g);return `<tr><td>${pips(String(x.slots)[i]||"")}</td><td>${w?`<a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(g)}</a>`:esc(g)}</td><td class="n">${w?num(w.dmg):"—"}</td><td class="n">${w?(w.reload?w.reload+" s":"—"):"—"}</td></tr>`;}).join("");
+  const volley=x.guns.reduce((s,g)=>s+((find("weapon",g)||{}).dmg||0),0);
+  const empty=String(x.slots).length-x.guns.length;
+  return `<div class="article"><div>
+    <span class="tag accent">${x.kind==="titan"?"Titan":"Robot"} · Floor ${x.floor}</span>
+    <h1 style="margin-top:10px">${esc(x.name)}</h1>
+    <p class="lede">${x.ability?`Ability: <b>${esc(x.ability)}</b>. `:""}Fitted on <a href="#/floor/${x.floor}">Floor ${x.floor}</a>${fl?`, “${esc(fl[1])}”`:""}.</p>
+    <div class="card toc"><b>Contents</b><a href="#loadout" data-jump>Loadout</a>${fl?`<a href="#role" data-jump>Role on the floor</a>`:""}</div>
+    <h2 id="loadout">Loadout</h2>
+    <div class="card scroll"><table><thead><tr><th>Slot</th><th>Weapon</th><th class="n">Damage</th><th class="n">Reload</th></tr></thead><tbody>${loadout||`<tr><td colspan="4" class="muted">No weapons fitted.</td></tr>`}</tbody></table></div>
+    <p>Total volley: <b>${num(volley)}</b>${empty>0?` · <span style="color:var(--bad)">${empty} empty hardpoint${empty>1?"s":""}</span>`:""}</p>
+    ${fl?`<h2 id="role">Role on the floor</h2><div class="callout">${esc(fl[4])}</div>`:""}
+  </div>${infobox(x,[
+    ["Type",x.kind==="titan"?"Titan":"Robot"],["Level",x.level],["Hardpoints",pips(x.slots)],["Health",num(x.hp)],
+    ["Speed",x.speed?x.speed+" km/h":""],["Ability",esc(x.ability||"")],["Pilot",x.pilot?esc(x.pilot)+(x.plvl?" · L"+x.plvl:""):""],
+    ["Drone",x.drone?link("drone",x.drone):""]],`In Adam's hangar: Floor ${x.floor}`)}</div>`;
+};
+P.titan=P.robot;
+
+P.weapon=x=>{
+  const d=wikiDmg(x.name), c=wikiCost(x.name), on=fitted(x.name);
+  const lv=d?Object.keys(d).map(Number).sort((a,b)=>a-b):[];
+  const via=WIKI_VIA[x.name];
+  return `<div class="article"><div>
+    <span class="tag accent">${SLOT[x.slot]||x.slot} weapon</span>
+    <h1 style="margin-top:10px">${esc(x.name)}</h1>
+    ${x.effect?`<p class="lede">${esc(x.effect)}</p>`:""}
+    <div class="card toc"><b>Contents</b><a href="#fitted" data-jump>Where it's fitted</a>${lv.length?`<a href="#levels" data-jump>Damage and cost by level</a>`:""}</div>
+    <h2 id="fitted">Where it's fitted</h2>
+    ${on.length?`<p>${[...new Set(on)].map(r=>{const k=on.filter(o=>o===r).length;return `<a href="${href(r)}">${esc(r.name)}</a>${k>1?" ×"+k:""}`;}).join(", ")}</p>`:`<p class="muted">Not fitted on any robot right now.</p>`}
+    <p>Adam owns <b>${x.copies}</b> cop${x.copies==1?"y":"ies"}${on.length?`, ${on.length} in use`:""}.</p>
+    ${lv.length?`<h2 id="levels">Damage and cost by level</h2>
+      ${via?`<p class="muted">Figures read from the base <b>${esc(via)}</b> page.</p>`:""}
+      <div class="card scroll"><table><thead><tr><th class="n">Level</th><th class="n">Damage</th><th class="n">Upgrade cost (Ag)</th><th class="n">Time</th></tr></thead><tbody>
+      ${lv.map(l=>{const k=c&&c[l];return `<tr${l==x.level?` style="background:color-mix(in srgb,var(--accent) 12%,transparent)"`:""}><td class="n">${l}${l==x.level?" ◂":""}</td><td class="n">${num(d[l])}</td><td class="n">${k?num(k[0]):"—"}</td><td class="n">${k?k[1]:"—"}</td></tr>`;}).join("")}
+      </tbody></table></div>`:""}
+    ${WIKI_SRC[x.name]?`<p class="src">Level data: <a href="${esc(WIKI_SRC[x.name])}" target="_blank" rel="noopener">War Robots Wiki</a>, read ${WIKI_READ} (CC BY-SA).</p>`:""}
+  </div>${infobox(x,[["Slot",pips(x.slot)+" "+(SLOT[x.slot]||"")],["Level",x.level],["Damage",num(x.dmg)],["Range",x.range?x.range+" m":""],["Reload",x.reload?x.reload+" s":""],["Effect",esc(x.effect||"")],["Owned",x.copies]],
+    on.length?`${on.length} in use on ${new Set(on).size} robot${new Set(on).size>1?"s":""}`:"")}</div>`;
+};
+
+P.drone=x=>{
+  const on=[...robots].filter(r=>r.drone===x.name);
+  return `<div class="article"><div>
+    <span class="tag accent">Drone</span>
+    <h1 style="margin-top:10px">${esc(x.name)}</h1>
+    ${x.skill?`<p class="lede"><b>${esc(x.skill)}</b></p>`:""}
+    ${x.does?`<h2>What it does</h2><p>${esc(x.does)}</p>`:""}
+    ${x.why?`<h2>Why it's paired this way</h2><div class="callout">${esc(x.why)}</div>`:""}
+  </div>${infobox(x,[["Headline skill",esc(x.skill||"")],["Paired with",x.pair&&x.pair!=="Unassigned"?link("robot",x.pair):esc(x.pair||"")]],
+    on.length?`Flying with ${on.map(r=>esc(r.name)).join(", ")}`:"Idle")}</div>`;
+};
+
+P.floor=x=>{
+  const bots=[...robots,...titans].filter(r=>r.floor===x.n);
+  const volley=bots.reduce((s,r)=>s+r.guns.reduce((t,g)=>t+((find("weapon",g)||{}).dmg||0),0),0);
+  return `<span class="tag accent">Floor ${String(x.n).padStart(2,"0")}</span>
+    <h1 style="margin-top:10px">${esc(x.title)}</h1><p class="lede">${esc(x.sub)}</p>
+    <h2>Game plan</h2><div class="callout">${esc(x.plan)}</div>
+    <h2>Robots on this floor</h2>${tiles(bots)}
+    <p style="margin-top:14px">Floor volley: <b>${num(volley)}</b></p>`;
+};
+
+/* ---- shell: nav, search, router ---- */
+function navHtml(cur){
+  const it=(h,t,n)=>`<a href="${h}" class="${cur===h?"on":""}">${t}${n!=null?`<span>${n}</span>`:""}</a>`;
+  return `<h4>Wiki</h4>${it("#/","Overview")}${it("#/robot","Robots",robots.length+titans.length)}${it("#/weapon","Weapons",weapons.length)}${it("#/drone","Drones",drones.length)}${it("#/floor","Floors",floors.length)}
+  <h4>Floors</h4>${floors.map(f=>it(href(f),String(f.n).padStart(2,"0")+" "+esc(f.title))).join("")}`;
+}
+function route(){
+  const h=location.hash||"#/"; const [,kind,id]=h.split("/");
+  let html, title="Hangar Wiki";
+  if(!kind) html=P.home();
+  else if(!id) html={robot:P.robotList,titan:P.robotList,weapon:P.weaponList,drone:P.droneList,floor:P.floorList}[kind]?.()||notFound();
+  else { const x=byKey[kind+"/"+decodeURIComponent(id)]; if(x){ html=P[kind](x); title=x.name+" · Hangar Wiki"; } else html=notFound(); }
+  $("#page").innerHTML=html; document.title=title;
+  $("#nav").innerHTML=navHtml(kind&&!id?"#/"+kind:h==="#/"||!kind?"#/":h);
+  window.scrollTo(0,0);
+}
+const notFound=()=>`<h1>Not found</h1><p class="lede">That page isn't in the wiki. Try the search box.</p>`;
+document.addEventListener("click",e=>{
+  const b=e.target.closest("[data-wf]"); if(b){ WF=b.dataset.wf; route(); return; }
+  const j=e.target.closest("[data-jump]"); if(j){ e.preventDefault(); document.getElementById(j.getAttribute("href").slice(1))?.scrollIntoView({behavior:"smooth"}); }
+});
+window.addEventListener("hashchange",route);
+
+const q=$("#q"), res=$("#res"); let sel=0, hits=[];
+const kindName={robot:"Robot",titan:"Titan",weapon:"Weapon",drone:"Drone",floor:"Floor"};
+function search(){
+  const s=q.value.trim().toLowerCase();
+  if(!s){ res.hidden=true; return; }
+  hits=ALL.filter(x=>x.name.toLowerCase().includes(s)||(x.effect||x.ability||x.skill||"").toLowerCase().includes(s)).slice(0,12);
+  sel=0;
+  res.innerHTML=hits.length?hits.map((x,i)=>`<a href="${href(x)}" class="${i===sel?"sel":""}">${pic(x,"thumb")}<span>${esc(x.name)}</span><small>${kindName[x.kind]}</small></a>`).join(""):`<p class="muted" style="padding:8px;margin:0">No matches.</p>`;
+  res.hidden=false;
+}
+q.addEventListener("input",search);
+q.addEventListener("keydown",e=>{
+  if(e.key==="Enter"&&hits[sel]){ location.hash=href(hits[sel]).slice(1); q.value=""; res.hidden=true; }
+  else if(e.key==="ArrowDown"||e.key==="ArrowUp"){ e.preventDefault(); sel=(sel+(e.key==="ArrowDown"?1:-1)+hits.length)%hits.length;
+    [...res.children].forEach((a,i)=>a.classList.toggle("sel",i===sel)); }
+  else if(e.key==="Escape"){ res.hidden=true; }
+});
+res.addEventListener("click",()=>{ q.value=""; res.hidden=true; });
+document.addEventListener("click",e=>{ if(!e.target.closest(".search")) res.hidden=true; });
+route();
+</script>
+</body>
+</html>

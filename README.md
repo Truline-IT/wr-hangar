@@ -1,9 +1,11 @@
-Static front door for www.gragg.life, served by GitHub Pages.
+The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
 
-- `/` landing page
-- `/adams-hangar/` the Moody.Adam Hangar, hosted here (saved data lives in each visitor's browser)
+- `/` portfolio home, built from `creators.json`
+- `shared/site.css` the common look every page links
+- `_template/` starter page for a new project (see `CONTRIBUTING.md`)
+- `/adams-hangar/` Moody.Adam's War Robots hangar tools (saved data lives in each visitor's browser)
+- `/adams-hangar/wiki/` wiki pages for every robot, weapon, drone and floor, reading `adams-hangar/data.js`
 - `/adams-hanger/` catches the common misspelling and forwards to `/adams-hangar/`
-- `CNAME` sets the custom domain
+- `CNAME` sets the custom domain; do not edit
 
-Rebuilt from the claude.ai artifact; Ask Claude and live intel refresh only exist in the claude.ai version.
-
+`adams-hangar/data.js` is copied from the data block in `adams-hangar/index.html`. When the roster changes, update both until the hangar page is switched to read `data.js` directly.

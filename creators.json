@@ -1,0 +1,38 @@
+{
+  "creators": [
+    {
+      "id": "adam",
+      "name": "Moody.Adam",
+      "role": "War Robots commander",
+      "projects": [
+        {
+          "title": "Adam's Hangar",
+          "url": "/adams-hangar/",
+          "summary": "Command deck: five floors, thirty slots, match log, build calculator and bank.",
+          "tags": ["War Robots", "Tool"],
+          "image": "/adams-hangar/b/samjok-mk2.webp"
+        },
+        {
+          "title": "Hangar Wiki",
+          "url": "/adams-hangar/wiki/",
+          "summary": "Every robot, weapon, drone and floor in the hangar, with stats, damage by level and upgrade costs.",
+          "tags": ["War Robots", "Wiki"],
+          "image": "/adams-hangar/b2/fenrir.png"
+        }
+      ]
+    },
+    {
+      "id": "noah",
+      "name": "Noah",
+      "role": "Portfolio",
+      "projects": [
+        {
+          "title": "Noah's Portfolio",
+          "url": "https://noah.gragg.life/",
+          "summary": "Noah's own site.",
+          "tags": ["Portfolio"]
+        }
+      ]
+    }
+  ]
+}
