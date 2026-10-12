@@ -1,0 +1,48 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>gragg.life</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<style>
+:root{color-scheme:dark;--amber:#ff9326;--amber2:#ffbb66;--cyan:#3fd0f5;
+  --fg:#e9f0f7;--dim:#9db0c4;--faint:#73879b;--line:#415263;--panel:#243040}
+*{box-sizing:border-box}
+body{margin:0;min-height:100vh;display:flex;align-items:center;justify-content:center;padding:24px 16px;
+  background:
+    linear-gradient(rgba(63,208,245,.05) 1px,transparent 1px) 0 0/100% 34px,
+    linear-gradient(90deg,rgba(63,208,245,.05) 1px,transparent 1px) 0 0/34px 100%,
+    radial-gradient(130% 85% at 50% 0%,#2a3848 0%,#1a2430 52%,#141d27 100%);
+  background-attachment:fixed;
+  color:var(--fg);font-family:"IBM Plex Mono",ui-monospace,monospace;font-size:14px;line-height:1.6}
+.wrap{width:100%;max-width:520px}
+h1{font-family:"Saira Condensed",Impact,sans-serif;font-size:44px;font-weight:700;letter-spacing:3px;
+  text-transform:uppercase;margin:0;color:var(--amber);line-height:1;text-shadow:0 0 18px rgba(255,147,38,.4)}
+.sub{font-size:10.5px;letter-spacing:2.4px;text-transform:uppercase;color:var(--faint);margin:6px 0 26px}
+a.tile{display:flex;align-items:center;gap:14px;text-decoration:none;color:var(--fg);
+  background:linear-gradient(170deg,var(--panel),#202c3a);border:1px solid var(--line);
+  border-left:4px solid var(--amber);padding:16px 18px;margin-bottom:10px;
+  clip-path:polygon(0 0,100% 0,100% calc(100% - 10px),calc(100% - 10px) 100%,0 100%)}
+a.tile:hover{border-color:var(--amber);background:linear-gradient(170deg,#2c3a4c,#243040)}
+a.tile .t{flex:1;min-width:0}
+a.tile b{display:block;font-family:"Saira Condensed",Impact,sans-serif;font-size:21px;letter-spacing:1.4px;
+  text-transform:uppercase;font-weight:600}
+a.tile span{font-size:11.5px;color:var(--dim)}
+a.tile .arw{font-family:"Saira Condensed",Impact,sans-serif;font-size:26px;color:var(--amber);flex:none}
+.foot{margin-top:26px;font-size:11px;color:var(--faint);border-top:1px solid var(--line);padding-top:14px}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <h1>gragg.life</h1>
+  <div class="sub">William Gragg</div>
+  <a class="tile" href="/adams-hangar/">
+    <div class="t"><b>Adam's Hangar</b><span>War Robots command deck, roster, calculator and patch intel</span></div>
+    <div class="arw">&rsaquo;</div>
+  </a>
+  <div class="foot">Sign in to Claude is required for the hangar.</div>
+</div>
+</body>
+</html>
+
