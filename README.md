@@ -1,12 +1,13 @@
 The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
 
-- `/` portfolio home, built from `creators.json`
+- `/` portfolio home, built from `creators.json`; every project card sits on one line
 - `shared/site.css` the common look every page links
 - `_template/` starter page for a new project (see `CONTRIBUTING.md`)
 - `/adams-hangar/` Moody.Adam's War Robots hangar tools (saved data lives in each visitor's browser; a first visit starts from `adams-hangar/seed.json`)
 - `/adams-hangar/wiki/` wiki pages for every robot, weapon, drone and floor, reading `adams-hangar/data.js`
 - `/adams-hanger/` catches the common misspelling and forwards to `/adams-hangar/`
 - `/adamshanger/` forwards to `/adams-hangar/` too
+- `/noahs-hangar/` Noah's War Robots hangar, kept separate from Adam's (its own browser storage key)
 - `CNAME` sets the custom domain; do not edit
 
 `adams-hangar/data.js` is copied from the data block in `adams-hangar/index.html`. When the roster changes, update both until the hangar page is switched to read `data.js` directly.

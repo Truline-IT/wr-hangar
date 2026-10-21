@@ -23,6 +23,10 @@
 .proj h3{margin:0;font-size:21px}
 .proj p{margin:0;color:var(--dim);font-size:14px}
 .proj .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
+.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:14px;overflow-x:auto;padding:4px 2px 10px;margin-top:30px;scroll-snap-type:x proximity}
+.strip .proj{scroll-snap-align:start;min-width:0}
+.strip .proj .art{aspect-ratio:auto;height:190px}
+.proj .who{font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent)}
 .join{margin-top:44px;padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .join p{margin:0;flex:1;min-width:220px;color:var(--dim)}
 </style>
@@ -48,16 +52,14 @@
 <script>
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 fetch("/creators.json").then(r=>r.json()).then(({creators})=>{
-  document.getElementById("creators").innerHTML=creators.map(c=>`
-    <section class="creator" id="${esc(c.id)}">
-      <header><h2>${esc(c.name)}</h2><span class="tag">${esc(c.role)}</span></header>
-      <div class="grid">${c.projects.map(p=>`
+  /* every project card on one line, each labelled with its creator */
+  const cards=creators.flatMap(c=>c.projects.map(p=>({c,p})));
+  document.getElementById("creators").innerHTML=`<div class="strip">${cards.map(({c,p})=>`
         <a class="card proj" href="${esc(p.url)}">
           <div class="art">${p.image?`<img src="${esc(p.image)}" alt="" loading="lazy">`:`<span>${esc(p.title[0])}</span>`}</div>
-          <div class="body"><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
+          <div class="body"><span class="who">${esc(c.name)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
             <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></div>
-        </a>`).join("")}</div>
-    </section>`).join("");
+        </a>`).join("")}</div>`;
 }).catch(()=>{document.getElementById("creators").innerHTML='<p class="muted">Projects could not load. Try refreshing.</p>';});
 </script>
 </body>

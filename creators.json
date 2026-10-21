@@ -9,14 +9,20 @@
           "title": "Adam's Hangar",
           "url": "/adams-hangar/",
           "summary": "Command deck: five floors, thirty slots, match log, build calculator and bank.",
-          "tags": ["War Robots", "Tool"],
+          "tags": [
+            "War Robots",
+            "Tool"
+          ],
           "image": "/adams-hangar/b/samjok-mk2.webp"
         },
         {
           "title": "Hangar Wiki",
           "url": "/adams-hangar/wiki/",
           "summary": "Every robot, weapon, drone and floor in the hangar, with stats, damage by level and upgrade costs.",
-          "tags": ["War Robots", "Wiki"],
+          "tags": [
+            "War Robots",
+            "Wiki"
+          ],
           "image": "/adams-hangar/b2/fenrir.png"
         }
       ]
@@ -24,13 +30,24 @@
     {
       "id": "noah",
       "name": "Noah",
-      "role": "Portfolio",
+      "role": "War Robots and portfolio",
       "projects": [
+        {
+          "title": "Noah's Hangar",
+          "url": "/noahs-hangar/",
+          "summary": "Noah's War Robots iPad account: match log, bank, roster and upgrades, kept apart from Adam's.",
+          "tags": [
+            "War Robots",
+            "Tool"
+          ]
+        },
         {
           "title": "Noah's Portfolio",
           "url": "https://noah.gragg.life/",
           "summary": "Noah's own site.",
-          "tags": ["Portfolio"]
+          "tags": [
+            "Portfolio"
+          ]
         }
       ]
     }

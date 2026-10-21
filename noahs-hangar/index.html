@@ -1,0 +1,336 @@
+<!doctype html><html lang="en"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<style>:root{box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style>
+</head><body>
+<title>Noah's Hangar</title>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<style>
+/* Layout: one command column of angled HUD panels; teal command accent on deep steel, kept apart from Adam's amber. */
+:root{
+  color-scheme:dark;
+  --bg:#141c26; --bg2:#0f161e; --panel:#1c2733; --panel2:#233140; --line:#34475a; --edge:#4a6278;
+  --fg:#e8f0f6; --dim:#9fb2c4; --faint:#6f8497;
+  --accent:#2fd6b5; --accent2:#7cebd4; --win:#56d98f; --loss:#ff6464; --gold:#ffc85a; --violet:#b69aff;
+  --display:"Saira Condensed",Impact,sans-serif; --body:"IBM Plex Sans",system-ui,sans-serif; --mono:"IBM Plex Mono",ui-monospace,monospace;
+  --cut:10px;
+}
+*{box-sizing:border-box}
+body{margin:0;background:radial-gradient(120% 70% at 50% 0%,#1f2c3a 0%,var(--bg) 55%,var(--bg2) 100%) fixed,var(--bg);
+  color:var(--fg);font:14px/1.5 var(--body)}
+.wrap{max-width:1100px;margin:0 auto;padding-inline:16px;padding-block:0 60px}
+header{position:sticky;top:env(safe-area-inset-top,0px);z-index:10;background:rgba(20,28,38,.96);backdrop-filter:blur(8px);border-bottom:1px solid var(--edge)}
+.bar{max-width:1100px;margin:0 auto;padding:12px 16px 8px;display:flex;align-items:center;gap:12px;flex-wrap:wrap}
+.brand{font-family:var(--display);font-size:24px;font-weight:700;letter-spacing:2px;text-transform:uppercase;color:var(--accent);line-height:1}
+.brand small{display:block;font-family:var(--mono);font-size:10px;letter-spacing:2px;color:var(--faint);font-weight:500;margin-top:4px}
+.sep{margin-left:auto;font-family:var(--mono);font-size:10.5px;color:var(--dim);border:1px solid var(--line);padding:4px 9px}
+nav{max-width:1100px;margin:0 auto;padding:0 16px;display:flex;gap:4px;overflow-x:auto;scrollbar-width:none}
+nav button{font-family:var(--display);font-size:14.5px;letter-spacing:1.3px;text-transform:uppercase;font-weight:600;background:var(--panel);
+  border:1px solid var(--line);border-bottom:none;color:var(--dim);padding:9px 16px 8px;cursor:pointer;white-space:nowrap;
+  clip-path:polygon(9px 0,100% 0,100% 100%,0 100%,0 9px)}
+nav button[aria-selected="true"]{background:var(--accent);color:#06201b;border-color:var(--accent)}
+nav button:focus-visible,button:focus-visible,input:focus-visible,select:focus-visible,textarea:focus-visible{outline:2px solid var(--accent2);outline-offset:2px}
+h2{font-family:var(--display);font-size:26px;letter-spacing:2px;text-transform:uppercase;margin:28px 0 4px;text-wrap:balance}
+h3{font-family:var(--display);font-size:17px;letter-spacing:1.5px;text-transform:uppercase;color:var(--accent);margin:22px 0 8px}
+.lede{color:var(--dim);margin:0 0 14px;max-width:66ch}
+.panel{background:linear-gradient(170deg,var(--panel2),var(--panel));border:1px solid var(--line);padding:14px;
+  clip-path:polygon(var(--cut) 0,100% 0,100% calc(100% - var(--cut)),calc(100% - var(--cut)) 100%,0 100%,0 var(--cut))}
+.stats{display:grid;grid-template-columns:repeat(auto-fit,minmax(150px,1fr));gap:10px;margin:14px 0}
+.stat{background:var(--panel);border:1px solid var(--line);border-left:3px solid var(--accent);padding:10px 12px}
+.stat .k{font-family:var(--mono);font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--faint)}
+.stat .v{font-family:var(--mono);font-size:22px;font-weight:600;color:var(--accent);font-variant-numeric:tabular-nums}
+label{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--faint);margin-bottom:4px}
+input,select,textarea{width:100%;background:var(--bg2);border:1px solid var(--line);color:var(--fg);padding:8px 10px;font:inherit;border-radius:0}
+.row{display:flex;gap:10px;flex-wrap:wrap;align-items:flex-end}
+.row>*{flex:1 1 140px;min-width:0}
+.row>.fixed{flex:none}
+button.act{font-family:var(--display);font-size:14px;letter-spacing:1.4px;text-transform:uppercase;font-weight:700;background:var(--accent);color:#06201b;
+  border:none;padding:10px 18px;cursor:pointer;clip-path:polygon(8px 0,100% 0,100% calc(100% - 8px),calc(100% - 8px) 100%,0 100%,0 8px)}
+button.act:disabled{background:var(--line);color:var(--faint);cursor:not-allowed}
+button.ghost{background:none;border:1px solid var(--line);color:var(--dim);padding:4px 10px;cursor:pointer;font-family:var(--mono);font-size:11.5px}
+button.ghost:hover{border-color:var(--accent);color:var(--accent)}
+.chips{display:flex;gap:6px;flex-wrap:wrap}
+button.chip{font-family:var(--display);font-size:13px;letter-spacing:1px;text-transform:uppercase;background:var(--panel);border:1px solid var(--line);
+  color:var(--dim);padding:8px 13px;cursor:pointer;min-height:38px}
+button.chip[aria-pressed="true"]{background:var(--accent);color:#06201b;border-color:var(--accent)}
+button.chip.w[aria-pressed="true"]{background:var(--win);border-color:var(--win)}
+button.chip.l[aria-pressed="true"]{background:var(--loss);border-color:var(--loss);color:#2a0808}
+.list{display:flex;flex-direction:column;gap:6px;margin-top:12px}
+.item{display:flex;align-items:center;gap:10px;flex-wrap:wrap;background:var(--panel);border:1px solid var(--line);padding:9px 12px}
+.item .t{flex:1;min-width:160px}
+.item .t b{display:block}
+.item .t span{color:var(--dim);font-size:12.5px}
+.item .n{font-family:var(--mono);font-variant-numeric:tabular-nums;color:var(--accent);font-weight:600}
+.tag{font-family:var(--display);font-size:12px;letter-spacing:1.2px;text-transform:uppercase;padding:2px 8px;border:1px solid}
+.tag.w{color:var(--win);border-color:var(--win)} .tag.l{color:var(--loss);border-color:var(--loss)}
+.tag.k{color:var(--dim);border-color:var(--line)}
+.empty{color:var(--faint);padding:20px;text-align:center;border:1px dashed var(--line)}
+.note{font-size:12.5px;color:var(--dim)}
+.chat{display:flex;flex-direction:column;gap:10px;max-height:56vh;overflow-y:auto;padding:4px 2px 10px}
+.msg{white-space:pre-wrap;padding:9px 12px;border:1px solid var(--line);max-width:92%}
+.msg.u{align-self:flex-end;background:rgba(47,214,181,.1);border-color:rgba(47,214,181,.45)}
+.msg.a{align-self:flex-start;background:var(--panel)}
+.msg .who{display:block;font-family:var(--mono);font-size:9.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--faint)}
+section[hidden]{display:none!important}
+@media (prefers-reduced-motion:reduce){*{transition:none!important}}
+</style>
+
+<header>
+  <div class="bar">
+    <div class="brand">Noah's Hangar<small>WAR ROBOTS · IPAD</small></div>
+    <span class="sep">Separate from Adam's hangar</span>
+  </div>
+  <nav role="tablist" id="nav">
+    <button role="tab" data-t="log" aria-selected="true">Match log</button>
+    <button role="tab" data-t="bank" aria-selected="false">Bank</button>
+    <button role="tab" data-t="roster" aria-selected="false">Roster</button>
+    <button role="tab" data-t="upg" aria-selected="false">Upgrades</button>
+    <button role="tab" data-t="ask" aria-selected="false">Ask Claude</button>
+  </nav>
+</header>
+
+<div class="wrap">
+
+<section id="t-log">
+  <h2>Match log</h2>
+  <p class="lede">Every battle on Noah's account goes here. Nothing on this page is shared with Adam's hangar.</p>
+  <div class="stats" id="log-stats"></div>
+  <div class="panel">
+    <div class="row" style="margin-bottom:10px">
+      <div><label>Result</label><div class="chips" id="m-res"></div></div>
+      <div><label for="m-mode">Mode</label><select id="m-mode">
+        <option>Domination</option><option>Beacon Rush</option><option>Team Deathmatch</option><option>Free For All</option><option>Extermination</option><option>Other</option></select></div>
+    </div>
+    <div class="row">
+      <div><label for="m-dmg">Damage</label><input id="m-dmg" inputmode="numeric" placeholder="e.g. 1450000"></div>
+      <div><label for="m-kills">Kills</label><input id="m-kills" inputmode="numeric" placeholder="e.g. 4"></div>
+      <div style="flex:2 1 220px"><label for="m-note">Notes</label><input id="m-note" placeholder="Map, hangar used, what went well"></div>
+      <div class="fixed"><button class="act" id="m-add">Log match</button></div>
+    </div>
+  </div>
+  <div class="list" id="m-list"></div>
+</section>
+
+<section id="t-bank" hidden>
+  <h2>Bank</h2>
+  <p class="lede">Noah's currencies. Type over a number to update it, then save.</p>
+  <div class="panel">
+    <div class="row">
+      <div><label for="b-ag">Silver</label><input id="b-ag" inputmode="numeric"></div>
+      <div><label for="b-au">Gold</label><input id="b-au" inputmode="numeric"></div>
+      <div><label for="b-pt">Platinum</label><input id="b-pt" inputmode="numeric"></div>
+      <div><label for="b-keys">Keys</label><input id="b-keys" inputmode="numeric"></div>
+      <div><label for="b-utok">Upgrade tokens</label><input id="b-utok" inputmode="numeric"></div>
+      <div class="fixed"><button class="act" id="b-save">Save bank</button></div>
+    </div>
+    <p class="note" id="b-when" style="margin:10px 0 0"></p>
+  </div>
+</section>
+
+<section id="t-roster" hidden>
+  <h2>Roster</h2>
+  <p class="lede">Robots, weapons, drones, pilots and titans Noah owns, filled in from his hangar screenshots.</p>
+  <div class="panel">
+    <div class="row">
+      <div><label for="r-kind">Type</label><select id="r-kind"><option>Robot</option><option>Weapon</option><option>Drone</option><option>Pilot</option><option>Titan</option></select></div>
+      <div style="flex:2 1 180px"><label for="r-name">Name</label><input id="r-name" placeholder="e.g. Ravager"></div>
+      <div><label for="r-lvl">Level</label><input id="r-lvl" inputmode="numeric" placeholder="e.g. 8"></div>
+      <div style="flex:2 1 180px"><label for="r-note">Notes</label><input id="r-note" placeholder="Hangar slot, MK2, weapons on it"></div>
+      <div class="fixed"><button class="act" id="r-add">Add</button></div>
+    </div>
+  </div>
+  <div class="list" id="r-list"></div>
+</section>
+
+<section id="t-upg" hidden>
+  <h2>Upgrades</h2>
+  <p class="lede">Upgrades in progress, with what they cost and when they finish.</p>
+  <div class="panel">
+    <div class="row">
+      <div style="flex:2 1 180px"><label for="u-item">Item</label><input id="u-item" placeholder="e.g. Ravager level 7 to 8"></div>
+      <div><label for="u-ag">Silver cost</label><input id="u-ag" inputmode="numeric"></div>
+      <div style="flex:2 1 180px"><label for="u-ready">Ready</label><input id="u-ready" placeholder="e.g. Tue 4 PM"></div>
+      <div class="fixed"><button class="act" id="u-add">Add</button></div>
+    </div>
+  </div>
+  <div class="list" id="u-list"></div>
+</section>
+
+<section id="t-ask" hidden>
+  <h2>Ask Claude</h2>
+  <p class="lede">Questions about Noah's hangar, builds or the game. Noah's roster, bank and matches go along with every question, and nothing from Adam's.</p>
+  <div class="panel">
+    <div class="chat" id="chat"></div>
+    <div class="row">
+      <div style="flex:5 1 240px"><label for="q">Question</label><textarea id="q" rows="2" placeholder="What should Noah upgrade next?"></textarea></div>
+      <div class="fixed" style="display:flex;gap:8px"><button class="ghost" id="q-new">New chat</button><button class="act" id="q-send">Send</button></div>
+    </div>
+    <p class="note" id="q-note" hidden></p>
+  </div>
+</section>
+
+</div>
+
+<script>
+/* gragg.life build: stands in for the claude.ai runtime. Data is kept in this browser only. */
+(function(){
+  var KEY="noah-hangar-db-v1", subs=[];
+  function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } }
+  var mem=load();
+  function persist(){ try{ localStorage.setItem(KEY,JSON.stringify(mem)); }catch(e){} subs.forEach(function(s){ s(); }); }
+  function col(n){ return mem[n]||(mem[n]={}); }
+  function snap(rows){ return { docs: rows.map(function(r){ return { id:r[0], exists:true, data:function(){ return JSON.parse(JSON.stringify(r[1])); } }; }) }; }
+  function query(name,ord,dir,lim){
+    return {
+      orderBy:function(f,d){ return query(name,f,d||"asc",lim); },
+      limit:function(n){ return query(name,ord,dir,n); },
+      onSnapshot:function(cb){
+        var run=function(){
+          var rows=Object.entries(col(name));
+          if(ord) rows.sort(function(a,b){ var x=a[1][ord],y=b[1][ord]; return (x>y?1:x<y?-1:0)*(dir==="desc"?-1:1); });
+          if(lim) rows=rows.slice(0,lim);
+          try{ cb(snap(rows)); }catch(e){ console.error(e); }
+        };
+        subs.push(run); setTimeout(run,0);
+        return function(){ subs=subs.filter(function(s){ return s!==run; }); };
+      },
+      get:async function(){ return snap(Object.entries(col(name))); },
+      doc:function(id){ return {
+        id:id,
+        set:async function(v){ col(name)[id]=JSON.parse(JSON.stringify(v)); persist(); },
+        update:async function(v){ Object.assign(col(name)[id]||(col(name)[id]={}),v); persist(); },
+        delete:async function(){ delete col(name)[id]; persist(); },
+        get:async function(){ var v=col(name)[id]; return { id:id, exists:!!v, data:function(){ return v; } }; }
+      }; },
+      add:async function(v){ var id=Date.now().toString(36)+Math.random().toString(36).slice(2,7); col(name)[id]=JSON.parse(JSON.stringify(v)); persist(); return { id:id }; }
+    };
+  }
+  var DBX={ collection:function(n){ return query(n); } };
+  var uid; try{ uid=localStorage.getItem("noah-hangar-uid"); if(!uid){ uid="u"+Date.now().toString(36); localStorage.setItem("noah-hangar-uid",uid); } }catch(e){ uid="local"; }
+  var USERX={ id:async function(){ return uid; }, me:async function(){ return { name:"Commander" }; }, can:async function(){ return true; } };
+  var DLX={ save:async function(o){ var b=new Blob([o.data],{type:"text/plain"}); var a=document.createElement("a");
+    a.href=URL.createObjectURL(b); a.download=o.filename||"download.txt"; document.body.appendChild(a); a.click(); a.remove(); } };
+  window.claude={ use:async function(k){ return k==="db"?DBX : k==="user"?USERX : k==="downloads"?DLX : null; } };
+})();
+</script>
+<script>
+(function(){
+const $=id=>document.getElementById(id);
+const esc=s=>String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const num=n=>(+n||0).toLocaleString("en-US");
+const toNum=s=>+String(s||"").replace(/[^0-9.]/g,"")||0;
+let DB=null, SAMPLE=null, canWrite=false;
+let MATCHES=[], ROSTER=[], UPG=[], BANK={};
+
+/* tabs */
+const tabs=[...document.querySelectorAll("#nav button")];
+function go(t){ tabs.forEach(b=>b.setAttribute("aria-selected",b.dataset.t===t)); ["log","bank","roster","upg","ask"].forEach(x=>$("t-"+x).hidden=x!==t);
+  try{localStorage.setItem("noah-tab",t)}catch(e){} }
+tabs.forEach(b=>b.onclick=()=>go(b.dataset.t));
+try{ const t=localStorage.getItem("noah-tab"); if(t) go(t); }catch(e){}
+
+/* match form */
+let res="Win";
+function resChips(){ $("m-res").innerHTML=["Win","Loss"].map(v=>`<button class="chip ${v==="Win"?"w":"l"}" data-r="${v}" aria-pressed="${v===res}">${v}</button>`).join(""); }
+resChips(); $("m-res").onclick=e=>{ const b=e.target.closest("[data-r]"); if(b){ res=b.dataset.r; resChips(); } };
+
+function renderMatches(){
+  const n=MATCHES.length, w=MATCHES.filter(m=>m.res==="Win").length;
+  const avg=n?Math.round(MATCHES.reduce((a,m)=>a+(+m.dmg||0),0)/n):0;
+  $("log-stats").innerHTML=`<div class="stat"><div class="k">Matches</div><div class="v">${n}</div></div>
+    <div class="stat"><div class="k">Win rate</div><div class="v">${n?Math.round(100*w/n)+"%":"none yet"}</div></div>
+    <div class="stat"><div class="k">Average damage</div><div class="v">${n?num(avg):"none yet"}</div></div>`;
+  $("m-list").innerHTML=n?MATCHES.map(m=>`<div class="item"><span class="tag ${m.res==="Win"?"w":"l"}">${esc(m.res)}</span>
+    <div class="t"><b>${esc(m.mode)}${m.kills?` · ${esc(m.kills)} kills`:""}</b><span>${esc(m.note||"")} ${m.ts?"· "+new Date(m.ts).toLocaleDateString():""}</span></div>
+    <span class="n">${num(m.dmg)}</span>${canWrite?`<button class="ghost" data-del="matches/${esc(m.id)}">remove</button>`:""}</div>`).join("")
+    :`<div class="empty">No matches yet. Log Noah's first battle above, or send Claude a results screenshot.</div>`;
+}
+function renderRoster(){
+  const order=["Robot","Titan","Weapon","Drone","Pilot"];
+  const r=[...ROSTER].sort((a,b)=>order.indexOf(a.kind)-order.indexOf(b.kind)||String(a.name).localeCompare(b.name));
+  $("r-list").innerHTML=r.length?r.map(x=>`<div class="item"><span class="tag k">${esc(x.kind)}</span>
+    <div class="t"><b>${esc(x.name)}</b><span>${esc(x.note||"")}</span></div><span class="n">${x.lvl?"Lvl "+esc(x.lvl):""}</span>
+    ${canWrite?`<button class="ghost" data-del="roster/${esc(x.id)}">remove</button>`:""}</div>`).join("")
+    :`<div class="empty">Roster is empty. Send Claude screenshots of each hangar floor and it fills this in.</div>`;
+}
+function renderUpg(){
+  $("u-list").innerHTML=UPG.length?UPG.map(u=>`<div class="item"><span class="tag ${u.done?"w":"k"}">${u.done?"Done":"Running"}</span>
+    <div class="t"><b>${esc(u.item)}</b><span>${u.ready?"Ready "+esc(u.ready):""}</span></div><span class="n">${u.ag?num(u.ag)+" silver":""}</span>
+    ${canWrite&&!u.done?`<button class="ghost" data-done="${esc(u.id)}">mark done</button>`:""}
+    ${canWrite?`<button class="ghost" data-del="upgrades/${esc(u.id)}">remove</button>`:""}</div>`).join("")
+    :`<div class="empty">No upgrades tracked yet.</div>`;
+}
+function renderBank(){
+  ["ag","au","pt","keys","utok"].forEach(k=>{ const el=$("b-"+k); if(document.activeElement!==el) el.value=BANK[k]!=null?num(BANK[k]):""; });
+  $("b-when").textContent=BANK.ts?"Last updated "+new Date(BANK.ts).toLocaleString():"Not filled in yet.";
+}
+function renderAll(){ renderMatches(); renderRoster(); renderUpg(); renderBank(); }
+renderAll();
+
+function setWrite(on){ canWrite=on; ["m-add","r-add","u-add","b-save"].forEach(i=>$(i).disabled=!on); renderAll(); }
+setWrite(false);
+
+/* writes */
+async function add(col,data){ if(!DB) return; await DB.collection(col).add(Object.assign({ts:Date.now()},data)); }
+$("m-add").onclick=async()=>{ await add("matches",{res,mode:$("m-mode").value,dmg:toNum($("m-dmg").value),kills:$("m-kills").value.trim(),note:$("m-note").value.trim()});
+  ["m-dmg","m-kills","m-note"].forEach(i=>$(i).value=""); };
+$("r-add").onclick=async()=>{ const name=$("r-name").value.trim(); if(!name) return;
+  await add("roster",{kind:$("r-kind").value,name,lvl:$("r-lvl").value.trim(),note:$("r-note").value.trim()}); ["r-name","r-lvl","r-note"].forEach(i=>$(i).value=""); };
+$("u-add").onclick=async()=>{ const item=$("u-item").value.trim(); if(!item) return;
+  await add("upgrades",{item,ag:toNum($("u-ag").value),ready:$("u-ready").value.trim(),done:false}); ["u-item","u-ag","u-ready"].forEach(i=>$(i).value=""); };
+$("b-save").onclick=async()=>{ if(!DB) return; const d={ts:Date.now()}; ["ag","au","pt","keys","utok"].forEach(k=>d[k]=toNum($("b-"+k).value));
+  await DB.collection("bank").doc("stock").set(d); };
+document.addEventListener("click",async e=>{
+  const del=e.target.closest("[data-del]"); if(del&&DB){ const [c,id]=del.dataset.del.split("/"); await DB.collection(c).doc(id).delete(); }
+  const dn=e.target.closest("[data-done]"); if(dn&&DB){ await DB.collection("upgrades").doc(dn.dataset.done).update({done:true}); }
+});
+
+/* chat */
+let CHAT=[]; try{ CHAT=JSON.parse(localStorage.getItem("noah-chat")||"[]"); if(!Array.isArray(CHAT)) CHAT=[]; }catch(e){}
+function saveChat(){ try{ localStorage.setItem("noah-chat",JSON.stringify(CHAT.slice(-40))); }catch(e){} }
+function renderChat(pending){
+  $("chat").innerHTML=(CHAT.length||pending!=null?"":`<div class="note">Ask anything. Follow-up questions remember the conversation.</div>`)+
+    CHAT.map(m=>`<div class="msg ${m.role==="user"?"u":"a"}"><span class="who">${m.role==="user"?"You":"Claude"}</span>${esc(m.content)}</div>`).join("")+
+    (pending!=null?`<div class="msg a" id="pend"><span class="who">Claude</span>${esc(pending)}</div>`:"");
+  $("chat").scrollTop=$("chat").scrollHeight;
+}
+renderChat();
+function context(){
+  return `You are the advisor on Noah's War Robots hangar page (iPad account). This hangar is separate from Adam's; never mix them.\n`+
+    `ROSTER: ${ROSTER.map(r=>`${r.kind} ${r.name}${r.lvl?" lvl "+r.lvl:""}${r.note?" ("+r.note+")":""}`).join("; ")||"not filled in yet"}\n`+
+    `BANK: ${["ag","au","pt","keys","utok"].map(k=>k+" "+(BANK[k]??"?")).join(", ")}\n`+
+    `RECENT MATCHES: ${MATCHES.slice(0,15).map(m=>`${m.res} ${m.mode} ${m.dmg} dmg ${m.note||""}`).join("; ")||"none"}\n`+
+    `UPGRADES: ${UPG.map(u=>`${u.item}${u.done?" done":""}`).join("; ")||"none"}\n\n`+
+    `Answer directly and briefly. Use the real names above, say plainly when something is not in the roster, never invent game numbers, no em dashes.\n\nFirst question: `;
+}
+$("q-new").onclick=()=>{ CHAT=[]; saveChat(); renderChat(); };
+$("q-send").onclick=async()=>{
+  const q=$("q").value.trim(); if(!q) return;
+  if(!SAMPLE){ $("q-note").hidden=false; $("q-note").textContent="Chat works in the claude.ai version of this hangar for now."; return; }
+  $("q-send").disabled=true; $("q").value=""; CHAT.push({role:"user",content:q}); saveChat(); renderChat("Thinking...");
+  const turns=CHAT.slice(-20).map(m=>({role:m.role,content:m.content})); if(turns[0].role!=="user") turns.shift();
+  turns[0]={role:"user",content:context()+turns[0].content};
+  try{ const r=await SAMPLE(turns,{modelTier:"default",cache:false,onText:({text})=>{ const p=$("pend"); if(p) p.innerHTML='<span class="who">Claude</span>'+esc(text); }});
+    CHAT.push({role:"assistant",content:r.text}); }
+  catch(e){ CHAT.push({role:"assistant",content:e&&e.code==="rate_limited"?"Too many questions at once. Give it a moment.":e&&e.code==="not_granted"?"Chat needs permission. Open the page's permissions menu and allow it.":"That did not go through. Try again."}); }
+  saveChat(); renderChat(); $("q-send").disabled=false;
+};
+$("q").addEventListener("keydown",e=>{ if(e.key==="Enter"&&(e.metaKey||e.ctrlKey)) $("q-send").click(); });
+
+/* boot */
+(async function(){
+  let USER=null;
+  try{ USER=await window.claude?.use?.("user"); }catch(e){}
+  try{ DB=await window.claude?.use?.("db"); }catch(e){}
+  try{ SAMPLE=await window.claude?.use?.("sample"); }catch(e){}
+  if(!DB){ document.querySelectorAll(".list").forEach(l=>l.innerHTML=`<div class="empty">Open this page signed in to see and save Noah's data.</div>`); return; }
+  let w=true; try{ if(USER){ const c=await USER.can("data.write"); w=c===null?true:!!c; } }catch(e){}
+  setWrite(w);
+  const err=()=>{};
+  DB.collection("matches").orderBy("ts","desc").limit(200).onSnapshot(s=>{ MATCHES=s.docs.map(d=>Object.assign({id:d.id},d.data())); renderMatches(); },err);
+  DB.collection("roster").limit(500).onSnapshot(s=>{ ROSTER=s.docs.map(d=>Object.assign({id:d.id},d.data())); renderRoster(); },err);
+  DB.collection("upgrades").orderBy("ts","desc").limit(100).onSnapshot(s=>{ UPG=s.docs.map(d=>Object.assign({id:d.id},d.data())); renderUpg(); },err);
+  DB.collection("bank").limit(2).onSnapshot(s=>{ const d=s.docs.find(x=>x.id==="stock"); BANK=d?d.data():{}; renderBank(); },err);
+})();
+})();
+</script>
+
+</body></html>
