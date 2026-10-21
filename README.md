@@ -7,7 +7,7 @@ The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
 - `/adams-hangar/wiki/` wiki pages for every robot, weapon, drone and floor, reading `adams-hangar/data.js`
 - `/adams-hanger/` catches the common misspelling and forwards to `/adams-hangar/`
 - `/adamshanger/` forwards to `/adams-hangar/` too
-- `/news/` latest videos from the War Robots YouTube channel; `.github/workflows/youtube-news.yml` refreshes `news/videos.json` every 4 hours
+- `/news/` latest videos from the War Robots YouTube channel; `.github/workflows/youtube-news.yml` refreshes `news/videos.json` every 4 hours through the YouTube Data API (needs the `YT_API_KEY` repository secret)
 - `/noahs-hangar/` Noah's War Robots hangar, kept separate from Adam's (its own browser storage key)
 - `CNAME` sets the custom domain; do not edit
 
