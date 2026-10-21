@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>War Robots Updates</title>
+<meta name="description" content="The latest videos from the official War Robots YouTube channel, refreshed automatically.">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="/shared/site.css">
+<style>
+.vids{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin-top:20px}
+.vid{display:flex;flex-direction:column;overflow:hidden;color:var(--fg);transition:border-color .15s,transform .15s}
+.vid:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none}
+.vid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg2)}
+.vid .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}
+.vid h3{margin:0;font-size:18px;line-height:1.25}
+.vid time{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.4px}
+.vid.new{border-color:var(--accent)}
+</style>
+</head>
+<body>
+<div class="topbar"><div class="container">
+  <a class="logo" href="/">gragg<b>.</b>life</a>
+  <nav class="crumbs"><span>/</span><span>War Robots updates</span></nav>
+</div></div>
+
+<main class="container" style="padding-top:40px">
+  <span class="tag accent">Official channel</span>
+  <h1 style="margin-top:10px">War Robots Updates</h1>
+  <p class="lede">Every video from the <a href="https://www.youtube.com/@playwarrobots">War Robots YouTube channel</a>: patch overviews, robot spotlights and events. This page checks the channel every four hours and adds new videos on its own.</p>
+  <p class="muted" id="when"></p>
+  <div class="vids" id="vids"><p class="muted">Loading videos…</p></div>
+</main>
+<footer class="footer"><div class="container">Videos belong to War Robots / MY.GAMES and open on YouTube · gragg.life</div></footer>
+<script>
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const day=d=>new Date(d).toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
+fetch("/news/videos.json",{cache:"no-cache"}).then(r=>r.json()).then(({videos})=>{
+  const week=Date.now()-7*864e5;
+  document.getElementById("when").textContent=videos.length?`Newest video posted ${day(videos[0].published)}.`:"";
+  document.getElementById("vids").innerHTML=videos.map(v=>`
+    <a class="card vid${new Date(v.published)>week?" new":""}" href="${esc(v.url)}" target="_blank" rel="noopener">
+      <img src="${esc(v.thumb)}" alt="" loading="lazy">
+      <div class="body">${new Date(v.published)>week?'<span class="tag accent" style="align-self:flex-start">New this week</span>':""}
+        <h3>${esc(v.title)}</h3><time datetime="${esc(v.published)}">${day(v.published)}</time></div>
+    </a>`).join("");
+}).catch(()=>{ document.getElementById("vids").innerHTML='<p class="muted">Videos could not load. Try refreshing.</p>'; });
+</script>
+</body>
+</html>
