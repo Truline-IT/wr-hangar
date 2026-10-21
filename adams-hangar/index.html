@@ -933,11 +933,14 @@ th{background:none!important}
 @media (prefers-reduced-motion:reduce){*{transition:none!important}}
 </style>
 
+<script>
+document.addEventListener("error",function(e){var t=e.target; if(!t||t.tagName!=="IMG"||t.dataset.fb||t.hasAttribute("data-nofb")) return; t.dataset.fb="1";
+  t.src="data:image/svg+xml;utf8,"+encodeURIComponent("<svg xmlns='http://www.w3.org/2000/svg' width='64' height='64'><rect width='64' height='64' rx='10' fill='#8a97a6' fill-opacity='.18'/><text x='32' y='40' font-size='26' text-anchor='middle' fill='#8a97a6' font-family='sans-serif'>?</text></svg>");},true);
+</script>
 <header>
   <div class="bar">
     <div class="brand">Moody.Adam Hangar<small>WAR ROBOTS &middot; V2.0 &middot; LVL 30</small></div>
-    <a class="editbtn" href="wiki/" style="margin-left:auto;text-decoration:none">Wiki</a>
-    <button class="editbtn" id="edit" aria-pressed="false">Edit data</button>
+    <button class="editbtn" id="edit" aria-pressed="false" style="margin-left:auto">Edit data</button>
     <div class="who" style="margin-left:0"><span class="dot" id="live"></span><span id="whoami">solo</span></div>
   </div>
   <nav role="tablist">
@@ -993,6 +996,56 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
 .srclist li{margin-bottom:6px}
 .srclist a{color:var(--cyan);word-break:break-word}
 .legend2{display:flex;flex-wrap:wrap;gap:12px;font-size:12px;color:var(--dim);margin:0 0 14px}
+/* loadouts + wiki */
+.logrid,.wkgrid{display:grid;grid-template-columns:repeat(auto-fill,minmax(320px,1fr));gap:14px}
+.locard,.wkcard{background:var(--panel);border:1px solid var(--line);border-radius:var(--r,12px);overflow:hidden;display:flex;flex-direction:column}
+.locard .lotop{display:flex;gap:12px;align-items:center;padding:12px;border-bottom:1px solid var(--line);background:var(--panel2)}
+.locard .lotop img,.wkcard .wkimg img{width:84px;height:84px;object-fit:contain;flex:none}
+.locard .lotop .ph,.wkcard .wkimg .ph{width:84px;height:84px;display:flex;align-items:center;justify-content:center;font-family:var(--display);font-size:26px;color:var(--edge);border:1px dashed var(--line);border-radius:8px;flex:none}
+.locard h4,.wkcard h4{margin:0;font-family:var(--display);font-size:20px;line-height:1.15}
+.locard .sub,.wkcard .sub{font-family:var(--mono);font-size:11px;color:var(--dim);margin-top:2px}
+.lorow{display:flex;gap:10px;padding:9px 12px;border-bottom:1px solid var(--line);align-items:flex-start}
+.lorow:last-child{border-bottom:none}
+.lorow .k{flex:0 0 78px;font-family:var(--mono);font-size:10px;letter-spacing:1.2px;text-transform:uppercase;color:var(--faint);padding-top:2px}
+.lorow .v{flex:1;min-width:0;font-size:13.5px}
+.lorow .v small{display:block;color:var(--dim);font-size:12px;line-height:1.4}
+.lochip{display:inline-flex;align-items:center;gap:6px;margin:0 6px 5px 0;padding:3px 8px 3px 4px;border:1px solid var(--line);border-radius:999px;font-size:12.5px;background:var(--panel2)}
+.lochip img{width:22px;height:22px;object-fit:contain}
+.lochip.sug{border-color:var(--cyan);color:var(--cyan)}
+.lochip.miss{border-style:dashed;color:var(--red)}
+.wkcard summary{list-style:none;cursor:pointer;display:flex;gap:12px;align-items:center;padding:12px}
+.wkcard summary::-webkit-details-marker{display:none}
+.wkcard .own{margin-left:auto;font-family:var(--mono);font-size:10px;color:var(--green);border:1px solid var(--green);border-radius:6px;padding:1px 6px;flex:none}
+.wkcard .ab{padding:0 12px 10px;font-size:13px;color:var(--dim)}
+.wkcard .ab b{color:var(--fg)}
+.wkcard .figs2{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;padding:0 12px 10px}
+.wkcard .figs2 div{background:var(--panel2);border-radius:8px;padding:6px 8px}
+.wkcard .figs2 i{display:block;font-style:normal;font-family:var(--mono);font-size:9px;letter-spacing:1px;text-transform:uppercase;color:var(--faint)}
+.wkcard .figs2 b{font-family:var(--mono);font-size:14px}
+.wkcard table{font-size:12.5px}
+.wkcard .tw{max-height:320px;overflow:auto;border-top:1px solid var(--line)}
+.wkcard .src{padding:8px 12px;font-size:11px;font-family:var(--mono)}
+.wkcard .src a{color:var(--cyan)}
+
+/* one line floor headers */
+.fhead{flex-wrap:nowrap}
+.fhead h4.f1l{display:flex;gap:12px;align-items:baseline;min-width:0;overflow:hidden;white-space:nowrap;flex:1}
+.fhead h4.f1l b{flex:none;font-weight:inherit}
+.fhead h4.f1l .fdesc{font-family:var(--mono);font-size:11px;font-weight:400;letter-spacing:0;text-transform:none;color:var(--dim);overflow:hidden;text-overflow:ellipsis;min-width:0}
+.fhead .fvol{flex:none;font-family:var(--mono);font-size:13px;font-weight:600;color:var(--amber)}
+@media (max-width:600px){.fhead h4.f1l .fdesc{display:none}}
+
+/* itemised total */
+.cell .pic{position:relative}
+.cell .pic img.pil{position:absolute;inset:26px 9px 9px;width:calc(100% - 18px);height:calc(100% - 35px);object-fit:cover;border-radius:10px}
+.recpt{margin:2px 0 18px;border:1px solid var(--line);border-radius:12px;background:var(--panel);overflow:hidden}
+.recpt .rh{padding:9px 13px;font-family:var(--mono);font-size:10.5px;letter-spacing:1.4px;text-transform:uppercase;color:var(--faint);border-bottom:1px solid var(--line);background:var(--panel2)}
+.recpt table{font-size:13px}
+.recpt tr.tt td{border-top:2px solid var(--edge);color:var(--amber)}
+.recpt .sh{display:inline-block;width:60px;height:7px;border-radius:99px;background:var(--rise);vertical-align:middle;overflow:hidden;margin-right:6px}
+.recpt .sh i{display:block;height:100%;background:var(--amber)}
+.recpt .rn{margin:0;padding:10px 13px;font-size:12.5px;color:var(--dim);border-top:1px solid var(--line)}
+.recpt .rn b{color:var(--fg)}
 </style>
 
 <section id="t-gplay" hidden>
@@ -1613,7 +1666,7 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
   <div id="i-list"><div class="empty">Loading.</div></div>
   <h3>Player reports</h3>
   <p class="lede">What players say happened in practice, kept apart from the developer figures above. Nothing here is a published number.</p>
-  <div id="pr-list"><div class="empty">Nothing yet. Reddit and the official Discord cannot be reached from the scheduled run, so this fills only once that is sorted.</div></div>
+  <div id="pr-list"><div class="empty">No player reports saved. Only developer notes and sourced reports are shown on this page.</div></div>
   <h3>How the refresh works</h3>
   <p class="lede">A web page cannot reach another website on its own, so the button hands the job to a scheduled task on your account. The task reads warrobots.com, pulls apart the newest update notes, decides which changes touch robots and weapons you actually own, and writes them back here. It also runs by itself every Monday morning, so this stays current whether or not you press anything.</p>
   <div class="box"><b>The test server is a separate install.</b> WR Test is its own app on Google Play and through Apple TestFlight, on its own account. Nothing you do there touches this hangar.</div>
@@ -1706,6 +1759,31 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
   <div class="box" id="chat-note" hidden><b>Read only right now.</b> You can see the room but cannot post. Ask the owner for Contributor access.</div>
 </section>
 
+<section id="t-loadouts" hidden>
+  <h2>Recommended loadouts</h2>
+  <p class="lede">One card per robot and titan you own: what it carries now, what to put in any empty hardpoint from your own spare stock, the best pilot you own for it, a drone that fits its ability, and the mothership that suits its job. Only one mothership flies at a time, so pick the ship for the floor you are about to deploy.</p>
+  <div class="row" style="margin-bottom:12px">
+    <div><label for="lo-q">Search</label><input id="lo-q" placeholder="Teth, Devourer, Hangar 2"></div>
+    <div class="fixed" style="flex:0 0 200px"><label for="lo-f">Show</label><select id="lo-f">
+      <option value="dep">Robots on a hangar</option><option value="all">Everything I own</option><option value="tit">Titans only</option>
+    </select></div>
+  </div>
+  <div class="logrid" id="lo-grid"></div>
+</section>
+
+<section id="t-wiki" hidden>
+  <h2>Wiki</h2>
+  <p class="lede">Reference data for everything you own, pulled from the War Robots fandom wiki on 19 October 2026: abilities, durability, damage and the full silver and time cost of every upgrade level. Tap a card to open its upgrade table. Numbers are the wiki's, not yours; your own levels are on the Hangar and Arsenal pages.</p>
+  <div class="row" style="margin-bottom:12px">
+    <div><label for="wk-q">Search</label><input id="wk-q" placeholder="Kirin, Atlas, rust"></div>
+    <div class="fixed" style="flex:0 0 170px"><label for="wk-k">Type</label><select id="wk-k">
+      <option value="robots">Robots</option><option value="titans">Titans</option><option value="weapons">Weapons</option>
+    </select></div>
+  </div>
+  <div id="wk-say" class="box" hidden></div>
+  <div class="wkgrid" id="wk-grid"><div class="empty">Loading wiki data.</div></div>
+</section>
+
 <section id="t-arsenal" hidden>
   <div class="box" id="dmgnote"></div>
   <h2>Arsenal</h2>
@@ -1774,7 +1852,7 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
 </div>
 
 <script>
-/* gragg.life build: stands in for the claude.ai runtime. Data is kept in this browser only. */
+/* gragg.life build: stands in for the claude.ai runtime. Data is kept in this browser only, starting from seed.json. */
 (function(){
   var KEY="hangar-db-v1", subs=[];
   function load(){ try{ return JSON.parse(localStorage.getItem(KEY))||{}; }catch(e){ return {}; } }
@@ -1808,6 +1886,11 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
     };
   }
   var DBX={ collection:function(n){ return query(n); } };
+  /* First visit: load the hangar's saved data (matches, bank, upgrades, tasks) from seed.json. */
+  var fresh=true; try{ fresh=!localStorage.getItem(KEY); }catch(e){}
+  if(fresh) fetch("seed.json").then(function(r){ return r.ok?r.json():{}; }).then(function(s){
+    Object.keys(s).forEach(function(c){ if(!mem[c]) mem[c]=s[c]; }); persist();
+  }).catch(function(){});
   var uid; try{ uid=localStorage.getItem("hangar-uid"); if(!uid){ uid="u"+Date.now().toString(36); localStorage.setItem("hangar-uid",uid); } }catch(e){ uid="local"; }
   var USERX={ id:async function(){ return uid; }, me:async function(){ return { name:"Commander" }; }, can:async function(){ return true; } };
   var DLX={ save:async function(o){ var b=new Blob([o.data],{type:"text/plain"}); var a=document.createElement("a");
@@ -1819,66 +1902,76 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
 /* ---------- static inventory, 1 Oct 2026 ---------- */
 // [name, slot, level, qty, damage, range, reload, effect]
 const W = [
-["Kirin MK2","H",1,2,25872,350,17.7,"Rust + Crumble, 15s"],["Liodari","H",4,3,20745,350,5,"Banks damage taken, up to +50%"],
+["Kirin MK2","H",1,6,25872,350,17.7,"Rust + Crumble, 15s"],["Liodari","H",4,4,20745,350,5,"Banks damage taken, up to +50%"],
 ["Kirin","H",4,4,12064,350,17.7,"Rust + Crumble"],["Boom","H",3,1,10492,600,7,"+100% vs DEATHMARK, homing"],
 ["Brisant","H",3,3,9450,600,5,"Slowdown 5s"],["Baihu Stake","H",3,1,7057,150,0,"Piercing, Aegis 11,120 (Limited)"],
 ["Void Shantak","H",4,1,6223,1100,0,"Sniper, Special +10%"],["Shantak","H",5,3,6223,1100,0,"Sniper 1100m"],
 ["Fatal Havoc","M",5,3,6806,200,16,"Sonic grey damage (Limited)"],["Pilum","H",4,3,3772,600,9,"BLAST 27%"],
 ["Cruel Talon","H",3,1,3690,350,5,"Fragility + Rust (Limited)"],["Talon","H",3,5,3515,350,5,"Fragility + Rust"],
-["Screamer","H",5,3,3402,500,8,"Sonic, Resonance"],["Prisma","H",3,3,3260,1100,48,"Damage grows with distance"],
+["Screamer","H",5,3,3402,500,8,"Sonic, Resonance"],["Prisma","H",3,4,3260,1100,48,"Damage grows with distance"],
 ["Steel Pshent","H",6,3,0,150,6,"Slowdown mines, Special +10%"],["Hammer","H",3,3,2464,500,5,"BLAST 56%"],
-["Pshent","H",1,1,2437,150,6,"Slowdown mines"],["Reaper","H",4,3,2056,1100,15,"Defence Breach"],
-["Dune","H",3,2,2000,600,8,"Homing"],["Retro Reaper","H",3,2,1962,1100,15,"Defence Breach (Limited)"],
+["Pshent","H",1,1,2437,150,6,"Slowdown mines"],["Reaper","H",4,4,2056,1100,15,"Defence Breach"],
+["Dune","H",3,3,2000,600,8,"Homing"],["Retro Reaper","H",3,2,1962,1100,15,"Defence Breach (Limited)"],
 ["Jotunn","H",3,2,1749,600,7,"175% accumulation"],["Steel Piercer","H",3,2,1486,1100,18,"Stacking hits, Special +10%"],
 ["Nucleon","H",5,2,1345,500,0,"Unlimited ammo"],["Cestus","H",3,2,1340,500,5,"BLAST 46%"],
 ["Subduer","H",3,1,1281,500,5,"Rust 2.99%, limit 30"],["Kelvin","H",4,3,0,300,0,"Flamethrower, stats not captured yet"],
 ["Blaze Kelvin","H",4,1,1100,300,0,"Flamethrower, Special +10%"],
 ["Noir Fengbao","H",3,1,907,100,10,"Electric cone (Limited)"],["Fengbao","H",3,2,864,100,10,"Electric cone"],
 ["Damper","H",1,1,0,0,0,"New, stats and hardpoint not captured yet"],
-["Athos","H",3,8,760,350,16,"Magnetic, repairs 30%"],["Leinani","H",5,6,741,600,6,"Phased, DoT 67/s"],
+["Athos","H",3,7,760,350,16,"Magnetic, repairs 30%"],["Leinani","H",5,6,741,600,6,"Phased, DoT 67/s"],
 ["Lumen-H","H",4,3,490,600,0,"Thermal Breach, homing beam"],["Spirit Smuta","H",3,3,470,500,18,"Machine gun (Limited)"],
 ["Hwangje","H",1,4,452,800,0,"Unlimited ammo laser"],["Bane","H",3,2,209,300,3,"Acid, DoT 66/s"],
 ["Calamity MK2","H",1,1,8290,600,5,"Particle flow, more damage the closer the target"],["Basileus","H",5,1,747,500,5,"Toxic needles through armour, blocks repair 10s"],
-["Royal Kroko","M",3,1,13805,350,5,"Burst, Special +10%"],["Kroko","M",3,2,12550,350,5,"Burst up to +50%"],
-["Murix","M",4,1,10560,500,5,"Acid, DoT 71/s"],["Discipline MK2","M",1,3,10440,500,7,"Blastcharge 4.5%"],
-["Mogwan","M",3,4,8224,350,17.7,"Rust + Crumble"],["Unknown Shatter","M",4,5,7320,600,5,"Slowdown (Limited)"],
+["Royal Kroko","M",3,1,13805,350,5,"Burst, Special +10%"],["Kroko","M",3,6,12550,350,5,"Burst up to +50%"],
+["Murix","M",4,2,10560,500,5,"Acid, DoT 71/s"],["Discipline MK2","M",1,4,10440,500,7,"Blastcharge 4.5%"],
+["Mogwan","M",3,5,8224,350,17.7,"Rust + Crumble"],["Unknown Shatter","M",4,5,7320,600,5,"Slowdown (Limited)"],
 ["Shatter","M",4,4,6960,600,5,"Slowdown"],["Havoc","M",4,5,5908,200,16,"Sonic grey damage"],
 ["Spike","M",4,1,5658,150,0,"Piercing, Aegis 8,830"],["Discipline","M",4,1,4869,500,7,"Blastcharge 3%"],
 ["Void Urhag","M",4,1,4667,1100,0,"Sniper, Special +10%"],["Urhag","M",4,1,4243,1100,0,"Sniper 1100m"],
-["Harmattan-M","M",3,2,2676,350,7,"0.3% max durability damage"],["Jaw","M",3,2,2640,350,5,"Fragility + Rust"],
+["Harmattan-M","M",3,3,2676,350,7,"0.3% max durability damage"],["Jaw","M",3,2,2640,350,5,"Fragility + Rust"],
 ["Growler","M",5,4,2552,500,8,"Sonic, Resonance"],["Steel Deshret","M",5,1,0,150,6,"Slowdown mines, Special +10%"],
 ["Mace","M",5,2,2232,500,5,"BLAST 60%"],["Freedom Mace","M",3,4,1940,500,5,"BLAST 56% (Limited)"],
-["Cryptic Hazard","M",4,3,1781,600,3,"3 shot burst to 200% (Limited)"],["ULTIMATE Orkan","M",9,7,1780,350,7,"+50% damage in PvE only"],
+["Cryptic Hazard","M",4,3,1781,600,3,"3 shot burst to 200% (Limited)"],["ULTIMATE Orkan","M",9,7,1780,350,7,"+10% damage on an ULTIMATE robot (card)"],
 ["Hazard","M",3,3,1543,600,3,"3 shot burst to 200%"],["Chione","M",3,2,1312,600,7,"175% accumulation"],
 ["Hurricane","M",3,3,1222,600,8,"Homing, +45% close"],["Blaze Fahrenheit","M",6,1,1004,300,0,"Flamethrower, Special +10%"],
-["Quicksand Labrys","M",3,2,845,500,5,"BLAST 46% (Limited)"],["Regulator","M",3,1,833,800,6,"More damage past 350m"],
+["Quicksand Labrys","M",3,2,845,500,5,"BLAST 46% (Limited)"],["Regulator","M",3,7,833,800,6,"More damage past 350m"],
 ["Labrys","M",3,4,805,500,5,"BLAST 46%"],["Leiming","M",3,3,681,100,10,"Electric cone"],
 ["Porthos","M",3,2,577,350,16,"Magnetic, repairs 30%"],["Nanea","M",5,3,556,600,6,"Phased, DoT 48/s"],
-["Ardent Yeoje","M",3,1,474,800,0,"Unlimited ammo laser (Limited)"],["Machaira","M",5,2,0,500,5,"Acceleration mode"],
+["Ardent Yeoje","M",3,1,474,800,0,"Unlimited ammo laser (Limited)"],["Machaira","M",5,4,0,500,5,"Acceleration mode"],
 ["Yeoje","M",3,3,451,800,0,"Unlimited ammo laser"],["Spirit Razdor","M",3,2,312,500,18,"Machine gun (Limited)"],
 ["Razdor","M",3,2,298,500,18,"Machine gun"],["Venom","M",5,2,183,300,3,"Acid, DoT 51/s"],
-["Deceiver","M",3,1,38,500,5,"DoT 69/s"],["Skadi","M",3,1,3770,600,11,"Freeze after enough hits, target slowed and takes more damage"],["G.A.S.","M",4,2,0,0,0,"Shield module, Aegis 47,100 regen 942/s"],
-["Royal Hippo","L",3,2,10371,350,5,"Burst, Special +10%"],["Hippo","L",3,1,9429,350,5,"Burst up to +50%"],
-["Gangil MK2","L",1,2,12944,350,17.7,"Rust + Crumble"],["Blaze Elox","L",6,2,7029,500,5,"Acid DoT 57/s, Special +10%"],
+["Deceiver","M",3,1,38,500,5,"DoT 69/s"],["Skadi","M",3,1,3770,600,11,"Freeze after enough hits, target slowed and takes more damage"],["G.A.S.","M",4,3,0,0,0,"Shield module, Aegis 47,100 regen 942/s"],
+["Royal Hippo","L",3,7,10371,350,5,"Burst, Special +10%"],["Hippo","L",3,2,9429,350,5,"Burst up to +50%"],
+["Gangil MK2","L",1,6,12944,350,17.7,"Rust + Crumble"],["Blaze Elox","L",6,2,7029,500,5,"Acid DoT 57/s, Special +10%"],
 ["Smite MK2","L",1,4,6948,500,7,"Blastcharge 4.5%"],["Pow","L",3,2,5315,600,7,"+100% vs DEATHMARK, homing"],
-["Needle","L",5,2,4937,150,0,"Piercing, Aegis 6,270"],["Elox","L",3,1,4800,500,5,"Acid DoT 57/s"],
+["Needle","L",5,3,4937,150,0,"Piercing, Aegis 6,270"],["Elox","L",3,1,4800,500,5,"Acid DoT 57/s"],
 ["Splinter","L",3,2,4590,600,5,"Slowdown"],["Unknown Splinter","L",1,3,3960,600,5,"Slowdown (Limited)"],
-["Scatter","L",5,4,4315,200,16,"Sonic grey damage"],["Smite","L",3,3,2943,500,7,"Blastcharge 3%"],
+["Scatter","L",5,5,4315,200,16,"Sonic grey damage"],["Smite","L",3,3,2943,500,7,"Blastcharge 3%"],
 ["Voonith","L",3,1,2572,1100,0,"Sniper 1100m"],["Gladius","L",9,1,3037,600,9,"BLAST 27%"],
 ["Cruel Claw","L",3,4,1844,350,5,"Fragility + Rust (Limited)"],["Steel Hedjet","L",5,2,0,150,6,"Slowdown mines, Special +10%"],
-["Harmattan-L","L",3,1,1776,350,7,"0.2% max durability damage"],["Howler","L",5,2,1701,500,8,"Sonic, Resonance"],
+["Harmattan-L","L",3,2,1776,350,7,"0.2% max durability damage"],["Howler","L",5,2,1701,500,8,"Sonic, Resonance"],
 ["Sport Howler","L",4,2,1623,500,8,"Sonic, Resonance"],["Hedjet","L",3,2,1474,150,6,"Slowdown mines"],
 ["Claw","L",1,3,1452,350,5,"Fragility + Rust"],["Ardent Spear","L",3,2,1446,500,1,"Ramps to 250% (Limited)"],
 ["Cudgel","L",3,3,1228,500,5,"BLAST 56%"],["Freedom Cudgel","L",3,2,1228,500,5,"BLAST 56%"],
 ["Spear","L",1,2,1139,500,1,"Ramps to 250% on 3rd shot"],["Blight","L",3,2,1133,600,3,"3 shot burst to 200%"],
-["Morana","L",3,3,874,600,7,"175% accumulation"],["Ksiphos","L",3,1,627,500,5,"BLAST 46%"],
+["Morana","L",3,3,874,600,7,"175% accumulation"],["Ksiphos","L",3,2,627,500,5,"BLAST 46%"],
 ["Frozen Tamer","L",3,2,612,500,5,"Rust 1.99% (Limited)"],["Tamer","L",3,2,583,500,5,"Rust 1.99%"],
-["Celsius","L",5,2,0,300,0,"Flamethrower, overheat"],["Aramis","L",3,1,392,350,16,"Magnetic, repairs 30%"],
+["Celsius","L",5,3,0,300,0,"Flamethrower, overheat"],["Aramis","L",3,2,392,350,16,"Magnetic, repairs 30%"],
 ["Ardent Taeja","L",3,1,362,800,0,"Unlimited ammo laser (Limited)"],["Shifang","L",1,3,357,100,10,"Electric cone"],
 ["Taeja","L",1,1,284,800,0,"Unlimited ammo laser"],["Omen Lumen-L","L",4,1,269,600,0,"Thermal Breach, Special +10%"],
-["Lumen-L","L",3,1,223,600,0,"Thermal Breach"],["Kramola","L",1,1,192,500,18,"Machine gun"],
+["Lumen-L","L",3,2,223,600,0,"Thermal Breach"],["Kramola","L",1,1,192,500,18,"Machine gun"],
 ["Toxin","L",3,2,99,300,3,"Acid, DoT 31/s"],["Trickster","L",3,2,26,500,5,"DoT 46/s"],
 ["Noricum MK2","L",1,6,1180,1100,15,"Artillery"],
+/* fitted on robots on 19 Oct but missing from the list before. Levels are the ones read in the game; damage from the upgrade screen where one was read, otherwise the wiki table at that level. Titan weapon levels were not shown, so those sit at the wiki level 1 figure. */
+["Velos","L",5,1,373,500,5,"Acceleration mode (wiki figure at level 5)"],
+["Fahrenheit","M",6,1,0,300,3.25,"Flamethrower, projected from the wiki level 1 figure"],
+["Omen Lumen-M","M",7,2,489,600,0,"Thermal Breach, homing beam. Level 7 read on the upgrade screen"],
+["Lumen-M","M",1,1,276,600,0,"Thermal Breach, homing beam"],
+["Ballista","M",9,1,9420,1100,6,"Charge-up long range (wiki figure at level 9)"],
+["Arbiter","A",1,2,1868,600,0,"Titan rapid fire rockets, wiki level 1 figure, level not read"],
+["Equalizer","B",1,2,1401,600,0,"Titan rapid fire rockets, wiki level 1 figure, level not read"],
+["Tonans","A",1,1,2182,800,12,"Titan long range energy laser, wiki level 1 figure, level not read"],
+["Vincere","B",1,1,1284,600,0,"Titan energy rifle, wiki level 1 figure, level not read"],
 ["Void","A",10,2,30300,500,8,"Suppression, ignores defence"],["Striker","A",5,1,14904,800,2,"Chain damage, charge up"],
 ["Discordia","A",3,1,1882,600,14,"Machine gun"],["Basilisk","A",1,1,1948,500,9,"DoT 47/s"],
 ["Furnace","A",3,1,1329,800,9,"Heat ramp laser"],
@@ -1889,73 +1982,85 @@ const W = [
 const SITUATIONAL = ["Punisher","Orkan","Tulumbas","Taran","Ballista","Gust","Pinata","Blaze","Weber","Noricum",
   "Molot","Pin","Spiral","Zenit","Kang Dae","Nashorn","Thunder"];
 
-// [name, floor, level, slots, durability, speed, ability, pilot, pilotLvl, drone, guns[]]
-/* v2.0, 5 Oct 2026. Rebuilt from a walk through every hangar in the game itself.
-   The floor number here IS the game's hangar number now, so Hangar 1 is floor 1.
-   Hardpoint strings are in the order the game lists them. Pilot names were only
-   shown on a few screens; "(unnamed)" means the level was read but not the name.
-   Drones were never named on screen, so drone pairings carried over from v1 are
-   kept but unverified. Vulcan's weapon names were not shown, only their levels
-   (5,3,3,3,4), so its v1 loadout stays until the cards are read. Hangar 5 robot
-   pages were not opened during the walk, so those rows are the v1 data. Robots on
-   floor 0 were not seen on any hangar and count as not deployed. */
+/* v3.0, 19 Oct 2026. Rebuilt from the in game hangar walk on 19 October.
+   Floor number = the game's hangar number. Hangar 5 was not opened on the 19th, so it is empty here
+   until it is walked. Pilot names are only shown on pilot cards; names carried over from earlier
+   reads are kept where the robot is the same. "(unnamed)" means only the level was readable.
+   Weapon names that the game did not print (Ravager, Frozen Dagon, Vulcan grids) are left out
+   rather than guessed. Robots on floor 0 sit in inventory, not on a hangar. */
 const R = [
-// Hangar 5
-["Samjok MK2",5,1,"HHL",199900,69,"Sunstorm","Sim Yo-Han",23,"Whiteout",["Kirin MK2","Kirin MK2","Gangil MK2"]],
-["ULTIMATE Spectre MK2",5,1,"MMMM",146600,53,"Descend","Tal Mokri",32,"Showdown",["ULTIMATE Orkan","ULTIMATE Orkan","ULTIMATE Orkan","ULTIMATE Orkan"]],
-["Dux MK2",5,1,"MML",152000,50,"Mastermind","Willa Owe",38,"Hiruko",["Discipline MK2","Discipline MK2","Smite MK2"]],
-["Void Shoggoth MK2",5,1,"HHMM",186500,41,"Line Of Sight","Yang Lee",42,"Daltokki",["Void Shantak","Shantak","Void Urhag","Urhag"]],
-["Frozen Dagon MK2",5,1,"LLLLLL",131340,60,"Shield Surge","Rookie",1,"",["Noricum MK2","Noricum MK2","Noricum MK2","Noricum MK2"]],
-// Hangar 4
-["Fenrir MK2",4,1,"MHM",196000,53,"Shapeshift","(unnamed)",1,"",["ULTIMATE Orkan","Calamity MK2","ULTIMATE Orkan"]],
-["Anaksor MK2",4,1,"MHM",263900,55,"Sirocco Field","Single Malt",19,"Wave",["Machaira","Basileus","Machaira"]],
-["Vector",4,7,"LMML",233500,45,"Event Horizon","Nika Schum",7,"",["Celsius","Blaze Fahrenheit","Skadi","Celsius"]],
-["Teth",4,10,"LMHL",257400,44,"Sandstorm","Bast Neferu",10,"Reviver",["Steel Hedjet","Steel Deshret","Steel Pshent","Steel Hedjet"]],
-["Hastatus MK2",4,1,"LHL",227900,59,"Flakstorm","Lian Xin Bai",26,"Freezo",["Gladius","Lumen-H","Freedom Cudgel"]],
-// Hangar 3
-["Baihu Lynx",3,8,"HH",109500,58,"Ferocity","Levi Hickok",10,"Kestrel",["Lumen-H","Lumen-H"]],
-["Scorpion",3,5,"MLM",106300,55,"Backstab","3V3R3TT",10,"Beak",["Havoc","Scatter","Fatal Havoc"]],
-["Typhon",3,7,"MMMM",112100,52,"Blackout V2.0","River Chase",12,"Paralysis",["Unknown Shatter","Unknown Shatter","Unknown Shatter","Unknown Shatter"]],
-["Retro Revenant",3,3,"HLL",194700,36,"Aggressive Blink","(unnamed)",1,"Armadillo",["Talon","Cruel Claw","Cruel Claw"]],
-["Kaji",3,4,"MLH",159500,38,"Mining","(unnamed)",2,"Moderator",["Murix","Pow","Boom"]],
-// Hangar 2
-["Ammit",2,8,"LLLM",307700,46,"Defensive Absorber","Mei Lan",2,"Shai",["Hippo","Royal Hippo","Royal Hippo","Royal Kroko"]],
-["Noir Shenlou",2,7,"MHM",141200,58,"Chain Blink","Hugo Booker",4,"Qingting",["Fatal Havoc","Baihu Stake","Fatal Havoc"]],
-["Nuo",2,8,"MHM",118100,51,"Siege Link","Walter Trommel",3,"",["Nanea","Leinani","Nanea"]],
-["Shell",2,6,"LHL",148000,41,"Atom","Linda Cano",8,"",["Ardent Spear","Nucleon","Ardent Spear"]],
-["Mars",2,5,"MMM",81600,49,"Remote Assault","(unnamed)",3,"",[]],
 // Hangar 1
-["Vulcan",1,4,"LMMML",145000,51,"Unbound Protocol","Bai Xing",2,"Scarabeus",["Omen Lumen-L","Ardent Yeoje","Yeoje","Yeoje","Lumen-L"]],
-["Demeter",1,9,"MMM",140700,55,"Repairing Cover","APPM-3TR",13,"",["Spirit Razdor","Hazard","Spirit Razdor"]],
-["Ardent Imugi",1,4,"MLM",106600,41,"Battle Breach","Willa Owe",10,"",["Ardent Yeoje","Ardent Taeja","Yeoje"]],
-["Blaze Rex",1,4,"MLLM",137700,53,"Predator Rush","Ridge Hollow",29,"Barrel",["Shatter","Blaze Elox","Blaze Elox","Shatter"]],
-["Crisis",1,3,"HHHH",68100,43,"Overpower","Gintare Kairyte",8,"Nebula",["Blaze Kelvin","Kelvin","Kelvin","Kelvin"]],
-// not seen on any hangar during the walk
-["Harpy",0,5,"MHM",109100,44,"Firestorm","Twins",11,"Glider",[]],
+["Void Shoggoth MK2",1,1,"HMMH",239900,43,"Line Of Sight","Yang Lee",55,"Daltokki",["Shantak","Urhag","Void Urhag","Void Shantak"]],
+["Samjok MK2",1,1,"HLH",199900,69,"Sunstorm","Sim Yo-Han",42,"Whiteout",["Kirin MK2","Gangil MK2","Kirin MK2"]],
+["Dux MK2",1,2,"MLM",154400,50,"Mastermind","Willa Owe",42,"Hiruko",["Discipline MK2","Smite MK2","Discipline MK2"]],
+["Teth MK2",1,1,"LMHL",291900,46,"Sandstorm","Bast Neferu",18,"Reviver",["Steel Hedjet","Steel Deshret","Steel Pshent","Steel Hedjet"]],
+["Anaksor MK2",1,1,"MHM",263900,55,"Sirocco Field","Single Malt",33,"Wave",["Machaira","Basileus","Machaira"]],
+// Hangar 2
+["Hastatus MK2",2,1,"LHL",227900,59,"Flakstorm","Lian Xin Bai",55,"Freezo",["Gladius","Pilum","Gladius"]],
+["ULTIMATE Spectre MK2",2,1,"MMMM",146600,53,"Descend","Tal Mokri",36,"Showdown",["ULTIMATE Orkan","ULTIMATE Orkan","ULTIMATE Orkan","ULTIMATE Orkan"]],
+["Ravager MK2",2,1,"MMMMM",215900,45,"Veil","Cliff Debusse",3,"",[]],
+["Scorpion MK2",2,1,"MLM",160000,64,"Backstab","(unnamed)",17,"Beak",["Machaira","Velos","Machaira"]],
+["Frozen Dagon MK2",2,1,"LLLLLL",131340,60,"Shield Surge","3V3R3TT",7,"",[]],
+// Hangar 3
+["Vector MK2",3,1,"LMML",319900,50,"Event Horizon","Nika Schum",21,"",["Celsius","Blaze Fahrenheit","Fahrenheit","Celsius"]],
+["Baihu Lynx MK2",3,1,"HH",140800,62,"Ferocity","Levi Hickok",22,"Kestrel",["Lumen-H","Lumen-H"]],
+["Vulcan MK2",3,1,"LMMML",239900,55,"Unbound Protocol","Bai Xing",13,"Scarabeus",["Omen Lumen-L","Omen Lumen-M","Lumen-M","Omen Lumen-M"]],
+["Fenrir MK2",3,1,"MHM",196000,53,"Shapeshift","Linda Cano",10,"",["Skadi","Calamity MK2","Ballista"]],
+["Noir Shenlou MK2",3,1,"MHM",193600,65,"Chain Blink","Hugo Booker",11,"Qingting",["Mogwan","Kirin","Mogwan"]],
+// Hangar 4
+["Nuo",4,8,"MHM",118100,51,"Siege Link","Walter Trommel",7,"",["Nanea","Leinani","Nanea"]],
+["Fang",4,8,"MMMM",171000,58,"Sandcloak","Rookie",0,"",["Fatal Havoc","Havoc","Fatal Havoc","Fatal Havoc"]],
+["Shell",4,10,"LHL",190400,46,"Atom","Linda Cano",12,"",["Pow","Boom","Pow"]],
+["Ammit",4,8,"LLLM",307700,46,"Defensive Absorber","Mei Lan",2,"Shai",["Scatter","Scatter","Scatter","Havoc"]],
+["Ophion",4,5,"MMM",129700,55,"Clear Sky","Stefan Benson",6,"",["Quicksand Labrys","Labrys","Quicksand Labrys"]],
+// inventory, not on a hangar (19 Oct)
+["Seraph",0,6,"HH",106300,43,"Skyward","Jill Summers",4,"",["Spirit Smuta","Spirit Smuta"]],
+["Demeter",0,9,"MMM",140700,55,"Repairing Cover","APPM-3TR",15,"",["Havoc","Havoc","Havoc"]],
+["Retro Revenant",0,6,"HLL",235200,41,"Aggressive Blink","Ricardo Gonzalez",9,"Armadillo",["Talon","Cruel Claw","Cruel Claw"]],
+["Blaze Rex",0,4,"MLLM",137700,53,"Predator Rush","Ridge Hollow",29,"Barrel",["Murix","Blaze Elox","Blaze Elox","Murix"]],
+["Kitsune Harpy",0,5,"MHM",120000,44,"Firestorm","Twins",13,"Glider",["Spirit Razdor","Spirit Smuta","Spirit Razdor"]],
+["Raptor",0,3,"LHL",231400,36,"Comet Splash","Gloria Earhart",1,"",["Aramis","Athos","Aramis"]],
+["Ao Jun",0,4,"HH",115777,38,"Dragon Breath","Alika Renner",2,"Scales",["Blaze Kelvin","Kelvin"]],
+["Typhon",0,7,"MMMM",112100,52,"Blackout V2.0","River Chase",16,"Paralysis",[]],
+["Kaji",0,4,"MLH",159500,38,"Mining","3V3R3TT",6,"Moderator",[]],
+["Stryx",0,6,"HHHHH",230200,32,"Prime Sight","Ryder Mourn",11,"",[]],
+["Crisis",0,4,"HHHH",72500,44,"Overpower","Gintare Kairyte",8,"Nebula",[]],
+["Mars",0,5,"MMM",81600,49,"Remote Assault","Captain Clyde",5,"",[]],
+["Harpy",0,6,"MHM",115600,46,"Firestorm","",0,"",[]],
+["Natasha",0,9,"LHHL",158600,38,"","Sophie Kova\u010d",1,"",[]],
 ["Fafnir",0,4,"MMMM",94300,34,"Shapeshift","",0,"",[]],
+/* owned per William on 19 Oct; last read 5 Oct. Paralysis suggested: its Lock-down rides on the never-reloading lasers */
+["Ardent Imugi",0,4,"MLM",106600,41,"Battle Breach","Willa Owe",10,"",["Ardent Yeoje","Ardent Taeja","Yeoje"]],
 ];
 const TITANS = [
-["Atlas",5,23,431000,39,"Kevin_O_Reilly",50,["Void","Chasm","Chasm"],"ABB"],
-/* Ao Ming sits on Hangar 4 with a warning on its tab. Its page was not opened, and
-   Striker and Torch now live on Newton, so its loadout is unknown, not empty. */
-["Ao Ming",4,28,313000,32,"",0,[],"AABB"],
-["Newton",3,6,450000,32,"Jude Pryce Titan",2,["Furnace","Striker","Tumultus","Torch"],"AABB"],
-["Nodens",2,7,478716,31,"",0,[],"BBBB"],
-["Sirocco",1,3,600000,35,"Jimmy Hermes",11,["Void","Barq-B","Barq-B"],"ABB"],
+/* read off each titan's own page on 19 Oct; level badges were too small to read on most, so levels
+   are the last readable value. Slot strings follow the game's order (A = Alpha, B = Beta). */
+["Atlas",1,23,483000,43,"Kevin_O_Reilly",50,["Chasm","Void","Chasm"],"BAB"],
+["Devourer",2,10,427000,23,"Liam Crag",1,["Equalizer","Arbiter","Arbiter","Equalizer"],"BAAB"],
+["Rook",3,4,501001,28,"Yang Lee Titan",1,[],"AABB"],
+["Newton",4,10,460000,32.5,"Jude Pryce Titan",7,["Torch","Tonans","Striker","Torch"],"BAAB"],
+["Bjorn",0,10,665000,34.5,"Sigrid Solmer",1,["Discordia","Tumultus","Tumultus","Discordia"],"ABBA"],
+["Sirocco",0,3,600000,35,"Jimmy Hermes",11,["Barq-B","Void","Barq-B"],"BAB"],
+["Kid",0,1,508200,37.5,"Sigrid Solmer",1,[],"AABB"],
+["Nodens",0,7,478716,31,"Sigrid Solmer",1,[],"BBBB"],
+["Princeps",0,1,420000,38,"Vorren Kaal",1,["Vincere"],"BAB"],
+["Indra",0,1,400070,38,"",0,[],"BAB"],
+["Bersagliere",0,1,400000,31,"Chef Broll",1,[],"AAA"],
 ["Mauler",0,3,400000,28,"Vorren Kaal",1,["Basilisk","Oxy","Cinder"],"ABB"],
-["Minos",0,3,390000,43,"",0,[],"AABB"],
+["Minos",0,3,390000,43,"Kevin_O_Reilly",1,[],"BBB"],
+["Ao Ming",0,28,313000,32,"Kevin_O_Reilly",1,[],"AABB"],
 ];
 const FLOORS = {
- 5:["05","Lead Floor","var(--f1)","Five MK2s and Atlas, the strongest hangar you own",
-    "Lead with Samjok. Dump all three guns, then hit Sunstorm and leave while they reload. Hold Atlas for a beacon fight you are already winning."],
- 4:["04","Heavy Hitters","var(--f2)","Three MK2s, Teth at level 10, and Ao Ming",
-    "Open with Teth, the toughest robot on the floor at 257,400 hp. Anaksor's Sirocco Field softens a cluster before Fenrir's Orkans go in."],
- 3:["03","Close It","var(--f3)","Lock them down and finish, Newton overhead",
-    "Typhon goes first. Nothing can use an ability or move while Blackout is on it. Kaji mines next: Boom and Pow hit twice as hard on a marked target."],
- 2:["02","Shield Break","var(--f4)","Pierce, outlast and absorb, with Nodens",
-    "Ammit wants to be shot, so it leads. Mars and Nodens still have empty hardpoints, so fill them before this floor goes out."],
- 1:["01","The Grind","var(--f5)","Nothing reloads, outlast them, Sirocco overhead",
-    "Vulcan needs 250,000 damage to reach its first threshold. Stay on target and let the heat build. Crisis carries four flamethrowers, so keep it close."]};
+ 5:["05","Not walked yet","var(--f1)","Hangar 5 was not opened on 19 October",
+    "Open Hangar 5 in the game with the watcher running and this floor fills in."],
+ 4:["04","Grey Damage","var(--f2)","Fang and Ammit on sonic guns, Shell's rockets, Newton overhead",
+    "Ammit leads and soaks. Fang and Nuo follow into the fight Ammit started; Shell's Atom breaks a surround."],
+ 3:["03","Burn and Blink","var(--f3)","Five MK2s: flamers, beams and Shenlou's Chain Blink, Rook overhead",
+    "Vector MK2 is the tank at 319,900 hp, so it goes in first. Shenlou blinks onto whoever turns to shoot Vector."],
+ 2:["02","Strike Group","var(--f4)","Hastatus, Spectre, Ravager, Scorpion and Dagon MK2s, Devourer overhead",
+    "Hastatus holds the line with Flakstorm. Spectre descends behind them; Scorpion backstabs the one that turns around."],
+ 1:["01","Lead Floor","var(--f5)","Void Shoggoth, Samjok, Dux, Teth and Anaksor MK2s with Atlas",
+    "Teth MK2 at 291,900 hp opens. Samjok phase shifts in once they commit, Void Shoggoth punishes from range. Hold Atlas for a beacon fight you are already winning."]};
 const DRONES = ["Scales","Armadillo","Barrel","Beak","Daltokki","Freezo","Glider","Hiruko","Kestrel","Moderator","Nebula",
  "Paralysis","Qingting","Reviver","Scarabeus","Shai","Showdown","Wave","Whiteout"];
 
@@ -2004,7 +2109,7 @@ const GROUPS={
   build:   [["calc","Calculator"],["compare","Compare two"],["tactics","Tactics"],["events","Event setups"]],
   progress:[["log","Match log"],["focus","Focus"],["bank","Bank"],["worth","Worth it"],["chat","Chat"]],
   intel:   [["deals","Store deals"],["intel","Patch notes"],["codes","Gift codes"]],
-  arsenal: [["arsenal","Every weapon"],["atable","Table"]],
+  arsenal: [["arsenal","Every weapon"],["atable","Table"],["loadouts","Loadouts"],["wiki","Wiki"]],
   guide:   [["gplay","How it plays"],["gecon","Progression"],["gsys","Engineering"],["gref","Glossary"]],
 };
 const ALLSEC=[].concat.apply([],Object.keys(GROUPS).map(g=>GROUPS[g].map(x=>x[0])));
@@ -2027,6 +2132,8 @@ function go(sec){
     x.classList.toggle("on", x.getAttribute("data-goto")===sec));
   if(sec==="worth"){ try{renderWorth();}catch(e){} }
   if(sec==="compare"){ try{renderCompare();}catch(e){} }
+  if(sec==="wiki"){ try{renderWiki();}catch(e){} }
+  if(sec==="loadouts"){ try{renderLoadouts();}catch(e){} }
   if(sec==="atable"){ try{renderATable();}catch(e){} }
   try{localStorage.setItem("wr-tab",sec)}catch(e){}
 }
@@ -2042,7 +2149,7 @@ try{ go(localStorage.getItem("wr-tab")||"hangar"); }catch(e){ go("hangar"); }
 
 
 /* weapon art cropped from William's own screenshots, one file per weapon */
-const WIMG = new Set(["orkan","discipline","smite","noricum","calamity","basileus","skadi","kelvin","aramis", "ardent-spear", "ardent-taeja", "ardent-yeoje", "athos", "baihu-stake", "bane", "bane-2", "barq-b", "basilisk", "blaze-elox", "blaze-fahrenheit", "blaze-kelvin", "blight", "boom", "brisant", "celsius", "cestus", "chasm", "chione", "cinder", "claw", "cruel-claw", "cruel-talon", "cryptic-hazard", "cudgel", "deceiver", "discordia", "dune", "elox", "fatal-havoc", "fengbao", "freedom-cudgel", "freedom-hammer", "freedom-mace", "frozen-tamer", "furnace", "g-a-s", "gangil", "gladius", "growler", "hammer", "harmattan-l", "harmattan-m", "havoc", "hazard", "hedjet", "hippo", "howler", "hurricane", "hwangje", "jaw", "jotunn", "kirin", "kramola", "kroko", "ksiphos", "labrys", "leiming", "leinani", "liodari", "lumen-h", "lumen-l", "mace", "machaira", "mogwan", "morana", "murix", "nanea", "needle", "noir-fengbao", "nucleon", "omen-lumen-l", "oxy", "pilum", "porthos", "pow", "prisma", "pshent", "quicksand-labrys", "razdor", "reaper", "regulator", "retro-reaper", "royal-hippo", "royal-kroko", "scatter", "screamer", "shantak", "shatter", "shifang", "smuta", "spear", "spike", "spirit-razdor", "spirit-smuta", "splinter", "sport-howler", "steel-deshret", "steel-hedjet", "steel-piercer", "steel-pshent", "stellar-prisma", "striker", "subduer", "taeja", "talon", "tamer", "torch", "toxin", "trickster", "tumultus", "unknown-decay", "unknown-shatter", "unknown-splinter", "urhag", "venom", "void", "void-shantak", "void-urhag", "voonith", "yeoje"]);
+const WIMG = new Set(["lumen-m","velos","omen-lumen-m","orkan","discipline","smite","noricum","calamity","basileus","skadi","kelvin","aramis", "ardent-spear", "ardent-taeja", "ardent-yeoje", "athos", "baihu-stake", "bane", "bane-2", "barq-b", "basilisk", "blaze-elox", "blaze-fahrenheit", "blaze-kelvin", "blight", "boom", "brisant", "celsius", "cestus", "chasm", "chione", "cinder", "claw", "cruel-claw", "cruel-talon", "cryptic-hazard", "cudgel", "deceiver", "discordia", "dune", "elox", "fatal-havoc", "fengbao", "freedom-cudgel", "freedom-hammer", "freedom-mace", "frozen-tamer", "furnace", "g-a-s", "gangil", "gladius", "growler", "hammer", "harmattan-l", "harmattan-m", "havoc", "hazard", "hedjet", "hippo", "howler", "hurricane", "hwangje", "jaw", "jotunn", "kirin", "kramola", "kroko", "ksiphos", "labrys", "leiming", "leinani", "liodari", "lumen-h", "lumen-l", "mace", "machaira", "mogwan", "morana", "murix", "nanea", "needle", "noir-fengbao", "nucleon", "omen-lumen-l", "oxy", "pilum", "porthos", "pow", "prisma", "pshent", "quicksand-labrys", "razdor", "reaper", "regulator", "retro-reaper", "royal-hippo", "royal-kroko", "scatter", "screamer", "shantak", "shatter", "shifang", "smuta", "spear", "spike", "spirit-razdor", "spirit-smuta", "splinter", "sport-howler", "steel-deshret", "steel-hedjet", "steel-piercer", "steel-pshent", "stellar-prisma", "striker", "subduer", "taeja", "talon", "tamer", "torch", "toxin", "trickster", "tumultus", "unknown-decay", "unknown-shatter", "unknown-splinter", "urhag", "venom", "void", "void-shantak", "void-urhag", "voonith", "yeoje"]);
 function wslug(n){ return String(n).replace(/^ULTIMATE /,'').replace(/ MK\d$/,'')
   .toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,''); }
 function wart(n){ const k=wslug(n);
@@ -2052,7 +2159,7 @@ function wart(n){ const k=wslug(n);
 /* robot and titan art, cropped from William's own hangar screenshots */
 const BIMG = new Set(["ammit", "anaksor", "ardent-imugi", "atlas", "baihu-lynx", "blaze-rex", "curie", "dux-mk2", "fafnir", "frozen-dagon-mk2", "harpy", "kaji", "mars", "mauler", "minos", "newton", "noir-shenlou", "retro-revenant", "samjok-mk2", "scorpion", "shell", "spectre", "teth", "typhon", "vulcan"]);
 /* v2.0 additions, cut from the 1 October folders and the 5 October walk, kept as png */
-const B2LIST = ["hastatus","demeter","fenrir","ao-ming","void-shoggoth","nuo","crisis","vector","nodens","sirocco"];
+const B2LIST = ["hastatus","demeter","fenrir","ao-ming","void-shoggoth","nuo","crisis","vector","nodens","sirocco","ao-jun","bersagliere","bjorn","destrier","devourer","fang","indra","inquisitor","khepri","kid","kitsune-harpy","natasha","ophion","orochi","princeps","raptor","ravager","raven","rook","seraph","skyros","sport-condor","stryx"];
 const BIMG2 = new Set(B2LIST);
 function bslug(n){
   const sl=x=>x.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
@@ -2078,7 +2185,7 @@ const dQty = n => { const v=(OVD[slug(n)]||{}).qty; return v==null ? 1 : +v; };
    projection off those recorded steps everywhere else. No invented table. */
 const MEAS={"Fatal Havoc":{3:5652,4:6203},"Nanea":{4:505},"Lumen-H":{5:539},"Scatter":{4:3940},"Gladius":{4:1886},
   "Celsius":{4:509},"Steel Hedjet":{4:1784},"Steel Deshret":{3:2433},"Steel Pshent":{3:3244},"Machaira":{3:463},
-  "Striker":{1:13932,2:14172,4:14658}};   /* read off the game's own upgrade screens, 5 Oct */
+  "Striker":{1:13932,2:14172,4:14658},"Fahrenheit":{1:544}};   /* read off the game's own upgrade screens, 5 Oct */
 /* Published base damage per level, read from warrobots.fandom.com on WIKI_READ. Keyed by the
    display name exactly as it appears in W. Levels the wiki does not publish are absent. Nothing
    here is estimated or filled in by hand. WIKI_VIA names the base page used for a variant
@@ -2218,7 +2325,7 @@ function buildFloors(){
     const fv=bots.reduce((s,b)=>s+volley(b[10]),0); if(fv>best)best=fv;
     const F=FLOORS[f];
     let h=`<div class="floor" style="--acc:${F[2]}"><div class="fhead"><span class="no">${F[0]}</span>
-      <h4>${F[1]}</h4><em>${F[3]}<br>${num(fv)} volley</em></div><div class="bots">`;
+      <h4 class="f1l"><b>${esc(F[1])}</b><span class="fdesc">${esc(F[3])}</span></h4><span class="fvol">${num(fv)} volley</span></div><div class="bots">`;
     bots.forEach(b=>{
       const slots=b[3].split(""), guns=b[10];
       const recs=recommendFill(b[3], guns, POOL);
@@ -2982,7 +3089,7 @@ function renderAsk(pending){
   const body=out.parentElement; body.scrollTop=body.scrollHeight;
 }
 async function askClaude(q){
-  if(!SAMPLE){ CHAT.push({role:"user",content:q},{role:"assistant",content:"Ask Claude is not part of the gragg.life version of the hangar."}); renderAsk(); return; }
+  if(!SAMPLE){ CHAT.push({role:"user",content:q},{role:"assistant",content:"Chat is not available in this view. Open the page while signed in to claude.ai and it will come back."}); renderAsk(); return; }
   const btn=document.getElementById("asksend"); btn.disabled=true;
   document.getElementById("askin").value="";
   CHAT.push({role:"user",content:q}); saveChat(); renderAsk("Thinking...");
@@ -3191,9 +3298,15 @@ function openPick(bot,i,sl){
 function closePick(){ document.getElementById("pickwrap").hidden=true; pick=null; }
 
 /* ---- live intel ---- */
+/* saved snapshot of the Intel and gift code collections, taken 19 October 2026, so a copy of this page
+   that cannot reach the database still shows them */
+const INTEL_STATIC=[{"body":"The official Live Show hub publishes the Martian Robotic Games, a competition among five corporations across weekly disciplines, with dates given as April 14 to May 19. The page says the corporation that wins each week determines the following week's Gift Marathon, and that the MRG winner chooses the build given away in the 12.1 Gift Marathon. It also lists a Titan Tournament extra reward for weekly voting and a People's Choice poll where each vote counts as 5,000,000 Durability repaired for the chosen corporation. The page states no reward contents and no dates for the Gift Marathons themselves.","draft":false,"head":"Live Show 26 Martian Robotic Games and Gift Marathons","hit":false,"ts":1791813542821,"url":"https://liveshow.warrobots.com","ver":"12.1","why":"","id":"12_1_live_show_26_mrg"},{"body":"Invisibility dropped from 5 seconds to 3, and the range at which enemies can see through it doubled from 75 m to 150 m.","draft":false,"head":"Anaksor nerfed","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/417","ver":"12.2","why":"William owns Anaksor. The published change cuts its invisibility from 5 seconds to 3 and doubles the see through range from 75 m to 150 m.","id":"12_2_anaksor"},{"body":"Movement speed increased. Predator Rush cooldown moved from 10 seconds to 14.","draft":false,"head":"Rex speed up, Predator Rush slower to return","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/417","ver":"12.2","why":"William owns Blaze Rex. The published change raises its movement speed and moves the Predator Rush cooldown from 10 seconds to 14.","id":"12_2_rex"},{"body":"From the community patch notes archive at warrobots.wiki, not an official developer post. The archive lists a version 12.3.1 dated 21 August 2026 that has no counterpart anywhere in the official news feed, and its only entry is a Vector nerf. VectorReflector is no longer active for the full duration of the ability, and Vector now gains it only during the slowdown phase and the melee attack. The archive gives no before and after numbers and lists no additions, buffs or fixes for this version.","draft":false,"head":"Version 12.3.1 Vector nerf, archive only","hit":false,"ts":1792418330821,"url":"https://warrobots.wiki/info/patch-notes","ver":"12.3.1","why":"","id":"12_3_1_vector"},{"body":"Andor Miharr has two skills. A Bet on Life increases Shell's damage while the ability is active. Infinite Luck makes Glacier, Cryo and Rime deal more damage. The notes give no numbers for either skill.","draft":false,"head":"New pilot Andor Miharr buffs Shell","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"William owns Shell. The published A Bet on Life skill increases Shell damage while its ability is active.","id":"12_4_andor_miharr"},{"body":"The notes say cryogenic weapons were buffed across the board with an increased fire rate, faster reload speed, higher damage and a larger area of effect radius. The post names Glacier, Cryo and Rime and gives no before and after numbers for the buff itself.","draft":false,"head":"Ultimate cryogenic weapons buffed","hit":false,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_cryo_buff"},{"body":"Dedopali arrives with 330,000 durability, 50 km/h movement speed and a loadout of 1 Heavy plus 2 Light slots. It carries Swarm, which deploys three autonomous pods, Invisibility lasting 7 seconds on a 15 second cooldown, and Gravity Lift lasting 7 seconds, with an 8 second ability cooldown. The MK2 bonus raises Gravity Lift duration from 5 to 7 seconds and the MK3 bonus raises Invisibility duration from 5 to 7 seconds.","draft":false,"head":"New robot Dedopali","hit":false,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_dedopali"},{"body":"Donnie Woo brings two skills. Donnie's Blindness makes gravity missiles deal additional damage and inflict Blind. Woo Hoo decreases the primary charge reload time of Iaraghi. The notes give no numbers for either skill.","draft":false,"head":"New pilot Donnie Woo","hit":false,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_donnie_woo"},{"body":"The patch corrects the Durability Extender turret durability increase and resolves a Tensor and Raptor Gray damage reduction issue. It also fixes event display and access button problems and a black or gray screen bug in combat.","draft":false,"head":"Technical fixes in 12.4","hit":false,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_fixes"},{"body":"Iaraghi is a charge up energy weapon with the Defense Breach effect and 600 m range. At full charge it deals 45,000 damage per particle in the Light version, 67,500 in the Medium version and 90,000 in the Heavy version, firing 6 particles per shot at a 1 second shot interval. Ammo is 6, reload interval is 5 seconds primary plus 5 seconds secondary, and reload amount is 1 primary plus 5 secondary. The notes state that the secondary charges ignore any Defense Mitigation, Reflector and Forcefield defence systems, and that when the weapon is fully charged its main charge gets the same effect.","draft":false,"head":"New weapons Iaraghi Light, Medium and Heavy","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"William owns Shell, Dux MK2 and Frozen Dagon MK2. The published Defense Breach effect means Iaraghi charges ignore Defense Mitigation, Reflector and Forcefield defence systems.","id":"12_4_iaraghi"},{"body":"Prena deals additional damage to targets caught in Gravity Lift and additional damage generally. It also removes Lock Down and Slowdown effects when the pilot gains Invisibility and grants bonus speed, and it makes remote weapons deal additional damage. The official notes give no numbers for any of these. From the community patch notes archive at warrobots.wiki, not an official developer post, the Gravity Lift damage bonus runs 18 percent at level 1 then 20, 22, 24, 26 and 28 percent through level 6, with a figure of 40 shown at level 12 and levels 7 through 11 hidden behind a show more control on that page. The same source gives Additional Damage as 7 percent at levels 4 through 6, lists the Invisibility skill with no bonus speed figure at all, and shows More Damage for Remote Weapons unlocking at level 12 with a value of 25. It puts the full upgrade at 1,000 Microchips plus 1 Upgrade Token and dates the drone to 22 September 2026. Source page: https://warrobots.wiki/info/drones/dprena","draft":false,"head":"New drone Prena","hit":false,"ts":1791813542821,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_prena"},{"body":"The 12.4 event started on September 22, with daily rewards in the Event Hub and the News section. Its collectible reward is the title SIMULATION OPERATOR.","draft":false,"head":"Simulation Errors event","hit":false,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_simulation_errors_event"},{"body":"The post says the feature is being tested throughout Update 12.4 and that the developers may scale it back or scrap it, so these figures are not final. Upgrade timers are replaced by a Spare Parts currency that the Workshop produces automatically at 1,500 Spare Parts per day, which the post describes as just a notch over one part per minute. Production pauses once the slot reaches 1,500 Spare Parts until the parts are collected. Upgrades become instant on activation and cost Silver plus Spare Parts, and Gold can buy Spare Parts directly.","draft":true,"head":"Spare Parts replace upgrade timers","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/421","ver":"12.4","why":"The published change replaces upgrade timers with Spare Parts for every robot and weapon in William's hangar.","id":"12_4_spare_parts"},{"body":"The post sets Tier 4 robot MK1 costs at 100, 300, 600, 900, 1,200, 1,500, 1,800, 2,100, 2,400, 2,700 and 3,000 Spare Parts for levels 1 through 11, then 3,000 Spare Parts for each MK2 level from 1 through 11. It states that what used to take 83,820 minutes now takes 49,600 Spare Parts, which take roughly 47,600 minutes to produce. The post says the feature is under test during 12.4, so these figures are not final.","draft":true,"head":"Tier 4 robot upgrade cost in Spare Parts","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/421","ver":"12.4","why":"William's MK2 robots include Samjok MK2, ULTIMATE Spectre MK2, Dux MK2 and Frozen Dagon MK2. The post sets 3,000 Spare Parts per level for Tier 4 robot MK2 levels.","id":"12_4_spare_parts_robot_costs"},{"body":"The post sets Tier 4 weapon MK1 costs at 100, 200, 400, 600, 800, 1,000, 1,200, 1,400, 1,600, 1,800 and 2,000 Spare Parts for levels 1 through 11, then 2,000 Spare Parts for each MK2 level from 1 through 11. It states that 65,460 minutes of upgrade time are substituted with 33,100 Spare Parts. The post says the feature is under test during 12.4, so these figures are not final.","draft":true,"head":"Tier 4 weapon upgrade cost in Spare Parts","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/421","ver":"12.4","why":"William's MK2 weapons include Kirin MK2 and Discipline MK2. The post sets 2,000 Spare Parts per level for Tier 4 weapon MK2 levels.","id":"12_4_spare_parts_weapon_costs"},{"body":"Ultimate Glacier has 350 m range, 4,032 damage per particle, 1 particle per shot, a 0.06 second shot interval, 35 ammo, a 0.3 second reload interval and a reload amount of 1.","draft":false,"head":"Ultimate Glacier released","hit":false,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_ultimate_glacier"},{"body":"Ultimate Rime has 350 m range, 2,205 damage per particle, 1 particle per shot, a 0.06 second shot interval, 35 ammo, a 0.3 second reload interval and a reload amount of 1.","draft":false,"head":"Ultimate Rime released","hit":false,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"","id":"12_4_ultimate_rime"},{"body":"Ultimate Shell has 601,000 durability, 43 km/h movement speed and 1 Heavy plus 2 Light slots. Its Ultimate Atom ability lasts 7 seconds on a 5 second cooldown and raises speed by 245 percent, with front shields of 305,550, side shields of 213,900 and rear shields of 168,000. The MK2 bonus adds 20 percent ability damage and the MK3 bonus adds 50 percent shield durability. The notes also say the blast radius is expanded and that the physical shields now fully regenerate with each ability activation, with no before and after figure given for the blast radius.","draft":false,"head":"Ultimate Shell released","hit":true,"ts":1791388681665,"url":"https://warrobots.com/en/posts/422","ver":"12.4","why":"William owns Shell. The published Ultimate version carries 601,000 durability, the Ultimate Atom ability and shields that fully regenerate on each activation.","id":"12_4_ultimate_shell"},{"body":"The MY.GAMES support article says gift codes are redeemed in the Gift Codes tab of the War Robots Web Shop at wr.my.games/usegiftcode, by entering your player ID and the code, pressing Activate, then claiming the gift in game. It states there are different code types, including single use codes and codes with an activation limit that expire after a set number of redemptions.","draft":false,"head":"Official gift code redemption exists","hit":false,"ts":1791601501468,"url":"https://support.my.games/wr/account_issues/5199","ver":"general","why":"","id":"general_gift_codes"}];
+const CODES_STATIC=[{"code":"EWAGRBMK","expires":"","official":false,"reward":"","src":"nerdschalk.com and urgametips.com, both of which list it as expired","status":"expired","ts":1792418330821,"url":"https://nerdschalk.com/war-robots-codes/","id":"ewagrbmk"},{"code":"GC-HPKJ-ROOVBS","expires":"","official":false,"reward":"100 Keys, given as a previous reward","src":"nerdschalk.com, which lists it as expired","status":"expired","ts":1791813542821,"url":"https://nerdschalk.com/war-robots-codes/","id":"gc_hpkj_roovbs"},{"code":"GC-SGHQ-SEFLKI","expires":"","official":false,"reward":"150 Power Cells, given as a previous reward","src":"nerdschalk.com, which lists it as expired","status":"expired","ts":1791813542821,"url":"https://nerdschalk.com/war-robots-codes/","id":"gc_sghq_seflki"},{"code":"GC-SREA-NBCAAO","expires":"","official":false,"reward":"1,000,000 Silver, given as a previous reward","src":"nerdschalk.com, which lists it as expired","status":"expired","ts":1791813542821,"url":"https://nerdschalk.com/war-robots-codes/","id":"gc_srea_nbcaao"},{"code":"GC-SUDI-AMHVDJ","expires":"","official":false,"reward":"100 Gold, given as a previous reward","src":"nerdschalk.com, which lists it as expired","status":"expired","ts":1791813542821,"url":"https://nerdschalk.com/war-robots-codes/","id":"gc_sudi_amhvdj"},{"code":"GC-TOQZ-SKABBD","expires":"","official":false,"reward":"1 Blue Data Pad (Silver), given as a previous reward","src":"nerdschalk.com, which lists it as expired","status":"expired","ts":1791813542821,"url":"https://nerdschalk.com/war-robots-codes/","id":"gc_toqz_skabbd"},{"code":"IAMBACK-GOLD","expires":"","official":false,"reward":"Free gold","src":"nerdschalk.com, also listed as active on minutetactics.com","status":"unverified","ts":1791813542821,"url":"https://nerdschalk.com/war-robots-codes/","id":"iamback_gold"},{"code":"IAMBACK-MEMORIUM","expires":"","official":false,"reward":"Free memorium","src":"nerdschalk.com, also listed as active on minutetactics.com","status":"unverified","ts":1791813542821,"url":"https://nerdschalk.com/war-robots-codes/","id":"iamback_memorium"},{"code":"IAMBACK-MODULE","expires":"","official":false,"reward":"","src":"minutetactics.com, which spells it without the trailing S","status":"unverified","ts":1791813542821,"url":"https://www.minutetactics.com/codes/war-robots-promo-codes","id":"iamback_module"},{"code":"IAMBACK-MODULES","expires":"","official":false,"reward":"Free modules","src":"nerdschalk.com, also listed by ucngame.com with the same spelling","status":"unverified","ts":1792418330821,"url":"https://nerdschalk.com/war-robots-codes/","id":"iamback_modules"},{"code":"ROBOTS2026LIVE","expires":"","official":false,"reward":"200 Black Market Keys","src":"gamer.org, article dated 25 September 2026, which lists it as active. The same page also lists plain alphabet strings as active, so its list is weak evidence","status":"unverified","ts":1792418330821,"url":"https://www.gamer.org/war-robots-codes/","id":"robots2026live"},{"code":"WARROBOTS10","expires":"","official":false,"reward":"10 Attack Boosters, 10 Defense Boosters and 10 Resource Boosters per nerdschalk.com, while urgametips.com says resources for new players only","src":"nerdschalk.com, gamecodecity.com, urgametips.com, ucngame.com and gamer.org list it as active, techwiser.com lists it as expired","status":"unverified","ts":1792418330821,"url":"https://nerdschalk.com/war-robots-codes/","id":"warrobots10"},{"code":"WARROBOTS10YEARS","expires":"","official":false,"reward":"Special Edition Component Pack","src":"gamer.org, article dated 25 September 2026, which lists it as active. The same page also lists plain alphabet strings as active, so its list is weak evidence","status":"unverified","ts":1792418330821,"url":"https://www.gamer.org/war-robots-codes/","id":"warrobots10years"},{"code":"warrobots999","expires":"","official":false,"reward":"1 Blue Data Pad in Silver, as stated by ucngame.com","src":"techwiser.com, also listed by ucngame.com and mobi.gg","status":"expired","ts":1792418330821,"url":"https://techwiser.com/war-robots-codes/","id":"warrobots999"},{"code":"webshopfirstcode01","expires":"","official":false,"reward":"","src":"techwiser.com, also listed as expired by urgametips.com","status":"expired","ts":1792418330821,"url":"https://techwiser.com/war-robots-codes/","id":"webshopfirstcode01"},{"code":"WR2026DISCORD","expires":"","official":false,"reward":"500 Gold and 1,000,000 Silver","src":"gamer.org, article dated 25 September 2026, which lists it as active. The same page also lists plain alphabet strings as active, so its list is weak evidence","status":"unverified","ts":1792418330821,"url":"https://www.gamer.org/war-robots-codes/","id":"wr2026discord"},{"code":"wrchristmas2025","expires":"Valid until December 26th, 2024, as stated by ucngame.com","official":false,"reward":"","src":"nerdschalk.com, which lists it as expired, and ucngame.com which is the first source to state an expiry for it","status":"expired","ts":1792418330821,"url":"https://ucngame.com/codes/war-robots-codes/","id":"wrchristmas2025"},{"code":"WRFIRSTCODE01","expires":"","official":false,"reward":"","src":"techwiser.com","status":"expired","ts":1791601501468,"url":"https://techwiser.com/war-robots-codes/","id":"wrfirstcode01"},{"code":"wrnewyear2025","expires":"Valid until January 1st, 2025, as stated by ucngame.com","official":false,"reward":"","src":"techwiser.com, and ucngame.com which is the first source to state an expiry for it","status":"expired","ts":1792418330821,"url":"https://ucngame.com/codes/war-robots-codes/","id":"wrnewyear2025"}];
+const asDocs=a=>a.map(o=>({id:o.id,data:()=>o}));
 function renderIntel(docs){
   const el=document.getElementById("i-list");
-  if(!docs.length){ el.innerHTML=`<div class="empty">Nothing pulled yet. Press Refresh and it will read the newest update notes off the official site.</div>`; return; }
+  if(!docs.length) docs=asDocs(INTEL_STATIC);
+  if(!docs.length){ el.innerHTML=`<div class="empty">No patch notes saved yet. The newest are always at warrobots.com/en/news.</div>`; return; }
   const v=docs.map(d=>d.data());
   v.sort((a,b)=>(b.hit?1:0)-(a.hit?1:0) || String(b.ver||"").localeCompare(String(a.ver||"")));
   el.innerHTML=v.map(x=>`<div class="inote${x.hit?" hit":""}${x.draft?" prov":""}">
@@ -3207,14 +3320,14 @@ function renderIntel(docs){
 }
 function renderMeta(docs){
   const d=docs.find(x=>x.id==="meta"); const el=document.getElementById("i-ago");
-  if(!d){ el.textContent="never refreshed"; return; }
+  if(!d){ el.textContent="saved snapshot, 19 October 2026, update 12.4"; return; }
   const v=d.data(), mins=Math.round((Date.now()-(+v.ts||0))/60000);
   const when = mins<2?"just now" : mins<60?mins+" minutes ago" : mins<2880?Math.round(mins/60)+" hours ago" : Math.round(mins/1440)+" days ago";
   el.textContent=`update ${v.ver||"?"} · refreshed ${when}`;
 }
 function renderPlayerReports(docs){
   const el=document.getElementById("pr-list"); if(!el) return;
-  if(!docs.length){ el.innerHTML=`<div class="empty">Nothing yet. Reddit and the official Discord cannot be reached from the scheduled run, so this fills only once that is sorted.</div>`; return; }
+  if(!docs.length){ el.innerHTML=`<div class="empty">No player reports saved. Only developer notes and sourced reports are shown on this page.</div>`; return; }
   const v=docs.map(d=>d.data());
   v.sort((a,b)=>(b.hit?1:0)-(a.hit?1:0) || String(b.ver||"").localeCompare(String(a.ver||"")));
   el.innerHTML=v.map(x=>`<div class="inote pr">
@@ -3227,6 +3340,7 @@ function renderPlayerReports(docs){
 }
 function renderGiftCodes(docs){
   const el=document.getElementById("gc-list"); if(!el) return;
+  if(!docs.length) docs=asDocs(CODES_STATIC);
   if(!docs.length){ el.innerHTML=`<div class="empty">No codes on file. The Monday run records one only when it can trace it to a real page.</div>`; return; }
   const rank={working:0,unverified:1,expired:2};
   const v=docs.map(d=>d.data());
@@ -3245,7 +3359,7 @@ async function refreshIntel(){
   const btn=document.getElementById("i-refresh"), say=document.getElementById("i-say");
   say.hidden=false;
   if(!MCPC){ say.className="box warn";
-    say.innerHTML="<b>Live refresh is not part of the gragg.life version.</b> Check warrobots.com for the latest patch notes."; return; }
+    say.innerHTML="<b>This copy shows a saved snapshot of the patch notes, taken 19 October 2026 (update 12.4).</b> Live refresh needs the Claude connector, which is off here. For anything newer open <a href=\"https://warrobots.com/en/news\" target=\"_blank\" rel=\"noopener\" style=\"color:var(--cyan)\">warrobots.com/en/news</a>."; return; }
   btn.disabled=true; btn.innerHTML='<span class="spin"></span>Reading warrobots.com';
   say.className="box"; say.textContent="Started. The task reads the official site, works out what touches your roster, and writes back here. Usually under a minute.";
   try{
@@ -3462,7 +3576,7 @@ wireBank();
 
 
 /* ================= slot builder ================= */
-let SBF=5, SBB=null, SBT=false;   // floor, robot name, is a titan slot
+let SBF=1, SBB=null, SBT=false;   // floor, robot name, is a titan slot
 
 function botsOn(f){ return R.filter(r=>r[1]===f).map(r=>r[0]); }
 function titanOn(f){ const t=TITANS.find(x=>x[1]===f); return t?t[0]:null; }
@@ -3505,7 +3619,7 @@ function bayHTML(f){
 
 function sbSlots(){
   const host=document.getElementById("sb-stack"); if(!host) return;
-  if(SBB===null){ const a=botsOn(5); SBB=a[0]||titanOn(5); SBT=!a.length; SBF=5; }
+  if(SBB===null){ const a=botsOn(1); SBB=a[0]||titanOn(1); SBT=!a.length; SBF=1; }
   host.innerHTML=[5,4,3,2,1].map(f=>{
     const F=FLOORS[f], bots=R.filter(r=>r[1]===f);
     const vol=bots.reduce((a,b)=>a+volley(b[10]),0);
@@ -3535,7 +3649,13 @@ function sbBuild(){
   const pilot=SBT?b[5]:b[7], plvl=SBT?b[6]:b[8], drone=SBT?"":b[9];
   const lvl=SBT?b[2]:b[2], hp=SBT?b[3]:b[4], ability=SBT?"":b[6];
   const tot=guns.reduce((a,g)=>a+(g?wDmg(g).v:0),0);
-  const pve=tot + guns.reduce((a,g)=>a+(g&&g.startsWith("ULTIMATE")?wDmg(g).v*0.5:0),0);
+  const items=guns.filter(Boolean).map(g=>{const D=wDmg(g),P=wDps(g),w=wmap[g]||[];
+    return {g:g,v:D.v,est:D.est,p:P.st==="ok"?P.v:null,cont:P.st==="cont",rel:+w[6]||0,lv:w[2]||"?"};});
+  const ultBot=String(SBB).startsWith("ULTIMATE");
+  const ultBonus=ultBot? items.filter(x=>x.g.startsWith("ULTIMATE")).reduce((a,x)=>a+x.v*0.10,0) : 0;
+  const pve=tot+ultBonus;
+  const sumDps=items.reduce((a,x)=>a+(x.p||0),0);
+  const pct=v=>tot?Math.round(v/tot*100):0;
 
   const gunRows=sl.map((k,i)=>{const g=guns[i];
     const nm={H:"Heavy",M:"Medium",L:"Light",A:"Alpha",B:"Beta"}[k]||k;
@@ -3563,8 +3683,10 @@ function sbBuild(){
   const robotCell = cell(`data-sbbot="1"`,"",botPic,esc(SBB),
     `lvl ${lvl} &middot; ${num(hp||0)} hp`,"ROBOT");
 
+  const pslug=n=>String(n).normalize("NFD").replace(/[^ -~]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  const pinit=n=>/^\(/.test(n)?"?":esc(n.replace(/[^A-Za-z0-9 ]/g,"").trim().split(/\s+/).map(w=>w[0]).join("").slice(0,2).toUpperCase()||"?");
   const pilotCell = pilot
-    ? cell(`data-sbpilot="1"`,"",`<span class="init">${esc(pilot.slice(0,2).toUpperCase())}</span>`,
+    ? cell(`data-sbpilot="1"`,"",`<span class="init">${pinit(pilot)}</span><img class="pil" data-nofb="1" src="pil/${pslug(pilot)}.png" alt="" onerror="this.remove()">`,
         esc(pilot),`level ${plvl}`,"PILOT")
     : cell(`data-sbpilot="1"`,"vacant",`<span class="init">P</span>`,
         "No pilot","AI is flying this one","PILOT");
@@ -3600,7 +3722,7 @@ function sbBuild(){
     const art=WIMG.has(wslug(g))?`<img class="boxed" src="w/${wslug(g)}.webp" alt="">`
                                 :`<span class="init">${k}</span>`;
     return cell(`data-sbpick="${i}" data-sbsl="${k}"`, isSituational(g)?"situ":"", art, esc(g),
-      `lvl ${w[2]||"?"} &middot; ${Dm.est?"~":""}${num(Dm.v)} &middot; ${w[6]?w[6]+"s":"no reload"}`, k);
+      `lvl ${w[2]||"?"} &middot; ${Dm.est?"~":""}${num(Dm.v)} &middot; ${w[6]?w[6]+"s":"no reload"}`, k, tot?pct(Dm.v)+"% of total":"");
   }).join("");
 
   host.innerHTML=`<div class="rack">
@@ -3611,8 +3733,20 @@ function sbBuild(){
       <span class="row2">${gunCells}</span></div>
     <span class="plus">=</span>
     <div class="sumcell"><div class="k3">Total damage output</div><div class="v3">${num(Math.round(pve))}</div>
-      <div class="s3">per volley${pve!==tot?", PvE bonus included":""}${
+      <div class="s3">per volley${ultBonus?", ULTIMATE bonus included":""}<b class="s3b" style="color:var(--green)">${num(Math.round(sumDps))} per second sustained</b>${
         sugGain?`<b class="s3b">${num(Math.round(pve+sugGain))} if you fit the suggestions</b>`:""}</div></div>
+  </div>
+  <div class="recpt"><div class="rh">Where the ${num(Math.round(pve))} comes from</div>
+    <div class="scroll"><table><thead><tr><th>Item</th><th class="n">Level</th><th class="n">Per volley</th><th class="n">Share</th><th class="n">Reload</th><th class="n">Per second</th></tr></thead><tbody>${
+      items.length? items.map(x=>`<tr><td><b>${esc(x.g)}</b></td><td class="n">${x.lv}</td><td class="n">${x.est?"~":""}${num(x.v)}</td>
+        <td class="n"><span class="sh"><i style="width:${pct(x.v)}%"></i></span> ${pct(x.v)}%</td><td class="n">${x.rel?x.rel+"s":"none"}</td>
+        <td class="n">${x.p!==null?num(Math.round(x.p)):(x.cont?"continuous":"&middot;")}</td></tr>`).join("")
+      : `<tr><td colspan="6" style="color:var(--faint)">No weapons fitted, so nothing to add up.</td></tr>`}${
+      ultBonus?`<tr><td><b>ULTIMATE bonus</b></td><td></td><td class="n">+${num(Math.round(ultBonus))}</td><td></td><td></td><td></td></tr>`:""}
+      <tr class="tt"><td><b>Total</b></td><td></td><td class="n">${num(Math.round(pve))}</td><td></td><td></td><td class="n">${num(Math.round(sumDps))}</td></tr></tbody></table></div>
+    <p class="rn">Robot, pilot and drone add effects rather than a damage number the game prints, so they are not in the total. ${
+      SBT?"":`Ability: <b>${esc(ability||"none recorded")}</b>. `}Pilot: <b>${pilot?esc(pilot)+" (level "+plvl+")":"none"}</b>, whose skills raise weapon damage by the percentages on the pilot card. ${
+      drone&&DR.find(d=>d[0]===drone)?`Drone <b>${esc(drone)}</b>: ${esc(DR.find(d=>d[0]===drone)[1])}.`:(SBT?"":"No drone fitted.")}</p>
   </div>`;
   sbAlerts();
 }
@@ -3730,6 +3864,7 @@ try{ renderSlot(); }catch(e){ console.error('slot init',e); }
   }
   try{ DB = await window.claude?.use?.("db"); }catch(e){}
   if(!DB){
+    try{ renderIntel(asDocs(INTEL_STATIC)); renderGiftCodes(asDocs(CODES_STATIC)); renderPlayerReports([]); document.getElementById("i-ago").textContent="saved snapshot, 19 October 2026, update 12.4"; }catch(e){}
     document.getElementById("c-saved").innerHTML=`<div class="empty">Saved builds need you signed in on claude.ai.</div>`;
     document.getElementById("u-list").innerHTML=`<div class="empty">The tracker needs you signed in on claude.ai.</div>`;
     document.getElementById("e-list").innerHTML=`<div class="empty">Event logs need you signed in on claude.ai.</div>`;
@@ -3775,6 +3910,146 @@ try{ renderSlot(); }catch(e){ console.error('slot init',e); }
     });
   }
 })();
+
+/* ================= wiki + recommended loadouts ================= */
+let WK=null, WKERR="";
+async function loadWiki(){
+  if(WK||WKERR) return;
+  try{ const r=await fetch("wiki.json"); if(!r.ok) throw new Error("status "+r.status); WK=await r.json(); }
+  catch(e){ WKERR="The wiki file did not load ("+(e&&e.message?e.message:"error")+"). Reload the page to try again."; }
+}
+const WK_ALIAS={"Baihu Lynx":"Lynx","Noir Shenlou":"Shenlou","Frozen Dagon":"Dagon","Retro Revenant":"Revenant","Blaze Rex":"Rex",
+  "Kitsune Harpy":"Harpy","Ardent Imugi":"Imugi","Sport Condor":"Condor","Fatal Havoc":"Havoc","Spirit Smuta":"Smuta","Spirit Razdor":"Razdor",
+  "Steel Hedjet":"Hedjet","Steel Deshret":"Deshret","Steel Pshent":"Pshent","Void Shantak":"Shantak","Void Urhag":"Urhag","Barq-B":"Barq",
+  "Omen Lumen-M":"Lumen-M","Omen Lumen-L":"Lumen-L","Blaze Fahrenheit":"Fahrenheit","Blaze Kelvin":"Kelvin","Retro Reaper":"Reaper",
+  "Quicksand Labrys":"Labrys","Cryptic Hazard":"Hazard","Freedom Cudgel":"Cudgel","Freedom Hammer":"Hammer","Freedom Mace":"Mace",
+  "Royal Hippo":"Hippo","Royal Kroko":"Kroko","Cruel Claw":"Claw","Cruel Talon":"Talon","Sport Howler":"Howler","Frozen Tamer":"Tamer"};
+function wkKey(name,kind){
+  if(!WK) return null;
+  const tbl=WK[kind];
+  const n=String(name).split(" MK2").join("").split("ULTIMATE ").join("").trim();
+  if(tbl[n]) return n;
+  if(WK_ALIAS[n]&&tbl[WK_ALIAS[n]]) return WK_ALIAS[n];
+  let best=null;
+  Object.keys(tbl).forEach(k=>{ if(n.toLowerCase().indexOf(k.toLowerCase())>=0 && (!best||k.length>best.length)) best=k; });
+  return best;
+}
+function ownedWk(){
+  const o={robots:new Set(),titans:new Set(),weapons:new Set()};
+  R.forEach(r=>{const k=wkKey(r[0],"robots"); if(k) o.robots.add(k);});
+  TITANS.forEach(t=>{const k=wkKey(t[0],"titans"); if(k) o.titans.add(k);});
+  W.forEach(w=>{ if((+w[3]||0)>0){const k=wkKey(w[0],"weapons"); if(k) o.weapons.add(k);} });
+  return o;
+}
+const fmt=v=>(v===null||v===undefined||v==="")?"·":(typeof v==="number"?num(v):esc(v));
+function wkTable(rows,heads){
+  if(!rows||!rows.length) return `<p class="ab">The wiki has no upgrade table for this one.</p>`;
+  return `<div class="tw"><table><thead><tr>${heads.map(h=>`<th class="n">${h}</th>`).join("")}</tr></thead><tbody>${
+    rows.map(r=>`<tr>${r.map(c=>`<td class="n">${fmt(c)}</td>`).join("")}</tr>`).join("")}</tbody></table></div>`;
+}
+function wkCard(kind,name,v,owned){
+  let pic="";
+  if(kind==="weapons"){ const k=wslug(name); pic=WIMG.has(k)?`<img src="w/${k}.webp" alt="" data-nofb="1" onerror="this.remove()">`:""; }
+  else { const a=bart(name); pic=a||""; }
+  const ph=`<div class="wkimg">${pic||`<div class="ph">${esc(name.slice(0,2).toUpperCase())}</div>`}</div>`;
+  let sub="",figs="",tbl="";
+  if(kind==="weapons"){
+    sub=[v.sl,v.rg,v.rl].filter(Boolean).join(" · ");
+    figs=`<div class="figs2"><div><i>Level 1</i><b>${fmt(v.d1)}</b></div><div><i>Level 12</i><b>${fmt(v.dm)}</b></div><div><i>MK2 / MK3</i><b>${fmt(v.d2)} / ${fmt(v.d3)}</b></div></div>`;
+    tbl=wkTable(v.up,["Level","Damage","Silver","Time"]);
+  } else {
+    sub=[v.f,v.cls,v.sl].filter(Boolean).join(" · ");
+    figs=`<div class="figs2"><div><i>Durability L1 to max</i><b>${fmt(v.hp1)} to ${fmt(v.hpm)}</b></div><div><i>MK2 / MK3 max</i><b>${fmt(v.m2hp)} / ${fmt(v.m3hp)}</b></div><div><i>Speed</i><b>${fmt(v.sp)}</b></div></div>`;
+    tbl=wkTable(v.up,kind==="titans"?["Level","Durability","",""]:["Level","Durability","Silver","Time"]);
+  }
+  const ab=kind==="weapons"? (v.ef?`<p class="ab">${esc(v.ef)}</p>`:"") : `<p class="ab"><b>${esc(v.ab||"No ability name")}.</b> ${esc(v.ad||"The wiki gives no ability text.")}</p>`;
+  const vr=(kind==="weapons"&&v.var&&v.var.length)?`<p class="ab">Variants: ${v.var.map(esc).join(", ")}</p>`:"";
+  return `<details class="wkcard"><summary>${ph}<div><h4>${esc(name)}</h4><div class="sub">${esc(sub)}</div></div>${owned?'<span class="own">OWNED</span>':""}</summary>
+    ${figs}${ab}${vr}${tbl}<div class="src">${v.src?`Source: <a href="${esc(v.src)}" target="_blank" rel="noopener">${esc(v.src.split("//").join(""))}</a>`:""}</div></details>`;
+}
+async function renderWiki(){
+  const host=document.getElementById("wk-grid"); if(!host) return;
+  await loadWiki();
+  if(!WK){ host.innerHTML=`<div class="empty">${esc(WKERR)}</div>`; return; }
+  const kind=document.getElementById("wk-k").value, q=document.getElementById("wk-q").value.toLowerCase();
+  const own=ownedWk()[kind];
+  const keys=Object.keys(WK[kind]).filter(k=>!q||k.toLowerCase().indexOf(q)>=0||String((WK[kind][k].ab||WK[kind][k].ef)||"").toLowerCase().indexOf(q)>=0)
+    .sort((a,b)=>(own.has(b)?1:0)-(own.has(a)?1:0)||a.localeCompare(b));
+  const say=document.getElementById("wk-say"); say.hidden=false;
+  say.innerHTML=`<b>${keys.length}</b> ${kind} shown. <b>${keys.filter(k=>own.has(k)).length}</b> are ones you own and come first. Wiki figures are base values; your own levels and readings are on the Hangar and Arsenal pages.`;
+  host.innerHTML=keys.length?keys.map(k=>wkCard(kind,k,WK[kind][k],own.has(k))).join(""):`<div class="empty">Nothing matches.</div>`;
+}
+
+/* recommended loadouts */
+const PILOT_CARDS=[["Nika Schum",["vector"]],["Kai Ruo",["vector"]],["Yang Lee",["ao jun","void shoggoth"]],["Willa Owe",["dux"]],["Tal Mokri",["spectre"]],
+ ["Ridge Hollow",["rex"]],["Lian Xin Bai",["hastatus"]],["Lucius Palma",["hastatus"]],["Sim Yo-Han",["samjok"]],["Danny Kiberia",["rex"]],["Single Malt",["anaksor"]],
+ ["APPM-3TR",["demeter"]],["River Chase",["typhon"]],["Twins",["harpy","siren"]],["3V3R3TT",["nether","scorpion","kaji"]],["Bast Neferu",["teth"]],["Levi Hickok",["lynx"]],
+ ["Gintare Kairyte",["crisis"]],["Linda Cano",["shell","fenrir"]],["Hugo Booker",["shenlou"]],["Bai Xing",["shenlou","vulcan"]],["Gloria Earhart",["raptor","mars"]],
+ ["Gina Bertini",["raptor"]],["Walter Trommel",["nuo"]],["Mei Lan",["ammit"]],["Alika Renner",["ao jun"]],["James Velocci",["condor","hastatus"]],["Livia Borgia",["condor"]],
+ ["Jill Summers",["seraph"]],["John Orsted",["khepri"]],["Kyle Rogers",["inquisitor"]],["Nessa Riggs",["raven"]],["Nova Light",["bagliore"]],["Rolf Garcia",["nether"]],
+ ["Ryder Mourn",["stryx"]],["Sophie Kovac",["natasha"]],["Svyatogor",["fafnir"]],
+ ["Kevin_O_Reilly",["atlas","minos","ao ming"]],["Liam Crag",["devourer"]],["Yang Lee Titan",["rook"]],["Jude Pryce Titan",["newton"]],["Sigrid Solmer",["bjorn","nodens","kid"]],
+ ["Jimmy Hermes",["sirocco"]],["Vorren Kaal",["princeps","mauler"]],["Chef Broll",["bersagliere"]]];
+const DRONE_PICK={"Ardent Imugi":"Paralysis"};
+const RECO={"Ao Jun":"2x Glory or 2x Ember, the game's own recommendation","Stryx":"5x Piercer or 5x Prisma, the game's recommendation","Devourer":"2x Arbiter, the game's recommendation"};
+function mothershipFor(isTitan,hp,ability,volley){
+  const a=String(ability||"").toLowerCase();
+  if(isTitan) return ["Orion","against enemy titans it adds 60% damage and its Energy Hole pins them"];
+  if(hp>=250000||a.indexOf("absorb")>=0||a.indexOf("aegis")>=0||a.indexOf("shield")>=0) return ["Paladin","its Aegis shield (150,000) soaks fire for a robot that wants to be shot"];
+  if(volley>=15000) return ["Beholder","Doom Gaze hits for 86,400, which suits a floor that wins by burst"];
+  return ["Keel","your active ship: Gravity Amplifier, Lock Down Blast Cannon and Anti Jamming Support"];
+}
+function loPilot(key){
+  const m=PILOT_CARDS.filter(p=>p[1].some(t=>key.indexOf(t)>=0||t.indexOf(key)>=0));
+  if(!m.length) return null;
+  const lv=n=>{const r=R.find(x=>x[7]===n); if(r) return +r[8]||0; const t=TITANS.find(x=>x[5]===n); return t?(+t[6]||0):0;};
+  m.sort((a,b)=>lv(b[0])-lv(a[0]));
+  return m[0][0];
+}
+function pilImg(n){
+  const sl=String(n).normalize("NFD").replace(/[^ -~]/g,"").toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+  return `<img src="pil/${sl}.png" alt="" data-nofb="1" onerror="this.remove()">`;
+}
+function renderLoadouts(){
+  const host=document.getElementById("lo-grid"); if(!host) return;
+  const f=document.getElementById("lo-f").value, q=document.getElementById("lo-q").value.toLowerCase();
+  const POOL=freeCopies();
+  let list=[];
+  if(f==="tit"){ TITANS.forEach(t=>list.push({t:1,b:t,fl:t[1]})); }
+  else if(f==="all"){
+    [1,2,3,4,5,0].forEach(fl=>{ const t=TITANS.find(x=>x[1]===fl); if(t) list.push({t:1,b:t,fl:fl});
+      R.filter(r=>r[1]===fl).forEach(r=>list.push({t:0,b:r,fl:fl})); });
+    TITANS.filter(t=>t[1]===0).slice(1).forEach(t=>list.push({t:1,b:t,fl:0}));
+  } else {
+    [1,2,3,4,5].forEach(fl=>{ const t=TITANS.find(x=>x[1]===fl); if(t) list.push({t:1,b:t,fl:fl});
+      R.filter(r=>r[1]===fl).forEach(r=>list.push({t:0,b:r,fl:fl})); });
+  }
+  list=list.filter(x=>!q||x.b[0].toLowerCase().indexOf(q)>=0||("hangar "+x.fl).indexOf(q)>=0);
+  const used=new Set(R.filter(r=>r[1]>0&&r[9]).map(r=>r[9]));
+  host.innerHTML=list.map(x=>{
+    const b=x.b, isT=!!x.t, guns=isT?b[7]:b[10], slots=(isT?b[8]:b[3]);
+    const recs=recommendFill(slots,guns,POOL);
+    const have=guns.map(g=>`<span class="lochip">${wart(g)}${esc(g)}</span>`).join("");
+    const sug=recs.map(r=>r&&r.pick?`<span class="lochip sug">${wart(r.pick)}fit ${esc(r.pick)}</span>`:`<span class="lochip miss">nothing spare</span>`).join("");
+    const key=(wkKey(b[0],isT?"titans":"robots")||b[0]).toLowerCase();
+    const pn=loPilot(key), cur=isT?b[5]:b[7];
+    const dpick=isT?null:(DRONE_PICK[b[0]]||(DR.filter(d=>d[3].toLowerCase().indexOf(key)>=0).map(d=>d[0])[0])||null);
+    const vol=guns.reduce((a,g)=>a+wDmg(g).v,0);
+    const ms=mothershipFor(isT,isT?b[3]:b[4],isT?"":b[6],vol);
+    const reco=RECO[wkKey(b[0],isT?"titans":"robots")||b[0]]||RECO[b[0]];
+    const art=bart(b[0]);
+    const hp=isT?b[3]:b[4];
+    return `<div class="locard"><div class="lotop">${art||`<div class="ph">${esc(b[0].slice(0,2).toUpperCase())}</div>`}
+      <div><h4>${isT?"TITAN ":""}${esc(b[0])}</h4><div class="sub">${x.fl?"Hangar "+x.fl+" · ":"Not on a hangar · "}level ${b[2]}${hp?" · "+num(hp)+" hp":""}${(!isT&&b[6])?" · "+esc(b[6]):""}</div></div></div>
+      <div class="lorow"><span class="k">Weapons</span><span class="v">${have||"<small>none fitted</small>"}${sug?`<br>${sug}`:""}<small>${num(vol)} per volley now${reco?`. ${esc(reco)}.`:""}</small></span></div>
+      <div class="lorow"><span class="k">Pilot</span><span class="v">${cur&&cur.charAt(0)!=="("?`<span class="lochip">${pilImg(cur)}${esc(cur)} (flying now)</span>`:`<small>none named</small>`}${pn&&pn!==cur?`<br><span class="lochip sug">${pilImg(pn)}${esc(pn)}</span><small>pilot card made for this robot</small>`:(pn?"<small>that is the pilot card made for it</small>":"<small>no pilot card in your inventory is made for this robot</small>")}</span></div>
+      ${isT?"":`<div class="lorow"><span class="k">Drone</span><span class="v">${b[9]?`<span class="lochip"><img src="${dimg(b[9])}" alt="" data-nofb="1" onerror="this.remove()">${esc(b[9])} (fitted)</span>`:"<small>none fitted</small>"}${dpick&&dpick!==b[9]?`<br><span class="lochip sug"><img src="${dimg(dpick)}" alt="" data-nofb="1" onerror="this.remove()">${esc(dpick)}</span><small>${used.has(dpick)?"on another robot now":"free right now"}</small>`:""}</span></div>`}
+      <div class="lorow"><span class="k">Mothership</span><span class="v"><b>${ms[0]}</b><small>${esc(ms[1])}. Only one ship flies at a time, so this is the pick when this floor leads.</small></span></div></div>`;
+  }).join("")||`<div class="empty">Nothing matches.</div>`;
+}
+["wk-q","wk-k"].forEach(id=>{const e=document.getElementById(id); if(e) e.addEventListener(id==="wk-q"?"input":"change",renderWiki);});
+["lo-q","lo-f"].forEach(id=>{const e=document.getElementById(id); if(e) e.addEventListener(id==="lo-q"?"input":"change",renderLoadouts);});
+
 </script>
 
 </body></html>

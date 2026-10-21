@@ -3,7 +3,7 @@ The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
 - `/` portfolio home, built from `creators.json`
 - `shared/site.css` the common look every page links
 - `_template/` starter page for a new project (see `CONTRIBUTING.md`)
-- `/adams-hangar/` Moody.Adam's War Robots hangar tools (saved data lives in each visitor's browser)
+- `/adams-hangar/` Moody.Adam's War Robots hangar tools (saved data lives in each visitor's browser; a first visit starts from `adams-hangar/seed.json`)
 - `/adams-hangar/wiki/` wiki pages for every robot, weapon, drone and floor, reading `adams-hangar/data.js`
 - `/adams-hanger/` catches the common misspelling and forwards to `/adams-hangar/`
 - `/adamshanger/` forwards to `/adams-hangar/` too
