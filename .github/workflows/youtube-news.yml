@@ -14,6 +14,8 @@ jobs:
     steps:
       - uses: actions/checkout@v4
       - run: python3 .github/scripts/youtube_feed.py
+        env:
+          YT_API_KEY: ${{ secrets.YT_API_KEY }}
       - name: Commit if the feed changed
         run: |
           if git diff --quiet news/videos.json; then echo "No new videos."; exit 0; fi
