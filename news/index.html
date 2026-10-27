@@ -4,49 +4,89 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>War Robots Updates</title>
-<meta name="description" content="War Robots patch notes and the latest videos from the official War Robots YouTube channel.">
+<meta name="description" content="War Robots patch notes, developer posts, videos and player threads, refreshed every 4 hours.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/site.css">
 <style>
-.vids{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));margin-top:20px}
-.vid{display:flex;flex-direction:column;overflow:hidden;color:var(--fg);transition:border-color .15s,transform .15s}
-.vid:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none}
+/* Latest update up top, everything else one tap away. */
+.head{display:flex;align-items:flex-end;gap:16px;flex-wrap:wrap;justify-content:space-between}
+.head h1{margin:8px 0 0}
+.fresh{font-family:var(--mono);font-size:12px;color:var(--faint)}
+.fresh i{display:inline-block;width:8px;height:8px;border-radius:50%;background:var(--good);margin-right:6px;vertical-align:1px}
+.tabs{position:sticky;top:58px;z-index:20;display:flex;gap:6px;overflow-x:auto;scrollbar-width:none;margin:22px 0 0;padding:10px 0;
+  background:color-mix(in srgb,var(--bg) 92%,transparent);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+.tabs a{white-space:nowrap;padding:7px 14px;border-radius:999px;border:1px solid var(--line);color:var(--dim);font-size:14px;font-weight:500}
+.tabs a:hover{border-color:var(--accent);color:var(--fg);text-decoration:none}
+.tabs a span{font-family:var(--mono);font-size:11px;color:var(--faint);margin-left:4px}
+section.blk{scroll-margin-top:120px;margin-top:34px}
+section.blk>h2{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;margin:0 0 12px}
+section.blk>h2 small{font:400 13px var(--body);color:var(--faint);letter-spacing:0;text-transform:none}
+
+.hero{display:grid;grid-template-columns:minmax(0,1.5fr) minmax(0,1fr);overflow:hidden;margin-top:18px}
+@media (max-width:820px){.hero{grid-template-columns:1fr}}
+.hero .txt{padding:20px 22px;min-width:0}
+.hero h2{margin:8px 0 2px;font-size:30px}
+.hero .meta{font-family:var(--mono);font-size:12px;color:var(--faint)}
+.hero ul{margin:14px 0 0;padding-left:18px;color:var(--dim);font-size:14.5px}
+.hero li{margin-bottom:6px}
+.hero .watch{position:relative;display:block;min-height:220px;background:var(--bg2) center/cover no-repeat;color:#fff}
+.hero .watch::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 45%,rgba(0,0,0,.75))}
+.hero .watch span{position:absolute;left:16px;right:16px;bottom:14px;z-index:1;font-weight:600;font-size:15px;line-height:1.3}
+.hero .watch b{display:inline-block;background:#ff2e2e;color:#fff;font:600 11px/1 var(--mono);letter-spacing:.6px;padding:5px 8px;border-radius:4px;margin-bottom:6px}
+.hero .watch:hover{text-decoration:none}
+.stats{display:flex;gap:10px;flex-wrap:wrap;margin-top:16px}
+.stats div{border:1px solid var(--line);border-radius:8px;padding:8px 12px;min-width:110px}
+.stats b{display:block;font-family:var(--mono);font-size:20px;color:var(--accent)}
+.stats small{color:var(--faint);font-size:12px}
+
+.filter{display:flex;gap:6px;flex-wrap:wrap;margin:4px 0 6px}
+.filter button{font:500 13px var(--body);padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--dim);cursor:pointer}
+.filter button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1006}
+details.grp{border:1px solid var(--line);border-radius:10px;margin-top:10px;background:var(--panel)}
+details.grp>summary{cursor:pointer;padding:12px 16px;font-family:var(--display);font-size:18px;letter-spacing:.5px;text-transform:uppercase;list-style:none;display:flex;gap:10px;align-items:baseline}
+details.grp>summary::-webkit-details-marker{display:none}
+details.grp>summary::before{content:"+";font-family:var(--mono);color:var(--faint);width:12px}
+details.grp[open]>summary::before{content:"−"}
+details.grp>summary small{font:400 12px var(--mono);color:var(--faint);letter-spacing:0;text-transform:none}
+.items{display:grid;gap:8px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr));padding:0 14px 14px}
+.it{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg2);min-width:0;scroll-margin-top:120px}
+.it b{display:flex;gap:6px;align-items:baseline;flex-wrap:wrap;margin-bottom:4px;font-size:14.5px}
+.it div{font-size:13px;color:var(--dim);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
+.it.mine{border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
+.it:target{outline:2px solid var(--accent);outline-offset:2px}
+.mark{font:500 10px/1 var(--mono);letter-spacing:.5px;text-transform:uppercase;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:4px;padding:3px 5px}
+
+details.old{border-bottom:1px solid var(--line)}
+details.old>summary{cursor:pointer;padding:12px 2px;display:flex;gap:12px;align-items:baseline;flex-wrap:wrap}
+details.old>summary b{font-size:16px}
+details.old>summary small{color:var(--faint);font-family:var(--mono);font-size:12px}
+.cards{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));padding:4px 0 16px}
+.cards .card{padding:12px 14px;scroll-margin-top:120px}
+.cards h4{margin:0 0 6px;font-size:15.5px}
+.cards p{margin:0;font-size:13.5px;color:var(--dim)}
+.cards .why{margin-top:6px;color:var(--accent)}
+.cards .card:target{outline:2px solid var(--accent);outline-offset:2px}
+
+.list{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(300px,1fr))}
+.row{display:flex;gap:12px;padding:10px;color:var(--fg);min-width:0;align-items:center}
+.row:hover{border-color:var(--accent);text-decoration:none}
+.row img{width:96px;height:54px;object-fit:cover;border-radius:6px;flex:none;background:var(--bg2)}
+.row b{display:block;font-size:14.5px;line-height:1.3}
+.row small{color:var(--faint);font-family:var(--mono);font-size:11.5px}
+.vids{display:grid;gap:14px;grid-template-columns:repeat(auto-fill,minmax(240px,1fr))}
+.vid{display:flex;flex-direction:column;overflow:hidden;color:var(--fg)}
+.vid:hover{border-color:var(--accent);text-decoration:none}
 .vid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg2)}
-.vid .body{padding:12px 14px 14px;display:flex;flex-direction:column;gap:6px}
-.vid h3{margin:0;font-size:18px;line-height:1.25}
-.vid time{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.4px}
-.vid.new{border-color:var(--accent)}
-.pn{margin-top:18px;padding:18px 20px}
-.pn h2{margin:0 0 4px}
-.pn .meta{font-family:var(--mono);font-size:12px;color:var(--faint)}
-.pn ul.hl{margin:12px 0 0;padding-left:20px;color:var(--dim)}
-.pn ul.hl li{margin-bottom:6px}
-.pn-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0 4px}
-.pn-group{margin-top:18px}
-.pn-group h3{margin:0 0 8px;font-size:18px}
-.pn-items{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
-.pn-item{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg2);min-width:0}
-.pn-item b{display:block;margin-bottom:4px}
-.pn-item div{font-size:13px;color:var(--dim);overflow-wrap:anywhere}
-.pn-item.mine{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--bg2))}
-.pn-item:target,.pn-card:target{outline:2px solid var(--accent);outline-offset:2px}
-.pn-cards{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:10px}
-.pn-card{padding:12px 14px;min-width:0}
-.pn-card h4{margin:0 0 6px;font-size:16px}
-.pn-card p{margin:0;font-size:13.5px;color:var(--dim)}
-.pn-card .why{margin-top:6px;color:var(--accent);font-size:13px}
-.btn.on{background:var(--accent);color:#1a1006}
-h2.sec{margin-top:40px}
-.srcs{display:flex;flex-direction:column;gap:6px;padding:14px 16px;margin:6px 0 10px;font-size:14px;color:var(--dim)}
-.srcs b{color:var(--fg)}
-.posts{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:12px}
-.post{display:flex;gap:12px;padding:10px;color:var(--fg);min-width:0;align-items:center}
-.post:hover{border-color:var(--accent);text-decoration:none}
-.post img{width:92px;height:52px;object-fit:cover;border-radius:6px;flex:none;background:var(--bg2)}
-.post b{display:block;font-size:14.5px;line-height:1.3}
-.post small{color:var(--faint);font-family:var(--mono);font-size:11px}
-.pn,.pn-item,.pn-card,h3[id],h2[id]{scroll-margin-top:84px}
+.vid .b{padding:10px 12px 12px}
+.vid h3{margin:0;font-size:16px;line-height:1.25}
+.vid small{font-family:var(--mono);font-size:11px;color:var(--faint)}
+.new{font:600 10px/1 var(--mono);letter-spacing:.5px;color:#1a1006;background:var(--accent);border-radius:4px;padding:3px 6px;margin-right:6px;vertical-align:1px}
+.more{margin-top:12px}
+.srcs{font-size:13px;color:var(--faint);margin-top:40px;padding-top:14px;border-top:1px solid var(--line)}
+.srcs a{color:var(--dim)}
+.muted-box{padding:16px;color:var(--dim)}
 </style>
+<script src="/shared/search.js" defer></script>
 </head>
 <body>
 <div class="topbar"><div class="container">
@@ -54,80 +94,137 @@ h2.sec{margin-top:40px}
   <nav class="crumbs"><span>/</span><span>War Robots updates</span></nav>
 </div></div>
 
-<main class="container" style="padding-top:40px">
-  <span class="tag accent">Official channel</span>
-  <h1 style="margin-top:10px">War Robots Updates</h1>
-  <p class="lede">Patch notes from the developers, with every change that touches Adam's hangar marked, plus the latest videos from the <a href="https://www.youtube.com/@playwarrobots">War Robots YouTube channel</a>.</p>
-  <div class="card srcs">
-    <b>Where this comes from</b>
-    <span><span class="tag accent">Official</span> <a href="https://warrobots.com/en/news">warrobots.com news</a> and update notes, checked every 4 hours</span>
-    <span><span class="tag accent">Official</span> <a href="https://www.youtube.com/@playwarrobots">War Robots on YouTube</a></span>
-    <span><span class="tag">Players</span> <a href="https://www.reddit.com/r/walkingwarrobots/">r/walkingwarrobots</a>, shown as player posts, never as official numbers</span>
-    <span><span class="tag">Community wiki</span> <a href="https://warrobots.wiki/">warrobots.wiki</a> is fan-run; this site links to it but does not copy it</span>
+<main class="container" style="padding-top:34px">
+  <div class="head">
+    <div><span class="tag accent">War Robots</span><h1>Updates</h1></div>
+    <span class="fresh" id="fresh"></span>
   </div>
-  <div id="patch"><p class="muted">Loading patch notes…</p></div>
-  <h2 class="sec" id="dev">From the developers</h2>
-  <div class="posts" id="dev-posts"><p class="muted">Loading posts…</p></div>
-  <section id="reddit-sec" hidden>
-    <h2 class="sec" id="reddit">Players on Reddit</h2>
-    <p class="muted">Hot threads from r/walkingwarrobots. These are player posts and opinions, not developer figures.</p>
-    <div class="posts" id="reddit-posts"></div>
-  </section>
-  <h2 class="sec" id="videos">Videos</h2>
-  <p class="muted" id="when"></p>
-  <div class="vids" id="vids"><p class="muted">Loading videos…</p></div>
-</main>
-<footer class="footer"><div class="container">Videos belong to War Robots / MY.GAMES and open on YouTube · gragg.life</div></footer>
-<script src="/shared/search.js" defer></script>
-<script>
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-const day=d=>new Date(d).toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
-const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
-let MINE=false, PN=null;
-function renderPatch(){
-  const L=PN.latest, v="v"+slug(L.ver);
-  const groups=L.groups.map(g=>{ const its=g.items.filter(i=>!MINE||i.mine); if(!its.length) return "";
-    return `<div class="pn-group"><h3>${esc(g.head)}</h3><div class="pn-items">${its.map(i=>`
-      <div class="pn-item${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${esc(i.name)}${i.mine?' <span class="tag accent">Adam\'s gear</span>':""}</b>
-      ${i.lines.map(l=>`<div>${esc(l)}</div>`).join("")}</div>`).join("")}</div></div>`; }).join("");
-  const older=PN.older.map(o=>`<h3 style="margin-top:26px" id="v${slug(o.ver)}">Update ${esc(o.ver)}</h3><div class="pn-cards">${o.cards.filter(c=>!MINE||c.mine).map(c=>`
-      <div class="card pn-card" id="${slug(c.id)}"><h4>${esc(c.head)}${c.draft?' <span class="tag">Not final</span>':""}</h4><p>${esc(c.body)}</p>
-      ${c.mine&&c.why?`<p class="why">${esc(c.why)}</p>`:""}${c.url?`<p style="margin-top:6px"><a href="${esc(c.url)}">Source</a></p>`:""}</div>`).join("")||'<p class="muted">Nothing here touches Adam\'s gear.</p>'}</div>`).join("");
-  document.getElementById("patch").innerHTML=`
-    <div class="card pn" id="${v}"><span class="tag accent">Latest update</span>
-      <h2 style="margin-top:8px">${esc(L.ver)}: ${esc(L.title)}</h2>
-      <div class="meta">${new Date(L.date).toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"})} · <a href="${esc(L.url)}">${esc(L.source)}</a></div>
-      <ul class="hl">${L.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>
-      <div class="pn-tools"><b>Balance changes</b><button class="btn ghost${MINE?" on":""}" id="pn-mine" aria-pressed="${MINE}">Only Adam's gear</button></div>
-      ${groups}
+
+  <div class="card hero" id="hero"><div class="txt"><p class="muted">Loading the latest update…</p></div></div>
+
+  <nav class="tabs" aria-label="Sections">
+    <a href="#patch">Patch notes</a><a href="#dev">Developers <span id="n-dev"></span></a><a href="#videos">Videos <span id="n-vid"></span></a><a href="#reddit" id="t-reddit" hidden>Reddit <span id="n-red"></span></a><a href="#earlier">Earlier updates</a>
+  </nav>
+
+  <section class="blk" id="patch">
+    <h2>Balance changes <small id="pn-sub"></small></h2>
+    <div class="filter" role="group" aria-label="Show">
+      <button type="button" data-f="mine" aria-pressed="true">Adam's gear</button>
+      <button type="button" data-f="all" aria-pressed="false">Everything</button>
     </div>
-    <h2 class="sec">Earlier updates</h2>${(PN.archive||[]).map(a=>`<h3 style="margin-top:26px" id="v${slug(a.ver)}">Update ${esc(a.ver)}: ${esc(a.title)}</h3>
-      <p class="muted">${esc(a.date)} · <a href="${esc(a.url)}">${esc(a.source)}</a></p>${(a.highlights||[]).length?`<ul>${a.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:""}
-      <p class="muted">${a.groups.reduce((n,g)=>n+g.items.length,0)} changes, ${a.groups.reduce((n,g)=>n+g.items.filter(i=>i.mine).length,0)} touching Adam's gear.</p>`).join("")}${older}`;
-  document.getElementById("pn-mine").onclick=()=>{ MINE=!MINE; renderPatch(); };
+    <div id="groups"></div>
+  </section>
+
+  <section class="blk" id="dev">
+    <h2>From the developers <small>warrobots.com</small></h2>
+    <div class="list" id="dev-list"></div>
+    <details class="old more" id="dev-older" hidden><summary><b>Older posts</b></summary><div class="list" id="dev-old-list"></div></details>
+  </section>
+
+  <section class="blk" id="videos">
+    <h2>Videos <small><a href="https://www.youtube.com/@playwarrobots">War Robots on YouTube</a></small></h2>
+    <div class="vids" id="vids"></div>
+  </section>
+
+  <section class="blk" id="reddit" hidden>
+    <h2>Players on Reddit <small>r/walkingwarrobots · player posts, not official figures</small></h2>
+    <div class="list" id="red-list"></div>
+  </section>
+
+  <section class="blk" id="earlier">
+    <h2>Earlier updates</h2>
+    <div id="older"></div>
+  </section>
+
+  <p class="srcs">Sources: <a href="https://warrobots.com/en/news">warrobots.com news and update notes</a> (official) · <a href="https://www.youtube.com/@playwarrobots">War Robots on YouTube</a> (official) · <a href="https://www.reddit.com/r/walkingwarrobots/">r/walkingwarrobots</a> (players) · <a href="https://warrobots.wiki/">warrobots.wiki</a> (fan-run, linked only). Checked every 4 hours.</p>
+</main>
+<footer class="footer"><div class="container">Game content belongs to War Robots / MY.GAMES · gragg.life</div></footer>
+
+<script>
+const $=id=>document.getElementById(id);
+const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
+const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+const J=u=>fetch(u,{cache:"no-cache"}).then(r=>r.ok?r.json():null).catch(()=>null);
+const fmt=d=>d.toLocaleDateString(undefined,{day:"numeric",month:"short",year:"numeric"});
+const ago=d=>{ const n=Math.floor((Date.now()-d)/864e5); return n<1?"today":n===1?"yesterday":n<30?n+" days ago":fmt(d); };
+const MON={january:0,february:1,march:2,april:3,may:4,june:5,july:6,august:7,september:8,october:9,november:10,december:11};
+
+/* The developers' feed prints "21 October" with no year. Posts come newest first, so walk down
+   the list and step back a year each time the month jumps forward. */
+function withYears(posts){
+  let year=new Date().getFullYear(), last=13;
+  return posts.map(p=>{ const m=String(p.date).match(/(\d+)\s+([a-z]+)/i); if(!m) return Object.assign({},p,{when:null});
+    const mon=MON[m[2].toLowerCase()]; if(mon>last) year--; last=mon;
+    let d=new Date(year,mon,+m[1]); if(d-Date.now()>2*864e5){ year--; d=new Date(year,mon,+m[1]); }
+    return Object.assign({},p,{when:d}); });
 }
-fetch("/news/official.json",{cache:"no-cache"}).then(r=>r.json()).then(({posts})=>{
-  document.getElementById("dev-posts").innerHTML=posts.map(p=>`<a class="card post" href="${esc(p.url)}" target="_blank" rel="noopener">
-    ${p.img?`<img src="${esc(p.img)}" alt="" loading="lazy">`:""}<span><b>${esc(p.title)}</b><small>${esc(p.category)} · ${esc(p.date)}</small></span></a>`).join("");
-}).catch(()=>{ document.getElementById("dev-posts").innerHTML='<p class="muted">Developer posts could not load. See <a href="https://warrobots.com/en/news">warrobots.com/en/news</a>.</p>'; });
-fetch("/news/reddit.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{ if(!d||!d.posts||!d.posts.length) return;
-  document.getElementById("reddit-posts").innerHTML=d.posts.map(p=>`<a class="card post" href="${esc(p.url)}" target="_blank" rel="noopener">
-    <span><b>${esc(p.title)}</b><small>${p.flair?esc(p.flair)+" · ":""}${p.score} points · ${p.comments} comments</small></span></a>`).join("");
-  document.getElementById("reddit-sec").hidden=false; }).catch(()=>{});
-fetch("/news/patch-notes.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PN=d; renderPatch();
-  if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el) el.scrollIntoView(); } })
- .catch(()=>{ document.getElementById("patch").innerHTML='<p class="muted">Patch notes could not load. Try refreshing.</p>'; });
-window.addEventListener("hashchange",()=>{ const el=document.getElementById(location.hash.slice(1)); if(el) el.scrollIntoView({behavior:"smooth"}); });
-fetch("/news/videos.json",{cache:"no-cache"}).then(r=>r.json()).then(({videos})=>{
-  const week=Date.now()-7*864e5;
-  document.getElementById("when").textContent=videos.length?`Newest video posted ${day(videos[0].published)}.`:"";
-  document.getElementById("vids").innerHTML=videos.map(v=>`
-    <a class="card vid${new Date(v.published)>week?" new":""}" href="${esc(v.url)}" target="_blank" rel="noopener">
-      <img src="${esc(v.thumb)}" alt="" loading="lazy">
-      <div class="body">${new Date(v.published)>week?'<span class="tag accent" style="align-self:flex-start">New this week</span>':""}
-        <h3>${esc(v.title)}</h3><time datetime="${esc(v.published)}">${day(v.published)}</time></div>
-    </a>`).join("");
-}).catch(()=>{ document.getElementById("vids").innerHTML='<p class="muted">Videos could not load. Try refreshing.</p>'; });
+const arrow=line=>esc(line); // higher is not always better (cooldowns), so changes are not coloured
+
+let PN=null, FILTER="mine";
+function renderGroups(){
+  const L=PN.latest, v="v"+slug(L.ver);
+  $("groups").innerHTML=L.groups.map((g,gi)=>{
+    const its=g.items.filter(i=>FILTER==="all"||i.mine); if(!its.length) return "";
+    return `<details class="grp" ${gi<2||FILTER==="mine"?"open":""}><summary>${esc(g.head)} <small>${its.length} change${its.length>1?"s":""}</small></summary>
+      <div class="items">${its.map(i=>`<div class="it${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${esc(i.name)}${i.mine&&FILTER==="all"?' <span class="mark">Adam\'s gear</span>':""}</b>
+        ${i.lines.map(l=>`<div>${arrow(l)}</div>`).join("")}</div>`).join("")}</div></details>`; }).join("")
+    ||`<p class="muted">No balance changes touch Adam's gear in ${esc(L.ver)}.</p>`;
+  document.querySelectorAll(".filter button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===FILTER));
+}
+document.querySelector(".filter").addEventListener("click",e=>{ const b=e.target.closest("[data-f]"); if(b&&PN){ FILTER=b.dataset.f; renderGroups(); } });
+
+Promise.all([J("/news/patch-notes.json"),J("/news/videos.json"),J("/news/official.json"),J("/news/reddit.json")]).then(([pn,yt,off,red])=>{
+  const vids=(yt&&yt.videos)||[];
+  /* hero: latest update, with its overview video when there is one */
+  if(pn){ PN=pn; const L=pn.latest, all=L.groups.reduce((n,g)=>n+g.items.length,0), mine=L.groups.reduce((n,g)=>n+g.items.filter(i=>i.mine).length,0);
+    const ov=vids.find(x=>x.title.includes(L.ver))||vids[0];
+    const d=new Date(L.date);
+    $("hero").innerHTML=`<div class="txt"><span class="tag accent">Latest update</span>
+        <h2>${esc(L.ver)} · ${esc(L.title)}</h2>
+        <div class="meta">${isNaN(d)?esc(L.date):fmt(d)} · <a href="${esc(L.url)}">Official update notes</a></div>
+        <ul>${L.highlights.slice(0,6).map(h=>`<li>${esc(h)}</li>`).join("")}</ul>
+        <div class="stats"><div><b>${all}</b><small>balance changes</small></div><div><b>${mine}</b><small>touch Adam's gear</small></div></div></div>
+      ${ov?`<a class="watch" href="${esc(ov.url)}" target="_blank" rel="noopener" style="background-image:url('${esc(ov.thumb)}')"><span><b>▶ WATCH</b><br>${esc(ov.title)}</span></a>`:""}`;
+    $("pn-sub").textContent=`${L.ver} · ${all} changes, ${mine} for Adam`;
+    renderGroups();
+    $("older").innerHTML=[...(pn.archive||[]).map(a=>({ver:a.ver,title:a.title,url:a.url,cards:[]})),...pn.older].map(o=>`
+      <details class="old" id="v${slug(o.ver)}"><summary><b>Update ${esc(o.ver)}${o.title?" · "+esc(o.title):""}</b><small>${o.cards.length?o.cards.length+" notes":""}${o.cards.some(c=>c.mine)?" · touches Adam's gear":""}</small></summary>
+      ${o.cards.length?`<div class="cards">${o.cards.map(c=>`<div class="card" id="${slug(c.id)}"><h4>${esc(c.head)}${c.draft?' <span class="mark">Not final</span>':""}</h4><p>${esc(c.body)}</p>${c.mine&&c.why?`<p class="why">${esc(c.why)}</p>`:""}${c.url?`<p style="margin-top:6px"><a href="${esc(c.url)}">Source</a></p>`:""}</div>`).join("")}</div>`
+        :`<p><a href="${esc(o.url)}">Read the ${esc(o.ver)} update notes</a></p>`}</details>`).join("");
+  } else $("hero").innerHTML='<div class="txt"><p class="muted">Patch notes could not load. Try refreshing.</p></div>';
+
+  /* developers: dated, newest first, old ones folded away */
+  const posts=withYears((off&&off.posts)||[]), cut=Date.now()-183*864e5;
+  const row=p=>`<a class="card row" href="${esc(p.url)}" target="_blank" rel="noopener">${p.img?`<img src="${esc(p.img)}" alt="" loading="lazy">`:""}
+     <span><b>${p.when&&Date.now()-p.when<14*864e5?'<span class="new">NEW</span>':""}${esc(p.title)}</b><small>${esc(p.category)} · ${p.when?fmt(p.when):esc(p.date)}</small></span></a>`;
+  const recent=posts.filter(p=>!p.when||p.when>=cut), old=posts.filter(p=>p.when&&p.when<cut);
+  $("dev-list").innerHTML=recent.map(row).join("")||'<p class="muted">No developer posts in the last six months.</p>';
+  if(old.length){ $("dev-old-list").innerHTML=old.map(row).join(""); $("dev-older").hidden=false; }
+  $("n-dev").textContent=recent.length||"";
+
+  /* videos: newest eight */
+  $("vids").innerHTML=vids.slice(0,8).map(v=>{ const d=new Date(v.published); return `<a class="card vid" href="${esc(v.url)}" target="_blank" rel="noopener"><img src="${esc(v.thumb)}" alt="" loading="lazy">
+     <div class="b"><h3>${Date.now()-d<7*864e5?'<span class="new">NEW</span>':""}${esc(v.title)}</h3><small>${ago(d)}</small></div></a>`; }).join("")
+     +(vids.length>8?`<a class="btn ghost more" href="https://www.youtube.com/@playwarrobots/videos" target="_blank" rel="noopener">More on YouTube</a>`:"");
+  $("n-vid").textContent=vids.length?Math.min(8,vids.length):"";
+
+  /* reddit: only once the job has data */
+  if(red&&red.posts&&red.posts.length){
+    $("red-list").innerHTML=red.posts.map(p=>`<a class="card row" href="${esc(p.url)}" target="_blank" rel="noopener"><span><b>${esc(p.title)}</b>
+      <small>${p.flair?esc(p.flair)+" · ":""}${p.score} points · ${p.comments} comments · ${ago(new Date(p.created))}</small></span></a>`).join("");
+    $("reddit").hidden=false; $("t-reddit").hidden=false; $("n-red").textContent=red.posts.length; }
+
+  /* freshness line from the newest thing on the page */
+  const stamps=[vids[0]&&new Date(vids[0].published), posts[0]&&posts[0].when, red&&red.posts&&red.posts[0]&&new Date(red.posts[0].created)].filter(x=>x&&!isNaN(x));
+  if(stamps.length){ const n=new Date(Math.max(...stamps)); $("fresh").innerHTML=`<i></i>Newest item ${ago(n)} · checked every 4 hours`; }
+
+  if(location.hash&&PN&&!document.getElementById(location.hash.slice(1))&&location.hash.startsWith("#v"+slug(PN.latest.ver)+"-")){ FILTER="all"; renderGroups(); }
+  if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el){ const det=el.closest("details"); if(det) det.open=true; el.scrollIntoView(); } }
+});
+window.addEventListener("hashchange",()=>{ const el=document.getElementById(location.hash.slice(1)); if(!el) return;
+  const det=el.closest("details"); if(det) det.open=true;
+  if(el.classList.contains("it")&&!el.classList.contains("mine")&&FILTER==="mine"){ FILTER="all"; renderGroups(); }
+  (document.getElementById(location.hash.slice(1))||el).scrollIntoView({behavior:"smooth"}); });
 </script>
 </body>
 </html>
