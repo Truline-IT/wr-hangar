@@ -37,6 +37,14 @@
 .pn-card .why{margin-top:6px;color:var(--accent);font-size:13px}
 .btn.on{background:var(--accent);color:#1a1006}
 h2.sec{margin-top:40px}
+.srcs{display:flex;flex-direction:column;gap:6px;padding:14px 16px;margin:6px 0 10px;font-size:14px;color:var(--dim)}
+.srcs b{color:var(--fg)}
+.posts{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:12px}
+.post{display:flex;gap:12px;padding:10px;color:var(--fg);min-width:0;align-items:center}
+.post:hover{border-color:var(--accent);text-decoration:none}
+.post img{width:92px;height:52px;object-fit:cover;border-radius:6px;flex:none;background:var(--bg2)}
+.post b{display:block;font-size:14.5px;line-height:1.3}
+.post small{color:var(--faint);font-family:var(--mono);font-size:11px}
 .pn,.pn-item,.pn-card,h3[id],h2[id]{scroll-margin-top:84px}
 </style>
 </head>
@@ -50,7 +58,21 @@ h2.sec{margin-top:40px}
   <span class="tag accent">Official channel</span>
   <h1 style="margin-top:10px">War Robots Updates</h1>
   <p class="lede">Patch notes from the developers, with every change that touches Adam's hangar marked, plus the latest videos from the <a href="https://www.youtube.com/@playwarrobots">War Robots YouTube channel</a>.</p>
+  <div class="card srcs">
+    <b>Where this comes from</b>
+    <span><span class="tag accent">Official</span> <a href="https://warrobots.com/en/news">warrobots.com news</a> and update notes, checked every 4 hours</span>
+    <span><span class="tag accent">Official</span> <a href="https://www.youtube.com/@playwarrobots">War Robots on YouTube</a></span>
+    <span><span class="tag">Players</span> <a href="https://www.reddit.com/r/walkingwarrobots/">r/walkingwarrobots</a>, shown as player posts, never as official numbers</span>
+    <span><span class="tag">Community wiki</span> <a href="https://warrobots.wiki/">warrobots.wiki</a> is fan-run; this site links to it but does not copy it</span>
+  </div>
   <div id="patch"><p class="muted">Loading patch notes…</p></div>
+  <h2 class="sec" id="dev">From the developers</h2>
+  <div class="posts" id="dev-posts"><p class="muted">Loading posts…</p></div>
+  <section id="reddit-sec" hidden>
+    <h2 class="sec" id="reddit">Players on Reddit</h2>
+    <p class="muted">Hot threads from r/walkingwarrobots. These are player posts and opinions, not developer figures.</p>
+    <div class="posts" id="reddit-posts"></div>
+  </section>
   <h2 class="sec" id="videos">Videos</h2>
   <p class="muted" id="when"></p>
   <div class="vids" id="vids"><p class="muted">Loading videos…</p></div>
@@ -79,9 +101,19 @@ function renderPatch(){
       <div class="pn-tools"><b>Balance changes</b><button class="btn ghost${MINE?" on":""}" id="pn-mine" aria-pressed="${MINE}">Only Adam's gear</button></div>
       ${groups}
     </div>
-    <h2 class="sec">Earlier updates</h2>${older}`;
+    <h2 class="sec">Earlier updates</h2>${(PN.archive||[]).map(a=>`<h3 style="margin-top:26px" id="v${slug(a.ver)}">Update ${esc(a.ver)}: ${esc(a.title)}</h3>
+      <p class="muted">${esc(a.date)} · <a href="${esc(a.url)}">${esc(a.source)}</a></p>${(a.highlights||[]).length?`<ul>${a.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:""}
+      <p class="muted">${a.groups.reduce((n,g)=>n+g.items.length,0)} changes, ${a.groups.reduce((n,g)=>n+g.items.filter(i=>i.mine).length,0)} touching Adam's gear.</p>`).join("")}${older}`;
   document.getElementById("pn-mine").onclick=()=>{ MINE=!MINE; renderPatch(); };
 }
+fetch("/news/official.json",{cache:"no-cache"}).then(r=>r.json()).then(({posts})=>{
+  document.getElementById("dev-posts").innerHTML=posts.map(p=>`<a class="card post" href="${esc(p.url)}" target="_blank" rel="noopener">
+    ${p.img?`<img src="${esc(p.img)}" alt="" loading="lazy">`:""}<span><b>${esc(p.title)}</b><small>${esc(p.category)} · ${esc(p.date)}</small></span></a>`).join("");
+}).catch(()=>{ document.getElementById("dev-posts").innerHTML='<p class="muted">Developer posts could not load. See <a href="https://warrobots.com/en/news">warrobots.com/en/news</a>.</p>'; });
+fetch("/news/reddit.json",{cache:"no-cache"}).then(r=>r.ok?r.json():null).then(d=>{ if(!d||!d.posts||!d.posts.length) return;
+  document.getElementById("reddit-posts").innerHTML=d.posts.map(p=>`<a class="card post" href="${esc(p.url)}" target="_blank" rel="noopener">
+    <span><b>${esc(p.title)}</b><small>${p.flair?esc(p.flair)+" · ":""}${p.score} points · ${p.comments} comments</small></span></a>`).join("");
+  document.getElementById("reddit-sec").hidden=false; }).catch(()=>{});
 fetch("/news/patch-notes.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PN=d; renderPatch();
   if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el) el.scrollIntoView(); } })
  .catch(()=>{ document.getElementById("patch").innerHTML='<p class="muted">Patch notes could not load. Try refreshing.</p>'; });

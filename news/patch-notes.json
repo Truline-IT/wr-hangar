@@ -58,7 +58,7 @@
       "lines": [
        "Event Horizon Acceleration: -50% during activation"
       ],
-      "mine": false
+      "mine": true
      },
      {
       "name": "Lynx",
@@ -192,7 +192,7 @@
        "Time to Overheat: 13 → 10 s",
        "Damage per particle:",
        "- Celsius 1350 → 1485",
-       "- Fahrenheit 2000 → 2223",
+       "- Farenheit 2000 → 2223",
        "- Kelvin 2650 → 2970"
       ],
       "mine": true
@@ -563,7 +563,7 @@
       "lines": [
        "Special skills do not apply to Cryo & Ultimate Cryo"
       ],
-      "mine": false
+      "mine": true
      },
      {
       "name": "Nadir Rakhim (Fang)",
@@ -577,14 +577,14 @@
       "lines": [
        "Special skills do not apply to Kelvin"
       ],
-      "mine": false
+      "mine": true
      },
      {
       "name": "Nika Schum (Vector)",
       "lines": [
        "Special skills do not apply to Kelvin"
       ],
-      "mine": false
+      "mine": true
      },
      {
       "name": "Single Malt (Anaksor)",
@@ -864,6 +864,50 @@
        "Damage to Maximum Durability: 2,5% → 4%",
        "Duration: 9 → 10 s"
       ],
+      "mine": false
+     },
+     {
+      "name": "Bifrost",
+      "lines": [
+       "Defense Points: 65 → 55",
+       "Defense Points accumulation duration: 7 → 3 s",
+       "Stack decay rate: 4 → 3 s",
+       "Time with Max Stacks: 3 → 2 s"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Keel",
+      "lines": [
+       "Titan damage modifier: 240% → 200%",
+       "Damage: 50,000 → 40,000",
+       "Sequence shot interval: 2,2,2 → 3,3,3"
+      ],
+      "mine": false
+     }
+    ]
+   },
+   {
+    "head": "Fixes",
+    "items": [
+     {
+      "name": "Fixed an issue where \"For Enemy Slowdown: Damage Reduction\" of Scales drone did not work",
+      "lines": [],
+      "mine": false
+     },
+     {
+      "name": "Fixed an issue where robots and titans with STASIS BARRIER lost durability that they had repaired after the ability activation",
+      "lines": [],
+      "mine": false
+     },
+     {
+      "name": "Fixed an issue where robots with energy shields might lost the shield capacity event under the effect of Phase Shift or Phase Exile",
+      "lines": [],
+      "mine": false
+     },
+     {
+      "name": "Fixed an issue where critical legs damage visual effects would not appear on Ultimate Rhino",
+      "lines": [],
       "mine": false
      }
     ]
