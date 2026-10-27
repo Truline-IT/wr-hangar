@@ -1,32 +1,46 @@
-"""Fetch the official War Robots YouTube feed and write news/videos.json for the site."""
+"""List the newest videos on the official War Robots YouTube channel and write news/videos.json.
+
+Uses the YouTube Data API (the uploads playlist of the channel). YouTube's robots.txt asks
+automated tools not to read /feeds/videos.xml, so this script never touches the RSS feed.
+Needs a YouTube Data API key in the YT_API_KEY environment variable (a GitHub Actions secret).
+"""
 import json
+import os
 import sys
+import urllib.parse
 import urllib.request
-import xml.etree.ElementTree as ET
 
-FEED = "https://www.youtube.com/feeds/videos.xml?channel_id=UCUONs6Dma0w6iDbKUk5cvBg"
+CHANNEL_ID = "UCUONs6Dma0w6iDbKUk5cvBg"          # youtube.com/@playwarrobots
+UPLOADS = "UU" + CHANNEL_ID[2:]                    # every channel's uploads playlist
 OUT = "news/videos.json"
-NS = {"a": "http://www.w3.org/2005/Atom", "yt": "http://www.youtube.com/xml/schemas/2015",
-      "media": "http://search.yahoo.com/mrss/"}
 
 
-def main(source=None):
-    raw = open(source, "rb").read() if source else urllib.request.urlopen(FEED, timeout=30).read()
-    root = ET.fromstring(raw)
+def main():
+    key = os.environ.get("YT_API_KEY", "")
+    if not key:
+        print("YT_API_KEY is not set; leaving news/videos.json as it is.")
+        return
+    q = urllib.parse.urlencode({"part": "snippet", "playlistId": UPLOADS, "maxResults": 15, "key": key})
+    with urllib.request.urlopen("https://www.googleapis.com/youtube/v3/playlistItems?" + q, timeout=30) as r:
+        items = json.load(r).get("items", [])
     videos = []
-    for e in root.findall("a:entry", NS):
-        vid = e.findtext("yt:videoId", namespaces=NS)
-        desc = (e.findtext("media:group/media:description", default="", namespaces=NS) or "").strip()
+    for it in items:
+        s = it["snippet"]
+        vid = s["resourceId"]["videoId"]
+        thumbs = s.get("thumbnails", {})
+        thumb = (thumbs.get("high") or thumbs.get("medium") or thumbs.get("default") or {}).get("url") \
+            or f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg"
         videos.append({
             "id": vid,
-            "title": e.findtext("a:title", namespaces=NS),
-            "published": e.findtext("a:published", namespaces=NS),
+            "title": s["title"],
+            "published": s["publishedAt"],
             "url": f"https://www.youtube.com/watch?v={vid}",
-            "thumb": f"https://i.ytimg.com/vi/{vid}/hqdefault.jpg",
-            "summary": desc.split("\n")[0][:220],
+            "thumb": thumb,
+            "summary": (s.get("description") or "").strip().split("\n")[0][:220],
         })
     if not videos:
-        sys.exit("Feed had no videos; keeping the old file.")
+        sys.exit("The API returned no videos; keeping the old file.")
+    videos.sort(key=lambda v: v["published"], reverse=True)
     data = {"channel": "War Robots", "channel_url": "https://www.youtube.com/@playwarrobots", "videos": videos}
     with open(OUT, "w", encoding="utf-8") as f:
         json.dump(data, f, indent=1, ensure_ascii=False)
@@ -35,4 +49,4 @@ def main(source=None):
 
 
 if __name__ == "__main__":
-    main(sys.argv[1] if len(sys.argv) > 1 else None)
+    main()

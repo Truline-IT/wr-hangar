@@ -30,6 +30,10 @@
 .news header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px}
 .news header h2{margin:0}
 .news .strip{margin-top:14px}
+.pn-latest{display:block;margin-top:14px;padding:14px 16px;color:var(--fg)}
+.pn-latest:hover{border-color:var(--accent);text-decoration:none}
+.pn-latest b{font-family:var(--display);font-size:20px;letter-spacing:.5px}
+.pn-latest p{margin:4px 0 0;color:var(--dim);font-size:14px}
 .vid{display:flex;flex-direction:column;overflow:hidden;color:var(--fg);min-width:0;scroll-snap-align:start}
 .vid:hover{border-color:var(--accent);text-decoration:none}
 .vid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg2)}
@@ -40,6 +44,7 @@
 .join{margin-top:44px;padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
 .join p{margin:0;flex:1;min-width:220px;color:var(--dim)}
 </style>
+<script src="/shared/search.js" defer></script>
 </head>
 <body>
 <div class="topbar"><div class="container">
@@ -53,7 +58,8 @@
   </section>
   <div id="creators"><p class="muted">Loading projects…</p></div>
   <section class="news">
-    <header><h2>Latest War Robots updates</h2><a href="/news/">All videos</a></header>
+    <header><h2>Latest War Robots updates</h2><a href="/news/">Patch notes and all videos</a></header>
+    <a class="card pn-latest" id="pn-latest" href="/news/" hidden></a>
     <div class="strip" id="news"><p class="muted">Loading videos…</p></div>
   </section>
   <div class="card join">
@@ -75,6 +81,10 @@ fetch("/creators.json").then(r=>r.json()).then(({creators})=>{
             <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></div>
         </a>`).join("")}</div>`;
 }).catch(()=>{document.getElementById("creators").innerHTML='<p class="muted">Projects could not load. Try refreshing.</p>';});
+fetch("/news/patch-notes.json",{cache:"no-cache"}).then(r=>r.json()).then(({latest:L})=>{
+  const mine=L.groups.reduce((n,g)=>n+g.items.filter(i=>i.mine).length,0), el=document.getElementById("pn-latest");
+  el.innerHTML=`<span class="tag accent">Patch notes</span> <b>${esc(L.ver)}: ${esc(L.title)}</b><p>${esc(L.highlights[0])} ${mine} balance changes touch Adam's gear.</p>`;
+  el.hidden=false; }).catch(()=>{});
 fetch("/news/videos.json",{cache:"no-cache"}).then(r=>r.json()).then(({videos})=>{
   const day=d=>new Date(d).toLocaleDateString(undefined,{month:"short",day:"numeric"});
   document.getElementById("news").innerHTML=videos.slice(0,4).map(v=>`
