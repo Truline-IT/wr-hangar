@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>War Robots Updates</title>
-<meta name="description" content="The latest videos from the official War Robots YouTube channel, refreshed automatically.">
+<meta name="description" content="War Robots patch notes and the latest videos from the official War Robots YouTube channel.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/site.css">
 <style>
@@ -16,6 +16,28 @@
 .vid h3{margin:0;font-size:18px;line-height:1.25}
 .vid time{font-family:var(--mono);font-size:11px;color:var(--faint);letter-spacing:.4px}
 .vid.new{border-color:var(--accent)}
+.pn{margin-top:18px;padding:18px 20px}
+.pn h2{margin:0 0 4px}
+.pn .meta{font-family:var(--mono);font-size:12px;color:var(--faint)}
+.pn ul.hl{margin:12px 0 0;padding-left:20px;color:var(--dim)}
+.pn ul.hl li{margin-bottom:6px}
+.pn-tools{display:flex;gap:8px;flex-wrap:wrap;align-items:center;margin:16px 0 4px}
+.pn-group{margin-top:18px}
+.pn-group h3{margin:0 0 8px;font-size:18px}
+.pn-items{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(230px,1fr))}
+.pn-item{padding:10px 12px;border:1px solid var(--line);border-radius:8px;background:var(--bg2);min-width:0}
+.pn-item b{display:block;margin-bottom:4px}
+.pn-item div{font-size:13px;color:var(--dim);overflow-wrap:anywhere}
+.pn-item.mine{border-color:var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--bg2))}
+.pn-item:target,.pn-card:target{outline:2px solid var(--accent);outline-offset:2px}
+.pn-cards{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(280px,1fr));margin-top:10px}
+.pn-card{padding:12px 14px;min-width:0}
+.pn-card h4{margin:0 0 6px;font-size:16px}
+.pn-card p{margin:0;font-size:13.5px;color:var(--dim)}
+.pn-card .why{margin-top:6px;color:var(--accent);font-size:13px}
+.btn.on{background:var(--accent);color:#1a1006}
+h2.sec{margin-top:40px}
+.pn,.pn-item,.pn-card,h3[id],h2[id]{scroll-margin-top:84px}
 </style>
 </head>
 <body>
@@ -27,14 +49,43 @@
 <main class="container" style="padding-top:40px">
   <span class="tag accent">Official channel</span>
   <h1 style="margin-top:10px">War Robots Updates</h1>
-  <p class="lede">Every video from the <a href="https://www.youtube.com/@playwarrobots">War Robots YouTube channel</a>: patch overviews, robot spotlights and events. This page checks the channel every four hours and adds new videos on its own.</p>
+  <p class="lede">Patch notes from the developers, with every change that touches Adam's hangar marked, plus the latest videos from the <a href="https://www.youtube.com/@playwarrobots">War Robots YouTube channel</a>.</p>
+  <div id="patch"><p class="muted">Loading patch notes…</p></div>
+  <h2 class="sec" id="videos">Videos</h2>
   <p class="muted" id="when"></p>
   <div class="vids" id="vids"><p class="muted">Loading videos…</p></div>
 </main>
 <footer class="footer"><div class="container">Videos belong to War Robots / MY.GAMES and open on YouTube · gragg.life</div></footer>
+<script src="/shared/search.js" defer></script>
 <script>
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 const day=d=>new Date(d).toLocaleDateString(undefined,{year:"numeric",month:"short",day:"numeric"});
+const slug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+let MINE=false, PN=null;
+function renderPatch(){
+  const L=PN.latest, v="v"+slug(L.ver);
+  const groups=L.groups.map(g=>{ const its=g.items.filter(i=>!MINE||i.mine); if(!its.length) return "";
+    return `<div class="pn-group"><h3>${esc(g.head)}</h3><div class="pn-items">${its.map(i=>`
+      <div class="pn-item${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${esc(i.name)}${i.mine?' <span class="tag accent">Adam\'s gear</span>':""}</b>
+      ${i.lines.map(l=>`<div>${esc(l)}</div>`).join("")}</div>`).join("")}</div></div>`; }).join("");
+  const older=PN.older.map(o=>`<h3 style="margin-top:26px" id="v${slug(o.ver)}">Update ${esc(o.ver)}</h3><div class="pn-cards">${o.cards.filter(c=>!MINE||c.mine).map(c=>`
+      <div class="card pn-card" id="${slug(c.id)}"><h4>${esc(c.head)}${c.draft?' <span class="tag">Not final</span>':""}</h4><p>${esc(c.body)}</p>
+      ${c.mine&&c.why?`<p class="why">${esc(c.why)}</p>`:""}${c.url?`<p style="margin-top:6px"><a href="${esc(c.url)}">Source</a></p>`:""}</div>`).join("")||'<p class="muted">Nothing here touches Adam\'s gear.</p>'}</div>`).join("");
+  document.getElementById("patch").innerHTML=`
+    <div class="card pn" id="${v}"><span class="tag accent">Latest update</span>
+      <h2 style="margin-top:8px">${esc(L.ver)}: ${esc(L.title)}</h2>
+      <div class="meta">${new Date(L.date).toLocaleDateString(undefined,{year:"numeric",month:"long",day:"numeric"})} · <a href="${esc(L.url)}">${esc(L.source)}</a></div>
+      <ul class="hl">${L.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>
+      <div class="pn-tools"><b>Balance changes</b><button class="btn ghost${MINE?" on":""}" id="pn-mine" aria-pressed="${MINE}">Only Adam's gear</button></div>
+      ${groups}
+    </div>
+    <h2 class="sec">Earlier updates</h2>${older}`;
+  document.getElementById("pn-mine").onclick=()=>{ MINE=!MINE; renderPatch(); };
+}
+fetch("/news/patch-notes.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PN=d; renderPatch();
+  if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el) el.scrollIntoView(); } })
+ .catch(()=>{ document.getElementById("patch").innerHTML='<p class="muted">Patch notes could not load. Try refreshing.</p>'; });
+window.addEventListener("hashchange",()=>{ const el=document.getElementById(location.hash.slice(1)); if(el) el.scrollIntoView({behavior:"smooth"}); });
 fetch("/news/videos.json",{cache:"no-cache"}).then(r=>r.json()).then(({videos})=>{
   const week=Date.now()-7*864e5;
   document.getElementById("when").textContent=videos.length?`Newest video posted ${day(videos[0].published)}.`:"";

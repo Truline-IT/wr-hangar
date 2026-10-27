@@ -1,0 +1,1057 @@
+{
+ "updated": "2026-10-27",
+ "latest": {
+  "ver": "12.5",
+  "title": "Halloween Interlopers",
+  "date": "2026-10-27",
+  "url": "https://warrobots.com/en/posts/423",
+  "source": "Official update notes",
+  "highlights": [
+   "New robot: Nekton (EvoLife flying tripod, 1 Heavy + 3 Light, 320,000 durability, 55 km/h). Abyss: takes flight with an Absorber shield for 10 s; every 25,000 damage taken adds 1 s, up to 8 s extra.",
+   "New weapons: Mesmer L/M/H, 600 m energy beam that stacks BLAST; 1690 / 2535 / 3380 damage per particle at full charge.",
+   "New drone: Object. New mothership: Roswell (lifts your robot above the deployment point, adds damage, turns damage taken into DoT).",
+   "New ultimate editions: Ultimate Loki (3 Light, 280,000 durability, 60 km/h) and Ultimate Gust (3289 per particle, 6 particles, 500 m).",
+   "New pilots: The Martian (Nekton, Mesmer L/H), Orson Barret (Ultimate Rhino, Ultimate Toxin/Venom), Darian Grief (Ultimate Loki, Ultimate Gust).",
+   "Unstable Conduit module: +35% extra durability, +20% speed for 6 s. Tactical Shift: Ground Zero, the centre of the map grants Aegis, damage resistance or repair.",
+   "Event: Halloween Interlopers starts 27 October, daily rewards in the Event Hub. Finish it for the title HALLOWEEN INTERLOPER."
+  ],
+  "groups": [
+   {
+    "head": "Robots",
+    "items": [
+     {
+      "name": "Shoggoth",
+      "lines": [
+       "Durability: 300,000 → 250,000",
+       "Aegis capacity: 162,000 → 100,000",
+       "Aegis regeneration: 8100 → 6000",
+       "Built-in weapon damage per particle: 35,000 → 40,250",
+       "Line Of Sight duration: 4 s",
+       "Tracking Shot duration: 7 → 2 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Anaksor",
+      "lines": [
+       "Durability: 330,000 → 260,000",
+       "Invisibility charges",
+       "- MK3: 3 → 2",
+       "- MK1-MK2: 2 → 1",
+       "Movement speed: 55 → 58 km/h",
+       "Built-in weapon damage per particle: 7500 → 4875"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Ammit",
+      "lines": [
+       "Durability: 495,000 → 550,000",
+       "Movement speed: 52 → 35 km/h",
+       "Ability duration: 10 → 6 s",
+       "Ability cooldown: 8 → 13 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Vector",
+      "lines": [
+       "Event Horizon Acceleration: -50% during activation"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Lynx",
+      "lines": [
+       "Movement speed: 62 → 65 km/h"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Imugi",
+      "lines": [
+       "Damage bonus: 5 → 10%",
+       "Movement speed: 50 → 52 km/h"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Curie",
+      "lines": [
+       "Ability bonus durability: 150 → 155%"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Dagon",
+      "lines": [
+       "Aegis capacity: 90,000 → 100,000",
+       "Aegis regeneration: 10,000 → 11,000"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Shenlou",
+      "lines": [
+       "Aegis per blink: 40,000 → 50,000"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Ochokochi",
+      "lines": [
+       "Durability: 300,000 → 320,000",
+       "DoT Damage Reduction: 40% → 45%"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Scorpion",
+      "lines": [
+       "Durability: 201,000 → 220,000"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Typhon",
+      "lines": [
+       "Aegis capacity: 60,000 → 75,000",
+       "Aegis regeneration: 3960 → 4950",
+       "Aegis capacity to activate: 12000 → 15000"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Ares",
+      "lines": [
+       "Durability: 155,700 → 165,000"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Invader",
+      "lines": [
+       "Durability: 427,700 → 450,000",
+       "Movement speed: 47 → 48 km/h",
+       "Incursion damage: 6000 → 7500"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Blitz",
+      "lines": [
+       "Durability: 201,000 → 220,000",
+       "Aegis capacity: 82,110 → 90,000"
+      ],
+      "mine": true
+     }
+    ]
+   },
+   {
+    "head": "Robot weapons",
+    "items": [
+     {
+      "name": "Iaraghi-L/M/H",
+      "lines": [
+       "Damage per particle:",
+       "- Iaraghi-L 22,500 → 15,750",
+       "- Iaraghi-M 33,750 → 23,625",
+       "- Iaraghi-H 45,000 → 31,500"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Lumen-L/M/H",
+      "lines": [
+       "Damage per particle:",
+       "- Lumen-L: 650 → 1000",
+       "- Lumen-M: 975 → 1500",
+       "- Lumen-H: 1300 → 2000",
+       "Thermal Breach damage bonus per stack: 1.15 → 0.15"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Voonith / Urhag / Shantak",
+      "lines": [
+       "Projectile speed: 1000 → 700 m/s",
+       "Shot interval: 0.8 → 2.2 s",
+       "Ammo 13 → 10",
+       "Reload amount: 3 → 1",
+       "Damage per particle:",
+       "- Voonith 7,500 → 8,438",
+       "- Shantak 11,250 → 12,656",
+       "- Urhag 15,000 → 16,875"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Celsius / Fahrenheit / Kelvin",
+      "lines": [
+       "Shot interval: 0.07 → 0.15 s",
+       "Time to Overheat: 13 → 10 s",
+       "Damage per particle:",
+       "- Celsius 1350 → 1485",
+       "- Fahrenheit 2000 → 2223",
+       "- Kelvin 2650 → 2970"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Velos / Machaira / Basileus",
+      "lines": [
+       "Reload interval: 5 → 7 s",
+       "Damage per particle:",
+       "- Velos 900 → 810",
+       "- Machaira 1350 → 1215",
+       "- Basileus 1800 → 1620"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Hippo / Kroko / Liodari",
+      "lines": [
+       "Reload interval: 5 → 6 s",
+       "Damage per particle:",
+       "- Hippo 27,500 → 26,125",
+       "- Kroko 36,600 → 39,187",
+       "- Liodari 55,000 → 52,250"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Boom / Bash / Pow",
+      "lines": [
+       "Reload interval: 7 → 10 s",
+       "Damage per particle:",
+       "- Pow 15,500 → 16,275",
+       "- Bash 23,250 → 24,412",
+       "- Boom 30,600 → 32,130"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Shifang / Leiming / Fengbao",
+      "lines": [
+       "Damage per particle:",
+       "- Shifang 1260 → 1390",
+       "- Leiming 1985 → 2085",
+       "- Fengbao 2520 → 2770",
+       "Reload interval: 10 → 9 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Tamer / Damper / Subduer",
+      "lines": [
+       "Damage per particle:",
+       "- Tamer 1700 → 1900",
+       "- Damper 2500 → 2800",
+       "- Subduer 3735 → 3800"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Splinter / Shatter / Brisant",
+      "lines": [
+       "Damage per particle:",
+       "- Splinter 445 → 483",
+       "- Shatter 615 → 725",
+       "- Brisant 920 → 966",
+       "Reload interval: 5 → 4 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Quarker / Atomizer / Nucleon",
+      "lines": [
+       "Damage per particle:",
+       "- Quarker 900 → 946",
+       "- Atomizer 1350 → 1420",
+       "- Nucleon 1800 → 2130",
+       "Time to Overheat: 5 → 6 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Claw / Jaw / Talon",
+      "lines": [
+       "Damage per particle:",
+       "- Claw 1850 → 1960",
+       "- Jaw 2700 → 2860",
+       "- Talon 3600 → 3810",
+       "Reload interval: 5 → 4 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Arbalest",
+      "lines": [
+       "Damage per particle: 2576 → 3025"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Hazard",
+      "lines": [
+       "Damage per particle: 4500 → 4956"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Decay",
+      "lines": [
+       "Damage per particle: 5994 → 6608"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Gust",
+      "lines": [
+       "Damage per particle: 1912 → 2656"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Storm",
+      "lines": [
+       "Damage per particle: 1912 → 2656"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Halo",
+      "lines": [
+       "Damage per particle: 1098 → 1155"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Corona",
+      "lines": [
+       "Damage per particle: 723 → 866"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Razdor",
+      "lines": [
+       "Damage per particle: 438 → 519"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Smuta",
+      "lines": [
+       "Damage per particle: 653 → 692"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Ksiphos",
+      "lines": [
+       "Damage per particle: 1832 → 1955"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Labrys",
+      "lines": [
+       "Damage per particle: 2346 → 2,933"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Pulsar",
+      "lines": [
+       "Damage per particle: 2781 → 3390"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Hussar",
+      "lines": [
+       "Damage per particle: 4900 → 5062"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Spike",
+      "lines": [
+       "Damage per particle: 15,000 → 17,850"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Stake",
+      "lines": [
+       "Damage per particle: 19,600 → 23,800"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Scourge",
+      "lines": [
+       "Damage per particle: 630 → 850"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Calamity",
+      "lines": [
+       "Damage per particle: 1043 → 1134"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Yeoje",
+      "lines": [
+       "Damage per particle: 1317 → 1507"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Hwangje",
+      "lines": [
+       "Damage per particle: 1594 → 2010"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Toxin",
+      "lines": [
+       "Damage per particle: 297 → 313"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Venom",
+      "lines": [
+       "Damage per particle: 446 → 469"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Wasp",
+      "lines": [
+       "Damage per particle: 6274 → 6450"
+      ],
+      "mine": false
+     }
+    ]
+   },
+   {
+    "head": "Drones",
+    "items": [
+     {
+      "name": "Lar",
+      "lines": [
+       "On Robot Shooting: Deathmark: 15% → 10%",
+       "On Kill: Fix: 8% → 10%"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Fhtagn",
+      "lines": [
+       "On Tracked Kill: Damage: 10% → 7%",
+       "Improved Regenerating Aegis: 5% → 2,5%"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Tensor",
+      "lines": [
+       "Flamethrower:",
+       "Flamethrower Damage per particle: 800 → 650",
+       "AoE radius:  20 → 12 m",
+       "Overheat delay: 0.5 → 1 s",
+       "Shot interval 0.05 → 0.1 s",
+       "While Reflector: Armor Plates: 15% → 10%",
+       "Gray Damage Decrease Duration: 5 → 3 s"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Myia",
+      "lines": [
+       "Corrosion Machine Gun damage per particle: 3600 → 1500",
+       "On Invisibility: Fix: 15% → 10%"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Hawkeye",
+      "lines": [
+       "Magnetic Inspection: 50% → 40%",
+       "Gray Damage Resistance: 10 → 5%"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Seeker",
+      "lines": [
+       "Counterblind radius: 500 → 300 m",
+       "Quantum Sensor: 200 → 150 m"
+      ],
+      "mine": true
+     }
+    ]
+   },
+   {
+    "head": "Robot pilots",
+    "items": [
+     {
+      "name": "Ines Diaz (Vulcan)",
+      "lines": [
+       "Precision Focus: 15% → 12%",
+       "Rhythm Sync: 25% → 20%",
+       "Special skills do not apply to Lumen-H"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Baek Taejun (Shoggoth)",
+      "lines": [
+       "Taejun's Audacity: 10 → 5%",
+       "Taejun's Awareness: 10% → 12%",
+       "Special skills do not apply to Voonith"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Alex Tav (Anaksor)",
+      "lines": [
+       "Improved Barrage: 15% → 10%",
+       "Gigantomania: 15 → 10%",
+       "Special skills do not apply to Velos"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Vorren Kaal (Princeps)",
+      "lines": [
+       "Stasis Reserve: 2 → 1"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Chef Broil (Atlas)",
+      "lines": [
+       "Rapid Stir: 15% → 12%",
+       "Heavy Plating cooldown: 30 → 35 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Sigrid Solmer (Bjorn)",
+      "lines": [
+       "Strength of Spirit: 13% → 10%",
+       "Bear Skin: 35 → 25"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Donnie Woo (Dedopali)",
+      "lines": [
+       "Special skills do not apply to Iaraghi-M"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Andor Miharr (Ultimate Shell)",
+      "lines": [
+       "Special skills do not apply to Cryo & Ultimate Cryo"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Nadir Rakhim (Fang)",
+      "lines": [
+       "Special skills do not apply to Harmattan-L & Harmattan-H"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Kai Ruo (Vector)",
+      "lines": [
+       "Special skills do not apply to Kelvin"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Nika Schum (Vector)",
+      "lines": [
+       "Special skills do not apply to Kelvin"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Single Malt (Anaksor)",
+      "lines": [
+       "Special skills do not apply to Velos"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Mei Lan (Ammit)",
+      "lines": [
+       "Special skills do not apply to Liodari"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Basil Lapatte",
+      "lines": [
+       "Special skills won’t work on weapons released after 12.4"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Midea Nerium",
+      "lines": [
+       "Special skills won’t work on weapons released after 12.4"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Raphael Petit",
+      "lines": [
+       "Special skills won’t work on weapons released after 12.4"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Eddie Noll",
+      "lines": [
+       "Special skills won’t work on weapons released after 12.4"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Otto Schreyer",
+      "lines": [
+       "Special skills won’t work on weapons released after 12.4"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Peregrin Raine",
+      "lines": [
+       "Special skills won’t work on weapons released after 12.4"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Kate O'Donnel",
+      "lines": [
+       "Special skills won’t work on weapons released after 12.4"
+      ],
+      "mine": false
+     }
+    ]
+   },
+   {
+    "head": "Titans",
+    "items": [
+     {
+      "name": "Princeps",
+      "lines": [
+       "Durability: 625,000 → 656,250",
+       "Nullfield duration: 10 → 6 s",
+       "Nullfield cooldown: 12 → 15 s"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Atlas",
+      "lines": [
+       "Ascension frontal Absorber duration:  7 → 5 s",
+       "Maximum durability bonus from Absorber: 150,000 → 120,000"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Heimdall",
+      "lines": [
+       "Durability: 701,518 → 750,000",
+       "Golden Horn cooldown: 10 → 8 s"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Sirius",
+      "lines": [
+       "Durability: 850,000 → 890,000",
+       "Remote Restore Cooldown: 18 → 16 s",
+       "Remote Assault Cooldown: 15 → 13 s"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Aether",
+      "lines": [
+       "Durability: 506,000 → 550,000",
+       "Skyward cooldown 18 → 16 s",
+       "Vigour cooldown: 18 → 16 s"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Newton",
+      "lines": [
+       "Movement speed: 45 → 47 km/h"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Rook",
+      "lines": [
+       "Durability: 753,000 → 800,000",
+       "Castling cooldown: 15 → 13 s"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Bjorn",
+      "lines": [
+       "Built-in weapon damage per particle: 30,000 → 19,500",
+       "Aegis capacity: 380,000 → 150,000"
+      ],
+      "mine": false
+     }
+    ]
+   },
+   {
+    "head": "Titan weapons",
+    "items": [
+     {
+      "name": "Furnace / Torch",
+      "lines": [
+       "Damage per particle:",
+       "- Furnace 1925 → 1310",
+       "- Torch 1540 → 870",
+       "Reload interval: 9 → 8 s"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Venire / Vincere",
+      "lines": [
+       "AoE radius: 7 → 8 m",
+       "Horizontal & Vertical dispersion: 0.025 → 0.04",
+       "Damage per particle:",
+       "- Venire 2250 → 1720",
+       "- Vincere 1925 → 1145"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Chasm / Void",
+      "lines": [
+       "Shot interval: 0.8 → 0.7 s",
+       "Damage per particle: 1300 → 995"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Tonans / Fulgur",
+      "lines": [
+       "Damage per particle:",
+       "- Tonans  3270 → 3967",
+       "- Fulgur 2519 → 2645"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Dazzler / Lantern",
+      "lines": [
+       "Damage per particle:",
+       "- Dazzler : 1166 → 1545",
+       "- Lantern : 980 → 1030"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Huginn / Muninn",
+      "lines": [
+       "Damage per particle:",
+       "- Huginn 2570 → 3071",
+       "- Muninn 1950 → 2048"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Cyclone",
+      "lines": [
+       "Damage per particle: 702 → 853"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Krait",
+      "lines": [
+       "Damage per particle: 1818 → 1947"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Glaive",
+      "lines": [
+       "Damage per particle: 9975 → 11025"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Arbiter",
+      "lines": [
+       "Damage per particle: 2800 → 3150"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Evora",
+      "lines": [
+       "Damage per particle: 1290 → 1147"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Oxy",
+      "lines": [
+       "Damage per particle: 3303 → 2891"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Discordia",
+      "lines": [
+       "Damage per particle: 1364 → 1566"
+      ],
+      "mine": true
+     },
+     {
+      "name": "Bulava",
+      "lines": [
+       "Damage per particle: 2700 → 3300"
+      ],
+      "mine": false
+     },
+     {
+      "name": "Squall",
+      "lines": [
+       "Damage per particle: 890 → 960"
+      ],
+      "mine": false
+     }
+    ]
+   },
+   {
+    "head": "Motherships",
+    "items": [
+     {
+      "name": "Stealther",
+      "lines": [
+       "Stealth Duration: 6 → 4 s",
+       "Repairable Durability: 17% → 10%"
+      ],
+      "mine": false
+     },
+     {
+      "name": "R’lyeh",
+      "lines": [
+       "Damage: 43,200 → 67,500",
+       "Damage to Maximum Durability: 2,5% → 4%",
+       "Duration: 9 → 10 s"
+      ],
+      "mine": false
+     }
+    ]
+   }
+  ]
+ },
+ "older": [
+  {
+   "ver": "12.4",
+   "cards": [
+    {
+     "id": "12_4_prena",
+     "head": "New drone Prena",
+     "body": "Prena deals additional damage to targets caught in Gravity Lift and additional damage generally. It also removes Lock Down and Slowdown effects when the pilot gains Invisibility and grants bonus speed, and it makes remote weapons deal additional damage. The official notes give no numbers for any of these. From the community patch notes archive at warrobots.wiki, not an official developer post, the Gravity Lift damage bonus runs 18 percent at level 1 then 20, 22, 24, 26 and 28 percent through level 6, with a figure of 40 shown at level 12 and levels 7 through 11 hidden behind a show more control on that page. The same source gives Additional Damage as 7 percent at levels 4 through 6, lists the Invisibility skill with no bonus speed figure at all, and shows More Damage for Remote Weapons unlocking at level 12 with a value of 25. It puts the full upgrade at 1,000 Microchips plus 1 Upgrade Token and dates the drone to 22 September 2026. Source page: https://warrobots.wiki/info/drones/dprena",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    },
+    {
+     "id": "12_4_andor_miharr",
+     "head": "New pilot Andor Miharr buffs Shell",
+     "body": "Andor Miharr has two skills. A Bet on Life increases Shell's damage while the ability is active. Infinite Luck makes Glacier, Cryo and Rime deal more damage. The notes give no numbers for either skill.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": true,
+     "why": "William owns Shell. The published A Bet on Life skill increases Shell damage while its ability is active.",
+     "draft": false
+    },
+    {
+     "id": "12_4_donnie_woo",
+     "head": "New pilot Donnie Woo",
+     "body": "Donnie Woo brings two skills. Donnie's Blindness makes gravity missiles deal additional damage and inflict Blind. Woo Hoo decreases the primary charge reload time of Iaraghi. The notes give no numbers for either skill.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    },
+    {
+     "id": "12_4_dedopali",
+     "head": "New robot Dedopali",
+     "body": "Dedopali arrives with 330,000 durability, 50 km/h movement speed and a loadout of 1 Heavy plus 2 Light slots. It carries Swarm, which deploys three autonomous pods, Invisibility lasting 7 seconds on a 15 second cooldown, and Gravity Lift lasting 7 seconds, with an 8 second ability cooldown. The MK2 bonus raises Gravity Lift duration from 5 to 7 seconds and the MK3 bonus raises Invisibility duration from 5 to 7 seconds.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    },
+    {
+     "id": "12_4_iaraghi",
+     "head": "New weapons Iaraghi Light, Medium and Heavy",
+     "body": "Iaraghi is a charge up energy weapon with the Defense Breach effect and 600 m range. At full charge it deals 45,000 damage per particle in the Light version, 67,500 in the Medium version and 90,000 in the Heavy version, firing 6 particles per shot at a 1 second shot interval. Ammo is 6, reload interval is 5 seconds primary plus 5 seconds secondary, and reload amount is 1 primary plus 5 secondary. The notes state that the secondary charges ignore any Defense Mitigation, Reflector and Forcefield defence systems, and that when the weapon is fully charged its main charge gets the same effect.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": true,
+     "why": "William owns Shell, Dux MK2 and Frozen Dagon MK2. The published Defense Breach effect means Iaraghi charges ignore Defense Mitigation, Reflector and Forcefield defence systems.",
+     "draft": false
+    },
+    {
+     "id": "12_4_simulation_errors_event",
+     "head": "Simulation Errors event",
+     "body": "The 12.4 event started on September 22, with daily rewards in the Event Hub and the News section. Its collectible reward is the title SIMULATION OPERATOR.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    },
+    {
+     "id": "12_4_spare_parts",
+     "head": "Spare Parts replace upgrade timers",
+     "body": "The post says the feature is being tested throughout Update 12.4 and that the developers may scale it back or scrap it, so these figures are not final. Upgrade timers are replaced by a Spare Parts currency that the Workshop produces automatically at 1,500 Spare Parts per day, which the post describes as just a notch over one part per minute. Production pauses once the slot reaches 1,500 Spare Parts until the parts are collected. Upgrades become instant on activation and cost Silver plus Spare Parts, and Gold can buy Spare Parts directly.",
+     "url": "https://warrobots.com/en/posts/421",
+     "mine": true,
+     "why": "The published change replaces upgrade timers with Spare Parts for every robot and weapon in William's hangar.",
+     "draft": true
+    },
+    {
+     "id": "12_4_fixes",
+     "head": "Technical fixes in 12.4",
+     "body": "The patch corrects the Durability Extender turret durability increase and resolves a Tensor and Raptor Gray damage reduction issue. It also fixes event display and access button problems and a black or gray screen bug in combat.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    },
+    {
+     "id": "12_4_spare_parts_robot_costs",
+     "head": "Tier 4 robot upgrade cost in Spare Parts",
+     "body": "The post sets Tier 4 robot MK1 costs at 100, 300, 600, 900, 1,200, 1,500, 1,800, 2,100, 2,400, 2,700 and 3,000 Spare Parts for levels 1 through 11, then 3,000 Spare Parts for each MK2 level from 1 through 11. It states that what used to take 83,820 minutes now takes 49,600 Spare Parts, which take roughly 47,600 minutes to produce. The post says the feature is under test during 12.4, so these figures are not final.",
+     "url": "https://warrobots.com/en/posts/421",
+     "mine": true,
+     "why": "William's MK2 robots include Samjok MK2, ULTIMATE Spectre MK2, Dux MK2 and Frozen Dagon MK2. The post sets 3,000 Spare Parts per level for Tier 4 robot MK2 levels.",
+     "draft": true
+    },
+    {
+     "id": "12_4_spare_parts_weapon_costs",
+     "head": "Tier 4 weapon upgrade cost in Spare Parts",
+     "body": "The post sets Tier 4 weapon MK1 costs at 100, 200, 400, 600, 800, 1,000, 1,200, 1,400, 1,600, 1,800 and 2,000 Spare Parts for levels 1 through 11, then 2,000 Spare Parts for each MK2 level from 1 through 11. It states that 65,460 minutes of upgrade time are substituted with 33,100 Spare Parts. The post says the feature is under test during 12.4, so these figures are not final.",
+     "url": "https://warrobots.com/en/posts/421",
+     "mine": true,
+     "why": "William's MK2 weapons include Kirin MK2 and Discipline MK2. The post sets 2,000 Spare Parts per level for Tier 4 weapon MK2 levels.",
+     "draft": true
+    },
+    {
+     "id": "12_4_ultimate_glacier",
+     "head": "Ultimate Glacier released",
+     "body": "Ultimate Glacier has 350 m range, 4,032 damage per particle, 1 particle per shot, a 0.06 second shot interval, 35 ammo, a 0.3 second reload interval and a reload amount of 1.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    },
+    {
+     "id": "12_4_ultimate_rime",
+     "head": "Ultimate Rime released",
+     "body": "Ultimate Rime has 350 m range, 2,205 damage per particle, 1 particle per shot, a 0.06 second shot interval, 35 ammo, a 0.3 second reload interval and a reload amount of 1.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    },
+    {
+     "id": "12_4_ultimate_shell",
+     "head": "Ultimate Shell released",
+     "body": "Ultimate Shell has 601,000 durability, 43 km/h movement speed and 1 Heavy plus 2 Light slots. Its Ultimate Atom ability lasts 7 seconds on a 5 second cooldown and raises speed by 245 percent, with front shields of 305,550, side shields of 213,900 and rear shields of 168,000. The MK2 bonus adds 20 percent ability damage and the MK3 bonus adds 50 percent shield durability. The notes also say the blast radius is expanded and that the physical shields now fully regenerate with each ability activation, with no before and after figure given for the blast radius.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": true,
+     "why": "William owns Shell. The published Ultimate version carries 601,000 durability, the Ultimate Atom ability and shields that fully regenerate on each activation.",
+     "draft": false
+    },
+    {
+     "id": "12_4_cryo_buff",
+     "head": "Ultimate cryogenic weapons buffed",
+     "body": "The notes say cryogenic weapons were buffed across the board with an increased fire rate, faster reload speed, higher damage and a larger area of effect radius. The post names Glacier, Cryo and Rime and gives no before and after numbers for the buff itself.",
+     "url": "https://warrobots.com/en/posts/422",
+     "mine": false,
+     "why": "",
+     "draft": false
+    }
+   ]
+  },
+  {
+   "ver": "12.3.1",
+   "cards": [
+    {
+     "id": "12_3_1_vector",
+     "head": "Version 12.3.1 Vector nerf, archive only",
+     "body": "From the community patch notes archive at warrobots.wiki, not an official developer post. The archive lists a version 12.3.1 dated 21 August 2026 that has no counterpart anywhere in the official news feed, and its only entry is a Vector nerf. VectorReflector is no longer active for the full duration of the ability, and Vector now gains it only during the slowdown phase and the melee attack. The archive gives no before and after numbers and lists no additions, buffs or fixes for this version.",
+     "url": "https://warrobots.wiki/info/patch-notes",
+     "mine": false,
+     "why": "",
+     "draft": false
+    }
+   ]
+  },
+  {
+   "ver": "12.2",
+   "cards": [
+    {
+     "id": "12_2_anaksor",
+     "head": "Anaksor nerfed",
+     "body": "Invisibility dropped from 5 seconds to 3, and the range at which enemies can see through it doubled from 75 m to 150 m.",
+     "url": "https://warrobots.com/en/posts/417",
+     "mine": true,
+     "why": "William owns Anaksor. The published change cuts its invisibility from 5 seconds to 3 and doubles the see through range from 75 m to 150 m.",
+     "draft": false
+    },
+    {
+     "id": "12_2_rex",
+     "head": "Rex speed up, Predator Rush slower to return",
+     "body": "Movement speed increased. Predator Rush cooldown moved from 10 seconds to 14.",
+     "url": "https://warrobots.com/en/posts/417",
+     "mine": true,
+     "why": "William owns Blaze Rex. The published change raises its movement speed and moves the Predator Rush cooldown from 10 seconds to 14.",
+     "draft": false
+    }
+   ]
+  },
+  {
+   "ver": "12.1",
+   "cards": [
+    {
+     "id": "12_1_live_show_26_mrg",
+     "head": "Live Show 26 Martian Robotic Games and Gift Marathons",
+     "body": "The official Live Show hub publishes the Martian Robotic Games, a competition among five corporations across weekly disciplines, with dates given as April 14 to May 19. The page says the corporation that wins each week determines the following week's Gift Marathon, and that the MRG winner chooses the build given away in the 12.1 Gift Marathon. It also lists a Titan Tournament extra reward for weekly voting and a People's Choice poll where each vote counts as 5,000,000 Durability repaired for the chosen corporation. The page states no reward contents and no dates for the Gift Marathons themselves.",
+     "url": "https://liveshow.warrobots.com",
+     "mine": false,
+     "why": "",
+     "draft": false
+    }
+   ]
+  }
+ ]
+}
