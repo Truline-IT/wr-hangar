@@ -36,5 +36,11 @@ for (const g of L.groups) for (const it of g.items)
   add(`${it.name} (${L.ver})`, "Patch notes", `/news/#v${slug(L.ver)}-${slug(it.name)}`, it.lines.join("; "));
 for (const o of pn.older) for (const c of o.cards) add(`${c.head} (${o.ver})`, "Patch notes", `/news/#${slug(c.id)}`, c.body);
 
+// Developers' news posts and Reddit threads, when the news job has fetched them
+const readJson = f => { try { return JSON.parse(fs.readFileSync(f, "utf8")); } catch { return null; } };
+for (const p of readJson("news/official.json")?.posts || []) add(p.title, "Developers", p.url, `${p.category}, ${p.date}`);
+for (const p of readJson("news/reddit.json")?.posts || []) add(p.title, "Reddit", p.url, `Player post${p.flair ? ", " + p.flair : ""}`);
+for (const a of pn.archive || []) add(`War Robots ${a.ver} ${a.title}`, "Patch notes", `/news/#v${slug(a.ver)}`, (a.highlights || [])[0]);
+
 fs.writeFileSync("shared/search-index.json", JSON.stringify({ built: new Date().toISOString().slice(0, 10), items: out }) + "\n");
 console.log(out.length, "entries");

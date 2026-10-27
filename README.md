@@ -7,7 +7,11 @@ The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
 - `/adams-hangar/wiki/` wiki pages for every robot, weapon, drone and floor, reading `adams-hangar/data.js`
 - `/adams-hanger/` catches the common misspelling and forwards to `/adams-hangar/`
 - `/adamshanger/` forwards to `/adams-hangar/` too
-- `/news/` patch notes (`news/patch-notes.json`, changes to Adam's gear marked) and latest videos from the War Robots YouTube channel; `.github/workflows/youtube-news.yml` refreshes `news/videos.json` every 4 hours through the YouTube Data API (needs the `YT_API_KEY` repository secret)
+- `/news/` War Robots news. `.github/workflows/youtube-news.yml` runs every 4 hours and refreshes:
+  - `news/official.json` and `news/patch-notes.json` from the developers' site, warrobots.com/en/news (a new UPDATE NOTES post becomes the latest patch notes, broken into balance changes, with Adam's gear marked)
+  - `news/videos.json` from the War Robots YouTube channel, through the YouTube Data API (needs the `YT_API_KEY` secret)
+  - `news/reddit.json` from r/walkingwarrobots, through Reddit's API (needs `REDDIT_CLIENT_ID` and `REDDIT_CLIENT_SECRET`), shown as player posts
+  - warrobots.wiki is fan-run and asks AI tools not to use its content, so the site links to it but never copies it
 - `/noahs-hangar/` Noah's War Robots hangar, kept separate from Adam's (its own browser storage key)
 - `CNAME` sets the custom domain; do not edit
 

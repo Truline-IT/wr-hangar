@@ -2,7 +2,7 @@
    Add <script src="/shared/search.js" defer></script> to any page. Pages with the shared
    .topbar get a search box in it; pages without one get a floating Search button.
    It searches every wiki robot, titan, weapon, drone and floor, the patch notes, the
-   site's pages and the War Robots videos. Press "/" anywhere to jump to it. */
+   site's pages, the developers' news, Reddit threads and the War Robots videos. Press "/" anywhere to jump to it. */
 (function () {
   if (window.__graggSearch) return;
   window.__graggSearch = true;
@@ -57,6 +57,7 @@
       hits.push([score, i, x]);
     }
     hits.sort(function (a, b) { return a[0] - b[0] || a[1] - b[1]; });
+    hits.forEach(function (h) { if (/^https?:/.test(h[2].u)) h[2].ext = true; });
     return hits.slice(0, 14).map(function (h) { return h[2]; });
   }
 

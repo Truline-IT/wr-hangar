@@ -1,4 +1,4 @@
-name: War Robots YouTube updates
+name: War Robots news
 
 on:
   schedule:
@@ -13,14 +13,22 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - uses: actions/checkout@v4
-      - run: python3 .github/scripts/youtube_feed.py
+      - name: Developers' news, patch notes and Reddit
+        run: python3 .github/scripts/war_robots_sources.py
+        env:
+          REDDIT_CLIENT_ID: ${{ secrets.REDDIT_CLIENT_ID }}
+          REDDIT_CLIENT_SECRET: ${{ secrets.REDDIT_CLIENT_SECRET }}
+      - name: YouTube videos
+        run: python3 .github/scripts/youtube_feed.py
         env:
           YT_API_KEY: ${{ secrets.YT_API_KEY }}
-      - name: Commit if the feed changed
+      - name: Rebuild the site search
+        run: node tools/build-search-index.mjs
+      - name: Commit if anything changed
         run: |
-          if git diff --quiet news/videos.json; then echo "No new videos."; exit 0; fi
+          git add news shared/search-index.json
+          if git diff --cached --quiet; then echo "Nothing new."; exit 0; fi
           git config user.name "gragg.life bot"
           git config user.email "github-actions[bot]@users.noreply.github.com"
-          git add news/videos.json
-          git commit -m "News: new War Robots videos"
+          git commit -m "News: new War Robots updates"
           git push
