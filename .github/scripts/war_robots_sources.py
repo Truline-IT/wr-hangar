@@ -99,8 +99,11 @@ def parse_update(post):
     subtitle = lines[start + 1] if start + 1 < len(lines) else ""
     highlights = [x for x in lines[start:start + 60] if re.match(r"^New [a-z ]+:", x)][:8]
     groups = []
-    if "BALANCE CHANGES" in lines:
-        a = len(lines) - 1 - lines[::-1].index("BALANCE CHANGES")
+    start_at = "BALANCE CHANGES" if "BALANCE CHANGES" in lines else "TECHNICAL FIXES" if "TECHNICAL FIXES" in lines else None
+    if start_at:
+        a = len(lines) - 1 - lines[::-1].index(start_at)
+        if start_at == "TECHNICAL FIXES":
+            a -= 1  # let the loop see the heading itself
         mine = owned_words()
         cur = item = None
         for x in lines[a + 1:]:
@@ -111,9 +114,12 @@ def parse_update(post):
                 groups.append(cur)
                 item = None
                 continue
-            if cur is None:
-                continue
-            is_change = "→" in x or x.startswith("- ") or x.endswith(":") or bool(re.match(r"^(Special skills|On |While |Improved |Gray |Damage|Ability|Aegis|Durability|Movement|Reload|Shot|Ammo|Time to|Projectile|AoE|Horizontal|Duration|Stealth|Repairable|Invisibility|Line Of|Tracking|Event Horizon)", x))
+            if cur is None:  # a change listed straight under BALANCE CHANGES, with no category heading
+                cur = {"head": "Changes", "items": []}
+                groups.append(cur)
+            stat = re.match(r"^(Special skills|On |While |Improved |Gray |Damage|Ability|Aegis|Durability|Movement|Reload|Shot|Ammo|Time to|Projectile|AoE|Horizontal|Duration|Stealth|Repairable|Invisibility|Line Of|Tracking|Event Horizon|Speed|Accuracy|Acceleration|Cooldown|Range|Particles)", x)
+            looks_like_name = not ("→" in x or ":" in x or x.startswith("- ") or x.endswith(".") or re.search(r"\d", x) or stat or len(x) > 60)
+            is_change = not looks_like_name
             if cur["head"] == "Fixes":
                 cur["items"].append({"name": x, "lines": [], "mine": False})
                 continue
