@@ -14,6 +14,7 @@ The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
   - warrobots.wiki is fan-run and asks AI tools not to use its content, so the site links to it but never copies it
 - `/noahs-hangar/` Noah's War Robots hangar, kept separate from Adam's (its own browser storage key)
 - `CNAME` sets the custom domain; do not edit
+- `.nojekyll` makes GitHub Pages serve folders that start with `_`, so `/_template/` opens
 
 `adams-hangar/data.js` is copied from the data block in `adams-hangar/index.html`. When the roster changes, update both until the hangar page is switched to read `data.js` directly.
 

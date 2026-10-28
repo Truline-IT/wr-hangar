@@ -158,6 +158,7 @@ function withYears(posts){
     let d=new Date(year,mon,+m[1]); if(d-Date.now()>2*864e5){ year--; d=new Date(year,mon,+m[1]); }
     return Object.assign({},p,{when:d}); });
 }
+const openUp=el=>{ for(let d=el.closest("details");d;d=d.parentElement&&d.parentElement.closest("details")) d.open=true; };
 const arrow=line=>esc(line); // higher is not always better (cooldowns), so changes are not coloured
 
 let PN=null, FILTER="mine";
@@ -187,10 +188,20 @@ Promise.all([J("/news/patch-notes.json"),J("/news/videos.json"),J("/news/officia
       ${ov?`<a class="watch" href="${esc(ov.url)}" target="_blank" rel="noopener" style="background-image:url('${esc(ov.thumb)}')"><span><b>▶ WATCH</b><br>${esc(ov.title)}</span></a>`:""}`;
     $("pn-sub").textContent=`${L.ver} · ${all} changes, ${mine} for Adam`;
     renderGroups();
-    $("older").innerHTML=[...(pn.archive||[]).map(a=>({ver:a.ver,title:a.title,url:a.url,cards:[]})),...pn.older].map(o=>`
-      <details class="old" id="v${slug(o.ver)}"><summary><b>Update ${esc(o.ver)}${o.title?" · "+esc(o.title):""}</b><small>${o.cards.length?o.cards.length+" notes":""}${o.cards.some(c=>c.mine)?" · touches Adam's gear":""}</small></summary>
-      ${o.cards.length?`<div class="cards">${o.cards.map(c=>`<div class="card" id="${slug(c.id)}"><h4>${esc(c.head)}${c.draft?' <span class="mark">Not final</span>':""}</h4><p>${esc(c.body)}</p>${c.mine&&c.why?`<p class="why">${esc(c.why)}</p>`:""}${c.url?`<p style="margin-top:6px"><a href="${esc(c.url)}">Source</a></p>`:""}</div>`).join("")}</div>`
-        :`<p><a href="${esc(o.url)}">Read the ${esc(o.ver)} update notes</a></p>`}</details>`).join("");
+    /* earlier updates: the developers' notes for each version, folded; hangar notes attached where they exist */
+    const card=c=>`<div class="card" id="${slug(c.id)}"><h4>${esc(c.head)}${c.draft?' <span class="mark">Not final</span>':""}</h4><p>${esc(c.body)}</p>${c.mine&&c.why?`<p class="why">${esc(c.why)}</p>`:""}${c.url?`<p style="margin-top:6px"><a href="${esc(c.url)}">Source</a></p>`:""}</div>`;
+    const olds=[...(pn.archive||[]),...(pn.older||[]).map(o=>({ver:o.ver,cards:o.cards,groups:[],highlights:[]}))];
+    $("older").innerHTML=olds.map(o=>{ const v="v"+slug(o.ver), gs=o.groups||[], cards=o.cards||[];
+      const n=gs.filter(g=>g.head!=="Fixes").reduce((t,g)=>t+g.items.length,0), fx=gs.filter(g=>g.head==="Fixes").reduce((t,g)=>t+g.items.length,0);
+      const mine=gs.reduce((t,g)=>t+g.items.filter(i=>i.mine).length,0)+cards.filter(c=>c.mine).length;
+      const dd=o.date?withYears([{date:o.date}])[0].when:null;
+      return `<details class="old" id="${v}"><summary><b>Update ${esc(o.ver)}${o.title?" · "+esc(o.title):""}</b>
+        <small>${dd?fmt(dd)+" · ":""}${n?n+" balance change"+(n>1?"s":"")+" · ":""}${fx?fx+" fixes":""}${mine?" · "+mine+" for Adam":""}</small></summary>
+        ${(o.highlights||[]).length?`<ul>${o.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:""}
+        ${gs.map(g=>`<details class="grp"><summary>${esc(g.head)} <small>${g.items.length}</small></summary><div class="items">${g.items.map(i=>`
+          <div class="it${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${esc(i.name)}${i.mine?' <span class="mark">Adam\'s gear</span>':""}</b>${i.lines.map(l=>`<div>${esc(l)}</div>`).join("")}</div>`).join("")}</div></details>`).join("")}
+        ${cards.length?`<div class="cards">${cards.map(card).join("")}</div>`:""}
+        ${o.url?`<p class="more"><a href="${esc(o.url)}">Official ${esc(o.ver)} update notes</a></p>`:""}</details>`; }).join("");
   } else $("hero").innerHTML='<div class="txt"><p class="muted">Patch notes could not load. Try refreshing.</p></div>';
 
   /* developers: dated, newest first, old ones folded away */
@@ -219,10 +230,10 @@ Promise.all([J("/news/patch-notes.json"),J("/news/videos.json"),J("/news/officia
   if(stamps.length){ const n=new Date(Math.max(...stamps)); $("fresh").innerHTML=`<i></i>Newest item ${ago(n)} · checked every 4 hours`; }
 
   if(location.hash&&PN&&!document.getElementById(location.hash.slice(1))&&location.hash.startsWith("#v"+slug(PN.latest.ver)+"-")){ FILTER="all"; renderGroups(); }
-  if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el){ const det=el.closest("details"); if(det) det.open=true; el.scrollIntoView(); } }
+  if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el){ openUp(el); el.scrollIntoView(); } }
 });
 window.addEventListener("hashchange",()=>{ const el=document.getElementById(location.hash.slice(1)); if(!el) return;
-  const det=el.closest("details"); if(det) det.open=true;
+  openUp(el);
   if(el.classList.contains("it")&&!el.classList.contains("mine")&&FILTER==="mine"){ FILTER="all"; renderGroups(); }
   (document.getElementById(location.hash.slice(1))||el).scrollIntoView({behavior:"smooth"}); });
 </script>

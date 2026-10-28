@@ -1,9 +1,9 @@
 {
- "updated": "2026-10-27",
+ "updated": "2026-10-28",
  "latest": {
   "ver": "12.5",
   "title": "Halloween Interlopers",
-  "date": "2026-10-27",
+  "date": "2026-10-21",
   "url": "https://warrobots.com/en/posts/423",
   "source": "Official update notes",
   "highlights": [
@@ -13,7 +13,7 @@
    "New ultimate editions: Ultimate Loki (3 Light, 280,000 durability, 60 km/h) and Ultimate Gust (3289 per particle, 6 particles, 500 m).",
    "New pilots: The Martian (Nekton, Mesmer L/H), Orson Barret (Ultimate Rhino, Ultimate Toxin/Venom), Darian Grief (Ultimate Loki, Ultimate Gust).",
    "Unstable Conduit module: +35% extra durability, +20% speed for 6 s. Tactical Shift: Ground Zero, the centre of the map grants Aegis, damage resistance or repair.",
-   "Event: Halloween Interlopers starts 27 October, daily rewards in the Event Hub. Finish it for the title HALLOWEEN INTERLOPER."
+   "Event: Halloween Interlopers runs from 27 October with daily rewards in the Event Hub. Finish it for the title HALLOWEEN INTERLOPER."
   ],
   "groups": [
    {
@@ -914,19 +914,50 @@
    }
   ]
  },
- "older": [
+ "older": [],
+ "archive": [
   {
    "ver": "12.4",
-   "cards": [
+   "title": "Simulation Errors",
+   "date": "16 September",
+   "url": "https://warrobots.com/en/posts/422",
+   "source": "Official update notes",
+   "highlights": [
+    "New robot: Dedopali",
+    "New robot weapons: Iaraghi (L, M, H)",
+    "New drone: Prena",
+    "New ultimate editions: Ultimate Shell, Ultimate Rime, Ultimate Glacier",
+    "New pilots: Donnie Woo (Dedopali, Iaraghi L-M-H), Andor Miharr (Ultimate Shell, Ultimate Rime/Cryo/Glacier)"
+   ],
+   "groups": [
     {
-     "id": "12_4_prena",
-     "head": "New drone Prena",
-     "body": "Prena deals additional damage to targets caught in Gravity Lift and additional damage generally. It also removes Lock Down and Slowdown effects when the pilot gains Invisibility and grants bonus speed, and it makes remote weapons deal additional damage. The official notes give no numbers for any of these. From the community patch notes archive at warrobots.wiki, not an official developer post, the Gravity Lift damage bonus runs 18 percent at level 1 then 20, 22, 24, 26 and 28 percent through level 6, with a figure of 40 shown at level 12 and levels 7 through 11 hidden behind a show more control on that page. The same source gives Additional Damage as 7 percent at levels 4 through 6, lists the Invisibility skill with no bonus speed figure at all, and shows More Damage for Remote Weapons unlocking at level 12 with a value of 25. It puts the full upgrade at 1,000 Microchips plus 1 Upgrade Token and dates the drone to 22 September 2026. Source page: https://warrobots.wiki/info/drones/dprena",
-     "url": "https://warrobots.com/en/posts/422",
-     "mine": false,
-     "why": "",
-     "draft": false
-    },
+     "head": "Fixes",
+     "items": [
+      {
+       "name": "Fixed an issue where Durability Extender turret increased less durability than intended",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where Tensor removed the Raptor's Gray damage reduction.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where the new Event did not appear at startup and there was no button to go to the new Event.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where some players experienced a black or gray screen during combat.",
+       "lines": [],
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "auto": true,
+   "cards": [
     {
      "id": "12_4_andor_miharr",
      "head": "New pilot Andor Miharr buffs Shell",
@@ -1047,21 +1078,632 @@
    ]
   },
   {
-   "ver": "12.3.1",
-   "cards": [
+   "ver": "12.3",
+   "title": "Event: Sun, Sea, Steel",
+   "date": "3 August",
+   "url": "https://warrobots.com/en/posts/418",
+   "source": "Official update notes",
+   "highlights": [
+    "New robot: Fang",
+    "New robot weapons: Harmattan (L, M, H)",
+    "New special editions: Omen Fang, Omen Harmattan (M)",
+    "New drone: Scourveil",
+    "New titan: Sirocco",
+    "New titan weapons: Barq (A, B)",
+    "New ultimate editions: Ultimate Raven, Ultimate Atomizer",
+    "New pilots: Nadir Rakhim (Fang), Renard Aurel (Sirocco), Erika Storm (Ultimate Raven)"
+   ],
+   "groups": [
     {
-     "id": "12_3_1_vector",
-     "head": "Version 12.3.1 Vector nerf, archive only",
-     "body": "From the community patch notes archive at warrobots.wiki, not an official developer post. The archive lists a version 12.3.1 dated 21 August 2026 that has no counterpart anywhere in the official news feed, and its only entry is a Vector nerf. VectorReflector is no longer active for the full duration of the ability, and Vector now gains it only during the slowdown phase and the melee attack. The archive gives no before and after numbers and lists no additions, buffs or fixes for this version.",
-     "url": "https://warrobots.wiki/info/patch-notes",
-     "mine": false,
-     "why": "",
-     "draft": false
+     "head": "Changes",
+     "items": [
+      {
+       "name": "Fujin's Sentry ability now deploys an Aegis shield instead of an Ancile shield.",
+       "lines": [],
+       "mine": false
+      }
+     ]
+    },
+    {
+     "head": "Fixes",
+     "items": [
+      {
+       "name": "Fixed an issue where player names displayed in the wrong columns within the Participants window during FFA mode on PlayStation.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where Ultimate Rhino's movement speed did not scale correctly with pilot skills like Road Hog.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed missing textures on the Yamantau map on PlayStation and Xbox.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed a bug where Leaderboard points failed to appear in the Leaderboard window on Xbox.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where tapping empty space in Hank's Drifting Shipyard accidentally triggered the information tooltip and blocked the Supergame button.",
+       "lines": [],
+       "mine": false
+      }
+     ]
     }
-   ]
+   ],
+   "auto": true,
+   "cards": []
   },
   {
    "ver": "12.2",
+   "title": "Event: World Iron Cup",
+   "date": "23 June",
+   "url": "https://warrobots.com/en/posts/417",
+   "source": "Official update notes",
+   "highlights": [
+    "New robot: Vulcan",
+    "New robot weapons: Lumen-L (Light), Lumen-M (Medium), Lumen-H (Heavy)",
+    "New special editions: Omen Vulcan, Omen Lumen-L, Omen Lumen-M",
+    "New drone: Lar",
+    "New paintjobs: Libero Ochokochi, Triumph Skyros",
+    "New ultimate editions: Murometz, Kisten, Bulava",
+    "New pilots: Ines Diaz (Vulcan), Marie Aldrich (Murometz)"
+   ],
+   "groups": [
+    {
+     "head": "Robots",
+     "items": [
+      {
+       "name": "Anaksor",
+       "lines": [
+        "Invisibility duration 5s → 3s",
+        "Visibility distance 75m → 150m"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Rex",
+       "lines": [
+        "Durability: 275,000 → 285,000",
+        "Movement speed: 60 km/h → 62 km/h",
+        "Predator Rush charge recharge interval: 10 s → 14 s",
+        "Damage from DoT reduction: 60% → 40%",
+        "Damage bonus per stack of DoT removed with the built-in weapon: 0.4% → 0.2%",
+        "DoT stacks removed per shot of the built-in weapon: 4 → 5",
+        "Built-in weapon DoT per stack: 300 → 190",
+        "Built-in weapon particles per shot: 20 → 10",
+        "Built-in weapon damage per particle: 2,750 → 750"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Teth",
+       "lines": [
+        "Durability: 350,000 → 365,000",
+        "Movement speed: 50 km/h → 46 km/h",
+        "Sandstorm cooldown: 13 s → 15 s",
+        "Shield replacement time: 45 s → 60 s",
+        "Rocket launcher range: 350 m → 100 m",
+        "Shield durability: 95,000 → 100,000 (single shield)"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Hastatus",
+       "lines": [
+        "Durability: 270,000 → 285,000",
+        "Movement speed: 58 km/h → 59 km/h",
+        "Quantum Lock duration: 2.5 s → 1,5 s"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Ammit",
+       "lines": [
+        "Maximum Defense Points from Defensive Absorber: 100 → 65",
+        "Defense Points accumulation rate: +50%",
+        "Built-in weapon Slowdown duration: 10 s → 5 s",
+        "Built-in weapon effective range: 350 m → 200 m",
+        "Built-in weapon damage per particle: 1,350 → 1,600"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Nether",
+       "lines": [
+        "Durability: 151,200 → 160,000",
+        "Movement speed: 55 km/h → 56 km/h"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Seraph",
+       "lines": [
+        "Skyward cooldown: 17 s → 16 s",
+        "Built-in weapon damage: +18%"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ao Jun",
+       "lines": [
+        "Durability: 223,000 → 234,000",
+        "Built-in flamethrower damage per particle: 646 → 800"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Hawk",
+       "lines": [
+        "Quality and level of equipped weapons no longer affect damage caused by the built-in weapon.",
+        "Built-in weapon damage per particle: 1,113 → 1,650"
+       ],
+       "mine": false
+      }
+     ]
+    },
+    {
+     "head": "Robot weapons",
+     "items": [
+      {
+       "name": "Celsius / Fahrenheit / Kelvin",
+       "lines": [
+        "Damage per particle:",
+        "Light: 1,280 → 1,350",
+        "Medium: 1,920 → 2,000",
+        "Heavy: 2,560 → 2,650",
+        "AoE radius: 20 m → 12 m",
+        "Shot interval: 0.05 s → 0.07 s",
+        "Delay before starting to cool down following overheat: 0.5 s → 1 s"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Velos / Machaira / Basileus",
+       "lines": [
+        "Rust effectiveness: 74.37% → 63.40% (prevented repairs at maximum 80 stacks of Rust)",
+        "Ammo: 120 → 100",
+        "Acceleration: +20%"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Hippo / Kroko / Liodari",
+       "lines": [
+        "Damage per particle:",
+        "Light: 42,000 → 27,500",
+        "Medium: 63,000 → 36,600",
+        "Heavy: 84,000 → 55,000",
+        "Maximum damage bonus from damage taken: 100% → 50%",
+        "Effective incoming damage cap: 300,000 → 400,000"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Elox / Murix",
+       "lines": [
+        "Damage per particle: 1,500 → 1,400",
+        "Particles per shot:",
+        "Light: 16 → 10",
+        "Medium: 25 → 20",
+        "Shot interval: 0.4 s → 0.37 s",
+        "DoT (each second, per stack):",
+        "Light: 300 → 200",
+        "Medium: 350 → 250"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Gladius / Pilum",
+       "lines": [
+        "Damage per particle:",
+        "Light: 6,750 → 5,000",
+        "Heavy: 13,500 → 10,000",
+        "Reload interval: 6 s → 9 s",
+        "Shot interval: 0.137 s → 0.110 s",
+        "Accuracy: +33%"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Ksiphos / Labrys / Cestus",
+       "lines": [
+        "Shot interval: 0.13 s → 0.12 s"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Rime / Cryo / Glacier",
+       "lines": [
+        "Damage per particle:",
+        "Light: 1,130 → 1,250",
+        "Medium: 1,700 → 1,900",
+        "Heavy: 2,260 → 2,400",
+        "Accuracy: +13%"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Toxin / Bane",
+       "lines": [
+        "DoT (each second, per stack):",
+        "Light: 83 → 90",
+        "Heavy: 193 → 200"
+       ],
+       "mine": true
+      },
+      {
+       "name": "PILOTS",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Mei Lan",
+       "lines": [
+        "Taunt accumulation with Ammit’s built-in weapon: 2.5% → 2% (per shot)"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Lucius Palma",
+       "lines": [
+        "Defense Points ignored by Gladius and Pilum: 10% → 7%",
+        "Shieldbreaker is now only active for 3 seconds following the Flakstorm ability activation."
+       ],
+       "mine": false
+      },
+      {
+       "name": "Raphael Petit",
+       "lines": [
+        "The legendary skill now works with Celsius, Fahrenheit, and Kelvin weapons."
+       ],
+       "mine": false
+      },
+      {
+       "name": "Adrian Chong",
+       "lines": [
+        "The legendary skill does not work with weapons introduced in update 12.2 and later."
+       ],
+       "mine": false
+      },
+      {
+       "name": "Manni",
+       "lines": [
+        "The legendary skill does not work with weapons introduced in update 12.2 and later."
+       ],
+       "mine": false
+      }
+     ]
+    },
+    {
+     "head": "Drones",
+     "items": [
+      {
+       "name": "Bull",
+       "lines": [
+        "DoT reduction on host: 20% → 10%",
+        "Built-in shotgun particles per shot: 25 → 10",
+        "Built-in shotgun damage per particle: 1,080 → 1,500"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Scarabeus",
+       "lines": [
+        "The host’s bonus damage to targets affected by EMP: 10% → 5%",
+        "Bonus durability of the host’s physical shields: 150% → 50%"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Scales",
+       "lines": [
+        "Duration of Defence Mitigation immunity: 7 s → 4 s (triggered upon receiving 50,000 damage; 10 second cooldown)",
+        "Incoming damage reduction per stack of Slowdown applied to enemy: 0.25% → 0.15%"
+       ],
+       "mine": true
+      }
+     ]
+    },
+    {
+     "head": "Titans",
+     "items": [
+      {
+       "name": "Princeps",
+       "lines": [
+        "Durability: 600,000 → 635,000",
+        "Nullfield duration (lifetime of Stasis Barrier charges): 12 s → 10 s"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Devourer",
+       "lines": [
+        "Durability: 500,000 → 530,000"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ao Ming",
+       "lines": [
+        "Durability: 402,000 → 412,000"
+       ],
+       "mine": true
+      }
+     ]
+    },
+    {
+     "head": "Titan weapons",
+     "items": [
+      {
+       "name": "Venire / Vincere",
+       "lines": [
+        "Time to overheat: 12 → 7 s",
+        "Time to cool down: 4 → 3 s"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Void / Chasm",
+       "lines": [
+        "Damage per particle: 1,700 → 1,300",
+        "Shot interval: 0.9 s → 0.8 s",
+        "Reload interval: 6 s → 8 s",
+        "AoE damage while reloading: 20% → 10% (of the base damage)"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Argon / Oxy",
+       "lines": [
+        "Shot interval: 0.15 s → 0.14 s"
+       ],
+       "mine": true
+      },
+      {
+       "name": "ORBITAL SUPPORT",
+       "lines": [
+        "Stealther",
+        "Stealth duration: 10 s → 6 s",
+        "Regular (Green) repairs: 15% → 17% (per second)"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Sekhem",
+       "lines": [
+        "Bombardment damage: 50,000 → 40,000",
+        "Slowdown duration: 9.0 s → 9.2 s"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Keel",
+       "lines": [
+        "Sequence damage: 60,000 → 50,000",
+        "Damage multiplier against Titans: 320% → 340%"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Mute",
+       "lines": [
+        "Shutdown effective radius: 90 m → 95 m"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Paladin",
+       "lines": [
+        "Structural (Gray) repairs: 15% → 16% (if Aegis was not fully depleted)"
+       ],
+       "mine": false
+      },
+      {
+       "name": "ULTIMATE ROBOTS",
+       "lines": [
+        "SWORD Unit-192",
+        "Absorber damage bonus: 20% → 7% (of absorbed damage)"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Typhon",
+       "lines": [
+        "Movement speed: 70 km/h → 60 km/h",
+        "Blackout V2.0 cooldown: 10 s → 14 s",
+        "Blackout V2.0 EMP duration: 7 s → 5 s",
+        "Blackout V2.0 Suppression duration: 7 s → 5 s",
+        "Blackout V2.0 Lockdown duration: 7 s → 5 s",
+        "Blackout V2.0 damage per particle: 13,000 → 15,000",
+        "Aegis capacity: 108,360 → 128,000"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Ultimate Lancelot",
+       "lines": [
+        "Durability: 470,000 → 390,000",
+        "Ultimate Rush regular (Green) repairs: 1.5% → 1.7% (per second)",
+        "Ultimate Rush structural (Gray) repairs: 0.5% → 0.7% (per second)",
+        "Ultimate Rush charges: 5 → 4"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Revenant",
+       "lines": [
+        "Aggressive blink repairs: 30% → 10% (both Green and Gray)"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Ultimate Griffin",
+       "lines": [
+        "Dazzling Jump damage bonus: 10% → 15% (for 5 seconds, per jump)",
+        "Dazzling Jump cooldown: 12 s → 11 s"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Phantom",
+       "lines": [
+        "Movement speed: 68 km/h → 70 km/h",
+        "Blink cooldown: 10 s → 9 s"
+       ],
+       "mine": false
+      },
+      {
+       "name": "ULTIMATE ROBOT WEAPONS",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Scatter / Havoc / Devastator",
+       "lines": [
+        "Damage per particle:",
+        "Light: 4,200 → 2,200 (5 particles per shot)",
+        "Medium: 4,200 → 2,200 (7 particles per shot)",
+        "Heavy: 4,100 → 2,200 (10 particles per shot)"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Ultimate Cryo",
+       "lines": [
+        "Damage per particle: 4,500 → 3,000",
+        "Shot interval: 0.04 → 0.06 s",
+        "Ultimate Arm L-83 / Arm M-80",
+        "Damage per particle:",
+        "Light: 4,100 → 4,300",
+        "Medium: 6,150 → 6,300",
+        "Ammo: 20 → 15"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Halo / Corona / Glory",
+       "lines": [
+        "Damage per particle:",
+        "Light: 1,200 → 800",
+        "Medium: 1,450 → 1,200",
+        "Heavy: 1,800 → 1,600"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Blaze / Igniter",
+       "lines": [
+        "Damage per particle:",
+        "Light: 1,400 → 850",
+        "Medium: 1,800 → 1,275"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Redeemer",
+       "lines": [
+        "Damage per particle: 10,000 → 7,000"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Calamity",
+       "lines": [
+        "Damage per particle: 1,600 → 1,300"
+       ],
+       "mine": true
+      },
+      {
+       "name": "Ultimate Avenger",
+       "lines": [
+        "Damage per particle: 950 → 750"
+       ],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Hussar / Dragoon",
+       "lines": [
+        "Ammo: 14 → 12",
+        "Damage per particle:",
+        "Medium: 8,700 → 6,750",
+        "Heavy: 11,600 → 9,000"
+       ],
+       "mine": false
+      },
+      {
+       "name": "ULTIMATE TITANS",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Ultimate Nodens",
+       "lines": [
+        "Active Support link lifetime: 8 → 5 s (also affects the duration of bonuses applied on establishing a link)",
+        "Maximum bonus to movement speed from Active Support: 15 → 21 km/h (5 → 7 km/h per activation)",
+        "Damage reduction from Suppression applied by Disposal: 90% → 60%",
+        "Damage per particle of the Disposal shot: 15,000 → 17,000",
+        "Active Support structural (Gray) repairs to ally: 1.5% → 0.5% (per second)",
+        "Active Support structural (Gray) repairs to self: 7.5% → 0.4% (per second)",
+        "Active Support Defense Points per established link: 80 → 70 (both to self and the ally)",
+        "Maximum Defense Points from Active Support: 240 → 210",
+        "Defense Points: 200 → 130"
+       ],
+       "mine": true
+      }
+     ]
+    },
+    {
+     "head": "Fixes",
+     "items": [
+      {
+       "name": "Fixed an issue where players were unable to close the \"Out of power. Accept activation for gold?\" pop-up message during battle on PS4/PS5.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed incorrect lighting settings in the Hangar, Data Pads, Shop, and other menus on PS4/PS5.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed a bug that allowed players to read unopened Pilot messages in the Event Tasks.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue on Medium graphics settings that caused the game to freeze when deploying a robot equipped with a Spike weapon.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed a visual bug where the opening animation for certain Data Pads would fail to play.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed a bug where the instant upgrade button would not appear after purchasing Premium.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue on some iOS devices where the screen would turn grey after spending time in the Hangar, subsequently causing the game to crash.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Added a 60 FPS setting for supported Motorola, Xiaomi, OnePlus, Honor, Nubia, Infinix, Tecno, Huawei, Samsung and Xiaomi devices.",
+       "lines": [],
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "auto": true,
    "cards": [
     {
      "id": "12_2_anaksor",
@@ -1085,6 +1727,67 @@
   },
   {
    "ver": "12.1",
+   "title": "Event: Shadow Over Shore",
+   "date": "20 May",
+   "url": "https://warrobots.com/en/posts/416",
+   "source": "Official update notes",
+   "highlights": [
+    "New robot: Shoggoth",
+    "New robot weapons: Voonith (Light), Urhag (Medium), Shantak (Heavy)",
+    "New special editions: Void Shoggoth, Urhag, Shantak",
+    "New drone: Fhtagn",
+    "New mothership: R'lyeh",
+    "New ultimate editions: Rhino, Toxin, Venom",
+    "New pilots: Baek Taejun (Shoggoth), Kai Ruo (Vector)"
+   ],
+   "groups": [
+    {
+     "head": "Fixes",
+     "items": [
+      {
+       "name": "Fixed item icons missing in Hank's Drifting Shipyard.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed Lilian Statera's legendary skill not working on Hades.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed Customization Adept being available in the pilot skill pool for Ultimate Revenant.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed thruster VFX not displaying correctly on Lancelot.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed the Supply Center button incorrectly displaying the \"Collecting rewards\" state while the Center was still on cooldown.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed Hawkeye being able to target Anaksor with the Invisibility effect applied if another target was available nearby.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed the Sell button redirecting players to the robot loadout window instead of the Inventory window.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Updated Neon Kaji's description to show the correct number of deployable mines (7 instead of 10).",
+       "lines": [],
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "auto": true,
    "cards": [
     {
      "id": "12_1_live_show_26_mrg",
@@ -1096,6 +1799,89 @@
      "draft": false
     }
    ]
+  },
+  {
+   "ver": "12.0",
+   "title": "Event: Martian Robotic Games",
+   "date": "27 March",
+   "url": "https://warrobots.com/en/posts/414",
+   "source": "Official update notes",
+   "highlights": [
+    "New robot: Vector",
+    "New robot weapons: Celsius (Light), Fahrenheit (Medium), Kelvin (Heavy)",
+    "New special editions: Blaze Vector, Celsius, Fahrenheit, Kelvin",
+    "New drone: Tensor",
+    "New titan: Waymaker",
+    "New titan weapons: Furnace (Alpha), Torch (Beta)",
+    "New ultimate editions: Hawk, Scald, Incinerator",
+    "New pilots: Nika Schum (Vector), Ethan Caldwell (Waymaker), Single Malt (Anaksor)"
+   ],
+   "groups": [
+    {
+     "head": "Robots",
+     "items": [
+      {
+       "name": "Schutze:",
+       "lines": [
+        "Durability +12%"
+       ],
+       "mine": false
+      }
+     ]
+    },
+    {
+     "head": "Fixes",
+     "items": [
+      {
+       "name": "Fixed Orbital Support charge rates for Hippo, Kroko, and Liodari.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where the Myia drone repaired Kaji on each mine throw; it now correctly repairs Kaji once upon entering Invisibility.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed error pop-ups when collecting rewards in the Clan Shipyard.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where Titan deployment could select Titans from other Hangar Decks.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed coloring issues on Crisis, Curie, Jaeger, Phantom, as well as several special editions.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where the Shai drone remained visible on Neon Kaji while the robot’s ability was active.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed certain ability and effect icons displaying incorrectly in battle (e.g., Lio’s Fortress Link, Shell’s Atom).",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where Player ID was displayed only up to the fifth character in the Player Profile.",
+       "lines": [],
+       "mine": false
+      },
+      {
+       "name": "Fixed an issue where squad leaders were unable to leave the Custom Game lobby.",
+       "lines": [],
+       "mine": false
+      }
+     ]
+    }
+   ],
+   "auto": true,
+   "cards": []
   }
  ]
 }

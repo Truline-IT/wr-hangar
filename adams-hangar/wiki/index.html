@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="/shared/site.css">
 <style>
 .layout{display:grid;grid-template-columns:230px minmax(0,1fr);gap:28px;padding-top:22px}
-@media (max-width:860px){.layout{grid-template-columns:1fr}.side{position:static!important;max-height:none!important}}
+@media (max-width:860px){.layout{grid-template-columns:minmax(0,1fr)}.side{position:static!important;max-height:none!important}}
 .side{position:sticky;top:74px;align-self:start;max-height:calc(100vh - 90px);overflow:auto}
 .search{position:relative;margin-bottom:14px}
 .search input{width:100%;font:15px var(--body);padding:10px 12px;border-radius:9px;border:1px solid var(--line2);
@@ -37,7 +37,7 @@
 .tile small{color:var(--faint);font:12px var(--mono)}
 
 .article{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start}
-@media (max-width:1000px){.article{grid-template-columns:1fr}.infobox{order:-1}}
+@media (max-width:1000px){.article{grid-template-columns:minmax(0,1fr)}.infobox{order:-1}}
 .infobox{overflow:hidden}
 .infobox .ttl{padding:12px 14px;font:700 21px var(--display);letter-spacing:.8px;text-transform:uppercase;border-bottom:1px solid var(--line);
   background:linear-gradient(90deg,color-mix(in srgb,var(--accent) 22%,var(--panel2)),var(--panel2))}
@@ -238,6 +238,28 @@ function route(){
   $("#page").innerHTML=html; document.title=title;
   $("#nav").innerHTML=navHtml(kind&&!id?"#/"+kind:h==="#/"||!kind?"#/":h);
   window.scrollTo(0,0);
+  if(kind&&id&&kind!=="floor"){ const x=byKey[kind+"/"+decodeURIComponent(id)]; if(x) showChanges(x); }
+}
+/* "Changed in 12.x" box: the stats above come from the hangar data; this adds what the newest
+   official update notes changed for the same item, so a page never reads as out of date. */
+let PNP=null;
+const GENERIC=new Set(["mk2","mk3","ultimate","noir","blaze","frozen","retro","cryptic","freedom","eldritch","spirit","steel","sport","royal","omen","unknown","cruel","fatal","prototype","ardent","quicksand","stellar","void","baihu","the","of"]);
+const words=n=>String(n).toLowerCase().split(/[\s/()-]+/).filter(w=>w.length>2&&!GENERIC.has(w));
+function showChanges(x){
+  (PNP||(PNP=fetch("/news/patch-notes.json",{cache:"no-cache"}).then(r=>r.json()).catch(()=>null))).then(pn=>{
+    if(!pn||location.hash.split("/")[2]!==x.id) return;
+    const mine=words(x.name); if(!mine.length) return;
+    const ups=[pn.latest,...(pn.archive||[])].slice(0,3), hits=[];
+    for(const u of ups) for(const g of u.groups||[]) if(g.head!=="Fixes") for(const it of g.items){
+      const iw=words(it.name); if(!mine.some(w=>iw.includes(w))) continue;
+      hits.push({u,it}); }
+    if(!hits.length) return;
+    const box=document.createElement("div"); box.className="callout"; box.style.borderLeftColor="var(--accent)";
+    box.innerHTML=hits.slice(0,4).map(({u,it})=>`<b style="color:var(--fg)">Changed in ${esc(u.ver)}</b> · ${esc(it.name)}<br>${it.lines.map(esc).join("<br>")}
+      <br><a href="/news/#v${slug(u.ver)}-${slug(it.name)}">See the ${esc(u.ver)} patch notes</a>`).join("<hr style='border:0;border-top:1px solid var(--line);margin:10px 0'>")
+      +`<br><small class="muted">The stats on this page are from the hangar's own data and may predate this change.</small>`;
+    const h1=$("#page h1"); (h1?h1.parentNode:$("#page")).insertBefore(box,h1?h1.nextSibling:$("#page").firstChild);
+  });
 }
 const notFound=()=>`<h1>Not found</h1><p class="lede">That page isn't in the wiki. Try the search box.</p>`;
 document.addEventListener("click",e=>{
