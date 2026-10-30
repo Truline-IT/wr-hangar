@@ -167,6 +167,27 @@ const items = inventory.map(it => {
 fs.writeFileSync("adams-hangar/patch-history.json", JSON.stringify({ versions, items: Object.fromEntries(items) }, null, 1) + "\n");
 fs.writeFileSync(pnPath, JSON.stringify(pn, null, 1) + "\n");
 
+/* now.js: the same "what the newest update did" numbers, loaded by the hangar page and the wiki
+   before they draw anything, so every page shows the current figures. */
+const now = Object.fromEntries(items.filter(([, h]) => h.now).map(([k, h]) => [k, h.now]));
+fs.writeFileSync("adams-hangar/now.js", `/* Built by tools/build-patch-history.mjs from the official update notes. Do not edit by hand.
+   Damage and durability are ratios (the notes give max level figures, so the hangar's own level
+   numbers scale by the same ratio); reload and speed are the new values. */
+const NOW = ${JSON.stringify({ ver: versions[0], items: now })};
+/* Apply NOW to the hangar arrays in place. Returns the old values, keyed like "weapon/shatter". */
+function applyNow(W, R, TITANS) {
+  const slug = s => String(s).toLowerCase().replace(/[^a-z0-9]+/g, "-").replace(/^-|-$/g, ""), was = {};
+  const set = (key, row, i, v) => { if (v == null || !(+row[i]) || row[i] === v) return; (was[key] ||= {})[i] = row[i]; row[i] = v; };
+  for (const w of W) { const n = NOW.items["weapon/" + slug(w[0])]; if (!n) continue;
+    const k = "weapon/" + slug(w[0]); if (n.dmg) set(k, w, 4, Math.round(w[4] * n.dmg)); set(k, w, 6, n.reload); }
+  for (const r of R) { const n = NOW.items["robot/" + slug(r[0])]; if (!n) continue;
+    const k = "robot/" + slug(r[0]); if (n.hp) set(k, r, 4, Math.round(r[4] * n.hp)); set(k, r, 5, n.speed); }
+  for (const t of TITANS) { const n = NOW.items["titan/" + slug(t[0])]; if (!n) continue;
+    const k = "titan/" + slug(t[0]); if (n.hp) set(k, t, 3, Math.round(t[3] * n.hp)); set(k, t, 4, n.speed); }
+  return was;
+}
+`);
+
 const count = v => items.filter(([, h]) => h.latest && h.latest.verdict === v).length;
 console.log(`${items.length} inventory items, ${items.filter(([, h]) => h.changes.length).length} with changes;`,
   `latest verdicts: ${count("buff")} buffed, ${count("nerf")} nerfed, ${count("mixed")} mixed, ${count("change")} other`);
