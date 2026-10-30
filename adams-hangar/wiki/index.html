@@ -100,6 +100,7 @@
 </div></footer>
 
 <script src="../data.js"></script>
+<script src="../loadouts.js"></script>
 <script>
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -164,6 +165,75 @@ function changesPage(){
   </tbody></table></div>`;
 }
 
+/* ---- old robots and 12.5 strategy ---- */
+const typeOf=n=>TYPE_OF[String(n).toLowerCase()]||"";
+const fittedCount={}; [...robots,...titans].forEach(r=>r.guns.forEach(g=>{ fittedCount[g]=(fittedCount[g]||0)+1; }));
+const spare=w=>Math.max(0,(+w.copies||0)-(fittedCount[w.name]||0));
+const bracket=w=>!w.range?"any":w.range<=350?"close":w.range<=700?"mid":"long";
+const BR={close:"Close, 350 m or less",mid:"Mid, 500 to 700 m",long:"Long, 800 m and up"};
+const vshort=x=>vbadge(x,true);
+function stronger(w){ const t=typeOf(w.name); if(!t) return null;
+  return weapons.filter(o=>o!==w&&o.slot===w.slot&&typeOf(o.name)===t&&(+o.dmg||0)>(+w.dmg||0)).sort((a,b)=>b.dmg-a.dmg)[0]||null; }
+function suggest(slots,pool){
+  let best=null;
+  for(const br of ["close","mid","long",null]){
+    const left=Object.assign({},pool); const pick=[]; let ok=true, total=0;
+    for(const sl of slots){ const c=weapons.filter(w=>w.slot===sl&&left[w.name]>0&&(!br||bracket(w)===br)).sort((a,b)=>b.dmg-a.dmg)[0];
+      if(!c){ ok=false; pick.push(null); continue; } left[c.name]--; pick.push(c); total+=+c.dmg||0; }
+    const filled=pick.filter(Boolean).length;
+    const score=(ok?1e9:0)+filled*1e7+total+(br?1e6:0);
+    if(!best||score>best.score) best={br,pick,total,score,ok,left};
+  }
+  Object.assign(pool,best.left);      // the next robot only gets what is still unclaimed
+  return best;
+}
+function oldPage(){
+  const pool={}; weapons.forEach(w=>pool[w.name]=spare(w));
+  const rows=OLD.map(r=>{ const sg=suggest([...r.slots],pool);
+    const alts=[...new Set(r.slots)].map(sl=>{ const list=weapons.filter(w=>w.slot===sl&&spare(w)>0).sort((a,b)=>b.dmg-a.dmg).slice(0,5);
+      return `<p class="muted" style="margin:8px 0 4px"><b>${SLOT[sl]} options</b></p><div class="card scroll"><table><tbody>${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td class="muted">${esc(typeOf(w.name)||"")}</td><td class="n">${num(w.dmg)}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${spare(w)} spare</td><td>${vshort(w)}</td></tr>`).join("")||'<tr><td class="muted">No spare weapons for this slot.</td></tr>'}</tbody></table></div>`; }).join("");
+    return `<section class="card" style="padding:16px 18px;margin-top:16px"><h2 style="margin:0">${esc(r.name)} <span class="tag">${esc(r.tier)} · L${r.level}</span> <span style="font-size:15px">${pips(r.slots)}</span></h2>
+      <p class="muted" style="margin:4px 0 10px">${esc(r.ability)}</p>
+      <p style="margin:0 0 6px"><b>Suggested loadout</b>${sg.br?` <span class="muted">· all ${esc(BR[sg.br])} so the guns work together</span>`:""}</p>
+      <ul style="margin:0 0 6px">${sg.pick.map((w,i)=>w?`<li>${pips(r.slots[i])} <a href="${href(w)}">${esc(w.name)}</a> · ${num(w.dmg)} damage${w.range?", "+w.range+" m":""} ${vshort(w)}</li>`:`<li>${pips(r.slots[i])} <span class="muted">No spare weapon left for this slot</span></li>`).join("")}</ul>
+      <details><summary class="muted" style="cursor:pointer">Other spare weapons for these slots</summary>${alts}</details></section>`; }).join("");
+  const swaps=weapons.map(w=>({w,s:stronger(w)})).filter(x=>x.s).sort((a,b)=>a.w.slot.localeCompare(b.w.slot)||a.w.name.localeCompare(b.w.name));
+  return `<h1>Old robots</h1>
+  <p class="lede">Robots in Adam's garage that are not on a floor, with the strongest weapons he owns that are not already fitted. Loadouts keep every gun in one range band so they fire together.</p>
+  <p class="callout">Robots are filled in the order shown from one shared pool of spare copies, so you can field all of them at once without using a weapon twice. Spare copies are counted from the hangar data recorded on 12 October: copies owned minus copies fitted on the five floors. Weapons Adam has gotten since then are not counted yet.</p>
+  ${rows}
+  <h2 style="margin-top:34px">Stronger versions you own</h2>
+  <p class="lede">For each weapon, the strongest weapon of the same family and slot that Adam owns. If an old robot came with the weaker one, this is the swap.</p>
+  <div class="card scroll"><table><thead><tr><th>Instead of</th><th>Use</th><th>Family</th><th class="n">Damage</th><th>12.5</th></tr></thead><tbody>
+  ${swaps.map(({w,s})=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td><a class="wname" href="${href(s)}">${pic(s,"thumb")}<b>${esc(s.name)}</b></a></td><td class="muted">${esc(typeOf(w.name))} · ${SLOT[w.slot]}</td><td class="n">${num(w.dmg)} → ${num(s.dmg)}</td><td>${vshort(s)}</td></tr>`).join("")}
+  </tbody></table></div>`;
+}
+function strategyPage(){
+  if(!PH) return `<h1>12.5 strategy</h1><p class="lede">Loading…</p>`;
+  const latest=PH.versions[0];
+  const hit=x=>{ const h=hist(x); return h&&h.latest&&h.latest.ver===latest?h.changes[0]:null; };
+  const fl=floors.slice().sort((a,b)=>b.n-a.n).map(f=>{
+    const bots=[...robots,...titans].filter(r=>+r.floor===f.n);
+    const items=bots.map(r=>{ const rc=hit(r); const guns=[...new Set(r.guns)].map(g=>find("weapon",g)).filter(Boolean);
+      const gl=guns.map(g=>{ const c=hit(g); return c?`<li>${vshort(g)} <a href="${href(g)}">${esc(g.name)}</a>: ${c.lines.map(l=>esc(l.text)).join("; ")}</li>`:""; }).join("");
+      if(!rc&&!gl) return "";
+      return `<div class="chg" style="border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:8px"><b><a href="${href(r)}">${esc(r.name)}</a></b> ${rc?vshort(r):'<span class="muted" style="font-size:13px">robot unchanged</span>'}
+        ${rc?`<div class="muted" style="font-size:13.5px;margin-top:4px">${rc.lines.map(l=>esc(l.text)).join("; ")}</div>`:""}${gl?`<ul style="margin:6px 0 0;font-size:13.5px">${gl}</ul>`:""}</div>`; }).join("");
+    return `<h2 style="margin-top:28px">Floor ${f.n}: ${esc(f.title)}</h2>${items||'<p class="muted">Nothing on this floor changed in '+esc(latest)+'.</p>'}`; }).join("");
+  const nerfedFitted=weapons.filter(w=>fittedCount[w.name]&&hit(w)&&["nerf","mixed"].includes(hist(w).latest.verdict));
+  const swaps=nerfedFitted.map(w=>{ const ok=x=>x!==w&&x.slot===w.slot&&spare(x)>0&&hit(x)&&hist(x).latest.verdict==="buff";
+    const fam=weapons.filter(x=>ok(x)&&typeOf(x.name)&&typeOf(x.name)===typeOf(w.name));
+    const o=(fam.length?fam:weapons.filter(x=>ok(x)&&bracket(x)===bracket(w))).sort((a,b)=>b.dmg-a.dmg).slice(0,2);
+    return o.length?`<li><a href="${href(w)}">${esc(w.name)}</a> ${vshort(w)} → ${o.map(x=>`<a href="${href(x)}">${esc(x.name)}</a> ${vshort(x)} (${spare(x)} spare)`).join(", ")}</li>`:""; }).join("");
+  const buffedSpare=weapons.filter(w=>spare(w)>0&&hit(w)&&hist(w).latest.verdict==="buff").sort((a,b)=>b.dmg-a.dmg);
+  return `<h1>${esc(latest)} strategy</h1>
+  <p class="lede">What the ${esc(latest)} balance changes mean for each of Adam's floors, straight from the official update notes. Robots and guns with no ${esc(latest)} change are left out.</p>
+  <div class="card" style="padding:14px 18px"><b>Swap a nerfed gun for a buffed spare</b><ul style="margin:8px 0 0">${swaps||'<li class="muted">No nerfed fitted gun has a buffed spare in the same slot.</li>'}</ul>
+  <p style="margin:12px 0 4px"><b>Buffed weapons sitting spare</b></p><p class="muted" style="margin:0">${buffedSpare.slice(0,14).map(w=>`<a href="${href(w)}">${esc(w.name)}</a> (${SLOT[w.slot]}, ${spare(w)} spare)`).join(" · ")||"None."}</p></div>
+  ${fl}
+  <p class="muted" style="margin-top:24px">Fitted loadouts and spare counts come from the hangar data recorded on 12 October. <a href="#/changes">All buffs and nerfs</a> · <a href="#/old-robots">Old robots</a></p>`;
+}
+
 /* ---- pages ---- */
 const P={};
 P.home=()=>`
@@ -172,7 +242,7 @@ P.home=()=>`
   <h2>Floors</h2><div class="tiles">${floors.map(f=>`<a class="card tile" href="${href(f)}"><div class="art"><span>${String(f.n).padStart(2,"0")}</span></div><div class="t"><b>${esc(f.title)}</b><small>${esc(f.sub)}</small></div></a>`).join("")}</div>
   <h2>Robots</h2>${tiles([...robots,...titans].sort((a,b)=>b.floor-a.floor))}
   <h2>Drones</h2>${tiles(drones)}
-  <p style="margin-top:26px"><a class="btn ghost" href="#/weapon">Browse all ${weapons.length} weapons</a> <a class="btn ghost" href="#/changes">Buffs and nerfs</a></p>`;
+  <p style="margin-top:26px"><a class="btn ghost" href="#/weapon">Browse all ${weapons.length} weapons</a> <a class="btn ghost" href="#/changes">Buffs and nerfs</a> <a class="btn ghost" href="#/strategy">12.5 strategy</a> <a class="btn ghost" href="#/old-robots">Old robots</a></p>`;
 function tiles(list){ return `<div class="tiles">${list.map(x=>`<a class="card tile" href="${href(x)}"><div class="art">${pic(x)}</div><div class="t"><b>${esc(x.name)}</b><small>${
   x.kind==="drone"?esc(x.skill||"Drone"):x.kind==="weapon"?SLOT[x.slot]+" · L"+x.level:(x.kind==="titan"?"Titan":"Robot")+" · Floor "+x.floor+" · L"+x.level}</small>${vbadge(x,true)?`<div style="margin-top:6px">${vbadge(x,true)}</div>`:""}</div></a>`).join("")}</div>`; }
 
@@ -268,19 +338,22 @@ P.floor=x=>{
 /* ---- shell: nav, search, router ---- */
 function navHtml(cur){
   const it=(h,t,n)=>`<a href="${h}" class="${cur===h?"on":""}">${t}${n!=null?`<span>${n}</span>`:""}</a>`;
-  return `<h4>Wiki</h4>${it("#/","Overview")}${it("#/robot","Robots",robots.length+titans.length)}${it("#/weapon","Weapons",weapons.length)}${it("#/drone","Drones",drones.length)}${it("#/floor","Floors",floors.length)}${it("#/changes","Buffs and nerfs",PH?Object.values(PH.items).filter(h=>h.latest).length:null)}
+  return `<h4>Wiki</h4>${it("#/","Overview")}${it("#/robot","Robots",robots.length+titans.length)}${it("#/weapon","Weapons",weapons.length)}${it("#/drone","Drones",drones.length)}${it("#/floor","Floors",floors.length)}${it("#/changes","Buffs and nerfs",PH?Object.values(PH.items).filter(h=>h.latest).length:null)}${it("#/strategy",(PH?PH.versions[0]:"12.5")+" strategy")}${it("#/old-robots","Old robots",OLD.length)}
   <h4>Floors</h4>${floors.map(f=>it(href(f),String(f.n).padStart(2,"0")+" "+esc(f.title))).join("")}`;
 }
 function route(){
   const h=location.hash||"#/"; const [,kind,id]=h.split("/");
   let html, title="Hangar Wiki";
   if(!kind) html=P.home();
-  else if(!id) html={robot:P.robotList,titan:P.robotList,weapon:P.weaponList,drone:P.droneList,floor:P.floorList,changes:changesPage}[kind]?.()||notFound();
+  else if(!id) html={robot:P.robotList,titan:P.robotList,weapon:P.weaponList,drone:P.droneList,floor:P.floorList,changes:changesPage,"old-robots":oldPage,strategy:strategyPage}[kind]?.()||notFound();
   else { const x=byKey[kind+"/"+decodeURIComponent(id)]; if(x){ html=P[kind](x); title=x.name+" · Hangar Wiki"; } else html=notFound(); }
-  $("#page").innerHTML=html; document.title=kind==="changes"?"Buffs and nerfs · Hangar Wiki":title;
+  $("#page").innerHTML=html; document.title=({changes:"Buffs and nerfs","old-robots":"Old robots",strategy:"12.5 strategy"}[kind]?{changes:"Buffs and nerfs","old-robots":"Old robots",strategy:"12.5 strategy"}[kind]+" · Hangar Wiki":title);
   if(kind&&id&&kind!=="floor"){ const x=byKey[kind+"/"+decodeURIComponent(id)];
     if(x&&PH){ const h1=$("#page h1"); if(h1) h1.insertAdjacentHTML("afterend",`<p style="margin:6px 0 0">${vbadge(x)} <a href="#history" data-jump style="font-size:13px">Patch history</a></p>`);
-      $("#page").insertAdjacentHTML("beforeend",historyBox(x)); } }
+      $("#page").insertAdjacentHTML("beforeend",historyBox(x)); }
+    if(x&&kind==="weapon"){ const sv=stronger(x), h1=$("#page h1");
+      const bits=[typeOf(x.name)?`Family: <b>${esc(typeOf(x.name))}</b>`:"", `${spare(x)} spare cop${spare(x)===1?"y":"ies"} not fitted on a floor`, sv?`Stronger version you own: <a href="${href(sv)}">${esc(sv.name)}</a> (${num(sv.dmg)} damage)`:""].filter(Boolean);
+      if(h1) h1.insertAdjacentHTML("afterend",`<p class="muted" style="margin:6px 0 0;font-size:14px">${bits.join(" · ")}</p>`); } }
   $("#nav").innerHTML=navHtml(kind&&!id?"#/"+kind:h==="#/"||!kind?"#/":h);
   window.scrollTo(0,0);
 }

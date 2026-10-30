@@ -24,6 +24,8 @@ const wiki = (kind, id) => `/adams-hangar/wiki/#/${kind}/${id}`;
 const PH = (() => { try { return JSON.parse(fs.readFileSync("adams-hangar/patch-history.json", "utf8")).items; } catch { return {}; } })();
 const note = (kind, name) => (PH[kind + "/" + slug(name)] || {}).note || "";
 add("Buffs and nerfs", "Page", "/adams-hangar/wiki/#/changes", "Every item in Adam's hangar checked against the official update notes");
+add("Patch strategy", "Page", "/adams-hangar/wiki/#/strategy", "What the latest balance changes mean for each floor, and which spare guns to swap in");
+add("Old robots", "Page", "/adams-hangar/wiki/#/old-robots", "Loadouts for garage robots from spare weapons, and stronger versions of weapons you own");
 for (const r of R) add(r[0], "Robot", wiki("robot", slug(r[0])), `${note("robot", r[0])}. Floor ${r[1]}. ${r[6] || ""}`);
 for (const t of TITANS) add(t[0], "Titan", wiki("titan", slug(t[0])), `${note("titan", t[0])}. Floor ${t[1]}`);
 for (const w of W) add(w[0], "Weapon", wiki("weapon", slug(w[0])), [note("weapon", w[0]), w[7], w[5] ? w[5] + " m" : ""].filter(Boolean).join(". "));
