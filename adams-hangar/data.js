@@ -128,15 +128,15 @@ const TITANS = [
 ];
 const FLOORS = {
  5:["05","Lead Floor","var(--f1)","Five MK2s and Atlas, the strongest hangar you own",
-    "Lead with Samjok. Dump all three guns, then hit Sunstorm and leave while they reload. Hold Atlas for a beacon fight you are already winning."],
+    "Lead with Samjok, untouched by 12.5 and now the safest opener. Dump all three guns, hit Sunstorm and leave while they reload. Atlas lost about 12% damage, so drop it only into a fight you are already winning."],
  4:["04","Heavy Hitters","var(--f2)","Three MK2s, Teth at level 10, and Ao Ming",
-    "Open with Teth, the toughest robot on the floor at 257,400 hp. Anaksor's Sirocco Field softens a cluster before Fenrir's Orkans go in."],
+    "Open with Teth, the toughest robot on the floor at 257,400 hp. Anaksor lost durability in 12.5, so it goes in second on slug shotguns, not first."],
  3:["03","Close It","var(--f3)","Lock them down and finish, Newton overhead",
-    "Typhon goes first. Nothing can use an ability or move while Blackout is on it. Kaji mines next: Boom and Pow hit twice as hard on a marked target."],
+    "Typhon goes first: Blackout, then four Unknown Shatter that now reload in 4 s. Kaji next with one big mine volley on the marked target, then fall back while Boom and Pow take 10 s to reload."],
  2:["02","Shield Break","var(--f4)","Pierce, outlast and absorb, with Nodens",
-    "Ammit wants to be shot, so it leads. Mars and Nodens still have empty hardpoints, so fill them before this floor goes out."],
+    "Noir Shenlou leads after its 12.5 Aegis buff. Ammit is slower now, so park it on the nearest beacon as an anchor. Fill Mars with 3 Labrys and finish Nodens before this floor goes out."],
  1:["01","The Grind","var(--f5)","Nothing reloads, outlast them, Sirocco overhead",
-    "Vulcan needs 250,000 damage to reach its first threshold. Stay on target and let the heat build. Crisis carries four flamethrowers, so keep it close."]};
+    "Nothing reloads here. Vulcan needs 250,000 damage to reach its first threshold, so stay on target and let the heat build. Crisis swaps its flamethrowers for 4 Hwangje, which hit 26% harder in 12.5."]};
 const DRONES = ["Scales","Armadillo","Barrel","Beak","Daltokki","Freezo","Glider","Hiruko","Kestrel","Moderator","Nebula",
  "Paralysis","Qingting","Reviver","Scarabeus","Shai","Showdown","Wave","Whiteout"];
 

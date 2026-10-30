@@ -73,6 +73,56 @@
 .filters button{font:500 13px var(--body);padding:7px 12px;border-radius:20px;border:1px solid var(--line);background:var(--panel);color:var(--dim);cursor:pointer}
 .filters button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1006}
 .wname{display:flex;align-items:center;gap:10px}
+/* ---- wiki skin: a War Robots game wiki, in Adam's amber ---- */
+html:root:root{color-scheme:dark;--bg:#0a0d11;--bg2:#0f141a;--panel:#131920;--panel2:#1a222b;--line:#26303b;--line2:#384452;
+  --fg:#eaeef2;--dim:#a9b4c0;--faint:#77838f;--accent:#ff9a1f;--accent2:#ffc067;--link:#ffbe5c;--good:#4fd98c;--bad:#ff6363}
+body{background:
+  radial-gradient(900px 380px at 50% -120px,color-mix(in srgb,var(--accent) 16%,transparent),transparent 70%),
+  url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='56' height='98' viewBox='0 0 56 98'%3E%3Cpath d='M28 0l28 16v33L28 65 0 49V16zM28 65v33' fill='none' stroke='%23ffffff' stroke-opacity='.025'/%3E%3C/svg%3E"),
+  var(--bg)}
+a:hover{color:#ffd9a0}
+.wikihead{border-bottom:1px solid var(--line);background:linear-gradient(180deg,rgba(255,154,31,.07),transparent)}
+.wikihead .container{display:flex;align-items:center;gap:16px;padding-top:18px;padding-bottom:0;flex-wrap:wrap}
+.wmark{width:52px;height:58px;flex:none;display:flex;align-items:center;justify-content:center;font:700 22px var(--display);color:#1a1006;
+  background:linear-gradient(160deg,var(--accent2),var(--accent));clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.wtitle{font:700 clamp(24px,4vw,34px)/1 var(--display);letter-spacing:1.5px;text-transform:uppercase;margin:0;color:var(--fg)}
+.wtitle b{color:var(--accent)}
+.wsub{font:12px var(--mono);color:var(--faint);letter-spacing:.6px;margin-top:6px}
+.wsub .live{color:var(--good)}
+.wtabs{width:100%;display:flex;gap:2px;overflow-x:auto;margin-top:14px;scrollbar-width:none}
+.wtabs a{font:600 15px var(--display);letter-spacing:1px;text-transform:uppercase;color:var(--dim);padding:9px 14px;white-space:nowrap;border-bottom:2px solid transparent}
+.wtabs a:hover{color:var(--fg);text-decoration:none;background:var(--panel)}
+.wtabs a.on{color:var(--accent);border-bottom-color:var(--accent)}
+#page h1{text-shadow:0 0 28px rgba(255,154,31,.18)}
+#page h2{position:relative;padding-bottom:7px;border-bottom:1px solid var(--line2)}
+#page h2::after{content:"";position:absolute;left:0;bottom:-1px;width:70px;height:2px;background:var(--accent)}
+.atabs{display:flex;align-items:flex-end;gap:2px;border-bottom:1px solid var(--line2);margin:0 0 18px;flex-wrap:wrap}
+.atabs a{font:600 14px var(--display);letter-spacing:.8px;text-transform:uppercase;padding:7px 14px;color:var(--dim);border:1px solid transparent;border-bottom:0;border-radius:6px 6px 0 0}
+.atabs a.on{color:var(--fg);background:var(--panel);border-color:var(--line2);margin-bottom:-1px;padding-bottom:8px}
+.atabs a:hover{text-decoration:none;color:var(--fg)}
+.atabs .grow{flex:1}
+.atabs .cur{font:11px var(--mono);color:var(--good);padding:0 4px 8px;letter-spacing:.5px}
+.notice{padding:11px 14px;margin:14px 0;border:1px solid color-mix(in srgb,var(--accent) 40%,var(--line));
+  border-left:4px solid var(--accent);background:color-mix(in srgb,var(--accent) 7%,var(--panel));font-size:14px;color:var(--dim);border-radius:0 8px 8px 0}
+.notice b{color:var(--fg)}
+.card{border-radius:4px}
+.tile,.infobox{clip-path:polygon(0 0,calc(100% - 16px) 0,100% 16px,100% 100%,0 100%)}
+.tile:hover{box-shadow:inset 0 0 0 1px var(--accent)}
+.infobox .ttl{text-align:center;background:linear-gradient(90deg,#3a2306,#6b3d08 50%,#3a2306);color:#ffe1b0;border-bottom:2px solid var(--accent)}
+.infobox dl dt:nth-of-type(odd),.infobox dl dd:nth-of-type(odd){background:rgba(255,255,255,.025)}
+.was{color:var(--faint);font-weight:400;font-size:12px;margin-left:5px}
+.was s{text-decoration-color:var(--bad)}
+.u125{display:inline-block;font:600 9px/1 var(--mono);padding:3px 4px;border-radius:3px;margin-left:5px;vertical-align:1px;color:#1a1006;background:var(--accent)}
+.navbox{margin-top:34px;border:1px solid var(--line2);font-size:14px}
+.navbox th{font:600 14px var(--display);letter-spacing:1px;text-transform:uppercase;color:#ffe1b0;background:linear-gradient(90deg,#3a2306,#5a3407 50%,#3a2306);text-align:center;padding:8px}
+.navbox td{padding:8px 12px;border-bottom:1px solid var(--line);line-height:1.9}
+.navbox td.g{width:1%;white-space:nowrap;font:500 11px var(--mono);letter-spacing:.8px;text-transform:uppercase;color:var(--faint);background:var(--panel2);text-align:right}
+.navbox b.self{color:var(--fg)}
+.navbox .dot{color:var(--line2);margin:0 2px}
+.navbox td{overflow-wrap:anywhere}
+.vb.buff{color:#8ff0bb;background:#123a26}.vb.nerf{color:#ffaaaa;background:#4a1616}.vb.mixed{color:#ffd486;background:#40300a}
+.footer{border-top:1px solid var(--line);margin-top:40px}
+@media (max-width:860px){.side .nav{display:none}.side .search{margin-bottom:4px}.atabs .cur{display:none}}
 </style>
 <script src="/shared/search.js" defer></script>
 </head>
@@ -84,6 +134,12 @@
   <div class="toplinks"><a href="../">Open the hangar tools</a></div>
 </div></div>
 
+<header class="wikihead"><div class="container">
+  <div class="wmark" aria-hidden="true">A</div>
+  <div><p class="wtitle">Adam's Hangar <b>Wiki</b></p>
+    <div class="wsub" id="wsub">Moody.Adam · War Robots fan wiki</div></div>
+  <nav class="wtabs" id="wtabs" aria-label="Wiki sections"></nav>
+</div></header>
 <div class="container layout">
   <aside class="side">
     <div class="search">
@@ -95,8 +151,9 @@
   <main id="page" tabindex="-1"></main>
 </div>
 <footer class="footer"><div class="container">
-  Hangar data last captured 5 October 2026. Base damage and upgrade costs are from the
-  <a href="https://warrobots.fandom.com/" target="_blank" rel="noopener">War Robots Wiki on Fandom</a> (CC BY-SA). War Robots is a game by MY.GAMES; this is a fan project.
+  Hangar read from the game on 12 October 2026. Damage, reload, health and speed are adjusted for the newest official update notes, and each changed number shows its old value.
+  Per level damage and upgrade cost tables are from the <a href="https://warrobots.fandom.com/" target="_blank" rel="noopener">War Robots Wiki on Fandom</a> (CC BY-SA), read 5 October 2026, before update 12.5.
+  War Robots is a game by MY.GAMES; this is a fan project and not an official wiki.
 </div></footer>
 
 <script src="../data.js"></script>
@@ -139,7 +196,21 @@ function wikiCost(n){ return WIKI_COST[n]||WIKI_COST[WIKI_VIA[n]]||null; }
 
 /* ---- buff / nerf notes, from patch-history.json (built from the official update notes) ---- */
 let PH=null;
-fetch("../patch-history.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PH=d; route(); }).catch(()=>{});
+fetch("../patch-history.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PH=d; applyNow(); route(); }).catch(()=>{});
+/* The hangar numbers were read on 12 October, before the newest update. patch-history.json says what that
+   update did (damage and health as a ratio, reload and speed as the new value), so apply it and keep the old value. */
+function applyNow(){
+  for(const x of [...robots,...titans,...weapons]){ const h=PH.items[x.kind+"/"+x.id]; if(!h||!h.now||x.was) continue;
+    const n=h.now; x.was={};
+    if(x.kind==="weapon"){ if(n.dmg&&+x.dmg){ x.was.dmg=x.dmg; x.dmg=Math.round(x.dmg*n.dmg); }
+      if(n.reload!=null&&+x.reload&&n.reload!==x.reload){ x.was.reload=x.reload; x.reload=n.reload; } }
+    else { if(n.hp&&+x.hp){ x.was.hp=x.hp; x.hp=Math.round(x.hp*n.hp); }
+      if(n.speed&&+x.speed&&n.speed!==x.speed){ x.was.speed=x.speed; x.speed=n.speed; } } }
+}
+/* a number with its value before the update beside it */
+const secs=v=>+v?v+" s":"—", kmh=v=>+v?v+" km/h":"";
+function sv(x,k,fmt){ const f=fmt||num;
+  return x.was&&x.was[k]!=null?`${f(x[k])}<span class="was"><s>${f(x.was[k])}</s></span><span class="u125">${esc(PH.versions[0])}</span>`:f(x[k]); }
 const hist=x=>PH&&PH.items[x.kind+"/"+x.id];
 const VWORD={buff:"Buffed",nerf:"Nerfed",mixed:"Buffed and nerfed",change:"Changed"};
 function vbadge(x,short){ const h=hist(x); if(!PH||!h) return "";
@@ -147,7 +218,7 @@ function vbadge(x,short){ const h=hist(x); if(!PH||!h) return "";
   return `<span class="vb ${h.latest.verdict}">${short?{buff:"Buff",nerf:"Nerf",mixed:"Mixed",change:"Changed"}[h.latest.verdict]:VWORD[h.latest.verdict]} ${esc(h.latest.ver)}</span>`; }
 function historyBox(x){ const h=hist(x); if(!PH||!h) return "";
   if(!h.changes.length) return `<section class="ph" id="history"><h2>Patch history</h2><p class="muted">${esc(h.note)} in the official update notes.</p></section>`;
-  return `<section class="ph" id="history"><h2>Patch history</h2><p class="muted">${esc(h.note)}. Stats in the box above come from the hangar's own data and may predate these changes.</p>
+  return `<section class="ph" id="history"><h2>Patch history</h2><p class="muted">${esc(h.note)}. Numbers on this page include the newest update; older changes are listed for the record.</p>
     ${h.changes.map(c=>`<div class="chg"><header><span class="vb ${c.verdict}">${VWORD[c.verdict]}</span><b>${esc(c.ver)}${c.title?" · "+esc(c.title):""}</b>
       <small class="muted">${esc(c.group)}${c.entry!==x.name?" · "+esc(c.entry):""}</small><a href="${esc(c.anchor)}">Patch notes</a></header>
       <ul>${c.lines.map(l=>`<li class="${l.dir}">${esc(l.text)} <small>${l.dir==="buff"?"buff":l.dir==="nerf"?"nerf":""}</small></li>`).join("")}</ul></div>`).join("")}</section>`; }
@@ -192,7 +263,7 @@ function oldPage(){
   const pool={}; weapons.forEach(w=>pool[w.name]=spare(w));
   const rows=OLD.map(r=>{ const sg=suggest([...r.slots],pool);
     const alts=[...new Set(r.slots)].map(sl=>{ const list=weapons.filter(w=>w.slot===sl&&spare(w)>0).sort((a,b)=>b.dmg-a.dmg).slice(0,5);
-      return `<p class="muted" style="margin:8px 0 4px"><b>${SLOT[sl]} options</b></p><div class="card scroll"><table><tbody>${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td class="muted">${esc(typeOf(w.name)||"")}</td><td class="n">${num(w.dmg)}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${spare(w)} spare</td><td>${vshort(w)}</td></tr>`).join("")||'<tr><td class="muted">No spare weapons for this slot.</td></tr>'}</tbody></table></div>`; }).join("");
+      return `<p class="muted" style="margin:8px 0 4px"><b>${SLOT[sl]} options</b></p><div class="card scroll"><table><tbody>${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td class="muted">${esc(typeOf(w.name)||"")}</td><td class="n">${sv(w,"dmg")}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${spare(w)} spare</td><td>${vshort(w)}</td></tr>`).join("")||'<tr><td class="muted">No spare weapons for this slot.</td></tr>'}</tbody></table></div>`; }).join("");
     return `<section class="card" style="padding:16px 18px;margin-top:16px"><h2 style="margin:0">${esc(r.name)} <span class="tag">${esc(r.tier)} · L${r.level}</span> <span style="font-size:15px">${pips(r.slots)}</span></h2>
       <p class="muted" style="margin:4px 0 10px">${esc(r.ability)}</p>
       <p style="margin:0 0 6px"><b>Suggested loadout</b>${sg.br?` <span class="muted">· all ${esc(BR[sg.br])} so the guns work together</span>`:""}</p>
@@ -263,10 +334,10 @@ P.floorList=()=>`<h1>Floors</h1><div class="tiles" style="margin-top:18px">${flo
 let WF="";
 P.weaponList=()=>{
   const list=weapons.filter(w=>!WF||w.slot===WF).sort((a,b)=>b.dmg-a.dmg);
-  return `<h1>Weapons</h1><p class="lede">${weapons.length} weapons, sorted by damage at the level Adam owns them.</p>
+  return `<h1>Weapons</h1><p class="lede">${weapons.length} weapons, sorted by damage at the level Adam owns them${PH?`, with ${esc(PH.versions[0])} changes applied`:""}.</p>
   <div class="filters">${["","H","M","L","A","B"].map(k=>`<button data-wf="${k}" aria-pressed="${WF===k}">${k?SLOT[k]:"All"}</button>`).join("")}</div>
   <div class="card scroll"><table><thead><tr><th>Weapon</th><th>Slot</th><th class="n">Level</th><th class="n">Owned</th><th class="n">Damage</th><th class="n">Range</th><th class="n">Reload</th><th>Latest change</th></tr></thead><tbody>
-  ${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td>${pips(w.slot)}</td><td class="n">${w.level}</td><td class="n">${w.copies}</td><td class="n">${num(w.dmg)}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${w.reload?w.reload+" s":"—"}</td><td>${vbadge(w,true)}</td></tr>`).join("")}
+  ${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td>${pips(w.slot)}</td><td class="n">${w.level}</td><td class="n">${w.copies}</td><td class="n">${sv(w,"dmg")}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${w.reload?w.reload+" s":"—"}</td><td>${vbadge(w,true)}</td></tr>`).join("")}
   </tbody></table></div>`;
 };
 
@@ -282,7 +353,7 @@ function infobox(x,rows,mine){
 }
 P.robot=x=>{
   const fl=FLOORS[x.floor];
-  const loadout=x.guns.map((g,i)=>{const w=find("weapon",g);return `<tr><td>${pips(String(x.slots)[i]||"")}</td><td>${w?`<a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(g)}</a>`:esc(g)}</td><td class="n">${w?num(w.dmg):"—"}</td><td class="n">${w?(w.reload?w.reload+" s":"—"):"—"}</td></tr>`;}).join("");
+  const loadout=x.guns.map((g,i)=>{const w=find("weapon",g);return `<tr><td>${pips(String(x.slots)[i]||"")}</td><td>${w?`<a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(g)}</a>`:esc(g)}</td><td class="n">${w?sv(w,"dmg"):"—"}</td><td class="n">${w?sv(w,"reload",secs):"—"}</td></tr>`;}).join("");
   const volley=x.guns.reduce((s,g)=>s+((find("weapon",g)||{}).dmg||0),0);
   const empty=String(x.slots).length-x.guns.length;
   return `<div class="article"><div>
@@ -295,8 +366,8 @@ P.robot=x=>{
     <p>Total volley: <b>${num(volley)}</b>${empty>0?` · <span style="color:var(--bad)">${empty} empty hardpoint${empty>1?"s":""}</span>`:""}</p>
     ${fl?`<h2 id="role">Role on the floor</h2><div class="callout">${esc(fl[4])}</div>`:""}
   </div>${infobox(x,[
-    ["Type",x.kind==="titan"?"Titan":"Robot"],["Level",x.level],["Hardpoints",pips(x.slots)],["Health",num(x.hp)],
-    ["Speed",x.speed?x.speed+" km/h":""],["Ability",esc(x.ability||"")],["Pilot",x.pilot?esc(x.pilot)+(x.plvl?" · L"+x.plvl:""):""],
+    ["Type",x.kind==="titan"?"Titan":"Robot"],["Level",x.level],["Hardpoints",pips(x.slots)],["Health",sv(x,"hp")],
+    ["Speed",x.speed?sv(x,"speed",kmh):""],["Ability",esc(x.ability||"")],["Pilot",x.pilot?esc(x.pilot)+(x.plvl?" · L"+x.plvl:""):""],
     ["Drone",x.drone?link("drone",x.drone):""]],`In Adam's hangar: Floor ${x.floor}`)}</div>`;
 };
 P.titan=P.robot;
@@ -315,11 +386,12 @@ P.weapon=x=>{
     <p>Adam owns <b>${x.copies}</b> cop${x.copies==1?"y":"ies"}${on.length?`, ${on.length} in use`:""}.</p>
     ${lv.length?`<h2 id="levels">Damage and cost by level</h2>
       ${via?`<p class="muted">Figures read from the base <b>${esc(via)}</b> page.</p>`:""}
+      ${x.was&&x.was.dmg!=null?`<div class="notice"><b>These per level figures are from before ${esc(PH.versions[0])}.</b> That update changed this weapon's damage by ${Math.round((x.dmg/x.was.dmg-1)*100)>0?"+":""}${Math.round((x.dmg/x.was.dmg-1)*100)}%, so scale the column by the same amount.</div>`:""}
       <div class="card scroll"><table><thead><tr><th class="n">Level</th><th class="n">Damage</th><th class="n">Upgrade cost (Ag)</th><th class="n">Time</th></tr></thead><tbody>
       ${lv.map(l=>{const k=c&&c[l];return `<tr${l==x.level?` style="background:color-mix(in srgb,var(--accent) 12%,transparent)"`:""}><td class="n">${l}${l==x.level?" ◂":""}</td><td class="n">${num(d[l])}</td><td class="n">${k?num(k[0]):"—"}</td><td class="n">${k?k[1]:"—"}</td></tr>`;}).join("")}
       </tbody></table></div>`:""}
     ${WIKI_SRC[x.name]?`<p class="src">Level data: <a href="${esc(WIKI_SRC[x.name])}" target="_blank" rel="noopener">War Robots Wiki</a>, read ${WIKI_READ} (CC BY-SA).</p>`:""}
-  </div>${infobox(x,[["Slot",pips(x.slot)+" "+(SLOT[x.slot]||"")],["Level",x.level],["Damage",num(x.dmg)],["Range",x.range?x.range+" m":""],["Reload",x.reload?x.reload+" s":""],["Effect",esc(x.effect||"")],["Owned",x.copies]],
+  </div>${infobox(x,[["Slot",pips(x.slot)+" "+(SLOT[x.slot]||"")],["Level",x.level],["Damage",sv(x,"dmg")],["Range",x.range?x.range+" m":""],["Reload",x.reload?sv(x,"reload",secs):""],["Effect",esc(x.effect||"")],["Owned",x.copies]],
     on.length?`${on.length} in use on ${new Set(on).size} robot${new Set(on).size>1?"s":""}`:"")}</div>`;
 };
 
@@ -365,7 +437,36 @@ function route(){
       const bits=[typeOf(x.name)?`Family: <b>${esc(typeOf(x.name))}</b>`:"", `${spare(x)} spare cop${spare(x)===1?"y":"ies"} not fitted on a floor`, sv?`Stronger version you own: <a href="${href(sv)}">${esc(sv.name)}</a> (${num(sv.dmg)} damage)`:""].filter(Boolean);
       if(h1) h1.insertAdjacentHTML("afterend",`<p class="muted" style="margin:6px 0 0;font-size:14px">${bits.join(" · ")}</p>`); } }
   $("#nav").innerHTML=navHtml(kind&&!id?"#/"+kind:h==="#/"||!kind?"#/":h);
+  const top=kind==="titan"?"robot":kind||"";
+  $("#wtabs").innerHTML=[["","Home"],["robot","Robots"],["weapon","Weapons"],["drone","Drones"],["floor","Floors"],["changes","Buffs and nerfs"],["strategy",(PH?PH.versions[0]+" ":"")+"Strategy"],["old-robots","Old robots"]]
+    .map(([k,t])=>`<a href="#/${k}" class="${top===k?"on":""}">${esc(t)}</a>`).join("")+`<a href="/news/">News ↗</a>`;
+  if(PH) $("#wsub").innerHTML=`Moody.Adam · War Robots fan wiki · <span class="live">● current for update ${esc(PH.versions[0])}</span> · ${ALL.length} pages`;
+  if(kind&&id){ const x=byKey[kind+"/"+decodeURIComponent(id)]; if(x){
+    const h=x.kind!=="floor"&&hist(x), n=h?h.changes.length:0;
+    $("#page").insertAdjacentHTML("afterbegin",`<div class="atabs"><a class="on" href="${href(x)}">Article</a>${h?`<a href="#history" data-jump>Patch history${n?" ("+n+")":""}</a>`:""}${h&&n?`<a href="${esc(h.changes[0].anchor)}">Patch notes ↗</a>`:""}<span class="grow"></span>${PH?`<span class="cur">Current for ${esc(PH.versions[0])}</span>`:""}</div>`);
+    if(x.was&&Object.keys(x.was).length){ const h1=$("#page h1"); if(h1) h1.insertAdjacentHTML("afterend",`<div class="notice"><b>Update ${esc(PH.versions[0])} changed this ${x.kind}.</b> The numbers below already include it; the struck out value is what it was before.</div>`); }
+    $("#page").insertAdjacentHTML("beforeend",navbox(x)); } }
   window.scrollTo(0,0);
+}
+/* the box of related pages at the foot of every article, like a game wiki's navbox */
+function navbox(x){
+  const L=(o)=>o===x?`<b class="self">${esc(o.name)}</b>`:`<a href="${href(o)}">${esc(o.name)}</a>`, J=a=>a.map(L).join(' <span class="dot">·</span> ');
+  const row=(g,a)=>a.length?`<tr><td class="g">${g}</td><td>${J(a)}</td></tr>`:"";
+  let head="", rows="";
+  if(x.kind==="robot"||x.kind==="titan"||x.kind==="floor"){
+    const n=x.kind==="floor"?x.n:+x.floor, f=floors.find(o=>o.n===n), bots=[...robots,...titans].filter(r=>+r.floor===n);
+    const guns=[...new Set(bots.flatMap(r=>r.guns))].map(g=>find("weapon",g)).filter(Boolean);
+    const dr=[...new Set(bots.map(r=>r.drone).filter(Boolean))].map(d=>find("drone",d)).filter(Boolean);
+    head=f?`Floor ${String(n).padStart(2,"0")}: ${esc(f.title)}`:"Hangar";
+    rows=row("Robots",bots)+row("Weapons",guns)+row("Drones",dr)+row("Other floors",floors.filter(o=>o.n!==n));
+  } else if(x.kind==="weapon"){
+    const t=typeOf(x.name), fam=t?weapons.filter(w=>typeOf(w.name)===t):[x];
+    head=t?`${esc(t)} family`:`${SLOT[x.slot]||""} weapons`;
+    rows=["H","M","L","A","B"].map(sl=>row(SLOT[sl],fam.filter(w=>w.slot===sl))).join("")||row(SLOT[x.slot],weapons.filter(w=>w.slot===x.slot).slice(0,24));
+  } else if(x.kind==="drone"){
+    head="Drones in the hangar"; rows=row("Drones",drones);
+  }
+  return rows?`<table class="navbox"><thead><tr><th colspan="2">${head}</th></tr></thead><tbody>${rows}</tbody></table>`:"";
 }
 const notFound=()=>`<h1>Not found</h1><p class="lede">That page isn't in the wiki. Try the search box.</p>`;
 document.addEventListener("click",e=>{

@@ -130,11 +130,33 @@ for (const u of updates) {
 
 // Every inventory item gets an entry, even with no changes, so the notes cover everything.
 const versions = updates.map(u => u.ver);
+
+/* What the newest update did to the numbers the wiki shows: damage and durability as a ratio
+   (official notes give max-level figures, so the hangar's own-level numbers are scaled by the
+   same ratio), reload and speed as the new value. */
+function nowFor(h) {
+  const out = {};
+  for (const c of h.changes.filter(c => c.ver === versions[0])) {
+    let ctxLine = "";
+    for (const { text } of c.lines) {
+      const m = text.match(/(-?[\d][\d.,]*)\s*%?\s*[a-z\/]*\s*→\s*(-?[\d][\d.,]*)/i); if (!m) { ctxLine = text; continue; }
+      const a = num(m[1]), b = num(m[2]); if (!a || isNaN(b)) continue;
+      const label = text.split(/[:\d]/)[0].toLowerCase();
+      if (/reload interval/.test(label)) out.reload = b;
+      else if (/^durability/.test(label)) out.hp = b / a;
+      else if (/movement speed/.test(label)) out.speed = b;
+      else if (/damage per particle|^-\s|^(light|medium|heavy)$/.test(label.trim()) || /^-\s*[a-z]/i.test(text)) { if (!/built-in/.test(label)) out.dmg = b / a; }
+    }
+  }
+  if (h.kind !== "weapon") delete out.dmg;
+  return Object.keys(out).length ? out : null;
+}
 const items = inventory.map(it => {
   const key = it.kind + "/" + slug(it.name);
   const h = history[key] || { kind: it.kind, name: it.name, changes: [] };
   const last = h.changes[0];
   h.latest = last ? { ver: last.ver, verdict: last.verdict } : null;
+  const now = nowFor(h); if (now) h.now = now; else delete h.now;
   h.note = last
     ? `${last.verdict === "buff" ? "Buffed" : last.verdict === "nerf" ? "Nerfed" : last.verdict === "mixed" ? "Buffed and nerfed" : "Changed"} in ${last.ver}` +
       (h.changes.length > 1 ? `; changed in ${h.changes.length} updates since ${versions[versions.length - 1]}` : "")

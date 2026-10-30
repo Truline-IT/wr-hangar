@@ -44,22 +44,29 @@ def write(path, data):
 
 # ---------- developers' news ----------
 def official_posts():
-    page = get(SITE + "/en/news")
+    # The site moved its news from /en/news (/en/posts/N) to /news (/news/N-slug) in October 2026.
+    page = get(SITE + "/news")
     posts, seen = [], set()
-    for m in re.finditer(r'<a [^>]*href="(?:https://warrobots\.com)?/en/posts/(\d+)"[^>]*>(.*?)</a>', page, re.S):
-        pid, block = m.group(1), m.group(2)
-        title = re.search(r"<h[34][^>]*>(.*?)</h[34]>", block, re.S)
+    for m in re.finditer(r'<a [^>]*href="(?:https://warrobots\.com)?/(?:en/posts|news)/(\d+)(-[a-z0-9-]*)?"[^>]*>(.*?)</a>', page, re.S):
+        pid, tail, block = m.group(1), m.group(2) or "", m.group(3)
+        title = re.search(r'<h[34][^>]*>(.*?)</h[34]>|class="news-card__title"[^>]*>(.*?)</span>', block, re.S)
         if not title or pid in seen:
             continue
         seen.add(pid)
-        spans = [html.unescape(re.sub(r"<[^>]+>", "", s)).strip() for s in re.findall(r"<span[^>]*>(.*?)</span>", block, re.S)]
+        clean = lambda s: html.unescape(re.sub(r"<[^>]+>", "", s or "")).strip()
+        badge = re.search(r'class="ui-badge"[^>]*>(.*?)</span>', block, re.S)
+        date = re.search(r'class="news-card__date"[^>]*>(.*?)</span>', block, re.S)
+        spans = [clean(s) for s in re.findall(r"<span[^>]*>([^<]*)</span>", block)]
         img = re.search(r'<img src="([^"]+)"', block)
+        d = clean(date.group(1)) if date else (spans[1] if len(spans) > 1 else "")
+        if re.fullmatch(r"\d{2}\.\d{2}\.\d{4}", d):  # 26.10.2026 -> 2026-10-26
+            d = "-".join(reversed(d.split(".")))
         posts.append({
             "id": int(pid),
-            "title": html.unescape(re.sub(r"<[^>]+>", "", title.group(1))).strip(),
-            "category": spans[0] if spans else "",
-            "date": spans[1] if len(spans) > 1 else "",
-            "url": f"{SITE}/en/posts/{pid}",
+            "title": clean(title.group(1) or title.group(2)),
+            "category": clean(badge.group(1)) if badge else (spans[0] if spans else ""),
+            "date": d,
+            "url": f"{SITE}/news/{pid}{tail}" if tail else f"{SITE}/en/posts/{pid}",
             "img": img.group(1) if img else "",
         })
     posts.sort(key=lambda p: p["id"], reverse=True)
@@ -93,7 +100,8 @@ def parse_update(post):
     ver = re.search(r"(\d+\.\d+(?:\.\d+)?)", post["title"])
     ver = ver.group(1) if ver else post["title"]
     try:
-        start = lines.index(post["title"].upper()) if post["title"].upper() in lines else lines.index(post["title"])
+        t = post["title"].upper() if post["title"].upper() in lines else post["title"]
+        start = len(lines) - 1 - lines[::-1].index(t)  # the page <title> repeats the headline, so take the last one
     except ValueError:
         start = 0
     subtitle = lines[start + 1] if start + 1 < len(lines) else ""
@@ -140,13 +148,14 @@ def update_official():
     if not posts:
         print("Developers' news: no posts found, page layout may have changed.")
         return
-    write("news/official.json", {"source": SITE + "/en/news", "checked": dt.date.today().isoformat(), "posts": posts[:30]})
+    write("news/official.json", {"source": SITE + "/news", "checked": dt.date.today().isoformat(), "posts": posts[:30]})
     print(f"Developers' news: {len(posts)} posts, newest {posts[0]['title']}")
     notes = next((p for p in posts if "UPDATE NOTES" in p["title"].upper()), None)
     if not notes:
         return
     pn = json.load(open("news/patch-notes.json", encoding="utf-8"))
-    if pn["latest"]["url"] == notes["url"]:
+    ver = re.search(r"(\d+\.\d+(?:\.\d+)?)", notes["title"])
+    if pn["latest"]["url"] == notes["url"] or (ver and pn["latest"]["ver"] == ver.group(1)):
         return
     new = parse_update(notes)
     if not new["groups"] and not new["highlights"]:
