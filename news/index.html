@@ -54,6 +54,9 @@ details.grp>summary small{font:400 12px var(--mono);color:var(--faint);letter-sp
 .it div{font-size:13px;color:var(--dim);overflow-wrap:anywhere;font-variant-numeric:tabular-nums}
 .it.mine{border-color:color-mix(in srgb,var(--accent) 60%,var(--line))}
 .it:target{outline:2px solid var(--accent);outline-offset:2px}
+.vb{display:inline-block;font:600 10px/1 var(--mono);letter-spacing:.5px;text-transform:uppercase;padding:4px 6px;border-radius:4px;white-space:nowrap}
+.vb.buff{color:#0d5f34;background:#c9f2db}.vb.nerf{color:#7a1414;background:#ffd6d6}.vb.mixed{color:#6b4500;background:#ffe7b8}.vb.change{color:var(--dim);background:var(--bg2)}
+@media (prefers-color-scheme:dark){.vb.buff{color:#8ff0bb;background:#123a26}.vb.nerf{color:#ffaaaa;background:#4a1616}.vb.mixed{color:#ffd486;background:#40300a}}
 .mark{font:500 10px/1 var(--mono);letter-spacing:.5px;text-transform:uppercase;color:var(--accent);border:1px solid color-mix(in srgb,var(--accent) 45%,transparent);border-radius:4px;padding:3px 5px}
 
 details.old{border-bottom:1px solid var(--line)}
@@ -159,7 +162,9 @@ function withYears(posts){
     return Object.assign({},p,{when:d}); });
 }
 const openUp=el=>{ for(let d=el.closest("details");d;d=d.parentElement&&d.parentElement.closest("details")) d.open=true; };
-const arrow=line=>esc(line); // higher is not always better (cooldowns), so changes are not coloured
+const arrow=line=>esc(line);
+const VB={buff:"Buff",nerf:"Nerf",mixed:"Buff + nerf",change:"Change"};
+const vb=i=>i.verdict?`<span class="vb ${i.verdict}">${VB[i.verdict]}</span>`:""; // higher is not always better (cooldowns), so changes are not coloured
 
 let PN=null, FILTER="mine";
 function renderGroups(){
@@ -167,7 +172,7 @@ function renderGroups(){
   $("groups").innerHTML=L.groups.map((g,gi)=>{
     const its=g.items.filter(i=>FILTER==="all"||i.mine); if(!its.length) return "";
     return `<details class="grp" ${gi<2||FILTER==="mine"?"open":""}><summary>${esc(g.head)} <small>${its.length} change${its.length>1?"s":""}</small></summary>
-      <div class="items">${its.map(i=>`<div class="it${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${esc(i.name)}${i.mine&&FILTER==="all"?' <span class="mark">Adam\'s gear</span>':""}</b>
+      <div class="items">${its.map(i=>`<div class="it${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${vb(i)} ${esc(i.name)}${i.mine&&FILTER==="all"?' <span class="mark">Adam\'s gear</span>':""}</b>
         ${i.lines.map(l=>`<div>${arrow(l)}</div>`).join("")}</div>`).join("")}</div></details>`; }).join("")
     ||`<p class="muted">No balance changes touch Adam's gear in ${esc(L.ver)}.</p>`;
   document.querySelectorAll(".filter button").forEach(b=>b.setAttribute("aria-pressed",b.dataset.f===FILTER));
@@ -184,7 +189,9 @@ Promise.all([J("/news/patch-notes.json"),J("/news/videos.json"),J("/news/officia
         <h2>${esc(L.ver)} · ${esc(L.title)}</h2>
         <div class="meta">${isNaN(d)?esc(L.date):fmt(d)} · <a href="${esc(L.url)}">Official update notes</a></div>
         <ul>${L.highlights.slice(0,6).map(h=>`<li>${esc(h)}</li>`).join("")}</ul>
-        <div class="stats"><div><b>${all}</b><small>balance changes</small></div><div><b>${mine}</b><small>touch Adam's gear</small></div></div></div>
+        <div class="stats"><div><b>${all}</b><small>balance changes</small></div><div><b>${mine}</b><small>touch Adam's gear</small></div>
+          <div><b>${L.groups.reduce((n,g)=>n+g.items.filter(i=>i.verdict==="buff").length,0)}</b><small>buffs</small></div><div><b>${L.groups.reduce((n,g)=>n+g.items.filter(i=>i.verdict==="nerf").length,0)}</b><small>nerfs</small></div>
+          <div><a href="/adams-hangar/wiki/#/changes" style="display:block;font-size:14px;line-height:1.3;padding-top:4px">Adam's buffs and nerfs →</a></div></div></div>
       ${ov?`<a class="watch" href="${esc(ov.url)}" target="_blank" rel="noopener" style="background-image:url('${esc(ov.thumb)}')"><span><b>▶ WATCH</b><br>${esc(ov.title)}</span></a>`:""}`;
     $("pn-sub").textContent=`${L.ver} · ${all} changes, ${mine} for Adam`;
     renderGroups();
@@ -199,7 +206,7 @@ Promise.all([J("/news/patch-notes.json"),J("/news/videos.json"),J("/news/officia
         <small>${dd?fmt(dd)+" · ":""}${n?n+" balance change"+(n>1?"s":"")+" · ":""}${fx?fx+" fixes":""}${mine?" · "+mine+" for Adam":""}</small></summary>
         ${(o.highlights||[]).length?`<ul>${o.highlights.map(h=>`<li>${esc(h)}</li>`).join("")}</ul>`:""}
         ${gs.map(g=>`<details class="grp"><summary>${esc(g.head)} <small>${g.items.length}</small></summary><div class="items">${g.items.map(i=>`
-          <div class="it${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${esc(i.name)}${i.mine?' <span class="mark">Adam\'s gear</span>':""}</b>${i.lines.map(l=>`<div>${esc(l)}</div>`).join("")}</div>`).join("")}</div></details>`).join("")}
+          <div class="it${i.mine?" mine":""}" id="${v}-${slug(i.name)}"><b>${vb(i)} ${esc(i.name)}${i.mine?' <span class="mark">Adam\'s gear</span>':""}</b>${i.lines.map(l=>`<div>${esc(l)}</div>`).join("")}</div>`).join("")}</div></details>`).join("")}
         ${cards.length?`<div class="cards">${cards.map(card).join("")}</div>`:""}
         ${o.url?`<p class="more"><a href="${esc(o.url)}">Official ${esc(o.ver)} update notes</a></p>`:""}</details>`; }).join("");
   } else $("hero").innerHTML='<div class="txt"><p class="muted">Patch notes could not load. Try refreshing.</p></div>';

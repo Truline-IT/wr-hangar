@@ -20,3 +20,6 @@ The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
 
 ## Site-wide search
 Every page loads `shared/search.js`, which adds a search box (or a floating Search button on the hangar pages) covering wiki robots, titans, weapons, drones, floors, patch notes, pages and videos. Press `/` on any page to jump to it. The index is `shared/search-index.json`; rebuild it with `node tools/build-search-index.mjs` after `adams-hangar/data.js`, `creators.json` or `news/patch-notes.json` change.
+
+## Buff and nerf notes
+`tools/build-patch-history.mjs` matches every balance change in `news/patch-notes.json` to each robot, titan, weapon and drone in `adams-hangar/data.js`, labels each line a buff or a nerf (smaller is better for cooldowns, intervals, visibility and similar; larger is better for everything else; "special skills do not apply" counts as a nerf), and writes `adams-hangar/patch-history.json`. The wiki shows it as a Patch history section on every item page and a Buffs and nerfs page (`/adams-hangar/wiki/#/changes`); the hangar floors show badges (`adams-hangar/badges.js`); the news page tags each change. The news workflow rebuilds it whenever new update notes arrive.
