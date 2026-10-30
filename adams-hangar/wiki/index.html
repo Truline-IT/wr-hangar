@@ -101,6 +101,7 @@
 
 <script src="../data.js"></script>
 <script src="../loadouts.js"></script>
+<script src="../playbook.js"></script>
 <script>
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -226,8 +227,17 @@ function strategyPage(){
     const o=(fam.length?fam:weapons.filter(x=>ok(x)&&bracket(x)===bracket(w))).sort((a,b)=>b.dmg-a.dmg).slice(0,2);
     return o.length?`<li><a href="${href(w)}">${esc(w.name)}</a> ${vshort(w)} → ${o.map(x=>`<a href="${href(x)}">${esc(x.name)}</a> ${vshort(x)} (${spare(x)} spare)`).join(", ")}</li>`:""; }).join("");
   const buffedSpare=weapons.filter(w=>spare(w)>0&&hit(w)&&hist(w).latest.verdict==="buff").sort((a,b)=>b.dmg-a.dmg);
+  const PB=typeof PLAYBOOK!=="undefined"&&PLAYBOOK.ver===latest?PLAYBOOK:null;
+  const TAG={buff:["buff","Winner"],nerf:["nerf","Loser"],keep:["buff","Keep"],swap:["mixed","Swap"],note:["change","Play it differently"]};
+  const playbook=PB?`<h2 style="margin-top:6px">What changed for Adam</h2>
+    <div class="ph">${PB.summary.map(([k,t,b])=>`<div class="chg"><header><span class="vb ${TAG[k][0]}">${TAG[k][1]}</span><b>${esc(t)}</b></header><p class="muted" style="margin:0">${esc(b)}</p></div>`).join("")}</div>
+    <h2>The new plan, floor by floor</h2>
+    ${PB.floors.map(f=>`<h3 style="margin:18px 0 6px">Floor ${f.n}: ${esc(f.title)}</h3><div class="ph">${f.moves.map(([k,t,b])=>`<div class="chg"><header><span class="vb ${TAG[k][0]}">${TAG[k][1]}</span><b>${esc(t)}</b></header><p class="muted" style="margin:0">${esc(b)}</p></div>`).join("")}</div>`).join("")}
+    <p class="callout">${esc(PB.ledger)}</p>
+    <h2 style="margin-top:34px">Every ${esc(latest)} change on Adam's floors</h2>`:"";
   return `<h1>${esc(latest)} strategy</h1>
-  <p class="lede">What the ${esc(latest)} balance changes mean for each of Adam's floors, straight from the official update notes. Robots and guns with no ${esc(latest)} change are left out.</p>
+  <p class="lede">The plan for Adam's hangar after ${esc(latest)}, built from the official update notes and the hangar data recorded on 12 October. Swaps use spare weapons Adam already owns, each one only once.</p>
+  ${playbook}
   <div class="card" style="padding:14px 18px"><b>Swap a nerfed gun for a buffed spare</b><ul style="margin:8px 0 0">${swaps||'<li class="muted">No nerfed fitted gun has a buffed spare in the same slot.</li>'}</ul>
   <p style="margin:12px 0 4px"><b>Buffed weapons sitting spare</b></p><p class="muted" style="margin:0">${buffedSpare.slice(0,14).map(w=>`<a href="${href(w)}">${esc(w.name)}</a> (${SLOT[w.slot]}, ${spare(w)} spare)`).join(" · ")||"None."}</p></div>
   ${fl}
