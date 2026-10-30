@@ -51,6 +51,19 @@
 .mine{margin:0;padding:10px 14px;border-top:1px solid var(--line);background:color-mix(in srgb,var(--good) 10%,transparent);color:var(--good);font-size:13px}
 .slotpip{display:inline-flex;width:22px;height:22px;border-radius:6px;align-items:center;justify-content:center;font:700 11px var(--mono);color:#0b0f14;margin-left:3px}
 .slotpip.H{background:#ff6b4a}.slotpip.M{background:#ffc14a}.slotpip.L{background:#6ee7a0}.slotpip.A{background:#c792ea}.slotpip.B{background:#82aaff}
+.vb{display:inline-block;font:600 10px/1 var(--mono);letter-spacing:.5px;text-transform:uppercase;padding:4px 6px;border-radius:4px;vertical-align:1px;white-space:nowrap}
+.vb.buff{color:#0d5f34;background:#c9f2db}.vb.nerf{color:#7a1414;background:#ffd6d6}.vb.mixed{color:#6b4500;background:#ffe7b8}.vb.change,.vb.none{color:var(--dim);background:var(--panel2,var(--bg2))}
+@media (prefers-color-scheme:dark){.vb.buff{color:#8ff0bb;background:#123a26}.vb.nerf{color:#ffaaaa;background:#4a1616}.vb.mixed{color:#ffd486;background:#40300a}}
+.ph{margin:16px 0}.ph h2{margin-top:0}
+.ph .chg{border:1px solid var(--line);border-radius:10px;padding:12px 14px;margin-top:10px;background:var(--panel)}
+.ph .chg header{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:6px}
+.ph .chg header b{font-size:15px}.ph .chg header a{margin-left:auto;font-size:13px}
+.ph ul{margin:0;padding:0;list-style:none}.ph li{padding:3px 0 3px 20px;position:relative;font-size:14px;color:var(--dim);font-variant-numeric:tabular-nums}
+.ph li::before{position:absolute;left:0;top:3px;font-size:12px}
+.ph li.buff::before{content:"▲";color:#1f9d5a}.ph li.nerf::before{content:"▼";color:#d64545}.ph li.change::before{content:"•";color:var(--faint)}
+.ph li small{color:var(--faint)}
+.vfilter{display:flex;gap:6px;flex-wrap:wrap;margin:10px 0 16px}.vfilter button{font:500 13px var(--body);padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--dim);cursor:pointer}
+.vfilter button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:#1a1006}
 .callout{padding:12px 14px;border-left:3px solid var(--accent);background:var(--panel);border-radius:0 8px 8px 0;margin:14px 0;color:var(--dim)}
 .toc{font-size:14px;padding:12px 16px;margin:16px 0;display:inline-block}
 .toc b{font:500 11px var(--mono);letter-spacing:1px;text-transform:uppercase;color:var(--faint);display:block;margin-bottom:4px}
@@ -122,6 +135,35 @@ const pips=s=>[...String(s||"")].map(c=>`<span class="slotpip ${c}" title="${SLO
 function wikiDmg(n){ return WIKI[n]||WIKI[WIKI_VIA[n]]||null; }
 function wikiCost(n){ return WIKI_COST[n]||WIKI_COST[WIKI_VIA[n]]||null; }
 
+/* ---- buff / nerf notes, from patch-history.json (built from the official update notes) ---- */
+let PH=null;
+fetch("../patch-history.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PH=d; route(); }).catch(()=>{});
+const hist=x=>PH&&PH.items[x.kind+"/"+x.id];
+const VWORD={buff:"Buffed",nerf:"Nerfed",mixed:"Buffed and nerfed",change:"Changed"};
+function vbadge(x,short){ const h=hist(x); if(!PH||!h) return "";
+  if(!h.latest) return short?"":`<span class="vb none">No changes since ${esc(PH.versions[PH.versions.length-1])}</span>`;
+  return `<span class="vb ${h.latest.verdict}">${short?{buff:"Buff",nerf:"Nerf",mixed:"Mixed",change:"Changed"}[h.latest.verdict]:VWORD[h.latest.verdict]} ${esc(h.latest.ver)}</span>`; }
+function historyBox(x){ const h=hist(x); if(!PH||!h) return "";
+  if(!h.changes.length) return `<section class="ph" id="history"><h2>Patch history</h2><p class="muted">${esc(h.note)} in the official update notes.</p></section>`;
+  return `<section class="ph" id="history"><h2>Patch history</h2><p class="muted">${esc(h.note)}. Stats in the box above come from the hangar's own data and may predate these changes.</p>
+    ${h.changes.map(c=>`<div class="chg"><header><span class="vb ${c.verdict}">${VWORD[c.verdict]}</span><b>${esc(c.ver)}${c.title?" · "+esc(c.title):""}</b>
+      <small class="muted">${esc(c.group)}${c.entry!==x.name?" · "+esc(c.entry):""}</small><a href="${esc(c.anchor)}">Patch notes</a></header>
+      <ul>${c.lines.map(l=>`<li class="${l.dir}">${esc(l.text)} <small>${l.dir==="buff"?"buff":l.dir==="nerf"?"nerf":""}</small></li>`).join("")}</ul></div>`).join("")}</section>`; }
+let VF="";
+function changesPage(){
+  if(!PH) return `<h1>Buffs and nerfs</h1><p class="lede">Loading…</p>`;
+  const all=[...robots,...titans,...weapons,...drones], tally=v=>all.filter(x=>hist(x)&&hist(x).latest&&hist(x).latest.verdict===v).length;
+  const none=all.filter(x=>!hist(x)||!hist(x).latest).length;
+  const shown=all.filter(x=>{ const h=hist(x); return !VF||(VF==="none"?!h||!h.latest:h&&h.latest&&h.latest.verdict===VF); })
+    .sort((a,b)=>(hist(b)?.changes.length||0)-(hist(a)?.changes.length||0)||a.name.localeCompare(b.name));
+  return `<h1>Buffs and nerfs</h1>
+  <p class="lede">Every robot, titan, weapon and drone in Adam's hangar, checked against the official update notes from ${esc(PH.versions[PH.versions.length-1])} to ${esc(PH.versions[0])}. The badge shows the latest change; open an item for its full history.</p>
+  <div class="vfilter">${[["","All "+all.length],["buff","Buffed "+tally("buff")],["nerf","Nerfed "+tally("nerf")],["mixed","Both "+tally("mixed")],["none","No changes "+none]].map(([k,t])=>`<button data-vf="${k}" aria-pressed="${VF===k}">${t}</button>`).join("")}</div>
+  <div class="card scroll"><table><thead><tr><th>Item</th><th>Type</th><th>Latest</th><th>Note</th></tr></thead><tbody>
+  ${shown.map(x=>{ const h=hist(x); return `<tr><td><a class="wname" href="${href(x)}">${pic(x,"thumb")}${esc(x.name)}</a></td><td>${esc(x.kind[0].toUpperCase()+x.kind.slice(1))}</td><td>${vbadge(x)}</td><td class="muted">${esc(h?h.note:"")}</td></tr>`; }).join("")}
+  </tbody></table></div>`;
+}
+
 /* ---- pages ---- */
 const P={};
 P.home=()=>`
@@ -130,9 +172,9 @@ P.home=()=>`
   <h2>Floors</h2><div class="tiles">${floors.map(f=>`<a class="card tile" href="${href(f)}"><div class="art"><span>${String(f.n).padStart(2,"0")}</span></div><div class="t"><b>${esc(f.title)}</b><small>${esc(f.sub)}</small></div></a>`).join("")}</div>
   <h2>Robots</h2>${tiles([...robots,...titans].sort((a,b)=>b.floor-a.floor))}
   <h2>Drones</h2>${tiles(drones)}
-  <p style="margin-top:26px"><a class="btn ghost" href="#/weapon">Browse all ${weapons.length} weapons</a></p>`;
+  <p style="margin-top:26px"><a class="btn ghost" href="#/weapon">Browse all ${weapons.length} weapons</a> <a class="btn ghost" href="#/changes">Buffs and nerfs</a></p>`;
 function tiles(list){ return `<div class="tiles">${list.map(x=>`<a class="card tile" href="${href(x)}"><div class="art">${pic(x)}</div><div class="t"><b>${esc(x.name)}</b><small>${
-  x.kind==="drone"?esc(x.skill||"Drone"):x.kind==="weapon"?SLOT[x.slot]+" · L"+x.level:(x.kind==="titan"?"Titan":"Robot")+" · Floor "+x.floor+" · L"+x.level}</small></div></a>`).join("")}</div>`; }
+  x.kind==="drone"?esc(x.skill||"Drone"):x.kind==="weapon"?SLOT[x.slot]+" · L"+x.level:(x.kind==="titan"?"Titan":"Robot")+" · Floor "+x.floor+" · L"+x.level}</small>${vbadge(x,true)?`<div style="margin-top:6px">${vbadge(x,true)}</div>`:""}</div></a>`).join("")}</div>`; }
 
 P.robotList=()=>`<h1>Robots</h1><p class="lede">Every robot and titan in the hangar, strongest floor first.</p><h2>Robots</h2>${tiles([...robots].sort((a,b)=>b.floor-a.floor))}<h2>Titans</h2>${tiles(titans)}`;
 P.droneList=()=>`<h1>Drones</h1><p class="lede">Drones Adam owns and what each one is paired with.</p>${tiles(drones)}`;
@@ -143,8 +185,8 @@ P.weaponList=()=>{
   const list=weapons.filter(w=>!WF||w.slot===WF).sort((a,b)=>b.dmg-a.dmg);
   return `<h1>Weapons</h1><p class="lede">${weapons.length} weapons, sorted by damage at the level Adam owns them.</p>
   <div class="filters">${["","H","M","L","A","B"].map(k=>`<button data-wf="${k}" aria-pressed="${WF===k}">${k?SLOT[k]:"All"}</button>`).join("")}</div>
-  <div class="card scroll"><table><thead><tr><th>Weapon</th><th>Slot</th><th class="n">Level</th><th class="n">Owned</th><th class="n">Damage</th><th class="n">Range</th><th class="n">Reload</th></tr></thead><tbody>
-  ${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td>${pips(w.slot)}</td><td class="n">${w.level}</td><td class="n">${w.copies}</td><td class="n">${num(w.dmg)}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${w.reload?w.reload+" s":"—"}</td></tr>`).join("")}
+  <div class="card scroll"><table><thead><tr><th>Weapon</th><th>Slot</th><th class="n">Level</th><th class="n">Owned</th><th class="n">Damage</th><th class="n">Range</th><th class="n">Reload</th><th>Latest change</th></tr></thead><tbody>
+  ${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td>${pips(w.slot)}</td><td class="n">${w.level}</td><td class="n">${w.copies}</td><td class="n">${num(w.dmg)}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${w.reload?w.reload+" s":"—"}</td><td>${vbadge(w,true)}</td></tr>`).join("")}
   </tbody></table></div>`;
 };
 
@@ -226,44 +268,26 @@ P.floor=x=>{
 /* ---- shell: nav, search, router ---- */
 function navHtml(cur){
   const it=(h,t,n)=>`<a href="${h}" class="${cur===h?"on":""}">${t}${n!=null?`<span>${n}</span>`:""}</a>`;
-  return `<h4>Wiki</h4>${it("#/","Overview")}${it("#/robot","Robots",robots.length+titans.length)}${it("#/weapon","Weapons",weapons.length)}${it("#/drone","Drones",drones.length)}${it("#/floor","Floors",floors.length)}
+  return `<h4>Wiki</h4>${it("#/","Overview")}${it("#/robot","Robots",robots.length+titans.length)}${it("#/weapon","Weapons",weapons.length)}${it("#/drone","Drones",drones.length)}${it("#/floor","Floors",floors.length)}${it("#/changes","Buffs and nerfs",PH?Object.values(PH.items).filter(h=>h.latest).length:null)}
   <h4>Floors</h4>${floors.map(f=>it(href(f),String(f.n).padStart(2,"0")+" "+esc(f.title))).join("")}`;
 }
 function route(){
   const h=location.hash||"#/"; const [,kind,id]=h.split("/");
   let html, title="Hangar Wiki";
   if(!kind) html=P.home();
-  else if(!id) html={robot:P.robotList,titan:P.robotList,weapon:P.weaponList,drone:P.droneList,floor:P.floorList}[kind]?.()||notFound();
+  else if(!id) html={robot:P.robotList,titan:P.robotList,weapon:P.weaponList,drone:P.droneList,floor:P.floorList,changes:changesPage}[kind]?.()||notFound();
   else { const x=byKey[kind+"/"+decodeURIComponent(id)]; if(x){ html=P[kind](x); title=x.name+" · Hangar Wiki"; } else html=notFound(); }
-  $("#page").innerHTML=html; document.title=title;
+  $("#page").innerHTML=html; document.title=kind==="changes"?"Buffs and nerfs · Hangar Wiki":title;
+  if(kind&&id&&kind!=="floor"){ const x=byKey[kind+"/"+decodeURIComponent(id)];
+    if(x&&PH){ const h1=$("#page h1"); if(h1) h1.insertAdjacentHTML("afterend",`<p style="margin:6px 0 0">${vbadge(x)} <a href="#history" data-jump style="font-size:13px">Patch history</a></p>`);
+      $("#page").insertAdjacentHTML("beforeend",historyBox(x)); } }
   $("#nav").innerHTML=navHtml(kind&&!id?"#/"+kind:h==="#/"||!kind?"#/":h);
   window.scrollTo(0,0);
-  if(kind&&id&&kind!=="floor"){ const x=byKey[kind+"/"+decodeURIComponent(id)]; if(x) showChanges(x); }
-}
-/* "Changed in 12.x" box: the stats above come from the hangar data; this adds what the newest
-   official update notes changed for the same item, so a page never reads as out of date. */
-let PNP=null;
-const GENERIC=new Set(["mk2","mk3","ultimate","noir","blaze","frozen","retro","cryptic","freedom","eldritch","spirit","steel","sport","royal","omen","unknown","cruel","fatal","prototype","ardent","quicksand","stellar","void","baihu","the","of"]);
-const words=n=>String(n).toLowerCase().split(/[\s/()-]+/).filter(w=>w.length>2&&!GENERIC.has(w));
-function showChanges(x){
-  (PNP||(PNP=fetch("/news/patch-notes.json",{cache:"no-cache"}).then(r=>r.json()).catch(()=>null))).then(pn=>{
-    if(!pn||location.hash.split("/")[2]!==x.id) return;
-    const mine=words(x.name); if(!mine.length) return;
-    const ups=[pn.latest,...(pn.archive||[])].slice(0,3), hits=[];
-    for(const u of ups) for(const g of u.groups||[]) if(g.head!=="Fixes") for(const it of g.items){
-      const iw=words(it.name); if(!mine.some(w=>iw.includes(w))) continue;
-      hits.push({u,it}); }
-    if(!hits.length) return;
-    const box=document.createElement("div"); box.className="callout"; box.style.borderLeftColor="var(--accent)";
-    box.innerHTML=hits.slice(0,4).map(({u,it})=>`<b style="color:var(--fg)">Changed in ${esc(u.ver)}</b> · ${esc(it.name)}<br>${it.lines.map(esc).join("<br>")}
-      <br><a href="/news/#v${slug(u.ver)}-${slug(it.name)}">See the ${esc(u.ver)} patch notes</a>`).join("<hr style='border:0;border-top:1px solid var(--line);margin:10px 0'>")
-      +`<br><small class="muted">The stats on this page are from the hangar's own data and may predate this change.</small>`;
-    const h1=$("#page h1"); (h1?h1.parentNode:$("#page")).insertBefore(box,h1?h1.nextSibling:$("#page").firstChild);
-  });
 }
 const notFound=()=>`<h1>Not found</h1><p class="lede">That page isn't in the wiki. Try the search box.</p>`;
 document.addEventListener("click",e=>{
   const b=e.target.closest("[data-wf]"); if(b){ WF=b.dataset.wf; route(); return; }
+  const vf=e.target.closest("[data-vf]"); if(vf){ VF=vf.dataset.vf; route(); return; }
   const j=e.target.closest("[data-jump]"); if(j){ e.preventDefault(); document.getElementById(j.getAttribute("href").slice(1))?.scrollIntoView({behavior:"smooth"}); }
 });
 window.addEventListener("hashchange",route);

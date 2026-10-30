@@ -21,11 +21,14 @@ vm.createContext(ctx);
 vm.runInContext(fs.readFileSync("adams-hangar/data.js", "utf8") + ";this.__={R,TITANS,W,DRONES,DR,FLOORS};", ctx);
 const { R, TITANS, W, DRONES, DR, FLOORS } = ctx.__;
 const wiki = (kind, id) => `/adams-hangar/wiki/#/${kind}/${id}`;
-for (const r of R) add(r[0], "Robot", wiki("robot", slug(r[0])), `Floor ${r[1]}. ${r[6] || ""}`);
-for (const t of TITANS) add(t[0], "Titan", wiki("titan", slug(t[0])), `Floor ${t[1]}`);
-for (const w of W) add(w[0], "Weapon", wiki("weapon", slug(w[0])), [w[7], w[5] ? w[5] + " m" : ""].filter(Boolean).join(". "));
+const PH = (() => { try { return JSON.parse(fs.readFileSync("adams-hangar/patch-history.json", "utf8")).items; } catch { return {}; } })();
+const note = (kind, name) => (PH[kind + "/" + slug(name)] || {}).note || "";
+add("Buffs and nerfs", "Page", "/adams-hangar/wiki/#/changes", "Every item in Adam's hangar checked against the official update notes");
+for (const r of R) add(r[0], "Robot", wiki("robot", slug(r[0])), `${note("robot", r[0])}. Floor ${r[1]}. ${r[6] || ""}`);
+for (const t of TITANS) add(t[0], "Titan", wiki("titan", slug(t[0])), `${note("titan", t[0])}. Floor ${t[1]}`);
+for (const w of W) add(w[0], "Weapon", wiki("weapon", slug(w[0])), [note("weapon", w[0]), w[7], w[5] ? w[5] + " m" : ""].filter(Boolean).join(". "));
 const dinfo = Object.fromEntries(DR.map(d => [d[0], d]));
-for (const n of DRONES) add(n, "Drone", wiki("drone", slug(n)), (dinfo[n] || [])[2]);
+for (const n of DRONES) add(n, "Drone", wiki("drone", slug(n)), [note("drone", n), (dinfo[n] || [])[2]].filter(Boolean).join(". "));
 for (const [n, f] of Object.entries(FLOORS)) add(`Floor ${f[0]}: ${f[1]}`, "Floor", wiki("floor", n), f[3]);
 
 // Patch notes
@@ -47,5 +50,5 @@ for (const a of pn.archive || []) {
   for (const c of a.cards || []) add(`${c.head} (${a.ver})`, "Patch notes", `/news/#${slug(c.id)}`, c.body);
 }
 
-fs.writeFileSync("shared/search-index.json", JSON.stringify({ built: new Date().toISOString().slice(0, 10), items: out }) + "\n");
+fs.writeFileSync("shared/search-index.json", JSON.stringify({ items: out }) + "\n");
 console.log(out.length, "entries");

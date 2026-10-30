@@ -29,7 +29,8 @@
        "Line Of Sight duration: 4 s",
        "Tracking Shot duration: 7 → 2 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Anaksor",
@@ -41,7 +42,8 @@
        "Movement speed: 55 → 58 km/h",
        "Built-in weapon damage per particle: 7500 → 4875"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Ammit",
@@ -51,21 +53,24 @@
        "Ability duration: 10 → 6 s",
        "Ability cooldown: 8 → 13 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Vector",
       "lines": [
        "Event Horizon Acceleration: -50% during activation"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Lynx",
       "lines": [
        "Movement speed: 62 → 65 km/h"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Imugi",
@@ -73,14 +78,16 @@
        "Damage bonus: 5 → 10%",
        "Movement speed: 50 → 52 km/h"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Curie",
       "lines": [
        "Ability bonus durability: 150 → 155%"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Dagon",
@@ -88,14 +95,16 @@
        "Aegis capacity: 90,000 → 100,000",
        "Aegis regeneration: 10,000 → 11,000"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Shenlou",
       "lines": [
        "Aegis per blink: 40,000 → 50,000"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Ochokochi",
@@ -103,14 +112,16 @@
        "Durability: 300,000 → 320,000",
        "DoT Damage Reduction: 40% → 45%"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Scorpion",
       "lines": [
        "Durability: 201,000 → 220,000"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Typhon",
@@ -119,14 +130,16 @@
        "Aegis regeneration: 3960 → 4950",
        "Aegis capacity to activate: 12000 → 15000"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Ares",
       "lines": [
        "Durability: 155,700 → 165,000"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Invader",
@@ -135,7 +148,8 @@
        "Movement speed: 47 → 48 km/h",
        "Incursion damage: 6000 → 7500"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Blitz",
@@ -143,7 +157,8 @@
        "Durability: 201,000 → 220,000",
        "Aegis capacity: 82,110 → 90,000"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      }
     ]
    },
@@ -158,7 +173,8 @@
        "- Iaraghi-M 33,750 → 23,625",
        "- Iaraghi-H 45,000 → 31,500"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Lumen-L/M/H",
@@ -169,7 +185,8 @@
        "- Lumen-H: 1300 → 2000",
        "Thermal Breach damage bonus per stack: 1.15 → 0.15"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Voonith / Urhag / Shantak",
@@ -183,7 +200,8 @@
        "- Shantak 11,250 → 12,656",
        "- Urhag 15,000 → 16,875"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Celsius / Fahrenheit / Kelvin",
@@ -195,7 +213,8 @@
        "- Farenheit 2000 → 2223",
        "- Kelvin 2650 → 2970"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Velos / Machaira / Basileus",
@@ -206,7 +225,8 @@
        "- Machaira 1350 → 1215",
        "- Basileus 1800 → 1620"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Hippo / Kroko / Liodari",
@@ -217,7 +237,8 @@
        "- Kroko 36,600 → 39,187",
        "- Liodari 55,000 → 52,250"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Boom / Bash / Pow",
@@ -228,7 +249,8 @@
        "- Bash 23,250 → 24,412",
        "- Boom 30,600 → 32,130"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Shifang / Leiming / Fengbao",
@@ -239,7 +261,8 @@
        "- Fengbao 2520 → 2770",
        "Reload interval: 10 → 9 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Tamer / Damper / Subduer",
@@ -249,7 +272,8 @@
        "- Damper 2500 → 2800",
        "- Subduer 3735 → 3800"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Splinter / Shatter / Brisant",
@@ -260,7 +284,8 @@
        "- Brisant 920 → 966",
        "Reload interval: 5 → 4 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Quarker / Atomizer / Nucleon",
@@ -271,7 +296,8 @@
        "- Nucleon 1800 → 2130",
        "Time to Overheat: 5 → 6 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Claw / Jaw / Talon",
@@ -282,161 +308,184 @@
        "- Talon 3600 → 3810",
        "Reload interval: 5 → 4 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Arbalest",
       "lines": [
        "Damage per particle: 2576 → 3025"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Hazard",
       "lines": [
        "Damage per particle: 4500 → 4956"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Decay",
       "lines": [
        "Damage per particle: 5994 → 6608"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Gust",
       "lines": [
        "Damage per particle: 1912 → 2656"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Storm",
       "lines": [
        "Damage per particle: 1912 → 2656"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Halo",
       "lines": [
        "Damage per particle: 1098 → 1155"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Corona",
       "lines": [
        "Damage per particle: 723 → 866"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Razdor",
       "lines": [
        "Damage per particle: 438 → 519"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Smuta",
       "lines": [
        "Damage per particle: 653 → 692"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Ksiphos",
       "lines": [
        "Damage per particle: 1832 → 1955"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Labrys",
       "lines": [
        "Damage per particle: 2346 → 2,933"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Pulsar",
       "lines": [
        "Damage per particle: 2781 → 3390"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Hussar",
       "lines": [
        "Damage per particle: 4900 → 5062"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Spike",
       "lines": [
        "Damage per particle: 15,000 → 17,850"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Stake",
       "lines": [
        "Damage per particle: 19,600 → 23,800"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Scourge",
       "lines": [
        "Damage per particle: 630 → 850"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Calamity",
       "lines": [
        "Damage per particle: 1043 → 1134"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Yeoje",
       "lines": [
        "Damage per particle: 1317 → 1507"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Hwangje",
       "lines": [
        "Damage per particle: 1594 → 2010"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Toxin",
       "lines": [
        "Damage per particle: 297 → 313"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Venom",
       "lines": [
        "Damage per particle: 446 → 469"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Wasp",
       "lines": [
        "Damage per particle: 6274 → 6450"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      }
     ]
    },
@@ -449,7 +498,8 @@
        "On Robot Shooting: Deathmark: 15% → 10%",
        "On Kill: Fix: 8% → 10%"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "mixed"
      },
      {
       "name": "Fhtagn",
@@ -457,7 +507,8 @@
        "On Tracked Kill: Damage: 10% → 7%",
        "Improved Regenerating Aegis: 5% → 2,5%"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "mixed"
      },
      {
       "name": "Tensor",
@@ -470,7 +521,8 @@
        "While Reflector: Armor Plates: 15% → 10%",
        "Gray Damage Decrease Duration: 5 → 3 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Myia",
@@ -478,7 +530,8 @@
        "Corrosion Machine Gun damage per particle: 3600 → 1500",
        "On Invisibility: Fix: 15% → 10%"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Hawkeye",
@@ -486,7 +539,8 @@
        "Magnetic Inspection: 50% → 40%",
        "Gray Damage Resistance: 10 → 5%"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Seeker",
@@ -494,7 +548,8 @@
        "Counterblind radius: 500 → 300 m",
        "Quantum Sensor: 200 → 150 m"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      }
     ]
    },
@@ -508,7 +563,8 @@
        "Rhythm Sync: 25% → 20%",
        "Special skills do not apply to Lumen-H"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Baek Taejun (Shoggoth)",
@@ -517,7 +573,8 @@
        "Taejun's Awareness: 10% → 12%",
        "Special skills do not apply to Voonith"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Alex Tav (Anaksor)",
@@ -526,14 +583,16 @@
        "Gigantomania: 15 → 10%",
        "Special skills do not apply to Velos"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Vorren Kaal (Princeps)",
       "lines": [
        "Stasis Reserve: 2 → 1"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Chef Broil (Atlas)",
@@ -541,7 +600,8 @@
        "Rapid Stir: 15% → 12%",
        "Heavy Plating cooldown: 30 → 35 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Sigrid Solmer (Bjorn)",
@@ -549,105 +609,120 @@
        "Strength of Spirit: 13% → 10%",
        "Bear Skin: 35 → 25"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Donnie Woo (Dedopali)",
       "lines": [
        "Special skills do not apply to Iaraghi-M"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Andor Miharr (Ultimate Shell)",
       "lines": [
        "Special skills do not apply to Cryo & Ultimate Cryo"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Nadir Rakhim (Fang)",
       "lines": [
        "Special skills do not apply to Harmattan-L & Harmattan-H"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Kai Ruo (Vector)",
       "lines": [
        "Special skills do not apply to Kelvin"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Nika Schum (Vector)",
       "lines": [
        "Special skills do not apply to Kelvin"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Single Malt (Anaksor)",
       "lines": [
        "Special skills do not apply to Velos"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Mei Lan (Ammit)",
       "lines": [
        "Special skills do not apply to Liodari"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Basil Lapatte",
       "lines": [
        "Special skills won’t work on weapons released after 12.4"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "change"
      },
      {
       "name": "Midea Nerium",
       "lines": [
        "Special skills won’t work on weapons released after 12.4"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "change"
      },
      {
       "name": "Raphael Petit",
       "lines": [
        "Special skills won’t work on weapons released after 12.4"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "change"
      },
      {
       "name": "Eddie Noll",
       "lines": [
        "Special skills won’t work on weapons released after 12.4"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "change"
      },
      {
       "name": "Otto Schreyer",
       "lines": [
        "Special skills won’t work on weapons released after 12.4"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "change"
      },
      {
       "name": "Peregrin Raine",
       "lines": [
        "Special skills won’t work on weapons released after 12.4"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "change"
      },
      {
       "name": "Kate O'Donnel",
       "lines": [
        "Special skills won’t work on weapons released after 12.4"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "change"
      }
     ]
    },
@@ -661,7 +736,8 @@
        "Nullfield duration: 10 → 6 s",
        "Nullfield cooldown: 12 → 15 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "mixed"
      },
      {
       "name": "Atlas",
@@ -669,7 +745,8 @@
        "Ascension frontal Absorber duration:  7 → 5 s",
        "Maximum durability bonus from Absorber: 150,000 → 120,000"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Heimdall",
@@ -677,7 +754,8 @@
        "Durability: 701,518 → 750,000",
        "Golden Horn cooldown: 10 → 8 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Sirius",
@@ -686,7 +764,8 @@
        "Remote Restore Cooldown: 18 → 16 s",
        "Remote Assault Cooldown: 15 → 13 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Aether",
@@ -695,14 +774,16 @@
        "Skyward cooldown 18 → 16 s",
        "Vigour cooldown: 18 → 16 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Newton",
       "lines": [
        "Movement speed: 45 → 47 km/h"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Rook",
@@ -710,7 +791,8 @@
        "Durability: 753,000 → 800,000",
        "Castling cooldown: 15 → 13 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Bjorn",
@@ -718,7 +800,8 @@
        "Built-in weapon damage per particle: 30,000 → 19,500",
        "Aegis capacity: 380,000 → 150,000"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      }
     ]
    },
@@ -733,7 +816,8 @@
        "- Torch 1540 → 870",
        "Reload interval: 9 → 8 s"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Venire / Vincere",
@@ -744,7 +828,8 @@
        "- Venire 2250 → 1720",
        "- Vincere 1925 → 1145"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "mixed"
      },
      {
       "name": "Chasm / Void",
@@ -752,7 +837,8 @@
        "Shot interval: 0.8 → 0.7 s",
        "Damage per particle: 1300 → 995"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "mixed"
      },
      {
       "name": "Tonans / Fulgur",
@@ -761,7 +847,8 @@
        "- Tonans  3270 → 3967",
        "- Fulgur 2519 → 2645"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Dazzler / Lantern",
@@ -770,7 +857,8 @@
        "- Dazzler : 1166 → 1545",
        "- Lantern : 980 → 1030"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Huginn / Muninn",
@@ -779,70 +867,80 @@
        "- Huginn 2570 → 3071",
        "- Muninn 1950 → 2048"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Cyclone",
       "lines": [
        "Damage per particle: 702 → 853"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Krait",
       "lines": [
        "Damage per particle: 1818 → 1947"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Glaive",
       "lines": [
        "Damage per particle: 9975 → 11025"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Arbiter",
       "lines": [
        "Damage per particle: 2800 → 3150"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Evora",
       "lines": [
        "Damage per particle: 1290 → 1147"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Oxy",
       "lines": [
        "Damage per particle: 3303 → 2891"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "nerf"
      },
      {
       "name": "Discordia",
       "lines": [
        "Damage per particle: 1364 → 1566"
       ],
-      "mine": true
+      "mine": true,
+      "verdict": "buff"
      },
      {
       "name": "Bulava",
       "lines": [
        "Damage per particle: 2700 → 3300"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      },
      {
       "name": "Squall",
       "lines": [
        "Damage per particle: 890 → 960"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "buff"
      }
     ]
    },
@@ -855,7 +953,8 @@
        "Stealth Duration: 6 → 4 s",
        "Repairable Durability: 17% → 10%"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "R’lyeh",
@@ -864,7 +963,8 @@
        "Damage to Maximum Durability: 2,5% → 4%",
        "Duration: 9 → 10 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "mixed"
      },
      {
       "name": "Bifrost",
@@ -874,7 +974,8 @@
        "Stack decay rate: 4 → 3 s",
        "Time with Max Stacks: 3 → 2 s"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      },
      {
       "name": "Keel",
@@ -883,7 +984,8 @@
        "Damage: 50,000 → 40,000",
        "Sequence shot interval: 2,2,2 → 3,3,3"
       ],
-      "mine": false
+      "mine": false,
+      "verdict": "nerf"
      }
     ]
    },
@@ -1100,7 +1202,8 @@
       {
        "name": "Fujin's Sentry ability now deploys an Aegis shield instead of an Ancile shield.",
        "lines": [],
-       "mine": false
+       "mine": false,
+       "verdict": "change"
       }
      ]
     },
@@ -1163,7 +1266,8 @@
         "Invisibility duration 5s → 3s",
         "Visibility distance 75m → 150m"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "nerf"
       },
       {
        "name": "Rex",
@@ -1178,7 +1282,8 @@
         "Built-in weapon particles per shot: 20 → 10",
         "Built-in weapon damage per particle: 2,750 → 750"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Teth",
@@ -1190,7 +1295,8 @@
         "Rocket launcher range: 350 m → 100 m",
         "Shield durability: 95,000 → 100,000 (single shield)"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Hastatus",
@@ -1199,7 +1305,8 @@
         "Movement speed: 58 km/h → 59 km/h",
         "Quantum Lock duration: 2.5 s → 1,5 s"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "buff"
       },
       {
        "name": "Ammit",
@@ -1210,7 +1317,8 @@
         "Built-in weapon effective range: 350 m → 200 m",
         "Built-in weapon damage per particle: 1,350 → 1,600"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Nether",
@@ -1218,7 +1326,8 @@
         "Durability: 151,200 → 160,000",
         "Movement speed: 55 km/h → 56 km/h"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "Seraph",
@@ -1226,7 +1335,8 @@
         "Skyward cooldown: 17 s → 16 s",
         "Built-in weapon damage: +18%"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "Ao Jun",
@@ -1234,7 +1344,8 @@
         "Durability: 223,000 → 234,000",
         "Built-in flamethrower damage per particle: 646 → 800"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "Hawk",
@@ -1242,7 +1353,8 @@
         "Quality and level of equipped weapons no longer affect damage caused by the built-in weapon.",
         "Built-in weapon damage per particle: 1,113 → 1,650"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       }
      ]
     },
@@ -1260,7 +1372,8 @@
         "Shot interval: 0.05 s → 0.07 s",
         "Delay before starting to cool down following overheat: 0.5 s → 1 s"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Velos / Machaira / Basileus",
@@ -1269,7 +1382,8 @@
         "Ammo: 120 → 100",
         "Acceleration: +20%"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Hippo / Kroko / Liodari",
@@ -1281,7 +1395,8 @@
         "Maximum damage bonus from damage taken: 100% → 50%",
         "Effective incoming damage cap: 300,000 → 400,000"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Elox / Murix",
@@ -1295,7 +1410,8 @@
         "Light: 300 → 200",
         "Medium: 350 → 250"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Gladius / Pilum",
@@ -1307,14 +1423,16 @@
         "Shot interval: 0.137 s → 0.110 s",
         "Accuracy: +33%"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Ksiphos / Labrys / Cestus",
        "lines": [
         "Shot interval: 0.13 s → 0.12 s"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "buff"
       },
       {
        "name": "Rime / Cryo / Glacier",
@@ -1325,7 +1443,8 @@
         "Heavy: 2,260 → 2,400",
         "Accuracy: +13%"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "Toxin / Bane",
@@ -1334,19 +1453,22 @@
         "Light: 83 → 90",
         "Heavy: 193 → 200"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "buff"
       },
       {
        "name": "PILOTS",
        "lines": [],
-       "mine": false
+       "mine": false,
+       "verdict": "change"
       },
       {
        "name": "Mei Lan",
        "lines": [
         "Taunt accumulation with Ammit’s built-in weapon: 2.5% → 2% (per shot)"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "Lucius Palma",
@@ -1354,28 +1476,32 @@
         "Defense Points ignored by Gladius and Pilum: 10% → 7%",
         "Shieldbreaker is now only active for 3 seconds following the Flakstorm ability activation."
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "Raphael Petit",
        "lines": [
         "The legendary skill now works with Celsius, Fahrenheit, and Kelvin weapons."
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "change"
       },
       {
        "name": "Adrian Chong",
        "lines": [
         "The legendary skill does not work with weapons introduced in update 12.2 and later."
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "change"
       },
       {
        "name": "Manni",
        "lines": [
         "The legendary skill does not work with weapons introduced in update 12.2 and later."
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "change"
       }
      ]
     },
@@ -1389,7 +1515,8 @@
         "Built-in shotgun particles per shot: 25 → 10",
         "Built-in shotgun damage per particle: 1,080 → 1,500"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Scarabeus",
@@ -1397,7 +1524,8 @@
         "The host’s bonus damage to targets affected by EMP: 10% → 5%",
         "Bonus durability of the host’s physical shields: 150% → 50%"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "nerf"
       },
       {
        "name": "Scales",
@@ -1405,7 +1533,8 @@
         "Duration of Defence Mitigation immunity: 7 s → 4 s (triggered upon receiving 50,000 damage; 10 second cooldown)",
         "Incoming damage reduction per stack of Slowdown applied to enemy: 0.25% → 0.15%"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       }
      ]
     },
@@ -1418,21 +1547,24 @@
         "Durability: 600,000 → 635,000",
         "Nullfield duration (lifetime of Stasis Barrier charges): 12 s → 10 s"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Devourer",
        "lines": [
         "Durability: 500,000 → 530,000"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "Ao Ming",
        "lines": [
         "Durability: 402,000 → 412,000"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "buff"
       }
      ]
     },
@@ -1445,7 +1577,8 @@
         "Time to overheat: 12 → 7 s",
         "Time to cool down: 4 → 3 s"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Void / Chasm",
@@ -1455,14 +1588,16 @@
         "Reload interval: 6 s → 8 s",
         "AoE damage while reloading: 20% → 10% (of the base damage)"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Argon / Oxy",
        "lines": [
         "Shot interval: 0.15 s → 0.14 s"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "buff"
       },
       {
        "name": "ORBITAL SUPPORT",
@@ -1471,7 +1606,8 @@
         "Stealth duration: 10 s → 6 s",
         "Regular (Green) repairs: 15% → 17% (per second)"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Sekhem",
@@ -1479,7 +1615,8 @@
         "Bombardment damage: 50,000 → 40,000",
         "Slowdown duration: 9.0 s → 9.2 s"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Keel",
@@ -1487,21 +1624,24 @@
         "Sequence damage: 60,000 → 50,000",
         "Damage multiplier against Titans: 320% → 340%"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Mute",
        "lines": [
         "Shutdown effective radius: 90 m → 95 m"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "Paladin",
        "lines": [
         "Structural (Gray) repairs: 15% → 16% (if Aegis was not fully depleted)"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "ULTIMATE ROBOTS",
@@ -1509,7 +1649,8 @@
         "SWORD Unit-192",
         "Absorber damage bonus: 20% → 7% (of absorbed damage)"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Typhon",
@@ -1522,7 +1663,8 @@
         "Blackout V2.0 damage per particle: 13,000 → 15,000",
         "Aegis capacity: 108,360 → 128,000"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       },
       {
        "name": "Ultimate Lancelot",
@@ -1532,14 +1674,16 @@
         "Ultimate Rush structural (Gray) repairs: 0.5% → 0.7% (per second)",
         "Ultimate Rush charges: 5 → 4"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Ultimate Revenant",
        "lines": [
         "Aggressive blink repairs: 30% → 10% (both Green and Gray)"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Griffin",
@@ -1547,7 +1691,8 @@
         "Dazzling Jump damage bonus: 10% → 15% (for 5 seconds, per jump)",
         "Dazzling Jump cooldown: 12 s → 11 s"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "Ultimate Phantom",
@@ -1555,12 +1700,14 @@
         "Movement speed: 68 km/h → 70 km/h",
         "Blink cooldown: 10 s → 9 s"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       },
       {
        "name": "ULTIMATE ROBOT WEAPONS",
        "lines": [],
-       "mine": false
+       "mine": false,
+       "verdict": "change"
       },
       {
        "name": "Ultimate Scatter / Havoc / Devastator",
@@ -1570,7 +1717,8 @@
         "Medium: 4,200 → 2,200 (7 particles per shot)",
         "Heavy: 4,100 → 2,200 (10 particles per shot)"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Cryo",
@@ -1583,7 +1731,8 @@
         "Medium: 6,150 → 6,300",
         "Ammo: 20 → 15"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "mixed"
       },
       {
        "name": "Ultimate Halo / Corona / Glory",
@@ -1593,7 +1742,8 @@
         "Medium: 1,450 → 1,200",
         "Heavy: 1,800 → 1,600"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Blaze / Igniter",
@@ -1602,28 +1752,32 @@
         "Light: 1,400 → 850",
         "Medium: 1,800 → 1,275"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Redeemer",
        "lines": [
         "Damage per particle: 10,000 → 7,000"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Calamity",
        "lines": [
         "Damage per particle: 1,600 → 1,300"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Avenger",
        "lines": [
         "Damage per particle: 950 → 750"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "Ultimate Hussar / Dragoon",
@@ -1633,12 +1787,14 @@
         "Medium: 8,700 → 6,750",
         "Heavy: 11,600 → 9,000"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "nerf"
       },
       {
        "name": "ULTIMATE TITANS",
        "lines": [],
-       "mine": false
+       "mine": false,
+       "verdict": "change"
       },
       {
        "name": "Ultimate Nodens",
@@ -1653,7 +1809,8 @@
         "Maximum Defense Points from Active Support: 240 → 210",
         "Defense Points: 200 → 130"
        ],
-       "mine": true
+       "mine": true,
+       "verdict": "mixed"
       }
      ]
     },
@@ -1825,7 +1982,8 @@
        "lines": [
         "Durability +12%"
        ],
-       "mine": false
+       "mine": false,
+       "verdict": "buff"
       }
      ]
     },
