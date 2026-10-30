@@ -8,27 +8,6 @@
   "12.0"
  ],
  "items": {
-  "robot/samjok-mk2": {
-   "kind": "robot",
-   "name": "Samjok MK2",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
-  },
-  "robot/ultimate-spectre-mk2": {
-   "kind": "robot",
-   "name": "ULTIMATE Spectre MK2",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
-  },
-  "robot/dux-mk2": {
-   "kind": "robot",
-   "name": "Dux MK2",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
-  },
   "robot/void-shoggoth-mk2": {
    "kind": "robot",
    "name": "Void Shoggoth MK2",
@@ -74,42 +53,65 @@
    },
    "note": "Buffed and nerfed in 12.5"
   },
-  "robot/frozen-dagon-mk2": {
+  "robot/samjok-mk2": {
    "kind": "robot",
-   "name": "Frozen Dagon MK2",
+   "name": "Samjok MK2",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/dux-mk2": {
+   "kind": "robot",
+   "name": "Dux MK2",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/teth-mk2": {
+   "kind": "robot",
+   "name": "Teth MK2",
    "changes": [
     {
-     "ver": "12.5",
-     "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robots",
-     "entry": "Dagon",
-     "anchor": "/news/#v12-5-dagon",
-     "verdict": "buff",
+     "entry": "Teth",
+     "anchor": "/news/#v12-2-teth",
+     "verdict": "mixed",
      "lines": [
       {
-       "text": "Aegis capacity: 90,000 → 100,000",
+       "text": "Durability: 350,000 → 365,000",
        "dir": "buff"
       },
       {
-       "text": "Aegis regeneration: 10,000 → 11,000",
+       "text": "Movement speed: 50 km/h → 46 km/h",
+       "dir": "nerf"
+      },
+      {
+       "text": "Sandstorm cooldown: 13 s → 15 s",
+       "dir": "nerf"
+      },
+      {
+       "text": "Shield replacement time: 45 s → 60 s",
+       "dir": "buff"
+      },
+      {
+       "text": "Rocket launcher range: 350 m → 100 m",
+       "dir": "nerf"
+      },
+      {
+       "text": "Shield durability: 95,000 → 100,000 (single shield)",
        "dir": "buff"
       }
      ]
     }
    ],
    "latest": {
-    "ver": "12.5",
-    "verdict": "buff"
+    "ver": "12.2",
+    "verdict": "mixed"
    },
-   "note": "Buffed in 12.5"
-  },
-  "robot/fenrir-mk2": {
-   "kind": "robot",
-   "name": "Fenrir MK2",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
+   "note": "Buffed and nerfed in 12.2"
   },
   "robot/anaksor-mk2": {
    "kind": "robot",
@@ -176,78 +178,6 @@
    },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
-  "robot/vector": {
-   "kind": "robot",
-   "name": "Vector",
-   "changes": [
-    {
-     "ver": "12.5",
-     "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
-     "group": "Robots",
-     "entry": "Vector",
-     "anchor": "/news/#v12-5-vector",
-     "verdict": "nerf",
-     "lines": [
-      {
-       "text": "Event Horizon Acceleration: -50% during activation",
-       "dir": "nerf"
-      }
-     ]
-    }
-   ],
-   "latest": {
-    "ver": "12.5",
-    "verdict": "nerf"
-   },
-   "note": "Nerfed in 12.5"
-  },
-  "robot/teth": {
-   "kind": "robot",
-   "name": "Teth",
-   "changes": [
-    {
-     "ver": "12.2",
-     "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
-     "group": "Robots",
-     "entry": "Teth",
-     "anchor": "/news/#v12-2-teth",
-     "verdict": "mixed",
-     "lines": [
-      {
-       "text": "Durability: 350,000 → 365,000",
-       "dir": "buff"
-      },
-      {
-       "text": "Movement speed: 50 km/h → 46 km/h",
-       "dir": "nerf"
-      },
-      {
-       "text": "Sandstorm cooldown: 13 s → 15 s",
-       "dir": "nerf"
-      },
-      {
-       "text": "Shield replacement time: 45 s → 60 s",
-       "dir": "buff"
-      },
-      {
-       "text": "Rocket launcher range: 350 m → 100 m",
-       "dir": "nerf"
-      },
-      {
-       "text": "Shield durability: 95,000 → 100,000 (single shield)",
-       "dir": "buff"
-      }
-     ]
-    }
-   ],
-   "latest": {
-    "ver": "12.2",
-    "verdict": "mixed"
-   },
-   "note": "Buffed and nerfed in 12.2"
-  },
   "robot/hastatus-mk2": {
    "kind": "robot",
    "name": "Hastatus MK2",
@@ -282,38 +212,23 @@
    },
    "note": "Buffed in 12.2"
   },
-  "robot/baihu-lynx": {
+  "robot/ultimate-spectre-mk2": {
    "kind": "robot",
-   "name": "Baihu Lynx",
-   "changes": [
-    {
-     "ver": "12.5",
-     "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
-     "group": "Robots",
-     "entry": "Lynx",
-     "anchor": "/news/#v12-5-lynx",
-     "verdict": "buff",
-     "lines": [
-      {
-       "text": "Movement speed: 62 → 65 km/h",
-       "dir": "buff"
-      }
-     ]
-    }
-   ],
-   "latest": {
-    "ver": "12.5",
-    "verdict": "buff"
-   },
-   "now": {
-    "speed": 65
-   },
-   "note": "Buffed in 12.5"
+   "name": "ULTIMATE Spectre MK2",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
   },
-  "robot/scorpion": {
+  "robot/ravager-mk2": {
    "kind": "robot",
-   "name": "Scorpion",
+   "name": "Ravager MK2",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/scorpion-mk2": {
+   "kind": "robot",
+   "name": "Scorpion MK2",
    "changes": [
     {
      "ver": "12.5",
@@ -340,29 +255,51 @@
    },
    "note": "Buffed in 12.5"
   },
-  "robot/typhon": {
+  "robot/frozen-dagon-mk2": {
    "kind": "robot",
-   "name": "Typhon",
+   "name": "Frozen Dagon MK2",
    "changes": [
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
      "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
-     "entry": "Typhon",
-     "anchor": "/news/#v12-5-typhon",
-     "verdict": "mixed",
+     "entry": "Dagon",
+     "anchor": "/news/#v12-5-dagon",
+     "verdict": "buff",
      "lines": [
       {
-       "text": "Aegis capacity: 60,000 → 75,000",
+       "text": "Aegis capacity: 90,000 → 100,000",
        "dir": "buff"
       },
       {
-       "text": "Aegis regeneration: 3960 → 4950",
+       "text": "Aegis regeneration: 10,000 → 11,000",
        "dir": "buff"
-      },
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "buff"
+   },
+   "note": "Buffed in 12.5"
+  },
+  "robot/vector-mk2": {
+   "kind": "robot",
+   "name": "Vector MK2",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robots",
+     "entry": "Vector",
+     "anchor": "/news/#v12-5-vector",
+     "verdict": "nerf",
+     "lines": [
       {
-       "text": "Aegis capacity to activate: 12000 → 15000",
+       "text": "Event Horizon Acceleration: -50% during activation",
        "dir": "nerf"
       }
      ]
@@ -370,20 +307,96 @@
    ],
    "latest": {
     "ver": "12.5",
-    "verdict": "mixed"
+    "verdict": "nerf"
    },
-   "note": "Buffed and nerfed in 12.5"
+   "note": "Nerfed in 12.5"
   },
-  "robot/retro-revenant": {
+  "robot/baihu-lynx-mk2": {
    "kind": "robot",
-   "name": "Retro Revenant",
+   "name": "Baihu Lynx MK2",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robots",
+     "entry": "Lynx",
+     "anchor": "/news/#v12-5-lynx",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "Movement speed: 62 → 65 km/h",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "buff"
+   },
+   "now": {
+    "speed": 65
+   },
+   "note": "Buffed in 12.5"
+  },
+  "robot/vulcan-mk2": {
+   "kind": "robot",
+   "name": "Vulcan MK2",
    "changes": [],
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
   },
-  "robot/kaji": {
+  "robot/fenrir-mk2": {
    "kind": "robot",
-   "name": "Kaji",
+   "name": "Fenrir MK2",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/noir-shenlou-mk2": {
+   "kind": "robot",
+   "name": "Noir Shenlou MK2",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robots",
+     "entry": "Shenlou",
+     "anchor": "/news/#v12-5-shenlou",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "Aegis per blink: 40,000 → 50,000",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "buff"
+   },
+   "note": "Buffed in 12.5"
+  },
+  "robot/nuo": {
+   "kind": "robot",
+   "name": "Nuo",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/fang": {
+   "kind": "robot",
+   "name": "Fang",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/shell": {
+   "kind": "robot",
+   "name": "Shell",
    "changes": [],
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
@@ -461,59 +474,42 @@
    },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
-  "robot/noir-shenlou": {
+  "robot/ophion": {
    "kind": "robot",
-   "name": "Noir Shenlou",
+   "name": "Ophion",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/seraph": {
+   "kind": "robot",
+   "name": "Seraph",
    "changes": [
     {
-     "ver": "12.5",
-     "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robots",
-     "entry": "Shenlou",
-     "anchor": "/news/#v12-5-shenlou",
+     "entry": "Seraph",
+     "anchor": "/news/#v12-2-seraph",
      "verdict": "buff",
      "lines": [
       {
-       "text": "Aegis per blink: 40,000 → 50,000",
+       "text": "Skyward cooldown: 17 s → 16 s",
+       "dir": "buff"
+      },
+      {
+       "text": "Built-in weapon damage: +18%",
        "dir": "buff"
       }
      ]
     }
    ],
    "latest": {
-    "ver": "12.5",
+    "ver": "12.2",
     "verdict": "buff"
    },
-   "note": "Buffed in 12.5"
-  },
-  "robot/nuo": {
-   "kind": "robot",
-   "name": "Nuo",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
-  },
-  "robot/shell": {
-   "kind": "robot",
-   "name": "Shell",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
-  },
-  "robot/mars": {
-   "kind": "robot",
-   "name": "Mars",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
-  },
-  "robot/vulcan": {
-   "kind": "robot",
-   "name": "Vulcan",
-   "changes": [],
-   "latest": null,
-   "note": "No balance changes from 12.0 to 12.5"
+   "note": "Buffed in 12.2"
   },
   "robot/demeter": {
    "kind": "robot",
@@ -522,38 +518,12 @@
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
   },
-  "robot/ardent-imugi": {
+  "robot/retro-revenant": {
    "kind": "robot",
-   "name": "Ardent Imugi",
-   "changes": [
-    {
-     "ver": "12.5",
-     "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
-     "group": "Robots",
-     "entry": "Imugi",
-     "anchor": "/news/#v12-5-imugi",
-     "verdict": "buff",
-     "lines": [
-      {
-       "text": "Damage bonus: 5 → 10%",
-       "dir": "buff"
-      },
-      {
-       "text": "Movement speed: 50 → 52 km/h",
-       "dir": "buff"
-      }
-     ]
-    }
-   ],
-   "latest": {
-    "ver": "12.5",
-    "verdict": "buff"
-   },
-   "now": {
-    "speed": 52
-   },
-   "note": "Buffed in 12.5"
+   "name": "Retro Revenant",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
   },
   "robot/blaze-rex": {
    "kind": "robot",
@@ -613,9 +583,108 @@
    },
    "note": "Buffed and nerfed in 12.2"
   },
+  "robot/kitsune-harpy": {
+   "kind": "robot",
+   "name": "Kitsune Harpy",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/raptor": {
+   "kind": "robot",
+   "name": "Raptor",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/ao-jun": {
+   "kind": "robot",
+   "name": "Ao Jun",
+   "changes": [
+    {
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
+     "group": "Robots",
+     "entry": "Ao Jun",
+     "anchor": "/news/#v12-2-ao-jun",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "Durability: 223,000 → 234,000",
+       "dir": "buff"
+      },
+      {
+       "text": "Built-in flamethrower damage per particle: 646 → 800",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.2",
+    "verdict": "buff"
+   },
+   "note": "Buffed in 12.2"
+  },
+  "robot/typhon": {
+   "kind": "robot",
+   "name": "Typhon",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robots",
+     "entry": "Typhon",
+     "anchor": "/news/#v12-5-typhon",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "Aegis capacity: 60,000 → 75,000",
+       "dir": "buff"
+      },
+      {
+       "text": "Aegis regeneration: 3960 → 4950",
+       "dir": "buff"
+      },
+      {
+       "text": "Aegis capacity to activate: 12000 → 15000",
+       "dir": "nerf"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "mixed"
+   },
+   "note": "Buffed and nerfed in 12.5"
+  },
+  "robot/kaji": {
+   "kind": "robot",
+   "name": "Kaji",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/stryx": {
+   "kind": "robot",
+   "name": "Stryx",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
   "robot/crisis": {
    "kind": "robot",
    "name": "Crisis",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/mars": {
+   "kind": "robot",
+   "name": "Mars",
    "changes": [],
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
@@ -627,12 +696,52 @@
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
   },
+  "robot/natasha": {
+   "kind": "robot",
+   "name": "Natasha",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
   "robot/fafnir": {
    "kind": "robot",
    "name": "Fafnir",
    "changes": [],
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
+  },
+  "robot/ardent-imugi": {
+   "kind": "robot",
+   "name": "Ardent Imugi",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robots",
+     "entry": "Imugi",
+     "anchor": "/news/#v12-5-imugi",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "Damage bonus: 5 → 10%",
+       "dir": "buff"
+      },
+      {
+       "text": "Movement speed: 50 → 52 km/h",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "buff"
+   },
+   "now": {
+    "speed": 52
+   },
+   "note": "Buffed in 12.5"
   },
   "titan/atlas": {
    "kind": "titan",
@@ -664,21 +773,21 @@
    },
    "note": "Nerfed in 12.5"
   },
-  "titan/ao-ming": {
+  "titan/devourer": {
    "kind": "titan",
-   "name": "Ao Ming",
+   "name": "Devourer",
    "changes": [
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
      "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Titans",
-     "entry": "Ao Ming",
-     "anchor": "/news/#v12-2-ao-ming",
+     "entry": "Devourer",
+     "anchor": "/news/#v12-2-devourer",
      "verdict": "buff",
      "lines": [
       {
-       "text": "Durability: 402,000 → 412,000",
+       "text": "Durability: 500,000 → 530,000",
        "dir": "buff"
       }
      ]
@@ -689,6 +798,39 @@
     "verdict": "buff"
    },
    "note": "Buffed in 12.2"
+  },
+  "titan/rook": {
+   "kind": "titan",
+   "name": "Rook",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Titans",
+     "entry": "Rook",
+     "anchor": "/news/#v12-5-rook",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "Durability: 753,000 → 800,000",
+       "dir": "buff"
+      },
+      {
+       "text": "Castling cooldown: 15 → 13 s",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "buff"
+   },
+   "now": {
+    "hp": 1.0624169986719787
+   },
+   "note": "Buffed in 12.5"
   },
   "titan/newton": {
    "kind": "titan",
@@ -719,6 +861,50 @@
    },
    "note": "Buffed in 12.5"
   },
+  "titan/bjorn": {
+   "kind": "titan",
+   "name": "Bjorn",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Titans",
+     "entry": "Bjorn",
+     "anchor": "/news/#v12-5-bjorn",
+     "verdict": "nerf",
+     "lines": [
+      {
+       "text": "Built-in weapon damage per particle: 30,000 → 19,500",
+       "dir": "nerf"
+      },
+      {
+       "text": "Aegis capacity: 380,000 → 150,000",
+       "dir": "nerf"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "nerf"
+   },
+   "note": "Nerfed in 12.5"
+  },
+  "titan/sirocco": {
+   "kind": "titan",
+   "name": "Sirocco",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "titan/kid": {
+   "kind": "titan",
+   "name": "Kid",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
   "titan/nodens": {
    "kind": "titan",
    "name": "Nodens",
@@ -726,9 +912,72 @@
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
   },
-  "titan/sirocco": {
+  "titan/princeps": {
    "kind": "titan",
-   "name": "Sirocco",
+   "name": "Princeps",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Titans",
+     "entry": "Princeps",
+     "anchor": "/news/#v12-5-princeps",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "Durability: 625,000 → 656,250",
+       "dir": "buff"
+      },
+      {
+       "text": "Nullfield duration: 10 → 6 s",
+       "dir": "nerf"
+      },
+      {
+       "text": "Nullfield cooldown: 12 → 15 s",
+       "dir": "nerf"
+      }
+     ]
+    },
+    {
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
+     "group": "Titans",
+     "entry": "Princeps",
+     "anchor": "/news/#v12-2-princeps",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "Durability: 600,000 → 635,000",
+       "dir": "buff"
+      },
+      {
+       "text": "Nullfield duration (lifetime of Stasis Barrier charges): 12 s → 10 s",
+       "dir": "nerf"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "mixed"
+   },
+   "now": {
+    "hp": 1.05
+   },
+   "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
+  },
+  "titan/indra": {
+   "kind": "titan",
+   "name": "Indra",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "titan/bersagliere": {
+   "kind": "titan",
+   "name": "Bersagliere",
    "changes": [],
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
@@ -746,6 +995,32 @@
    "changes": [],
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
+  },
+  "titan/ao-ming": {
+   "kind": "titan",
+   "name": "Ao Ming",
+   "changes": [
+    {
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
+     "group": "Titans",
+     "entry": "Ao Ming",
+     "anchor": "/news/#v12-2-ao-ming",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "Durability: 402,000 → 412,000",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.2",
+    "verdict": "buff"
+   },
+   "note": "Buffed in 12.2"
   },
   "weapon/kirin-mk2": {
    "kind": "weapon",
@@ -3562,6 +3837,314 @@
    "changes": [],
    "latest": null,
    "note": "No balance changes from 12.0 to 12.5"
+  },
+  "weapon/velos": {
+   "kind": "weapon",
+   "name": "Velos",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robot weapons",
+     "entry": "Velos / Machaira / Basileus",
+     "anchor": "/news/#v12-5-velos-machaira-basileus",
+     "verdict": "nerf",
+     "lines": [
+      {
+       "text": "Reload interval: 5 → 7 s",
+       "dir": "nerf"
+      },
+      {
+       "text": "- Velos 900 → 810",
+       "dir": "nerf"
+      }
+     ]
+    },
+    {
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
+     "group": "Robot weapons",
+     "entry": "Velos / Machaira / Basileus",
+     "anchor": "/news/#v12-2-velos-machaira-basileus",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "Rust effectiveness: 74.37% → 63.40% (prevented repairs at maximum 80 stacks of Rust)",
+       "dir": "nerf"
+      },
+      {
+       "text": "Ammo: 120 → 100",
+       "dir": "nerf"
+      },
+      {
+       "text": "Acceleration: +20%",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "nerf"
+   },
+   "now": {
+    "reload": 7,
+    "dmg": 0.9
+   },
+   "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
+  },
+  "weapon/fahrenheit": {
+   "kind": "weapon",
+   "name": "Fahrenheit",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robot weapons",
+     "entry": "Celsius / Fahrenheit / Kelvin",
+     "anchor": "/news/#v12-5-celsius-fahrenheit-kelvin",
+     "verdict": "nerf",
+     "lines": [
+      {
+       "text": "Shot interval: 0.07 → 0.15 s",
+       "dir": "nerf"
+      },
+      {
+       "text": "Time to Overheat: 13 → 10 s",
+       "dir": "nerf"
+      }
+     ]
+    },
+    {
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
+     "group": "Robot weapons",
+     "entry": "Celsius / Fahrenheit / Kelvin",
+     "anchor": "/news/#v12-2-celsius-fahrenheit-kelvin",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "Medium: 1,920 → 2,000",
+       "dir": "buff"
+      },
+      {
+       "text": "AoE radius: 20 m → 12 m",
+       "dir": "nerf"
+      },
+      {
+       "text": "Shot interval: 0.05 s → 0.07 s",
+       "dir": "nerf"
+      },
+      {
+       "text": "Delay before starting to cool down following overheat: 0.5 s → 1 s",
+       "dir": "nerf"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "nerf"
+   },
+   "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
+  },
+  "weapon/omen-lumen-m": {
+   "kind": "weapon",
+   "name": "Omen Lumen-M",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robot weapons",
+     "entry": "Lumen-L/M/H",
+     "anchor": "/news/#v12-5-lumen-l-m-h",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "- Lumen-M: 975 → 1500",
+       "dir": "buff"
+      },
+      {
+       "text": "Thermal Breach damage bonus per stack: 1.15 → 0.15",
+       "dir": "nerf"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "mixed"
+   },
+   "now": {
+    "dmg": 1.5384615384615385
+   },
+   "note": "Buffed and nerfed in 12.5"
+  },
+  "weapon/lumen-m": {
+   "kind": "weapon",
+   "name": "Lumen-M",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Robot weapons",
+     "entry": "Lumen-L/M/H",
+     "anchor": "/news/#v12-5-lumen-l-m-h",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "- Lumen-M: 975 → 1500",
+       "dir": "buff"
+      },
+      {
+       "text": "Thermal Breach damage bonus per stack: 1.15 → 0.15",
+       "dir": "nerf"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "mixed"
+   },
+   "now": {
+    "dmg": 1.5384615384615385
+   },
+   "note": "Buffed and nerfed in 12.5"
+  },
+  "weapon/ballista": {
+   "kind": "weapon",
+   "name": "Ballista",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "weapon/arbiter": {
+   "kind": "weapon",
+   "name": "Arbiter",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Titan weapons",
+     "entry": "Arbiter",
+     "anchor": "/news/#v12-5-arbiter",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "Damage per particle: 2800 → 3150",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.125
+   },
+   "note": "Buffed in 12.5"
+  },
+  "weapon/equalizer": {
+   "kind": "weapon",
+   "name": "Equalizer",
+   "changes": [],
+   "latest": null,
+   "note": "No balance changes from 12.0 to 12.5"
+  },
+  "weapon/tonans": {
+   "kind": "weapon",
+   "name": "Tonans",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Titan weapons",
+     "entry": "Tonans / Fulgur",
+     "anchor": "/news/#v12-5-tonans-fulgur",
+     "verdict": "buff",
+     "lines": [
+      {
+       "text": "- Tonans  3270 → 3967",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.2131498470948012
+   },
+   "note": "Buffed in 12.5"
+  },
+  "weapon/vincere": {
+   "kind": "weapon",
+   "name": "Vincere",
+   "changes": [
+    {
+     "ver": "12.5",
+     "title": "Halloween Interlopers",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
+     "group": "Titan weapons",
+     "entry": "Venire / Vincere",
+     "anchor": "/news/#v12-5-venire-vincere",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "AoE radius: 7 → 8 m",
+       "dir": "buff"
+      },
+      {
+       "text": "Horizontal & Vertical dispersion: 0.025 → 0.04",
+       "dir": "buff"
+      },
+      {
+       "text": "- Vincere 1925 → 1145",
+       "dir": "nerf"
+      }
+     ]
+    },
+    {
+     "ver": "12.2",
+     "title": "Event: World Iron Cup",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
+     "group": "Titan weapons",
+     "entry": "Venire / Vincere",
+     "anchor": "/news/#v12-2-venire-vincere",
+     "verdict": "mixed",
+     "lines": [
+      {
+       "text": "Time to overheat: 12 → 7 s",
+       "dir": "nerf"
+      },
+      {
+       "text": "Time to cool down: 4 → 3 s",
+       "dir": "buff"
+      }
+     ]
+    }
+   ],
+   "latest": {
+    "ver": "12.5",
+    "verdict": "mixed"
+   },
+   "now": {
+    "dmg": 0.5948051948051948
+   },
+   "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/void": {
    "kind": "weapon",

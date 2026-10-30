@@ -2,95 +2,16 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="viewport" content="width=device-width,initial-scale=1">
 <title>gragg.life</title>
-<meta name="description" content="Projects by the gragg.life creators.">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
-<link rel="stylesheet" href="/shared/site.css">
+<meta name="robots" content="noindex">
 <style>
-.hero{padding:56px 0 26px}
-.hero h1 b{color:var(--accent)}
-.creator{margin-top:38px}
-.creator header{display:flex;align-items:baseline;gap:12px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px;margin-bottom:14px}
-.creator header h2{margin:0}
-.proj{display:flex;flex-direction:column;overflow:hidden;color:var(--fg);transition:border-color .15s,transform .15s}
-.proj:hover{border-color:var(--accent);transform:translateY(-2px);text-decoration:none}
-.proj .art{aspect-ratio:16/9;background:radial-gradient(ellipse at 50% 80%,color-mix(in srgb,var(--accent) 18%,transparent),transparent 65%),var(--bg2);
-  display:flex;align-items:center;justify-content:center;border-bottom:1px solid var(--line)}
-.proj .art img{max-height:86%;max-width:80%;object-fit:contain}
-.proj .art span{font-family:var(--display);font-size:44px;color:var(--line2)}
-.proj .body{padding:14px 16px 16px;display:flex;flex-direction:column;gap:8px;flex:1}
-.proj h3{margin:0;font-size:21px}
-.proj p{margin:0;color:var(--dim);font-size:14px}
-.proj .tags{display:flex;gap:6px;flex-wrap:wrap;margin-top:auto;padding-top:4px}
-.strip{display:grid;grid-auto-flow:column;grid-auto-columns:minmax(210px,1fr);gap:14px;overflow-x:auto;padding:4px 2px 10px;margin-top:30px;scroll-snap-type:x proximity}
-.strip .proj{scroll-snap-align:start;min-width:0}
-.strip .proj .art{aspect-ratio:auto;height:190px}
-.news{margin-top:40px}
-.news header{display:flex;align-items:baseline;gap:14px;flex-wrap:wrap;border-bottom:1px solid var(--line);padding-bottom:10px}
-.news header h2{margin:0}
-.news .strip{margin-top:14px}
-.pn-latest{display:block;margin-top:14px;padding:14px 16px;color:var(--fg)}
-.pn-latest:hover{border-color:var(--accent);text-decoration:none}
-.pn-latest b{font-family:var(--display);font-size:20px;letter-spacing:.5px}
-.pn-latest p{margin:4px 0 0;color:var(--dim);font-size:14px}
-.vid{display:flex;flex-direction:column;overflow:hidden;color:var(--fg);min-width:0;scroll-snap-align:start}
-.vid:hover{border-color:var(--accent);text-decoration:none}
-.vid img{display:block;width:100%;aspect-ratio:16/9;object-fit:cover;background:var(--bg2)}
-.vid .body{padding:10px 12px 12px;display:flex;flex-direction:column;gap:4px}
-.vid h3{margin:0;font-size:16px;line-height:1.25}
-.vid time{font-family:var(--mono);font-size:11px;color:var(--faint)}
-.proj .who{font-family:var(--mono);font-size:10.5px;letter-spacing:1.2px;text-transform:uppercase;color:var(--accent)}
-.join{margin-top:44px;padding:20px;display:flex;gap:16px;align-items:center;flex-wrap:wrap}
-.join p{margin:0;flex:1;min-width:220px;color:var(--dim)}
+:root{color-scheme:dark}
+html,body{height:100%;margin:0}
+body{display:flex;align-items:center;justify-content:center;background:#0f151c;color:#728396;font:15px/1.6 system-ui,-apple-system,sans-serif}
 </style>
-<script src="/shared/search.js" defer></script>
 </head>
 <body>
-<div class="topbar"><div class="container">
-  <a class="logo" href="/">gragg<b>.</b>life</a>
-</div></div>
-
-<main class="container">
-  <section class="hero">
-    <h1>Built by <b>creators</b></h1>
-    <p class="lede">Games, tools and sites made by the gragg.life crew. Pick a project to open it.</p>
-  </section>
-  <div id="creators"><p class="muted">Loading projects…</p></div>
-  <section class="news">
-    <header><h2>Latest War Robots updates</h2><a href="/news/">Patch notes and all videos</a></header>
-    <a class="card pn-latest" id="pn-latest" href="/news/" hidden></a>
-    <div class="strip" id="news"><p class="muted">Loading videos…</p></div>
-  </section>
-  <div class="card join">
-    <p><b>Want your work here?</b> Every creator gets a folder in the repo and a card on this page. The guide explains it step by step.</p>
-    <a class="btn ghost" href="https://github.com/Truline-IT/wr-hangar/blob/main/CONTRIBUTING.md">How to add a project</a>
-  </div>
-</main>
-<footer class="footer"><div class="container">gragg.life · hosted on GitHub Pages</div></footer>
-
-<script>
-const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
-fetch("/creators.json").then(r=>r.json()).then(({creators})=>{
-  /* every project card on one line, each labelled with its creator */
-  const cards=creators.flatMap(c=>c.projects.map(p=>({c,p})));
-  document.getElementById("creators").innerHTML=`<div class="strip">${cards.map(({c,p})=>`
-        <a class="card proj" href="${esc(p.url)}">
-          <div class="art">${p.image?`<img src="${esc(p.image)}" alt="" loading="lazy">`:`<span>${esc(p.title[0])}</span>`}</div>
-          <div class="body"><span class="who">${esc(c.name)}</span><h3>${esc(p.title)}</h3><p>${esc(p.summary)}</p>
-            <div class="tags">${(p.tags||[]).map(t=>`<span class="tag">${esc(t)}</span>`).join("")}</div></div>
-        </a>`).join("")}</div>`;
-}).catch(()=>{document.getElementById("creators").innerHTML='<p class="muted">Projects could not load. Try refreshing.</p>';});
-fetch("/news/patch-notes.json",{cache:"no-cache"}).then(r=>r.json()).then(({latest:L})=>{
-  const mine=L.groups.reduce((n,g)=>n+g.items.filter(i=>i.mine).length,0), el=document.getElementById("pn-latest");
-  el.innerHTML=`<span class="tag accent">Patch notes</span> <b>${esc(L.ver)}: ${esc(L.title)}</b><p>${esc(L.highlights[0])} ${mine} balance changes touch Adam's gear.</p>`;
-  el.hidden=false; }).catch(()=>{});
-fetch("/news/videos.json",{cache:"no-cache"}).then(r=>r.json()).then(({videos})=>{
-  const day=d=>new Date(d).toLocaleDateString(undefined,{month:"short",day:"numeric"});
-  document.getElementById("news").innerHTML=videos.slice(0,4).map(v=>`
-    <a class="card vid" href="${esc(v.url)}" target="_blank" rel="noopener"><img src="${esc(v.thumb)}" alt="" loading="lazy">
-      <div class="body"><h3>${esc(v.title)}</h3><time datetime="${esc(v.published)}">${day(v.published)}</time></div></a>`).join("");
-}).catch(()=>{ document.getElementById("news").innerHTML='<p class="muted">Videos could not load. Try refreshing.</p>'; });
-</script>
+<p>gragg.life</p>
 </body>
 </html>

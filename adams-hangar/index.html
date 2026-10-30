@@ -897,6 +897,10 @@ h3::after{background:var(--line)}
   border-radius:var(--r)!important;box-shadow:0 1px 2px rgba(20,30,45,.05)}
 .floor,.card,.cpcard,.wcard,.dcard,.bay,.res,.cur,.stat div,.mrow,.prow{background:var(--panel)!important;border:1px solid var(--line)!important}
 .bot{background:var(--panel)!important} .bots{background:var(--line)}
+/* one line per floor: every machine on the floor sits side by side, and the row scrolls on small screens */
+.bots{grid-template-columns:none!important;grid-auto-flow:column;grid-auto-columns:minmax(232px,1fr);overflow-x:auto;scrollbar-width:thin}
+.wrap,.bar,header nav,.subnav{max-width:1500px!important}
+@media (max-width:640px){ .sx,.cnt,.gc .sx{white-space:normal!important;overflow-wrap:anywhere;min-width:0;flex:1 1 100%!important} }
 .fhead,.floor>h4{background:var(--panel2)!important;border-bottom:1px solid var(--line)}
 .fhead h4{font-family:var(--display);text-transform:none;letter-spacing:.3px;font-size:22px}
 .ffoot{background:var(--panel2)}
@@ -939,7 +943,7 @@ document.addEventListener("error",function(e){var t=e.target; if(!t||t.tagName!=
 </script>
 <header>
   <div class="bar">
-    <div class="brand">Moody.Adam Hangar<small>WAR ROBOTS &middot; V2.0 &middot; LVL 30</small></div>
+    <div class="brand">Moody.Adam Hangar<small id="brandsub">WAR ROBOTS &middot; LVL 30</small></div>
     <button class="editbtn" id="edit" aria-pressed="false" style="margin-left:auto">Edit data</button>
     <div class="who" style="margin-left:0"><span class="dot" id="live"></span><span id="whoami">solo</span></div>
   </div>
@@ -957,6 +961,56 @@ document.addEventListener("error",function(e){var t=e.target; if(!t||t.tagName!=
 <div class="wrap">
 
 <style>
+/* ===== front page, wiki style ===== */
+.hm-banner{display:flex;align-items:center;gap:16px;flex-wrap:wrap;padding:20px 0 16px;border-bottom:1px solid var(--line)}
+.hm-mark{width:54px;height:60px;flex:none;display:flex;align-items:center;justify-content:center;font:700 24px var(--display,inherit);color:#1a1006;
+  background:linear-gradient(160deg,#ffc067,#ff9a1f);clip-path:polygon(50% 0,100% 25%,100% 75%,50% 100%,0 75%,0 25%)}
+.hm-title{margin:0;font-size:clamp(26px,4vw,38px);letter-spacing:1.5px;text-transform:uppercase}
+.hm-title b{color:#ff9a1f}
+.hm-sub{font:12px var(--mono,monospace);color:var(--faint,#8a97a6);letter-spacing:.6px;margin-top:4px}
+.hm-sub .live{color:#4fd98c}
+.hm-links{margin-left:auto;display:flex;gap:8px;flex-wrap:wrap}
+.hm-btn{font:600 14px var(--display,inherit);letter-spacing:1px;text-transform:uppercase;padding:9px 14px;border-radius:4px;border:1px solid var(--line);color:var(--fg,#e8eef5);text-decoration:none}
+.hm-btn.on{background:#ff9a1f;border-color:#ff9a1f;color:#1a1006}
+.hm-btn:hover{border-color:#ff9a1f;text-decoration:none}
+.hm-notice{margin:16px 0;padding:12px 16px;border:1px solid color-mix(in srgb,#ff9a1f 40%,var(--line));border-left:4px solid #ff9a1f;
+  background:color-mix(in srgb,#ff9a1f 7%,transparent);border-radius:0 8px 8px 0;font-size:14.5px;line-height:1.55}
+.hm-notice:empty{display:none}
+.hm-cols{display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:26px;align-items:start}
+@media (max-width:980px){.hm-cols{grid-template-columns:minmax(0,1fr)}}
+.hm-h{position:relative;margin:10px 0 12px;padding-bottom:7px;border-bottom:1px solid var(--line2,var(--line));font-size:22px;text-transform:uppercase;letter-spacing:1px}
+.hm-h::after{content:"";position:absolute;left:0;bottom:-1px;width:70px;height:2px;background:#ff9a1f}
+.hm-filters{display:flex;gap:6px;flex-wrap:wrap;margin-bottom:14px}
+.hm-filters button{font:500 13px inherit;padding:7px 13px;border-radius:999px;border:1px solid var(--line);background:none;color:var(--dim,#a3b3c4);cursor:pointer}
+.hm-filters button[aria-pressed="true"]{background:#ff9a1f;border-color:#ff9a1f;color:#1a1006}
+.hm-tiles{display:grid;gap:10px;grid-template-columns:repeat(auto-fill,minmax(180px,1fr))}
+.hm-tile{display:flex;flex-direction:column;background:var(--panel);border:1px solid var(--line);color:var(--fg,#e8eef5);text-decoration:none;
+  clip-path:polygon(0 0,calc(100% - 14px) 0,100% 14px,100% 100%,0 100%)}
+.hm-tile:hover{border-color:#ff9a1f;text-decoration:none}
+.hm-art{aspect-ratio:4/3;display:flex;align-items:center;justify-content:center;background:radial-gradient(ellipse at 50% 85%,rgba(255,154,31,.16),transparent 65%),var(--bg2,rgba(0,0,0,.2));border-bottom:1px solid var(--line)}
+.hm-art img{max-width:88%;max-height:88%;object-fit:contain}
+.hm-art span{font:700 40px var(--display,inherit);color:var(--line2,#3b4c5e)}
+.hm-t{padding:9px 11px 11px}
+.hm-t b{display:block;font:600 16px var(--display,inherit);letter-spacing:.6px;text-transform:uppercase;line-height:1.2}
+.hm-t small{display:block;color:var(--faint,#8a97a6);font:11.5px var(--mono,monospace);margin-top:3px}
+.hm-t s{color:var(--faint,#8a97a6);text-decoration-color:#ff6363}
+.hm-tag{display:inline-block;margin-top:6px;font:600 9.5px/1 var(--mono,monospace);letter-spacing:.5px;text-transform:uppercase;padding:3px 5px;border-radius:3px}
+.hm-tag.buff{color:#8ff0bb;background:#123a26}.hm-tag.nerf{color:#ffaaaa;background:#4a1616}.hm-tag.mixed{color:#ffd486;background:#40300a}
+.hm-tag.bench{color:var(--dim,#a3b3c4);background:var(--panel2,#202c39);margin-left:4px}
+.hm-box{background:var(--panel);border:1px solid var(--line);margin-bottom:14px}
+.hm-bt{font:600 14px var(--display,inherit);letter-spacing:1px;text-transform:uppercase;color:#ffe1b0;padding:9px 12px;
+  background:linear-gradient(90deg,#3a2306,#5a3407 50%,#3a2306);border-bottom:2px solid #ff9a1f}
+#hm-news a{display:block;padding:9px 12px;border-bottom:1px solid var(--line);color:var(--fg,#e8eef5);font-size:14px;line-height:1.35;text-decoration:none}
+#hm-news a:hover{background:var(--panel2)}
+#hm-news small{display:block;color:var(--faint,#8a97a6);font:11px var(--mono,monospace);margin-top:2px}
+.hm-more{display:block;padding:8px 12px;font-size:13px}
+.hm-muted{color:var(--faint,#8a97a6);padding:10px 12px;margin:0}
+.hm-tools{display:grid;grid-template-columns:1fr 1fr;gap:6px;padding:10px}
+.hm-tools button{font:500 13px inherit;padding:8px;border:1px solid var(--line);background:var(--panel2);color:var(--fg,#e8eef5);border-radius:4px;cursor:pointer}
+.hm-tools button:hover{border-color:#ff9a1f}
+.hm-dl{display:grid;grid-template-columns:1fr auto;margin:0}
+.hm-dl dt,.hm-dl dd{margin:0;padding:7px 12px;border-top:1px solid var(--line);font-size:14px}
+.hm-dl dt{color:var(--faint,#8a97a6)} .hm-dl dd{text-align:right;font-weight:600}
 /* ===== guide ===== */
 .gsteps{counter-reset:gs;list-style:none;padding:0;margin:0 0 8px;display:grid;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));gap:10px}
 .gsteps li{counter-increment:gs;position:relative;background:linear-gradient(170deg,var(--panel2),var(--panel));border:1px solid var(--line);
@@ -1327,13 +1381,38 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
     <li>Pocket Gamer.biz. <i>War Robots blasts past $900 million as shooter celebrates 10 years since launch</i>. <a href="https://pocketgamer.biz/news/83811/war-robots-blasts-past-900-million-as-shooter-celebrates-10-years-since-launch/" target="_blank" rel="noopener">pocketgamer.biz</a></li>
     <li>Wikipedia. <i>War Robots</i>. <a href="https://en.wikipedia.org/wiki/War_Robots" target="_blank" rel="noopener">en.wikipedia.org/wiki/War_Robots</a></li>
   </ol>
-  <p class="lede">Gathered 11 October 2026 from search results. Patch numbers move fast, so check the newest update notes before quoting a number.</p>
+  <p class="lede">Written 11 October 2026, before update 12.5. Patch numbers move fast, so check the <a href="/news/">newest update notes</a> or the <a href="wiki/#/changes">buffs and nerfs page</a> before quoting a number.</p>
 </section>
 
 
-<section id="t-hangar">
+<section id="t-home">
+  <div class="hm-banner">
+    <div class="hm-mark" aria-hidden="true">A</div>
+    <div class="hm-titles"><h2 class="hm-title">Moody.Adam <b>Hangar</b></h2>
+      <div class="hm-sub" id="hm-sub">War Robots fan wiki and tools</div></div>
+    <div class="hm-links"><a class="hm-btn on" href="wiki/#/strategy">12.5 strategy</a><a class="hm-btn" href="wiki/#/changes">Buffs and nerfs</a><a class="hm-btn" href="wiki/">Open the wiki</a><a class="hm-btn" href="/news/">News</a></div>
+  </div>
+  <div class="hm-notice" id="hm-notice"></div>
+  <div class="hm-cols">
+    <div>
+      <h3 class="hm-h">Robots</h3>
+      <div class="hm-filters" id="hm-f"></div>
+      <div class="hm-tiles" id="hm-tiles"></div>
+    </div>
+    <aside class="hm-side">
+      <div class="hm-box"><div class="hm-bt">Latest from War Robots</div><div id="hm-news"><p class="hm-muted">Loading.</p></div><a class="hm-more" href="/news/">All news</a></div>
+      <div class="hm-box"><div class="hm-bt">Tools</div><div class="hm-tools">
+        <button data-goto="hangar">Floors</button><button data-goto="calc">Calculator</button><button data-goto="compare">Compare two</button>
+        <button data-goto="log">Match log</button><button data-goto="focus">Focus</button><button data-goto="bank">Bank</button>
+        <button data-goto="arsenal">Every weapon</button><button data-goto="codes">Gift codes</button><button data-goto="gplay">Guide</button></div></div>
+      <div class="hm-box"><div class="hm-bt">In the hangar</div><dl class="hm-dl" id="hm-count"></dl></div>
+    </aside>
+  </div>
+</section>
+
+<section id="t-hangar" hidden>
   <h2>Five floors, thirty slots</h2>
-  <p class="lede">Floor numbers match the game's hangar numbers. Red means the slot is empty. Every robot and weapon carries a badge for what update 12.5 did to it; tap one for the full patch history. The plan for this update is on the <a href="wiki/#/strategy" target="_blank" rel="noopener">12.5 strategy page</a>.</p>
+  <p class="lede"><b>A snapshot of the floors as read in the game on 19 October.</b> Floors change all the time; the front page and the wiki follow the robots instead. Floor numbers match the game's hangar numbers. Red means the slot is empty. Every robot and weapon carries a badge for what update 12.5 did to it; tap one for the full patch history. The plan for this update is on the <a href="wiki/#/strategy" target="_blank" rel="noopener">12.5 strategy page</a>.</p>
   <div class="actions">
     <button class="big go" id="q-log"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M16 4v4h4"/><path d="M8 13h8M8 17h5"/></svg> Log a match<small>20 seconds, teaches the calculator</small></button>
     <button class="big vi" data-goto="calc"><svg class="ic" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18"/><path d="M8 7h8M8 12h2M12 12h2M16 12h0M8 16h2M12 16h2M16 16h0"/></svg> Build calculator<small>Try a loadout before you buy</small></button>
@@ -1503,16 +1582,16 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
     <tbody>
       <tr><td><b>Typhon</b></td><td>Do not Blackout at random. Wait until they <i>need</i> the ability: mid transformation, reaching for a shield, turning to escape. Good players do not die to damage, they die when the button stops working.</td></tr>
       <tr><td><b>Samjok MK2</b></td><td>Phase shift <i>in</i> while they are already committed to shooting a teammate. You arrive untouchable at 350m with Rust and Crumble shutting off their repair.</td></tr>
-      <tr><td><b>Ammit</b></td><td>It wants to be shot. Every point absorbed becomes permanent defence for the rest of the match. Stand your ground, it is correct.</td></tr>
+      <tr><td><b>Ammit</b></td><td>It wants to be shot: every point absorbed becomes permanent defence for the rest of the match. Since 12.5 it moves at 35 km/h and the ability runs 6 s on a 13 s cooldown, so pick the beacon first, then stand your ground on it.</td></tr>
       <tr><td><b>Harpy</b></td><td>Hovering, Reflector bounces 70% back and reflects 50%. Bait the biggest gun on their team into shooting you.</td></tr>
       <tr><td><b>Baihu Lynx</b></td><td>The built in gun executes anything under 15% durability outright. Do not open with it. Save it for the finish.</td></tr>
       <tr><td><b>Retro Revenant</b></td><td>Blink gives 10 seconds immune to DoT, Suppression, Freeze, Lock-down, BLAST and EMP at once, plus 99% grey damage protection. Blink into the thing that would normally counter you.</td></tr>
-      <tr><td><b>Vulcan</b></td><td>250,000 damage for the first threshold, 550,000 for the second. Stay on one target and let Thermal Breach build. Hopping targets resets the heat.</td></tr>
-      <tr><td><b>Kaji</b></td><td>Mines first, always. They apply Deathmark, and Boom and Pow both take +100% against a marked target. Firing before the mines land halves your damage.</td></tr>
+      <tr><td><b>Vulcan</b></td><td>250,000 damage for the first threshold, 550,000 for the second. Update 12.5 cut the Lumen Thermal Breach bonus from 1.15 to 0.15 per stack, so heat barely builds now; fire in bursts and let the damage total climb.</td></tr>
+      <tr><td><b>Kaji</b></td><td>Mines first, always. They apply Deathmark, and Boom and Pow both take +100% against a marked target. Since 12.5 they reload in 10 s instead of 7, so it is one volley on the marked target, then cover.</td></tr>
       <tr><td><b>Shell</b></td><td>Atom is a 100m blast with knockback on a 7 second cooldown, your shortest AoE. Use it to break a surround, not to open.</td></tr>
       <tr><td><b>Teth</b></td><td>Piercing guns ignore enemy Aegis entirely. Pick the shielded target others cannot hurt.</td></tr>
       <tr><td><b>ULT Spectre MK2</b></td><td>Descend is stealth plus a 25% damage window. Land behind them, not in front.</td></tr>
-      <tr><td><b>Anaksor</b></td><td>Changed in 12.2. Invisibility is 3 seconds now and they see you at 150m. It is a damage platform, not a disappearing act.</td></tr>
+      <tr><td><b>Anaksor</b></td><td>Changed in 12.2 and again in 12.5. Invisibility is 3 seconds and they see you at 150 m, durability fell from 330,000 to 260,000 at max, and the needle guns reload in 7 s. Put it on slug shotguns and treat it as a damage platform.</td></tr>
     </tbody>
   </table></div>
 
@@ -1769,7 +1848,7 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
 </section>
 
 <div class="foot">
-  Hangar read from the game on 12 October 2026. Buff and nerf notes follow the official update notes through 12.5.
+  Hangar read from the game on 19 October 2026. Damage, reload, health and speed include the newest official update notes (12.5).
   Open the game's own upgrade screen for current silver and time costs; this page records what you enter rather than guessing.
   <a href="https://www.reddit.com/r/walkingwarrobots/" target="_blank" rel="noopener">r/walkingwarrobots</a>
 </div>
@@ -1802,7 +1881,7 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
 </div>
 
 <div class="quickbar">
-  <button data-goto="hangar" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V9l9-6 9 6v11"/><path d="M9 20v-6h6v6"/></svg> Hangar</button>
+  <button data-goto="home" class="on"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M3 20V9l9-6 9 6v11"/><path d="M9 20v-6h6v6"/></svg> Hangar</button>
   <button data-goto="log"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M4 4h12l4 4v12H4z"/><path d="M8 13h8M8 17h5"/></svg> Log</button>
   <button data-goto="calc"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="4" y="3" width="16" height="18"/><path d="M8 7h8M8 12h8M8 16h5"/></svg> Build</button>
 </div>
@@ -1854,8 +1933,9 @@ pre.code .c{color:var(--faint)} pre.code .k{color:var(--cyan)} pre.code .s{color
   window.claude={ use:async function(k){ return k==="db"?DBX : k==="user"?USERX : k==="downloads"?DLX : null; } };
 })();
 </script>
+<script src="now.js"></script>
 <script>
-/* ---------- static inventory, 1 Oct 2026 ---------- */
+/* ---------- static inventory ---------- */
 // [name, slot, level, qty, damage, range, reload, effect]
 const W = [
 ["Kirin MK2","H",1,6,25872,350,17.7,"Rust + Crumble, 15s"],["Liodari","H",4,4,20745,350,5,"Banks damage taken, up to +50%"],
@@ -2008,15 +2088,17 @@ const TITANS = [
 ];
 const FLOORS = {
  5:["05","Not walked yet","var(--f1)","Hangar 5 was not opened on 19 October",
-    "Open Hangar 5 in the game with the watcher running and this floor fills in."],
+    "Open Hangar 5 in the game and add what is on it with Edit data."],
  4:["04","Grey Damage","var(--f2)","Fang and Ammit on sonic guns, Shell's rockets, Newton overhead",
-    "Ammit leads and soaks. Fang and Nuo follow into the fight Ammit started; Shell's Atom breaks a surround."],
+    "Fang leads now. Ammit got slower in 12.5 (35 km/h, ability 6 s on a 13 s cooldown), so park it on the nearest beacon as the anchor. Ophion's Labrys hit 25% harder. Shell fires one volley and takes cover, because Boom and Pow reload in 10 s."],
  3:["03","Burn and Blink","var(--f3)","Five MK2s: flamers, beams and Shenlou's Chain Blink, Rook overhead",
-    "Vector MK2 is the tank at 319,900 hp, so it goes in first. Shenlou blinks onto whoever turns to shoot Vector."],
+    "Vector MK2 is still the tank at 319,900 hp, but Event Horizon now slows it and its flamers fire at half speed, so put it on slug shotguns and fight from 600 m. Shenlou gets 50,000 Aegis per blink in 12.5 and blinks onto whoever turns to shoot Vector. Lumen guns no longer ramp up: fire in bursts."],
  2:["02","Strike Group","var(--f4)","Hastatus, Spectre, Ravager, Scorpion and Dagon MK2s, Devourer overhead",
-    "Hastatus holds the line with Flakstorm. Spectre descends behind them; Scorpion backstabs the one that turns around."],
+    "Hastatus holds the line with Flakstorm. Spectre descends behind them; Scorpion backstabs the one that turns around. Scorpion's needle guns were nerfed in 12.5, so move it to slug shotguns. Ravager and Frozen Dagon have no weapons recorded; check them in the game."],
  1:["01","Lead Floor","var(--f5)","Void Shoggoth, Samjok, Dux, Teth and Anaksor MK2s with Atlas",
-    "Teth MK2 at 291,900 hp opens. Samjok phase shifts in once they commit, Void Shoggoth punishes from range. Hold Atlas for a beacon fight you are already winning."]};
+    "Teth MK2 at 291,900 hp opens; Teth, Samjok and Dux were untouched by 12.5. Void Shoggoth and Anaksor lost durability and their guns were nerfed, so both move to slug shotguns. Atlas is weaker now, so drop it only into a fight you are already winning."]};
+/* bring every number up to the newest update (now.js, built from the official update notes); WAS keeps the old values */
+const WAS=typeof applyNow==="function"?applyNow(W,R,TITANS):{};
 const DRONES = ["Scales","Armadillo","Barrel","Beak","Daltokki","Freezo","Glider","Hiruko","Kestrel","Moderator","Nebula",
  "Paralysis","Qingting","Reviver","Scarabeus","Shai","Showdown","Wave","Whiteout"];
 
@@ -2061,7 +2143,7 @@ const isSituational = n => SITUATIONAL.some(b => n===b || n.startsWith(b+" ")) &
 
 /* ---------- tabs: five groups, sub tabs inside ---------- */
 const GROUPS={
-  hangar:  [["slot","Floors"],["hangar","Overview"],["drones","Drones"]],
+  hangar:  [["home","Front page"],["hangar","Floors"],["slot","Slot by slot"],["drones","Drones"]],
   build:   [["calc","Calculator"],["compare","Compare two"],["tactics","Tactics"],["events","Event setups"]],
   progress:[["log","Match log"],["focus","Focus"],["bank","Bank"],["worth","Worth it"]],
   intel:   [["intel","Patch notes"],["codes","Gift codes"]],
@@ -2075,7 +2157,7 @@ const SUB=document.getElementById("subnav");
 let curSec="hangar";
 
 function go(sec){
-  if(ALLSEC.indexOf(sec)<0) sec="hangar";
+  if(ALLSEC.indexOf(sec)<0) sec="home";
   curSec=sec;
   const g=groupOf(sec);
   navs.forEach(b=>b.setAttribute("aria-selected", b.dataset.g===g?"true":"false"));
@@ -2100,9 +2182,48 @@ SUB.addEventListener("click",e=>{ const b=e.target.closest("button[data-s]"); if
 const tabs=ALLSEC.map(id=>({dataset:{t:id}, click:()=>go(id),
   addEventListener:function(){}, setAttribute:function(){}, getAttribute:function(){return null;}}));
 
-try{ go(localStorage.getItem("wr-tab")||"hangar"); }catch(e){ go("hangar"); }
+/* always open on the front page; the old "last tab" memory is what kept showing stale floors */
+go("home");
 
 
+
+
+/* ---------- front page, wiki style ---------- */
+let HM_F="all", HM_PH=null;
+const hmSlug=s=>String(s).toLowerCase().replace(/[^a-z0-9]+/g,"-").replace(/^-|-$/g,"");
+function hmEsc(s){ return String(s==null?"":s).replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c])); }
+function renderHome(){
+  const ver=typeof NOW!=="undefined"?NOW.ver:"";
+  const bots=[...R.map(r=>({k:"robot",n:r[0],f:+r[1]||0,hp:r[4],sl:r[3]})),...TITANS.map(t=>({k:"titan",n:t[0],f:+t[1]||0,hp:t[3],sl:t[8]}))];
+  const verd=b=>{ const h=HM_PH&&HM_PH.items[b.k+"/"+hmSlug(b.n)]; return h&&h.latest&&h.latest.ver===ver?h.latest.verdict:""; };
+  const fs=[["all","All "+bots.length],["floor","On a floor "+bots.filter(b=>b.f).length],["bench","Bench "+bots.filter(b=>!b.f).length],
+    ["buff","Buffed in "+ver],["nerf","Nerfed in "+ver],["titan","Titans "+TITANS.length]];
+  document.getElementById("hm-f").innerHTML=fs.map(([k,t])=>`<button data-hmf="${k}" aria-pressed="${HM_F===k}">${hmEsc(t)}</button>`).join("");
+  const shown=bots.filter(b=>HM_F==="all"||(HM_F==="floor"&&b.f)||(HM_F==="bench"&&!b.f)||(HM_F==="titan"&&b.k==="titan")
+      ||(HM_F==="buff"&&["buff","mixed"].includes(verd(b)))||(HM_F==="nerf"&&["nerf","mixed"].includes(verd(b))))
+    .sort((a,b)=>(+!!b.f)-(+!!a.f)||(a.k===b.k?0:a.k==="robot"?-1:1)||(b.hp||0)-(a.hp||0));
+  const WORD={buff:"Buffed",nerf:"Nerfed",mixed:"Buffed and nerfed"};
+  document.getElementById("hm-tiles").innerHTML=shown.map(b=>{
+    const src=bsrc(bslug(b.n)), was=WAS[b.k+"/"+hmSlug(b.n)], v=verd(b);
+    const hpWas=was&&was[b.k==="robot"?4:3];
+    return `<a class="hm-tile" href="wiki/#/${b.k}/${hmSlug(b.n)}"><div class="hm-art">${src?`<img src="${src}" alt="" loading="lazy">`:`<span>${hmEsc(b.n[0])}</span>`}</div>
+      <div class="hm-t"><b>${hmEsc(b.n)}</b><small>${b.k==="titan"?"Titan":"Robot"} · ${hmEsc(b.sl||"")} · ${num(b.hp)} hp${hpWas?` <s>${num(hpWas)}</s>`:""}</small>
+      ${v?`<span class="hm-tag ${v}">${WORD[v]} ${hmEsc(ver)}</span>`:""}<span class="hm-tag bench"${v?"":' style="margin-left:0"'}>${b.f?"Floor "+b.f:"Bench"}</span></div></a>`; }).join("")||`<p class="hm-muted">Nothing here.</p>`;
+  const items=HM_PH?Object.values(HM_PH.items):[], cnt=v=>items.filter(h=>h.latest&&h.latest.ver===ver&&h.latest.verdict===v).length;
+  document.getElementById("hm-sub").innerHTML=`War Robots fan wiki and tools · <span class="live">● current for update ${hmEsc(ver)}</span>`;
+  document.getElementById("brandsub").innerHTML=`WAR ROBOTS &middot; UPDATE ${hmEsc(ver)} &middot; LVL 30`;
+  document.getElementById("hm-notice").innerHTML=HM_PH?`<b>Update ${hmEsc(ver)} is live.</b> It buffed ${cnt("buff")} of Adam's robots and weapons, nerfed ${cnt("nerf")} and did both to ${cnt("mixed")}. Every number on this page already includes it, with the old value struck out. The <a href="wiki/#/strategy">${hmEsc(ver)} strategy</a> says which guns to swap, robot by robot.`:"";
+  document.getElementById("hm-count").innerHTML=[["Robots",R.length],["On a floor",R.filter(r=>+r[1]).length],["Titans",TITANS.length],["Weapons",W.length],["Weapon copies",W.reduce((s,w)=>s+(+w[3]||0),0)],["Drones",DRONES.length]]
+    .map(([a,b])=>`<dt>${a}</dt><dd>${num(b)}</dd>`).join("");
+}
+document.addEventListener("click",e=>{ const b=e.target.closest("[data-hmf]"); if(b){ HM_F=b.dataset.hmf; renderHome(); } });
+fetch("patch-history.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ HM_PH=d; renderHome(); }).catch(()=>{});
+Promise.all(["/news/official.json","/news/videos.json"].map(u=>fetch(u,{cache:"no-cache"}).then(r=>r.json()).catch(()=>null))).then(([o,v])=>{
+  const posts=(o&&o.posts||[]).slice(0,4).map(p=>`<a href="${hmEsc(p.url)}" target="_blank" rel="noopener">${hmEsc(p.title.charAt(0)+p.title.slice(1).toLowerCase())}<small>${hmEsc(p.category)} · ${hmEsc(p.date)}</small></a>`);
+  const vids=(v&&v.videos||[]).slice(0,3).map(x=>`<a href="${hmEsc(x.url)}" target="_blank" rel="noopener">${hmEsc(x.title)}<small>YouTube · ${hmEsc(String(x.published||"").slice(0,10))}</small></a>`);
+  document.getElementById("hm-news").innerHTML=[...posts,...vids].join("")||`<p class="hm-muted">News is on the <a href="/news/">news page</a>.</p>`;
+});
+try{ renderHome(); }catch(e){}
 
 /* weapon art cropped from William's own screenshots, one file per weapon */
 const WIMG = new Set(["lumen-m","velos","omen-lumen-m","orkan","discipline","smite","noricum","calamity","basileus","skadi","kelvin","aramis", "ardent-spear", "ardent-taeja", "ardent-yeoje", "athos", "baihu-stake", "bane", "bane-2", "barq-b", "basilisk", "blaze-elox", "blaze-fahrenheit", "blaze-kelvin", "blight", "boom", "brisant", "celsius", "cestus", "chasm", "chione", "cinder", "claw", "cruel-claw", "cruel-talon", "cryptic-hazard", "cudgel", "deceiver", "discordia", "dune", "elox", "fatal-havoc", "fengbao", "freedom-cudgel", "freedom-hammer", "freedom-mace", "frozen-tamer", "furnace", "g-a-s", "gangil", "gladius", "growler", "hammer", "harmattan-l", "harmattan-m", "havoc", "hazard", "hedjet", "hippo", "howler", "hurricane", "hwangje", "jaw", "jotunn", "kirin", "kramola", "kroko", "ksiphos", "labrys", "leiming", "leinani", "liodari", "lumen-h", "lumen-l", "mace", "machaira", "mogwan", "morana", "murix", "nanea", "needle", "noir-fengbao", "nucleon", "omen-lumen-l", "oxy", "pilum", "porthos", "pow", "prisma", "pshent", "quicksand-labrys", "razdor", "reaper", "regulator", "retro-reaper", "royal-hippo", "royal-kroko", "scatter", "screamer", "shantak", "shatter", "shifang", "smuta", "spear", "spike", "spirit-razdor", "spirit-smuta", "splinter", "sport-howler", "steel-deshret", "steel-hedjet", "steel-piercer", "steel-pshent", "stellar-prisma", "striker", "subduer", "taeja", "talon", "tamer", "torch", "toxin", "trickster", "tumultus", "unknown-decay", "unknown-shatter", "unknown-splinter", "urhag", "venom", "void", "void-shantak", "void-urhag", "voonith", "yeoje"]);
@@ -2274,6 +2395,7 @@ function recHTML(rec, slot, PK){
 }
 function buildFloors(){
   const host=document.getElementById("floors"); let armed=0, empty=0, best=0, usedDrones=new Set();
+  host.innerHTML="";   // redraws used to stack a fresh copy of every floor under the old one
   const POOL=freeCopies();
   let fillable=0, fillGain=0, noStock=0;
   [5,4,3,2,1].forEach(f=>{

@@ -128,7 +128,7 @@ a:hover{color:#ffd9a0}
 </head>
 <body>
 <div class="topbar"><div class="container">
-  <a class="logo" href="/">gragg<b>.</b>life</a>
+  <a class="logo" href="/adams-hangar/">gragg<b>.</b>life</a>
   <nav class="crumbs" aria-label="Breadcrumb"><span>/</span><a href="../">Adam's Hangar</a><span>/</span><a href="#/">Wiki</a></nav>
   <span class="grow"></span>
   <div class="toplinks"><a href="../">Open the hangar tools</a></div>
@@ -151,7 +151,7 @@ a:hover{color:#ffd9a0}
   <main id="page" tabindex="-1"></main>
 </div>
 <footer class="footer"><div class="container">
-  Hangar read from the game on 12 October 2026. Damage, reload, health and speed are adjusted for the newest official update notes, and each changed number shows its old value.
+  Hangar read from the game on 19 October 2026. Damage, reload, health and speed are adjusted for the newest official update notes, and each changed number shows its old value.
   Per level damage and upgrade cost tables are from the <a href="https://warrobots.fandom.com/" target="_blank" rel="noopener">War Robots Wiki on Fandom</a> (CC BY-SA), read 5 October 2026, before update 12.5.
   War Robots is a game by MY.GAMES; this is a fan project and not an official wiki.
 </div></footer>
@@ -159,6 +159,7 @@ a:hover{color:#ffd9a0}
 <script src="../data.js"></script>
 <script src="../loadouts.js"></script>
 <script src="../playbook.js"></script>
+<script src="../now.js"></script>
 <script>
 const $=s=>document.querySelector(s);
 const esc=s=>String(s??"").replace(/[&<>"']/g,c=>({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
@@ -168,11 +169,15 @@ const SLOT={H:"Heavy",M:"Medium",L:"Light",A:"Titan Alpha",B:"Titan Beta"};
 const up="../";
 
 /* ---- normalise the hangar data into wiki records ---- */
+/* now.js brings the numbers up to the newest update and hands back the old ones */
+const WAS=typeof applyNow==="function"?applyNow(W,R,TITANS):{};
 const robots=R.map(r=>({kind:"robot",name:r[0],floor:r[1],level:r[2],slots:r[3],hp:r[4],speed:r[5],ability:r[6],pilot:r[7],plvl:r[8],drone:r[9],guns:r[10]}));
 const titans=TITANS.map(t=>({kind:"titan",name:t[0],floor:t[1],level:t[2],hp:t[3],speed:t[4],pilot:t[5],plvl:t[6],guns:t[7],slots:t[8]}));
 const weapons=W.map(w=>({kind:"weapon",name:w[0],slot:w[1],level:w[2],copies:w[3],dmg:w[4],range:w[5],reload:w[6],effect:w[7]}));
 const droneInfo=Object.fromEntries(DR.map(d=>[d[0],d]));
 const drones=DRONES.map(n=>{const d=droneInfo[n]||[n,"","","",""];return {kind:"drone",name:n,skill:d[1],does:d[2],pair:d[3],why:d[4]};});
+const WASK={weapon:{4:"dmg",6:"reload"},robot:{4:"hp",5:"speed"},titan:{3:"hp",4:"speed"}};
+[...robots,...titans,...weapons].forEach(x=>{ const o=WAS[x.kind+"/"+slug(x.name)]; if(o){ x.was={}; for(const i in o) x.was[WASK[x.kind][i]]=o[i]; } });
 const floors=Object.entries(FLOORS).map(([n,f])=>({kind:"floor",name:"Floor "+f[0]+": "+f[1],n:+n,title:f[1],sub:f[3],plan:f[4]})).sort((a,b)=>b.n-a.n);
 
 const ALL=[...robots,...titans,...weapons,...drones,...floors];
@@ -196,21 +201,11 @@ function wikiCost(n){ return WIKI_COST[n]||WIKI_COST[WIKI_VIA[n]]||null; }
 
 /* ---- buff / nerf notes, from patch-history.json (built from the official update notes) ---- */
 let PH=null;
-fetch("../patch-history.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PH=d; applyNow(); route(); }).catch(()=>{});
-/* The hangar numbers were read on 12 October, before the newest update. patch-history.json says what that
-   update did (damage and health as a ratio, reload and speed as the new value), so apply it and keep the old value. */
-function applyNow(){
-  for(const x of [...robots,...titans,...weapons]){ const h=PH.items[x.kind+"/"+x.id]; if(!h||!h.now||x.was) continue;
-    const n=h.now; x.was={};
-    if(x.kind==="weapon"){ if(n.dmg&&+x.dmg){ x.was.dmg=x.dmg; x.dmg=Math.round(x.dmg*n.dmg); }
-      if(n.reload!=null&&+x.reload&&n.reload!==x.reload){ x.was.reload=x.reload; x.reload=n.reload; } }
-    else { if(n.hp&&+x.hp){ x.was.hp=x.hp; x.hp=Math.round(x.hp*n.hp); }
-      if(n.speed&&+x.speed&&n.speed!==x.speed){ x.was.speed=x.speed; x.speed=n.speed; } } }
-}
+fetch("../patch-history.json",{cache:"no-cache"}).then(r=>r.json()).then(d=>{ PH=d; route(); }).catch(()=>{});
 /* a number with its value before the update beside it */
 const secs=v=>+v?v+" s":"—", kmh=v=>+v?v+" km/h":"";
 function sv(x,k,fmt){ const f=fmt||num;
-  return x.was&&x.was[k]!=null?`${f(x[k])}<span class="was"><s>${f(x.was[k])}</s></span><span class="u125">${esc(PH.versions[0])}</span>`:f(x[k]); }
+  return x.was&&x.was[k]!=null?`${f(x[k])}<span class="was"><s>${f(x.was[k])}</s></span><span class="u125">${esc(NOW.ver)}</span>`:f(x[k]); }
 const hist=x=>PH&&PH.items[x.kind+"/"+x.id];
 const VWORD={buff:"Buffed",nerf:"Nerfed",mixed:"Buffed and nerfed",change:"Changed"};
 function vbadge(x,short){ const h=hist(x); if(!PH||!h) return "";
@@ -261,10 +256,18 @@ function suggest(slots,pool){
 }
 function oldPage(){
   const pool={}; weapons.forEach(w=>pool[w.name]=spare(w));
-  const rows=OLD.map(r=>{ const sg=suggest([...r.slots],pool);
+  /* the 12.5 playbook already hands out some spares; keep those out of the pool */
+  if(typeof PLAYBOOK!=="undefined") for(const m of PLAYBOOK.ledger.matchAll(/([A-Z][A-Za-z ]+?) (\d+) of \d+/g)){ const n=m[1].replace(/^.*?: /,""); if(pool[n]!=null) pool[n]=Math.max(0,pool[n]-(+m[2])); }
+  const filled=new Set(typeof PLAYBOOK!=="undefined"?PLAYBOOK.robots.filter(r=>r[0]==="swap").map(r=>r[1]):[]);
+  /* robots on the bench with empty hardpoints, plus the older garage robots, newest data first */
+  const oldInfo=Object.fromEntries(OLD.map(o=>[o.name,o]));
+  const bench=robots.filter(r=>!+r.floor&&(!r.guns.length||oldInfo[r.name])&&!filled.has(r.name))
+    .map(r=>({name:r.name,tier:(oldInfo[r.name]||{}).tier||"",level:r.level,slots:String(r.slots),ability:r.ability||"No ability",x:r}));
+  const list=[...bench,...OLD.filter(o=>!robots.some(r=>r.name===o.name))];
+  const rows=list.map(r=>{ const sg=suggest([...r.slots],pool);
     const alts=[...new Set(r.slots)].map(sl=>{ const list=weapons.filter(w=>w.slot===sl&&spare(w)>0).sort((a,b)=>b.dmg-a.dmg).slice(0,5);
       return `<p class="muted" style="margin:8px 0 4px"><b>${SLOT[sl]} options</b></p><div class="card scroll"><table><tbody>${list.map(w=>`<tr><td><a class="wname" href="${href(w)}">${pic(w,"thumb")}${esc(w.name)}</a></td><td class="muted">${esc(typeOf(w.name)||"")}</td><td class="n">${sv(w,"dmg")}</td><td class="n">${w.range?w.range+" m":"—"}</td><td class="n">${spare(w)} spare</td><td>${vshort(w)}</td></tr>`).join("")||'<tr><td class="muted">No spare weapons for this slot.</td></tr>'}</tbody></table></div>`; }).join("");
-    return `<section class="card" style="padding:16px 18px;margin-top:16px"><h2 style="margin:0">${esc(r.name)} <span class="tag">${esc(r.tier)} · L${r.level}</span> <span style="font-size:15px">${pips(r.slots)}</span></h2>
+    return `<section class="card" style="padding:16px 18px;margin-top:16px"><h2 style="margin:0">${r.x?`<a href="${href(r.x)}">${esc(r.name)}</a>`:esc(r.name)} <span class="tag">${r.tier?esc(r.tier)+" · ":""}L${r.level}</span> <span style="font-size:15px">${pips(r.slots)}</span></h2>
       <p class="muted" style="margin:4px 0 10px">${esc(r.ability)}</p>
       <p style="margin:0 0 6px"><b>Suggested loadout</b>${sg.br?` <span class="muted">· all ${esc(BR[sg.br])} so the guns work together</span>`:""}</p>
       <ul style="margin:0 0 6px">${sg.pick.map((w,i)=>w?`<li>${pips(r.slots[i])} <a href="${href(w)}">${esc(w.name)}</a> · ${num(w.dmg)} damage${w.range?", "+w.range+" m":""} ${vshort(w)}</li>`:`<li>${pips(r.slots[i])} <span class="muted">No spare weapon left for this slot</span></li>`).join("")}</ul>
@@ -281,38 +284,37 @@ function oldPage(){
   </tbody></table></div>`;
 }
 function strategyPage(){
-  if(!PH) return `<h1>12.5 strategy</h1><p class="lede">Loading…</p>`;
+  if(!PH) return `<h1>Strategy</h1><p class="lede">Loading…</p>`;
   const latest=PH.versions[0];
   const hit=x=>{ const h=hist(x); return h&&h.latest&&h.latest.ver===latest?h.changes[0]:null; };
-  const fl=floors.slice().sort((a,b)=>b.n-a.n).map(f=>{
-    const bots=[...robots,...titans].filter(r=>+r.floor===f.n);
-    const items=bots.map(r=>{ const rc=hit(r); const guns=[...new Set(r.guns)].map(g=>find("weapon",g)).filter(Boolean);
-      const gl=guns.map(g=>{ const c=hit(g); return c?`<li>${vshort(g)} <a href="${href(g)}">${esc(g.name)}</a>: ${c.lines.map(l=>esc(l.text)).join("; ")}</li>`:""; }).join("");
-      if(!rc&&!gl) return "";
-      return `<div class="chg" style="border:1px solid var(--line);border-radius:10px;padding:10px 14px;margin-top:8px"><b><a href="${href(r)}">${esc(r.name)}</a></b> ${rc?vshort(r):'<span class="muted" style="font-size:13px">robot unchanged</span>'}
-        ${rc?`<div class="muted" style="font-size:13.5px;margin-top:4px">${rc.lines.map(l=>esc(l.text)).join("; ")}</div>`:""}${gl?`<ul style="margin:6px 0 0;font-size:13.5px">${gl}</ul>`:""}</div>`; }).join("");
-    return `<h2 style="margin-top:28px">Floor ${f.n}: ${esc(f.title)}</h2>${items||'<p class="muted">Nothing on this floor changed in '+esc(latest)+'.</p>'}`; }).join("");
+  const where=r=>+r.floor?`Floor ${r.floor}`:"Bench";
+  /* every robot and titan the update touched, directly or through its guns; floors change, so no grouping by floor */
+  const touched=[...robots,...titans].map(r=>{ const rc=hit(r); const guns=[...new Set(r.guns)].map(g=>find("weapon",g)).filter(g=>g&&hit(g));
+      return {r,rc,guns}; }).filter(o=>o.rc||o.guns.length)
+    .sort((a,b)=>(+!!b.r.floor)-(+!!a.r.floor)||a.r.name.localeCompare(b.r.name));
+  const list=touched.map(({r,rc,guns})=>`<div class="chg"><header><b><a href="${href(r)}">${esc(r.name)}</a></b> ${rc?vshort(r):'<span class="muted" style="font-size:13px">robot unchanged</span>'}<small class="muted">${where(r)}</small></header>
+      ${rc?`<div class="muted" style="font-size:13.5px">${rc.lines.map(l=>esc(l.text)).join("; ")}</div>`:""}
+      ${guns.length?`<ul>${guns.map(g=>`<li class="${hist(g).latest.verdict==="mixed"?"change":hist(g).latest.verdict}">${vshort(g)} <a href="${href(g)}">${esc(g.name)}</a>: ${hit(g).lines.map(l=>esc(l.text)).join("; ")}</li>`).join("")}</ul>`:""}</div>`).join("");
   const nerfedFitted=weapons.filter(w=>fittedCount[w.name]&&hit(w)&&["nerf","mixed"].includes(hist(w).latest.verdict));
   const swaps=nerfedFitted.map(w=>{ const ok=x=>x!==w&&x.slot===w.slot&&spare(x)>0&&hit(x)&&hist(x).latest.verdict==="buff";
     const fam=weapons.filter(x=>ok(x)&&typeOf(x.name)&&typeOf(x.name)===typeOf(w.name));
     const o=(fam.length?fam:weapons.filter(x=>ok(x)&&bracket(x)===bracket(w))).sort((a,b)=>b.dmg-a.dmg).slice(0,2);
     return o.length?`<li><a href="${href(w)}">${esc(w.name)}</a> ${vshort(w)} → ${o.map(x=>`<a href="${href(x)}">${esc(x.name)}</a> ${vshort(x)} (${spare(x)} spare)`).join(", ")}</li>`:""; }).join("");
-  const buffedSpare=weapons.filter(w=>spare(w)>0&&hit(w)&&hist(w).latest.verdict==="buff").sort((a,b)=>b.dmg-a.dmg);
   const PB=typeof PLAYBOOK!=="undefined"&&PLAYBOOK.ver===latest?PLAYBOOK:null;
   const TAG={buff:["buff","Winner"],nerf:["nerf","Loser"],keep:["buff","Keep"],swap:["mixed","Swap"],note:["change","Play it differently"]};
-  const playbook=PB?`<h2 style="margin-top:6px">What changed for Adam</h2>
+  const rlink=n=>{ const x=find("robot",n)||find("titan",n); return x?`<a href="${href(x)}">${esc(n)}</a>`:esc(n); };
+  const playbook=PB?`<h2>What changed for Adam</h2>
     <div class="ph">${PB.summary.map(([k,t,b])=>`<div class="chg"><header><span class="vb ${TAG[k][0]}">${TAG[k][1]}</span><b>${esc(t)}</b></header><p class="muted" style="margin:0">${esc(b)}</p></div>`).join("")}</div>
-    <h2>The new plan, floor by floor</h2>
-    ${PB.floors.map(f=>`<h3 style="margin:18px 0 6px">Floor ${f.n}: ${esc(f.title)}</h3><div class="ph">${f.moves.map(([k,t,b])=>`<div class="chg"><header><span class="vb ${TAG[k][0]}">${TAG[k][1]}</span><b>${esc(t)}</b></header><p class="muted" style="margin:0">${esc(b)}</p></div>`).join("")}</div>`).join("")}
-    <p class="callout">${esc(PB.ledger)}</p>
-    <h2 style="margin-top:34px">Every ${esc(latest)} change on Adam's floors</h2>`:"";
+    <h2>The plan, robot by robot</h2>
+    <div class="ph">${PB.robots.map(([k,n,t,b])=>`<div class="chg"><header><span class="vb ${TAG[k][0]}">${TAG[k][1]}</span><b>${rlink(n)}</b><small class="muted">${esc(t)}</small></header><p class="muted" style="margin:0">${esc(b)}</p></div>`).join("")}</div>
+    <p class="callout">${esc(PB.ledger)}</p>`:"";
   return `<h1>${esc(latest)} strategy</h1>
-  <p class="lede">The plan for Adam's hangar after ${esc(latest)}, built from the official update notes and the hangar data recorded on 12 October. Swaps use spare weapons Adam already owns, each one only once.</p>
+  <p class="lede">The plan for Adam's robots after update ${esc(latest)}, built from the official update notes and the hangar as read on 19 October. It goes robot by robot because the floors change all the time. Swaps use spare weapons Adam already owns, each one only once.</p>
   ${playbook}
-  <div class="card" style="padding:14px 18px"><b>Swap a nerfed gun for a buffed spare</b><ul style="margin:8px 0 0">${swaps||'<li class="muted">No nerfed fitted gun has a buffed spare in the same slot.</li>'}</ul>
-  <p style="margin:12px 0 4px"><b>Buffed weapons sitting spare</b></p><p class="muted" style="margin:0">${buffedSpare.slice(0,14).map(w=>`<a href="${href(w)}">${esc(w.name)}</a> (${SLOT[w.slot]}, ${spare(w)} spare)`).join(" · ")||"None."}</p></div>
-  ${fl}
-  <p class="muted" style="margin-top:24px">Fitted loadouts and spare counts come from the hangar data recorded on 12 October. <a href="#/changes">All buffs and nerfs</a> · <a href="#/old-robots">Old robots</a></p>`;
+  <h2>Every ${esc(latest)} change on Adam's robots</h2>
+  <div class="ph">${list||'<p class="muted">Nothing Adam owns changed.</p>'}</div>
+  <div class="card" style="padding:14px 18px;margin-top:20px"><b>Other swaps: a nerfed gun for a buffed spare</b><ul style="margin:8px 0 0">${swaps||'<li class="muted">No nerfed fitted gun has a buffed spare in the same slot.</li>'}</ul></div>
+  <p class="muted" style="margin-top:24px"><a href="#/changes">All buffs and nerfs</a> · <a href="#/old-robots">Old robots</a></p>`;
 }
 
 /* ---- pages ---- */
@@ -386,7 +388,7 @@ P.weapon=x=>{
     <p>Adam owns <b>${x.copies}</b> cop${x.copies==1?"y":"ies"}${on.length?`, ${on.length} in use`:""}.</p>
     ${lv.length?`<h2 id="levels">Damage and cost by level</h2>
       ${via?`<p class="muted">Figures read from the base <b>${esc(via)}</b> page.</p>`:""}
-      ${x.was&&x.was.dmg!=null?`<div class="notice"><b>These per level figures are from before ${esc(PH.versions[0])}.</b> That update changed this weapon's damage by ${Math.round((x.dmg/x.was.dmg-1)*100)>0?"+":""}${Math.round((x.dmg/x.was.dmg-1)*100)}%, so scale the column by the same amount.</div>`:""}
+      ${x.was&&x.was.dmg!=null?`<div class="notice"><b>These per level figures are from before ${esc(NOW.ver)}.</b> That update changed this weapon's damage by ${Math.round((x.dmg/x.was.dmg-1)*100)>0?"+":""}${Math.round((x.dmg/x.was.dmg-1)*100)}%, so scale the column by the same amount.</div>`:""}
       <div class="card scroll"><table><thead><tr><th class="n">Level</th><th class="n">Damage</th><th class="n">Upgrade cost (Ag)</th><th class="n">Time</th></tr></thead><tbody>
       ${lv.map(l=>{const k=c&&c[l];return `<tr${l==x.level?` style="background:color-mix(in srgb,var(--accent) 12%,transparent)"`:""}><td class="n">${l}${l==x.level?" ◂":""}</td><td class="n">${num(d[l])}</td><td class="n">${k?num(k[0]):"—"}</td><td class="n">${k?k[1]:"—"}</td></tr>`;}).join("")}
       </tbody></table></div>`:""}
@@ -444,7 +446,7 @@ function route(){
   if(kind&&id){ const x=byKey[kind+"/"+decodeURIComponent(id)]; if(x){
     const h=x.kind!=="floor"&&hist(x), n=h?h.changes.length:0;
     $("#page").insertAdjacentHTML("afterbegin",`<div class="atabs"><a class="on" href="${href(x)}">Article</a>${h?`<a href="#history" data-jump>Patch history${n?" ("+n+")":""}</a>`:""}${h&&n?`<a href="${esc(h.changes[0].anchor)}">Patch notes ↗</a>`:""}<span class="grow"></span>${PH?`<span class="cur">Current for ${esc(PH.versions[0])}</span>`:""}</div>`);
-    if(x.was&&Object.keys(x.was).length){ const h1=$("#page h1"); if(h1) h1.insertAdjacentHTML("afterend",`<div class="notice"><b>Update ${esc(PH.versions[0])} changed this ${x.kind}.</b> The numbers below already include it; the struck out value is what it was before.</div>`); }
+    if(x.was&&Object.keys(x.was).length){ const h1=$("#page h1"); if(h1) h1.insertAdjacentHTML("afterend",`<div class="notice"><b>Update ${esc(NOW.ver)} changed this ${x.kind}.</b> The numbers below already include it; the struck out value is what it was before.</div>`); }
     $("#page").insertAdjacentHTML("beforeend",navbox(x)); } }
   window.scrollTo(0,0);
 }

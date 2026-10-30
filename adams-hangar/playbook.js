@@ -1,44 +1,33 @@
 /* The written playbook for the newest update, shown at the top of the wiki's strategy page.
    Every number comes from the official update notes (news/patch-notes.json) and the hangar data
-   recorded on 12 October (data.js). Spare weapons are allocated once across the whole plan, so no
-   weapon is used twice. Replace this object when the next update lands. */
+   read on 19 October (data.js, synced from the hangar page). It goes robot by robot, not floor by
+   floor, because the floors change all the time. Spare weapons are allocated once across the whole
+   plan, so no weapon is used twice. Replace this object when the next update lands. */
 const PLAYBOOK = {
   ver: "12.5",
   summary: [
-    ["buff", "Slug shotguns are the big winners", "Brisant, Shatter and Splinter reload in 4 s instead of 5 and hit harder (Shatter 615 → 725 per pellet). Adam owns spares of all three, so the plan below moves them onto robots that lost their guns' power."],
-    ["buff", "Homing rockets and lasers got faster or stronger", "Talon, Jaw and Claw reload in 4 s instead of 5. Hwangje went from 1594 to 2010 damage per particle and Yeoje from 1317 to 1507, so Floor 1's laser robots got better without any change."],
-    ["nerf", "Flamethrowers fire at half speed", "Celsius, Fahrenheit and Kelvin went from a shot every 0.07 s to every 0.15 s and overheat at 10 s instead of 13, for only about 12% more damage per shot. Crisis and Vector lose most of their output."],
-    ["nerf", "Energy snipers became slow single shots", "Shantak, Urhag and Voonith now fire every 2.2 s instead of 0.8 s, reload 1 round at a time instead of 3, and carry 10 rounds instead of 13. Void Shoggoth's long-range floor-5 role suffers most."],
-    ["nerf", "Anaksor, Ammit and Atlas lost their edge", "Anaksor drops from 330,000 to 260,000 durability and loses an invisibility charge; its needle guns reload in 7 s instead of 5. Ammit keeps more durability but walks at 35 km/h instead of 52 with a 6 s ability. Atlas's Ascension absorber lasts 5 s instead of 7."]
+    ["buff", "Slug shotguns are the big winners", "Brisant, Shatter and Splinter reload in 4 s instead of 5 and hit harder (Shatter 615 → 725 per pellet, Brisant 920 → 966). Adam owns spares of all three, so the plan below moves them onto the robots whose guns were nerfed."],
+    ["buff", "Labrys, Hwangje, Shenlou and Rook got stronger", "Labrys went from 2346 to 2933 per particle and Hwangje from 1594 to 2010. Noir Shenlou gets 50,000 Aegis per blink instead of 40,000. Rook rose to 800,000 durability with a 13 s Castling cooldown."],
+    ["nerf", "Energy snipers became slow single shots", "Shantak and Urhag now fire every 2.2 s instead of 0.8 s, reload 1 round at a time instead of 3 and carry 10 rounds instead of 13. Void Shoggoth carries four of them and lost 50,000 durability."],
+    ["nerf", "Needle guns and flamethrowers slowed down", "Machaira, Basileus and Velos reload in 7 s instead of 5 and lost 10% damage. Celsius, Fahrenheit and Kelvin fire every 0.15 s instead of 0.07 s. That hits Anaksor, Scorpion and Vector."],
+    ["nerf", "Anaksor, Ammit and Atlas lost their edge", "Anaksor drops from 330,000 to 260,000 durability. Ammit gains durability but moves at 35 km/h instead of 52 and its ability runs 6 s on a 13 s cooldown. Atlas's frontal Absorber lasts 5 s instead of 7."]
   ],
-  floors: [
-    { n: 5, title: "Lead Floor", moves: [
-      ["keep", "Samjok MK2 still leads", "Nothing on Samjok, Kirin MK2 or Gangil MK2 changed in 12.5. It is now the safest opener in the hangar."],
-      ["swap", "Void Shoggoth MK2: snipers out, slugs and radiation in", "Swap Void Shantak and Shantak for 2 Brisant (heavy, 600 m, 4 s reload, 966 per pellet), and Void Urhag and Urhag for 2 Cryptic Hazard (medium, 600 m, 4956 per particle). The snipers lost two thirds of their rate of fire, and Shoggoth lost 38% of its Aegis, so it can no longer sit back and trade shots. This is close to the Brisant and Shatter build in the Hangar Codex."],
-      ["note", "Atlas is weaker, hold it longer", "Void and Chasm lost about 12% damage per second (995 per particle every 0.7 s instead of 1300 every 0.8 s) and the frontal absorber is shorter. Drop Atlas into a fight you are already winning, not to save one."]
-    ]},
-    { n: 4, title: "Heavy Hitters", moves: [
-      ["swap", "Anaksor MK2: needle guns out, slug shotguns in", "Swap the two Machaira for 2 Shatter (medium, 600 m) and Basileus for Brisant (heavy, 600 m). All three reload in 4 s now, against 7 s for the needles, and every gun on Anaksor reaches 600 m. Anaksor itself is fragile now, so send it second, behind Teth."],
-      ["swap", "Vector: flames out, slugs in", "Swap the two Celsius for 2 Unknown Splinter (light, 600 m) and Blaze Fahrenheit for Unknown Shatter (medium, 600 m). Skadi already reaches 600 m, so the whole robot fires at one range. Event Horizon now slows Vector by 50% while it runs, so use it on the spot, not to travel."],
-      ["keep", "Teth leads unchanged", "Teth and its Steel mine launchers were not touched, and it is the toughest robot on this floor at 257,400."],
-      ["keep", "Hastatus keeps Lumen-H", "Lumen-H went from 1300 to 2000 per particle. Its Thermal Breach stacking fell from 1.15 to 0.15 per stack, so it no longer ramps up. Fire in short bursts at different targets instead of holding on one."]
-    ]},
-    { n: 3, title: "Close It", moves: [
-      ["keep", "Typhon gets better for free", "Its 4 Unknown Shatter reload in 4 s now and its Aegis rose from 60,000 to 75,000. The Blackout then shotgun combo is stronger than before."],
-      ["keep", "Retro Revenant gets better for free", "Talon and Cruel Claw reload in 4 s instead of 5 with more damage."],
-      ["note", "Kaji: one big volley, then leave", "Boom and Pow hit about 5% harder but reload in 10 s instead of 7. Mines first, one volley on the Deathmarked target, then fall back while they reload."],
-      ["note", "Newton lost damage", "Furnace dropped from 1925 to 1310 and Torch from 1540 to 870, with reload 9 → 8 s. Newton is a support titan now, not a finisher."]
-    ]},
-    { n: 2, title: "Shield Break", moves: [
-      ["note", "Ammit is an anchor now, not a lead", "Ammit gained durability (495,000 → 550,000 at max) but moves at 35 km/h, and its ability lasts 6 s with a 13 s cooldown. Deploy it on the nearest beacon and hold there; it can no longer chase. Its Hippo and Kroko guns reload in 6 s instead of 5."],
-      ["keep", "Noir Shenlou is the new lead", "Each blink now gives 50,000 Aegis instead of 40,000, and Baihu Stake went from 19,600 to 23,800. Shenlou is the strongest robot on this floor after 12.5."],
-      ["swap", "Fill Mars: 3 Labrys", "Mars still has three empty medium hardpoints. Fit 3 Labrys (500 m grenades, 2346 → 2933 per particle in 12.5); Adam has 4 spare. Fill Nodens's weapons too before this floor goes out."]
-    ]},
-    { n: 1, title: "The Grind", moves: [
-      ["swap", "Crisis: flames out, 4 Hwangje in", "Swap all four Kelvins for 4 Hwangje (heavy, 800 m, no reload, 1594 → 2010 per particle). The floor's idea, nothing reloads, stays the same, but the flamethrowers lost about half their output and Hwangje gained 26%."],
-      ["keep", "Vulcan, Demeter and Ardent Imugi got better for free", "Yeoje and Ardent Yeoje gained 14%, Hazard and Spirit Razdor were buffed, and Ardent Imugi's damage bonus doubled from 5% to 10%."],
-      ["keep", "Blaze Rex gets better for free", "Its two Shatter reload in 4 s instead of 5 and hit harder."]
-    ]}
+  robots: [
+    ["swap", "Void Shoggoth MK2", "Snipers out, slugs in", "Swap Shantak and Void Shantak for 2 Brisant (heavy, 600 m, 4 s reload), and Urhag and Void Urhag for 2 Unknown Shatter (medium, 600 m, 4 s reload). All four fire together at one range instead of one slow shot every 2.2 s."],
+    ["swap", "Anaksor MK2", "Needle guns out, slugs in", "Swap the two Machaira for 2 Unknown Shatter and Basileus for the last Brisant. All three reload in 4 s against 7 s for the needles. Anaksor has 260,000 durability now, so let a tank open first."],
+    ["swap", "Scorpion MK2", "Needle guns out, slugs in", "Swap the two Machaira for 2 Shatter (medium, 600 m) and Velos for Splinter (light, 600 m). Scorpion itself was buffed (201,000 → 220,000 durability at max level), so it can stay in the fight after a Backstab."],
+    ["swap", "Vector MK2", "Flames out, slugs in", "Swap the two Celsius for 2 Unknown Splinter and Blaze Fahrenheit and Fahrenheit for the last 2 Shatter. Event Horizon now slows Vector by 50% while it runs, so fight from 600 m instead of diving in."],
+    ["swap", "Crisis", "Fill it: 4 Hwangje", "Crisis is on the bench with four empty heavy hardpoints. Fit the 4 spare Hwangje (800 m, no reload, 1594 → 2010 per particle in 12.5)."],
+    ["swap", "Mars", "Fill it: 3 Labrys", "Mars is on the bench with three empty medium hardpoints. Fit the 3 spare Labrys (500 m grenades, 2346 → 2933 per particle in 12.5)."],
+    ["keep", "Noir Shenlou MK2", "The best lead after 12.5", "Each blink now gives 50,000 Aegis instead of 40,000. Blink onto whoever turns to shoot your tank."],
+    ["keep", "Ophion", "Better for free", "Its three Labrys hit 25% harder. Nothing else on Ophion changed."],
+    ["keep", "Fenrir MK2", "Better for free", "Calamity MK2 went from 1043 to 1134 per particle. Skadi and Ballista were not touched."],
+    ["keep", "Frozen Dagon MK2", "Better for free", "Aegis went from 90,000 to 100,000 and regenerates 11,000 instead of 10,000. Its six light hardpoints were not read on 19 October, so check them in the game."],
+    ["keep", "Samjok, Dux, Teth, Hastatus, Spectre, Fang and Nuo", "Untouched", "Nothing on these robots or their weapons changed in 12.5. They are now the safest picks in the hangar."],
+    ["note", "Ammit", "An anchor now, not a lead", "550,000 durability at max but 35 km/h, and the ability lasts 6 s with a 13 s cooldown. Deploy it on the nearest beacon and hold there instead of chasing."],
+    ["note", "Shell", "One big volley, then cover", "Boom and Pow hit about 5% harder but reload in 10 s instead of 7. Fire everything at one target, then break line of sight while they reload."],
+    ["note", "Baihu Lynx MK2 and Vulcan MK2", "Lumen: burst, don't hold", "Lumen damage went up (Lumen-H 1300 → 2000, Lumen-M 975 → 1500) but Thermal Breach stacking fell from 1.15 to 0.15 per stack, so it no longer ramps up. Fire in short bursts and switch targets freely."],
+    ["note", "Atlas, Newton, Rook and Devourer", "Titans", "Atlas is weaker (Absorber 5 s, Chasm and Void about 12% less damage per second), so drop it into a fight you are already winning. Rook is stronger at 800,000. Newton's Torch fell from 1540 to 870 while Tonans rose from 3270 to 3967. Devourer's Arbiter went from 2800 to 3150."]
   ],
-  ledger: "Spare weapons used: Brisant 3 of 3, Shatter 2 of 2, Unknown Shatter 1 of 1, Unknown Splinter 2 of 3, Cryptic Hazard 2 of 3, Labrys 3 of 4, Hwangje 4 of 4. The guns taken off (Shantak, Void Shantak, Urhag, Void Urhag, Machaira, Basileus, Celsius, Blaze Fahrenheit, Kelvin, Blaze Kelvin) go back to the garage."
+  ledger: "Spare weapons used: Brisant 3 of 3, Unknown Shatter 4 of 5, Shatter 4 of 4, Unknown Splinter 2 of 3, Splinter 1 of 2, Hwangje 4 of 4, Labrys 3 of 3. The guns taken off (Shantak, Void Shantak, Urhag, Void Urhag, Machaira, Basileus, Velos, Celsius, Fahrenheit, Blaze Fahrenheit) go back to the spare pile."
 };
