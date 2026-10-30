@@ -36,7 +36,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Shoggoth",
      "anchor": "/news/#v12-5-shoggoth",
@@ -69,6 +69,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "hp": 0.8333333333333334
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "robot/frozen-dagon-mk2": {
@@ -78,7 +81,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Dagon",
      "anchor": "/news/#v12-5-dagon",
@@ -115,7 +118,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Anaksor",
      "anchor": "/news/#v12-5-anaksor",
@@ -146,7 +149,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robots",
      "entry": "Anaksor",
      "anchor": "/news/#v12-2-anaksor",
@@ -167,6 +170,10 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "hp": 0.7878787878787878,
+    "speed": 58
+   },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "robot/vector": {
@@ -176,7 +183,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Vector",
      "anchor": "/news/#v12-5-vector",
@@ -202,7 +209,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robots",
      "entry": "Teth",
      "anchor": "/news/#v12-2-teth",
@@ -248,7 +255,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robots",
      "entry": "Hastatus",
      "anchor": "/news/#v12-2-hastatus",
@@ -282,7 +289,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Lynx",
      "anchor": "/news/#v12-5-lynx",
@@ -299,6 +306,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "speed": 65
+   },
    "note": "Buffed in 12.5"
   },
   "robot/scorpion": {
@@ -308,7 +318,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Scorpion",
      "anchor": "/news/#v12-5-scorpion",
@@ -325,6 +335,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "hp": 1.0945273631840795
+   },
    "note": "Buffed in 12.5"
   },
   "robot/typhon": {
@@ -334,7 +347,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Typhon",
      "anchor": "/news/#v12-5-typhon",
@@ -382,7 +395,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Ammit",
      "anchor": "/news/#v12-5-ammit",
@@ -409,7 +422,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robots",
      "entry": "Ammit",
      "anchor": "/news/#v12-2-ammit",
@@ -442,6 +455,10 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "hp": 1.1111111111111112,
+    "speed": 35
+   },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "robot/noir-shenlou": {
@@ -451,7 +468,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Shenlou",
      "anchor": "/news/#v12-5-shenlou",
@@ -512,7 +529,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robots",
      "entry": "Imugi",
      "anchor": "/news/#v12-5-imugi",
@@ -533,6 +550,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "speed": 52
+   },
    "note": "Buffed in 12.5"
   },
   "robot/blaze-rex": {
@@ -542,7 +562,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robots",
      "entry": "Rex",
      "anchor": "/news/#v12-2-rex",
@@ -621,7 +641,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titans",
      "entry": "Atlas",
      "anchor": "/news/#v12-5-atlas",
@@ -651,7 +671,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Titans",
      "entry": "Ao Ming",
      "anchor": "/news/#v12-2-ao-ming",
@@ -677,7 +697,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titans",
      "entry": "Newton",
      "anchor": "/news/#v12-5-newton",
@@ -693,6 +713,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "speed": 47
    },
    "note": "Buffed in 12.5"
   },
@@ -738,7 +761,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-5-hippo-kroko-liodari",
@@ -757,7 +780,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-2-hippo-kroko-liodari",
@@ -782,6 +805,10 @@
     "ver": "12.5",
     "verdict": "nerf"
    },
+   "now": {
+    "reload": 6,
+    "dmg": 0.95
+   },
    "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/kirin": {
@@ -798,7 +825,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Boom / Bash / Pow",
      "anchor": "/news/#v12-5-boom-bash-pow",
@@ -819,6 +846,10 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "reload": 10,
+    "dmg": 1.05
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/brisant": {
@@ -828,7 +859,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Splinter / Shatter / Brisant",
      "anchor": "/news/#v12-5-splinter-shatter-brisant",
@@ -849,6 +880,10 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.05,
+    "reload": 4
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/baihu-stake": {
@@ -858,7 +893,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Stake",
      "anchor": "/news/#v12-5-stake",
@@ -875,6 +910,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.2142857142857142
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/void-shantak": {
@@ -884,7 +922,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Voonith / Urhag / Shantak",
      "anchor": "/news/#v12-5-voonith-urhag-shantak",
@@ -917,6 +955,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 1.1249777777777779
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/shantak": {
@@ -926,7 +967,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Voonith / Urhag / Shantak",
      "anchor": "/news/#v12-5-voonith-urhag-shantak",
@@ -958,6 +999,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "mixed"
+   },
+   "now": {
+    "dmg": 1.1249777777777779
    },
    "note": "Buffed and nerfed in 12.5"
   },
@@ -975,7 +1019,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Gladius / Pilum",
      "anchor": "/news/#v12-2-gladius-pilum",
@@ -1013,7 +1057,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Claw / Jaw / Talon",
      "anchor": "/news/#v12-5-claw-jaw-talon",
@@ -1034,6 +1078,10 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.0583333333333333,
+    "reload": 4
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/talon": {
@@ -1043,7 +1091,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Claw / Jaw / Talon",
      "anchor": "/news/#v12-5-claw-jaw-talon",
@@ -1063,6 +1111,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0583333333333333,
+    "reload": 4
    },
    "note": "Buffed in 12.5"
   },
@@ -1143,7 +1195,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Quarker / Atomizer / Nucleon",
      "anchor": "/news/#v12-5-quarker-atomizer-nucleon",
@@ -1164,6 +1216,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.1833333333333333
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/cestus": {
@@ -1173,7 +1228,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Ksiphos / Labrys / Cestus",
      "anchor": "/news/#v12-2-ksiphos-labrys-cestus",
@@ -1199,7 +1254,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Tamer / Damper / Subduer",
      "anchor": "/news/#v12-5-tamer-damper-subduer",
@@ -1216,6 +1271,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.0174029451137885
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/kelvin": {
@@ -1225,7 +1283,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-5-celsius-fahrenheit-kelvin",
@@ -1248,7 +1306,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-2-celsius-fahrenheit-kelvin",
@@ -1276,6 +1334,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "mixed"
+   },
+   "now": {
+    "dmg": 1.120754716981132
    },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
@@ -1286,7 +1347,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-5-celsius-fahrenheit-kelvin",
@@ -1309,7 +1370,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-2-celsius-fahrenheit-kelvin",
@@ -1338,6 +1399,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 1.120754716981132
+   },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/noir-fengbao": {
@@ -1347,7 +1411,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Shifang / Leiming / Fengbao",
      "anchor": "/news/#v12-5-shifang-leiming-fengbao",
@@ -1367,6 +1431,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0992063492063493,
+    "reload": 9
    },
    "note": "Buffed in 12.5"
   },
@@ -1377,7 +1445,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Shifang / Leiming / Fengbao",
      "anchor": "/news/#v12-5-shifang-leiming-fengbao",
@@ -1398,6 +1466,10 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.0992063492063493,
+    "reload": 9
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/damper": {
@@ -1407,7 +1479,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Tamer / Damper / Subduer",
      "anchor": "/news/#v12-5-tamer-damper-subduer",
@@ -1423,6 +1495,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.12
    },
    "note": "Buffed in 12.5"
   },
@@ -1447,7 +1522,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Lumen-L/M/H",
      "anchor": "/news/#v12-5-lumen-l-m-h",
@@ -1468,6 +1543,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 1.5384615384615385
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/spirit-smuta": {
@@ -1477,7 +1555,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Smuta",
      "anchor": "/news/#v12-5-smuta",
@@ -1494,6 +1572,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.0597243491577335
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/hwangje": {
@@ -1503,7 +1584,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hwangje",
      "anchor": "/news/#v12-5-hwangje",
@@ -1520,6 +1601,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.2609786700125472
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/bane": {
@@ -1529,7 +1613,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Toxin / Bane",
      "anchor": "/news/#v12-2-toxin-bane",
@@ -1555,7 +1639,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Calamity",
      "anchor": "/news/#v12-5-calamity",
@@ -1572,6 +1656,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.087248322147651
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/basileus": {
@@ -1581,7 +1668,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Velos / Machaira / Basileus",
      "anchor": "/news/#v12-5-velos-machaira-basileus",
@@ -1600,7 +1687,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Velos / Machaira / Basileus",
      "anchor": "/news/#v12-2-velos-machaira-basileus",
@@ -1625,6 +1712,10 @@
     "ver": "12.5",
     "verdict": "nerf"
    },
+   "now": {
+    "reload": 7,
+    "dmg": 0.9
+   },
    "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/royal-kroko": {
@@ -1634,7 +1725,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-5-hippo-kroko-liodari",
@@ -1653,7 +1744,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-2-hippo-kroko-liodari",
@@ -1677,6 +1768,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "mixed"
+   },
+   "now": {
+    "reload": 6,
+    "dmg": 1.0706830601092896
    },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
@@ -1687,7 +1782,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-5-hippo-kroko-liodari",
@@ -1706,7 +1801,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-2-hippo-kroko-liodari",
@@ -1731,6 +1826,10 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "reload": 6,
+    "dmg": 1.0706830601092896
+   },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/murix": {
@@ -1740,7 +1839,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Elox / Murix",
      "anchor": "/news/#v12-2-elox-murix",
@@ -1792,7 +1891,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Splinter / Shatter / Brisant",
      "anchor": "/news/#v12-5-splinter-shatter-brisant",
@@ -1813,6 +1912,10 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.1788617886178863,
+    "reload": 4
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/shatter": {
@@ -1822,7 +1925,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Splinter / Shatter / Brisant",
      "anchor": "/news/#v12-5-splinter-shatter-brisant",
@@ -1842,6 +1945,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.1788617886178863,
+    "reload": 4
    },
    "note": "Buffed in 12.5"
   },
@@ -1859,7 +1966,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Spike",
      "anchor": "/news/#v12-5-spike",
@@ -1875,6 +1982,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.19
    },
    "note": "Buffed in 12.5"
   },
@@ -1892,7 +2002,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Voonith / Urhag / Shantak",
      "anchor": "/news/#v12-5-voonith-urhag-shantak",
@@ -1925,6 +2035,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 1.125
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/urhag": {
@@ -1934,7 +2047,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Voonith / Urhag / Shantak",
      "anchor": "/news/#v12-5-voonith-urhag-shantak",
@@ -1966,6 +2079,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "mixed"
+   },
+   "now": {
+    "dmg": 1.125
    },
    "note": "Buffed and nerfed in 12.5"
   },
@@ -1983,7 +2099,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Claw / Jaw / Talon",
      "anchor": "/news/#v12-5-claw-jaw-talon",
@@ -2003,6 +2119,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0592592592592593,
+    "reload": 4
    },
    "note": "Buffed in 12.5"
   },
@@ -2041,7 +2161,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hazard",
      "anchor": "/news/#v12-5-hazard",
@@ -2057,6 +2177,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.1013333333333333
    },
    "note": "Buffed in 12.5"
   },
@@ -2074,7 +2197,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hazard",
      "anchor": "/news/#v12-5-hazard",
@@ -2090,6 +2213,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.1013333333333333
    },
    "note": "Buffed in 12.5"
   },
@@ -2114,7 +2240,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-5-celsius-fahrenheit-kelvin",
@@ -2133,7 +2259,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-2-celsius-fahrenheit-kelvin",
@@ -2171,7 +2297,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Labrys",
      "anchor": "/news/#v12-5-labrys",
@@ -2186,7 +2312,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Ksiphos / Labrys / Cestus",
      "anchor": "/news/#v12-2-ksiphos-labrys-cestus",
@@ -2202,6 +2328,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.2502131287297529
    },
    "note": "Buffed in 12.5; changed in 2 updates since 12.0"
   },
@@ -2219,7 +2348,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Labrys",
      "anchor": "/news/#v12-5-labrys",
@@ -2234,7 +2363,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Ksiphos / Labrys / Cestus",
      "anchor": "/news/#v12-2-ksiphos-labrys-cestus",
@@ -2251,6 +2380,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.2502131287297529
+   },
    "note": "Buffed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/leiming": {
@@ -2260,7 +2392,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Shifang / Leiming / Fengbao",
      "anchor": "/news/#v12-5-shifang-leiming-fengbao",
@@ -2280,6 +2412,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0503778337531486,
+    "reload": 9
    },
    "note": "Buffed in 12.5"
   },
@@ -2304,7 +2440,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Yeoje",
      "anchor": "/news/#v12-5-yeoje",
@@ -2321,6 +2457,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.1442672741078208
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/machaira": {
@@ -2330,7 +2469,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Velos / Machaira / Basileus",
      "anchor": "/news/#v12-5-velos-machaira-basileus",
@@ -2349,7 +2488,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Velos / Machaira / Basileus",
      "anchor": "/news/#v12-2-velos-machaira-basileus",
@@ -2374,6 +2513,10 @@
     "ver": "12.5",
     "verdict": "nerf"
    },
+   "now": {
+    "reload": 7,
+    "dmg": 0.9
+   },
    "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/yeoje": {
@@ -2383,7 +2526,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Yeoje",
      "anchor": "/news/#v12-5-yeoje",
@@ -2400,6 +2543,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.1442672741078208
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/spirit-razdor": {
@@ -2409,7 +2555,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Razdor",
      "anchor": "/news/#v12-5-razdor",
@@ -2425,6 +2571,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.1849315068493151
    },
    "note": "Buffed in 12.5"
   },
@@ -2435,7 +2584,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Razdor",
      "anchor": "/news/#v12-5-razdor",
@@ -2452,6 +2601,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.1849315068493151
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/venom": {
@@ -2461,7 +2613,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Venom",
      "anchor": "/news/#v12-5-venom",
@@ -2477,6 +2629,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0515695067264574
    },
    "note": "Buffed in 12.5"
   },
@@ -2508,7 +2663,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-5-hippo-kroko-liodari",
@@ -2527,7 +2682,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-2-hippo-kroko-liodari",
@@ -2552,6 +2707,10 @@
     "ver": "12.5",
     "verdict": "nerf"
    },
+   "now": {
+    "reload": 6,
+    "dmg": 0.95
+   },
    "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/hippo": {
@@ -2561,7 +2720,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-5-hippo-kroko-liodari",
@@ -2580,7 +2739,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Hippo / Kroko / Liodari",
      "anchor": "/news/#v12-2-hippo-kroko-liodari",
@@ -2604,6 +2763,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "nerf"
+   },
+   "now": {
+    "reload": 6,
+    "dmg": 0.95
    },
    "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
   },
@@ -2621,7 +2784,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Elox / Murix",
      "anchor": "/news/#v12-2-elox-murix",
@@ -2666,7 +2829,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Boom / Bash / Pow",
      "anchor": "/news/#v12-5-boom-bash-pow",
@@ -2687,6 +2850,10 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "reload": 10,
+    "dmg": 1.05
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/needle": {
@@ -2703,7 +2870,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Elox / Murix",
      "anchor": "/news/#v12-2-elox-murix",
@@ -2741,7 +2908,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Splinter / Shatter / Brisant",
      "anchor": "/news/#v12-5-splinter-shatter-brisant",
@@ -2762,6 +2929,10 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.0853932584269663,
+    "reload": 4
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/unknown-splinter": {
@@ -2771,7 +2942,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Splinter / Shatter / Brisant",
      "anchor": "/news/#v12-5-splinter-shatter-brisant",
@@ -2791,6 +2962,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0853932584269663,
+    "reload": 4
    },
    "note": "Buffed in 12.5"
   },
@@ -2815,7 +2990,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Voonith / Urhag / Shantak",
      "anchor": "/news/#v12-5-voonith-urhag-shantak",
@@ -2848,6 +3023,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 1.1250666666666667
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/gladius": {
@@ -2857,7 +3035,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Gladius / Pilum",
      "anchor": "/news/#v12-2-gladius-pilum",
@@ -2895,7 +3073,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Claw / Jaw / Talon",
      "anchor": "/news/#v12-5-claw-jaw-talon",
@@ -2915,6 +3093,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0594594594594595,
+    "reload": 4
    },
    "note": "Buffed in 12.5"
   },
@@ -2960,7 +3142,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Claw / Jaw / Talon",
      "anchor": "/news/#v12-5-claw-jaw-talon",
@@ -2980,6 +3162,10 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0594594594594595,
+    "reload": 4
    },
    "note": "Buffed in 12.5"
   },
@@ -3032,7 +3218,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Ksiphos",
      "anchor": "/news/#v12-5-ksiphos",
@@ -3047,7 +3233,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Ksiphos / Labrys / Cestus",
      "anchor": "/news/#v12-2-ksiphos-labrys-cestus",
@@ -3064,6 +3250,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.0671397379912664
+   },
    "note": "Buffed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/frozen-tamer": {
@@ -3073,7 +3262,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Tamer / Damper / Subduer",
      "anchor": "/news/#v12-5-tamer-damper-subduer",
@@ -3089,6 +3278,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.1176470588235294
    },
    "note": "Buffed in 12.5"
   },
@@ -3099,7 +3291,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Tamer / Damper / Subduer",
      "anchor": "/news/#v12-5-tamer-damper-subduer",
@@ -3116,6 +3308,9 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.1176470588235294
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/celsius": {
@@ -3125,7 +3320,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-5-celsius-fahrenheit-kelvin",
@@ -3148,7 +3343,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Celsius / Fahrenheit / Kelvin",
      "anchor": "/news/#v12-2-celsius-fahrenheit-kelvin",
@@ -3177,6 +3372,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 1.1
+   },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/aramis": {
@@ -3200,7 +3398,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Shifang / Leiming / Fengbao",
      "anchor": "/news/#v12-5-shifang-leiming-fengbao",
@@ -3221,6 +3419,10 @@
     "ver": "12.5",
     "verdict": "buff"
    },
+   "now": {
+    "dmg": 1.1031746031746033,
+    "reload": 9
+   },
    "note": "Buffed in 12.5"
   },
   "weapon/taeja": {
@@ -3237,7 +3439,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Lumen-L/M/H",
      "anchor": "/news/#v12-5-lumen-l-m-h",
@@ -3258,6 +3460,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 1.5384615384615385
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/lumen-l": {
@@ -3267,7 +3472,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Lumen-L/M/H",
      "anchor": "/news/#v12-5-lumen-l-m-h",
@@ -3287,6 +3492,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "mixed"
+   },
+   "now": {
+    "dmg": 1.5384615384615385
    },
    "note": "Buffed and nerfed in 12.5"
   },
@@ -3304,7 +3512,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Robot weapons",
      "entry": "Toxin",
      "anchor": "/news/#v12-5-toxin",
@@ -3319,7 +3527,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Robot weapons",
      "entry": "Toxin / Bane",
      "anchor": "/news/#v12-2-toxin-bane",
@@ -3335,6 +3543,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.0538720538720538
    },
    "note": "Buffed in 12.5; changed in 2 updates since 12.0"
   },
@@ -3359,7 +3570,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titan weapons",
      "entry": "Chasm / Void",
      "anchor": "/news/#v12-5-chasm-void",
@@ -3378,7 +3589,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Titan weapons",
      "entry": "Void / Chasm",
      "anchor": "/news/#v12-2-void-chasm",
@@ -3407,6 +3618,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 0.7653846153846153
+   },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/striker": {
@@ -3423,7 +3637,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titan weapons",
      "entry": "Discordia",
      "anchor": "/news/#v12-5-discordia",
@@ -3439,6 +3653,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "buff"
+   },
+   "now": {
+    "dmg": 1.1480938416422288
    },
    "note": "Buffed in 12.5"
   },
@@ -3456,7 +3673,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titan weapons",
      "entry": "Furnace / Torch",
      "anchor": "/news/#v12-5-furnace-torch",
@@ -3477,6 +3694,10 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 0.6805194805194805,
+    "reload": 8
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "weapon/chasm": {
@@ -3486,7 +3707,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titan weapons",
      "entry": "Chasm / Void",
      "anchor": "/news/#v12-5-chasm-void",
@@ -3505,7 +3726,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Titan weapons",
      "entry": "Void / Chasm",
      "anchor": "/news/#v12-2-void-chasm",
@@ -3534,6 +3755,9 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 0.7653846153846153
+   },
    "note": "Buffed and nerfed in 12.5; changed in 2 updates since 12.0"
   },
   "weapon/oxy": {
@@ -3543,7 +3767,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titan weapons",
      "entry": "Oxy",
      "anchor": "/news/#v12-5-oxy",
@@ -3558,7 +3782,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Titan weapons",
      "entry": "Argon / Oxy",
      "anchor": "/news/#v12-2-argon-oxy",
@@ -3574,6 +3798,9 @@
    "latest": {
     "ver": "12.5",
     "verdict": "nerf"
+   },
+   "now": {
+    "dmg": 0.875264910687254
    },
    "note": "Nerfed in 12.5; changed in 2 updates since 12.0"
   },
@@ -3605,7 +3832,7 @@
     {
      "ver": "12.5",
      "title": "Halloween Interlopers",
-     "url": "https://warrobots.com/en/posts/423",
+     "url": "https://warrobots.com/news/1002-war-robots-12-5-update-notes",
      "group": "Titan weapons",
      "entry": "Furnace / Torch",
      "anchor": "/news/#v12-5-furnace-torch",
@@ -3626,6 +3853,10 @@
     "ver": "12.5",
     "verdict": "mixed"
    },
+   "now": {
+    "dmg": 0.564935064935065,
+    "reload": 8
+   },
    "note": "Buffed and nerfed in 12.5"
   },
   "drone/scales": {
@@ -3635,7 +3866,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Drones",
      "entry": "Scales",
      "anchor": "/news/#v12-2-scales",
@@ -3756,7 +3987,7 @@
     {
      "ver": "12.2",
      "title": "Event: World Iron Cup",
-     "url": "https://warrobots.com/en/posts/417",
+     "url": "https://warrobots.com/news/417-war-robots-122-update-notes",
      "group": "Drones",
      "entry": "Scarabeus",
      "anchor": "/news/#v12-2-scarabeus",
