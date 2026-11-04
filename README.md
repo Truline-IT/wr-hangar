@@ -7,7 +7,7 @@ The gragg.life creator portfolio, served by GitHub Pages at www.gragg.life.
 - `/adams-hangar/wiki/` wiki pages for every robot, weapon, drone and floor, reading `adams-hangar/data.js`
 - `/adams-hanger/` and `/adams-hamger/` catch the common misspellings and forward to `/adams-hangar/`
 - `/adamshanger/` forwards to `/adams-hangar/` too
-- `/news/` War Robots news. `.github/workflows/youtube-news.yml` runs every 4 hours and refreshes:
+- `/news/` War Robots news. `.github/workflows/youtube-news.yml` runs only when started by hand (Actions, War Robots news, Run workflow) and refreshes:
   - `news/official.json` and `news/patch-notes.json` from the developers' site, warrobots.com/news (a new UPDATE NOTES post becomes the latest patch notes, broken into balance changes, with Adam's gear marked)
   - `news/videos.json` from the War Robots YouTube channel, through the YouTube Data API (needs the `YT_API_KEY` secret)
   - `news/reddit.json` from r/walkingwarrobots, through Reddit's API (needs `REDDIT_CLIENT_ID` and `REDDIT_CLIENT_SECRET`), shown as player posts

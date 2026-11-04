@@ -1,8 +1,7 @@
 name: War Robots news
 
+# Runs only when started by hand (Actions, War Robots news, Run workflow). The 4 hour schedule is off.
 on:
-  schedule:
-    - cron: "17 */4 * * *"
   workflow_dispatch:
 
 permissions:
