@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>War Robots Updates</title>
-<meta name="description" content="War Robots patch notes, developer posts, videos and player threads, refreshed every 4 hours.">
+<meta name="description" content="War Robots patch notes, developer posts, videos and player threads.">
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Saira+Condensed:wght@600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
 <link rel="stylesheet" href="/shared/site.css">
 <style>
@@ -139,7 +139,7 @@ details.old>summary small{color:var(--faint);font-family:var(--mono);font-size:1
     <div id="older"></div>
   </section>
 
-  <p class="srcs">Sources: <a href="https://warrobots.com/en/news">warrobots.com news and update notes</a> (official) · <a href="https://www.youtube.com/@playwarrobots">War Robots on YouTube</a> (official) · <a href="https://www.reddit.com/r/walkingwarrobots/">r/walkingwarrobots</a> (players) · <a href="https://warrobots.wiki/">warrobots.wiki</a> (fan-run, linked only). Checked every 4 hours.</p>
+  <p class="srcs">Sources: <a href="https://warrobots.com/news">warrobots.com news and update notes</a> (official) · <a href="https://www.youtube.com/@playwarrobots">War Robots on YouTube</a> (official) · <a href="https://www.reddit.com/r/walkingwarrobots/">r/walkingwarrobots</a> (players) · <a href="https://warrobots.wiki/">warrobots.wiki</a> (fan-run, linked only). Checked every 4 hours.</p>
 </main>
 <footer class="footer"><div class="container">Game content belongs to War Robots / MY.GAMES · gragg.life</div></footer>
 
@@ -234,7 +234,7 @@ Promise.all([J("/news/patch-notes.json"),J("/news/videos.json"),J("/news/officia
 
   /* freshness line from the newest thing on the page */
   const stamps=[vids[0]&&new Date(vids[0].published), posts[0]&&posts[0].when, red&&red.posts&&red.posts[0]&&new Date(red.posts[0].created)].filter(x=>x&&!isNaN(x));
-  if(stamps.length){ const n=new Date(Math.max(...stamps)); $("fresh").innerHTML=`<i></i>Newest item ${ago(n)} · checked every 4 hours`; }
+  if(stamps.length){ const n=new Date(Math.max(...stamps)); $("fresh").innerHTML=`<i></i>Newest item ${ago(n)}`; }
 
   if(location.hash&&PN&&!document.getElementById(location.hash.slice(1))&&location.hash.startsWith("#v"+slug(PN.latest.ver)+"-")){ FILTER="all"; renderGroups(); }
   if(location.hash){ const el=document.getElementById(location.hash.slice(1)); if(el){ openUp(el); el.scrollIntoView(); } }
