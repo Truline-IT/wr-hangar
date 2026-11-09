@@ -3,6 +3,14 @@
  "checked": "2026-11-09",
  "posts": [
   {
+   "id": 1005,
+   "title": "FASTER UPGRADES WITH SPARE PARTS",
+   "category": "Announcements",
+   "date": "2026-08-12",
+   "url": "https://warrobots.com/news/1005-faster-upgrades-with-spare-parts",
+   "img": "https://static-eu.prod-my.games/chronos-public-eu-wr-prod/site/news/ANNOUNCEMENTS/1005/regular_detail_picture-b043b8ad58311a8a5e77e4efc92c2cab.jpg"
+  },
+  {
    "id": 1002,
    "title": "WAR ROBOTS 12.5 UPDATE NOTES",
    "category": "Update Notes",
@@ -81,14 +89,6 @@
    "date": "2025-11-28",
    "url": "https://warrobots.com/news/410-war-robots-116-update-notes",
    "img": "https://static-eu.prod-my.games/chronos-public-eu-wr-prod/site/news/legacy/covers/410/preview_picture-7a1b5c3e70d2b17cf18708c0cced3951.jpg"
-  },
-  {
-   "id": 408,
-   "title": "WAR ROBOTS 11.5 UPDATE NOTES",
-   "category": "Update Notes",
-   "date": "2025-10-16",
-   "url": "https://warrobots.com/news/408-war-robots-115-update-notes",
-   "img": "https://static-eu.prod-my.games/chronos-public-eu-wr-prod/site/news/legacy/covers/408/preview_picture-515ab570def13c237317a796941caf2f.jpg"
   },
   {
    "id": 400,
