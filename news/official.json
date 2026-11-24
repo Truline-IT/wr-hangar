@@ -1,7 +1,15 @@
 {
  "source": "https://warrobots.com/news",
- "checked": "2026-11-23",
+ "checked": "2026-11-24",
  "posts": [
+  {
+   "id": 1006,
+   "title": "SPARE PARTS EXPLAINED",
+   "category": "Announcements",
+   "date": "2026-11-23",
+   "url": "https://warrobots.com/news/1006-spare-parts-explained",
+   "img": "https://static-eu.prod-my.games/chronos-public-eu-wr-prod/site/news/ANNOUNCEMENTS/spare-parts/news_bckg_126_spareparts.jpg"
+  },
   {
    "id": 1005,
    "title": "FASTER UPGRADES WITH SPARE PARTS",
@@ -89,14 +97,6 @@
    "date": "2025-11-28",
    "url": "https://warrobots.com/news/410-war-robots-116-update-notes",
    "img": "https://static-eu.prod-my.games/chronos-public-eu-wr-prod/site/news/legacy/covers/410/preview_picture-7a1b5c3e70d2b17cf18708c0cced3951.jpg"
-  },
-  {
-   "id": 400,
-   "title": "HOW TO INSTALL OFFICIAL WAR ROBOTS APK",
-   "category": "Guides",
-   "date": "2025-10-21",
-   "url": "https://warrobots.com/news/400-how-to-install-official-war-robots-apk",
-   "img": "https://static-eu.prod-my.games/chronos-public-eu-wr-prod/site/news/legacy/covers/400/preview_picture-4ba3500192d78f4e06cd18ad2321fcb4.jpg"
   }
  ]
 }
